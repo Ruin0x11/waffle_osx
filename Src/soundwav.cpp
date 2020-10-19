@@ -3,7 +3,7 @@
   Copyright 2000, K.Takagi(Kenjo)
 
   soundwav.cpp
-    ƒTƒEƒ“ƒhŠÖ˜A
+    ã‚µã‚¦ãƒ³ãƒ‰é–¢é€£
 =======================================================================*/
 
 #include <stdio.h>
@@ -31,7 +31,7 @@ inline bool CheckHeader(unsigned char* b, char* header)
 };
 
 
-// ‹U‘•8bitƒf[ƒ^‚©‚ç16bitPCM‚Ö‚Ì•ÏŠ·ƒe[ƒuƒ‹
+// å½è£…8bitãƒ‡ãƒ¼ã‚¿ã‹ã‚‰16bitPCMã¸ã®å¤‰æ›ãƒ†ãƒ¼ãƒ–ãƒ«
 inline void SetupLinearTable(void)
 {
 	short i, data;
@@ -45,11 +45,11 @@ inline void SetupLinearTable(void)
 
 /************************************************************************
   class SOUNDWAV
-    WAVƒTƒEƒ“ƒhŠÖ˜A
+    WAVã‚µã‚¦ãƒ³ãƒ‰é–¢é€£
 ************************************************************************/
 
 // Little <-> Big Endian
-#ifdef powerc		// PPC”ÅB‹°‚ë‚µ‚¢’öˆÓ–¡•s–¾i‚§‚¡
+#ifdef powerc		// PPCç‰ˆã€‚æã‚ã—ã„ç¨‹æ„å‘³ä¸æ˜ï¼ˆã‰ãƒ
 static asm void Endian16BitBuffer (Ptr buf, unsigned long count)
 {
 #pragma unused (buf, count)
@@ -62,7 +62,7 @@ test:	cmpwi	r4, 0x03
 		bgt		loop
 		blr
 }
-#else				// 68K”Åiˆê‰jB‚±‚Á‚¿‚Í—‰ğ‚Å‚«‚é ^^;
+#else				// 68Kç‰ˆï¼ˆä¸€å¿œï¼‰ã€‚ã“ã£ã¡ã¯ç†è§£ã§ãã‚‹ ^^;
 static asm void Endian16BitBuffer (Ptr buf, unsigned long count)
 {
 		movea.l	0x04(sp), a0
@@ -104,7 +104,7 @@ static pascal void WAVFileCallBack(WAVFILEINFO* wfile)
 	long A5bk = SetA5(wav->backupedA5);
 #endif
 
-	if ( wav->bits==16 ) {				// 16bitƒf[ƒ^‚È‚çEndian’²®
+	if ( wav->bits==16 ) {				// 16bitãƒ‡ãƒ¼ã‚¿ãªã‚‰Endianèª¿æ•´
 		if ( wav->linear ) {
 			Linear8BitBuffer(buf, count);
 			count <<= 1;
@@ -184,7 +184,7 @@ SOUNDWAV::SOUNDWAV(int l)
 	linear = l;
 	if ( l ) SetupLinearTable();
 
-	sndcb = NewSndCallBackProc(WAVEndCallBack);	// I—¹ƒR[ƒ‹ƒoƒbƒN‚É‚È‚é‚İ‚½‚¢
+	sndcb = NewSndCallBackProc(WAVEndCallBack);	// çµ‚äº†ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯ã«ãªã‚‹ã¿ãŸã„
 	err = SndNewChannel(&hsnd, sampledSynth, initStereo+initNoInterp+initNoDrop, sndcb);
 	if ( err!=noErr ) {
 		hsnd = 0;
@@ -214,7 +214,7 @@ SOUNDWAV::SOUNDWAV(int l)
 };
 
 
-SOUNDWAV::~SOUNDWAV(void)
+SOUNDWAV::â€¾SOUNDWAV(void)
 {
 	int i;
 
@@ -256,15 +256,15 @@ void SOUNDWAV::Play(char* file, int loop, int cutsize)
 		FSRead(fp, &l, (void*)header);
 		wav.end = 0;
 		wav.repeat = cutsize;
-		// 'data'—Ìˆæ‚Í•K‚¸‚µ‚à Offset:$22 ‚©‚çn‚Ü‚é‚Æ‚ÍŒÀ‚ç‚È‚¢‚ç‚µ‚¢ (BabyFace)
-		for (i=36; i<128; i+=2) {		// ‚Ì‚Å’T‚µ‚Ü‚·EEE
+		// 'data'é ˜åŸŸã¯å¿…ãšã—ã‚‚ Offset:$22 ã‹ã‚‰å§‹ã¾ã‚‹ã¨ã¯é™ã‚‰ãªã„ã‚‰ã—ã„ (BabyFace)
+		for (i=36; i<128; i+=2) {		// ã®ã§æ¢ã—ã¾ã™ãƒ»ãƒ»ãƒ»
 			if ( CheckHeader(&header[i], "data") ) {
 				wav.end = ((header[i+4])|(header[i+5]<<8)|(header[i+6]<<16)|(header[i+7]<<24));
 				wav.start = i+8;
 				break;
 			}
 		}
-		if ( (CheckHeader(header, "RIFF"))&&			// ‚±‚Ì•Ó‚ÍŒˆ‚ß‘Å‚¿
+		if ( (CheckHeader(header, "RIFF"))&&			// ã“ã®è¾ºã¯æ±ºã‚æ‰“ã¡
 			 (CheckHeader(&header[8], "WAVE"))&&
 			 (CheckHeader(&header[12], "fmt"))&&
 			 (wav.end>4) ) {
@@ -275,7 +275,7 @@ void SOUNDWAV::Play(char* file, int loop, int cutsize)
 			if ( (bit==8)&&(linear) ) {
 				bit = 16;
 				wav.linear = 1;
-				wav.repeat >>= 1;		// ƒŠƒjƒA‚É‚ÍCutSize‚Ì”¼•ª‚É
+				wav.repeat >>= 1;		// ãƒªãƒ‹ã‚¢æ™‚ã«ã¯CutSizeã®åŠåˆ†ã«
 			} else {
 				wav.linear = 0;
 			}
@@ -376,12 +376,12 @@ int SOUNDWAV::IsPlaying(void)
 
 /************************************************************************
   class SOUNDKOE
-    KOEŠÖ˜A
+    KOEé–¢é€£
 ************************************************************************/
 
 #define MAXKOETABLE 1024
 
-// SOUNDKOE—pƒR[ƒ‹ƒoƒbƒNBIsPlayingƒtƒ‰ƒO‚ğ—‚Æ‚·‚Ì‚ª–Ú“I
+// SOUNDKOEç”¨ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯ã€‚IsPlayingãƒ•ãƒ©ã‚°ã‚’è½ã¨ã™ã®ãŒç›®çš„
 static pascal void KOECallBack(SndChannelPtr /*ch*/, SndCommand* cmd)
 {
 	int* flag = (int*)(cmd->param2);
@@ -423,15 +423,15 @@ SOUNDKOE::SOUNDKOE(int type, int l)
 	}
 
 	SetupLinearTable();
-	// •ÏŠ·ƒe[ƒuƒ‹ì¬
-	// table1 : 8bitƒTƒ“ƒvƒ‹ -> 16bitƒTƒ“ƒvƒ‹•ÏŠ·
+	// å¤‰æ›ãƒ†ãƒ¼ãƒ–ãƒ«ä½œæˆ
+	// table1 : 8bitã‚µãƒ³ãƒ—ãƒ« -> 16bitã‚µãƒ³ãƒ—ãƒ«å¤‰æ›
 	for (i=-128; i<128; i++) {
-		table1[i+128] = (short)(i*0x100);			// $00`$FF -> -32768`+32767 EEE‚É‚È‚é‚Æv‚¤iŠ¾
+		table1[i+128] = (short)(i*0x100);			// $00ã€œ$FF -> -32768ã€œ+32767 ãƒ»ãƒ»ãƒ»ã«ãªã‚‹ã¨æ€ã†ï¼ˆæ±—
 	}
-	// table2 : 4/8bit DifferencialPCM nibble? -> ƒoƒCƒg·•ªƒf[ƒ^
+	// table2 : 4/8bit DifferencialPCM nibble? -> ãƒã‚¤ãƒˆå·®åˆ†ãƒ‡ãƒ¼ã‚¿
 	for (i=0; i<256; i++) {
 		n = (i>>1);
-		if ( i&1 ) n ^= 0xff;						// Å‰ºˆÊƒrƒbƒg‚ªnibble‚Ì•„†L‚¢
+		if ( i&1 ) n ^= 0xff;						// æœ€ä¸‹ä½ãƒ“ãƒƒãƒˆãŒnibbleã®ç¬¦å·è‡­ã„
 		table2[i] = (256-n)&0xff;
 //if ( i&1 ) n = -n;
 //table2[i] = -n;
@@ -439,7 +439,7 @@ SOUNDKOE::SOUNDKOE(int type, int l)
 }
 
 
-SOUNDKOE::~SOUNDKOE(void)
+SOUNDKOE::â€¾SOUNDKOE(void)
 {
 	Stop();
 	if ( table ) delete[] table;
@@ -457,7 +457,7 @@ void SOUNDKOE::MakeTable(char* f, int tid)
 	unsigned char head[32];
 	int i;
 
-	// ¡‚Ì‚Æ‚¨‚ñ‚È‚¶ƒe[ƒuƒ‹‚È‚ç‚»‚Ì‚Ü‚Ü
+	// ä»Šã®ã¨ãŠã‚“ãªã˜ãƒ†ãƒ¼ãƒ–ãƒ«ãªã‚‰ãã®ã¾ã¾
 	if ( tableid==tid ) return;
 
 	if ( table ) delete[] table;
@@ -471,20 +471,20 @@ void SOUNDKOE::MakeTable(char* f, int tid)
 		if ( !strcmp((char*)head, "KOEPAC") ) {
 			maxnum = ((head[16])|(head[17]<<8)|(head[18]<<16)|(head[19]<<24));
 			rate = ((head[24])|(head[25]<<8)|(head[26]<<16)|(head[27]<<24));
-			if ( !rate ) rate = 22050;		// flowers, 0‚¾‚ÆƒfƒtƒHƒ‹ƒg’l‚İ‚½‚¢
+			if ( !rate ) rate = 22050;		// flowers, 0ã ã¨ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã¿ãŸã„
 			if ( (maxnum>0)&&(maxnum<MAXKOETABLE) ) {
 				table = new KOETABLE[maxnum+1];
 				if ( table ) {
 					fread((unsigned char*)table, maxnum<<3, 1, fp);
 					Endian16BitBuffer((Ptr)table, maxnum<<3);
-					for (i=0; i<maxnum; i++) {		// long‚ÍƒGƒ“ƒfƒBƒAƒ“•ÏX‚¾‚¯‚Å‚Í‘Î‰‚Å‚«‚È‚¢‚Ì‚Å
+					for (i=0; i<maxnum; i++) {		// longã¯ã‚¨ãƒ³ãƒ‡ã‚£ã‚¢ãƒ³å¤‰æ›´ã ã‘ã§ã¯å¯¾å¿œã§ããªã„ã®ã§
 						table[i].pos = ((table[i].pos>>16)|((table[i].pos&0xffff)<<16));
 					}
 					tableid = tid;
 					fseek(fp, 0, 2);
 					table[maxnum].pos = ftell(fp);
 					table[maxnum].symbol = 0;
-					table[maxnum].id = 999999;		// ‚ÜAˆÀ‘S‚Ì‚½‚ß
+					table[maxnum].id = 999999;		// ã¾ã€å®‰å…¨ã®ãŸã‚
 				}
 			}
 		}
@@ -493,9 +493,9 @@ void SOUNDKOE::MakeTable(char* f, int tid)
 }
 
 
-// ƒoƒCƒgƒoƒbƒtƒ@ s[] ‚Ì n ”Ô–Ú‚Ì nibble ‚ğ“¾‚é
-// ƒoƒbƒtƒ@“à—e‚ª $AB $CD $EF ... ‚Æ‚·‚é‚ÆAn=0,1,2,3...‚Ì•Ô’l‚Í
-// $0B $0A $0D $0C ... ‚Æ‚È‚è‚Ü‚·B
+// ãƒã‚¤ãƒˆãƒãƒƒãƒ•ã‚¡ s[] ã® n ç•ªç›®ã® nibble ã‚’å¾—ã‚‹
+// ãƒãƒƒãƒ•ã‚¡å†…å®¹ãŒ $AB $CD $EF ... ã¨ã™ã‚‹ã¨ã€n=0,1,2,3...æ™‚ã®è¿”å€¤ã¯
+// $0B $0A $0D $0C ... ã¨ãªã‚Šã¾ã™ã€‚
 #define nibble(s,n) ((s[n>>1]>>((n&1)<<2))&15)
 
 
@@ -513,22 +513,22 @@ void SOUNDKOE::Play(char* f, int tid, int id)
 
 	Stop();
 
-	// ƒTƒEƒ“ƒhƒfƒoƒCƒX‚ª‚È‚¢‚È‚ç‹A‚é
+	// ã‚µã‚¦ãƒ³ãƒ‰ãƒ‡ãƒã‚¤ã‚¹ãŒãªã„ãªã‚‰å¸°ã‚‹
 	if ( !hsnd ) return;
 
-	if ( koetype ) {			// Differencial PCM / PAC ‚Ì (DOUBLE_PAC)
-		// ƒe[ƒuƒ‹“Ç‚İ‚İ
+	if ( koetype ) {			// Differencial PCM / PAC ã®æ™‚ (DOUBLE_PAC)
+		// ãƒ†ãƒ¼ãƒ–ãƒ«èª­ã¿è¾¼ã¿
 		sprintf(file, ":%s:Z%03d.KOE", f, tid);
 		MakeTable(file, tid);
 		if ( !table ) return;
 
-		// ƒe[ƒuƒ‹ŒŸõ
+		// ãƒ†ãƒ¼ãƒ–ãƒ«æ¤œç´¢
 		for (i=0; i<maxnum; i++) {
-			if ( table[i].id==id ) break;		// ‚ß`‚Á‚¯
+			if ( table[i].id==id ) break;		// ã‚ã€œã£ã‘
 		}
-		if ( i==maxnum ) return;				// ‚ß‚Á‚©‚ç‚È‚©‚Á‚½EEE
+		if ( i==maxnum ) return;				// ã‚ã£ã‹ã‚‰ãªã‹ã£ãŸãƒ»ãƒ»ãƒ»
 
-		// ƒVƒ“ƒ{ƒ‹ƒŠƒXƒg“Ç‚İ‚İ
+		// ã‚·ãƒ³ãƒœãƒ«ãƒªã‚¹ãƒˆèª­ã¿è¾¼ã¿
 		num = table[i].symbol;
 		buf = new unsigned short[num];
 		fp = fopen(file, "rb");
@@ -542,24 +542,24 @@ void SOUNDKOE::Play(char* f, int tid, int id)
 			return;
 		}
 
-		// ƒVƒ“ƒ{ƒ‹ƒŠƒXƒg‚©‚çƒTƒCƒYŒvZ
+		// ã‚·ãƒ³ãƒœãƒ«ãƒªã‚¹ãƒˆã‹ã‚‰ã‚µã‚¤ã‚ºè¨ˆç®—
 		for (j=0; j<num; j++) {
-			buf[j] = ((buf[j]>>8)|((buf[j]&0xff)<<8));		// Endian‚Ö‚ñ‚±[
+			buf[j] = ((buf[j]>>8)|((buf[j]&0xff)<<8));		// Endianã¸ã‚“ã“ãƒ¼
 			srcsize += buf[j];
 			if ( buf[j] ) {
 				if ( buf[j]==0x400 )
-					dstsize += 0x400;			// $400‚Í‚»‚Ì‚Ü‚ÜƒRƒs[‚È‚Ì‚Å
+					dstsize += 0x400;			// $400æ™‚ã¯ãã®ã¾ã¾ã‚³ãƒ”ãƒ¼ãªã®ã§
 				else
-					dstsize += (buf[j]<<1);		// $001`$3FFAÅ‘å‚Å2”{‚É‘‚¦‚é
+					dstsize += (buf[j]<<1);		// $001ã€œ$3FFæ™‚ã€æœ€å¤§ã§2å€ã«å¢—ãˆã‚‹
 			} else {
-				dstsize += 0x400;				// –³‰¹^›‰¹H
+				dstsize += 0x400;				// ç„¡éŸ³ï¼æ’¥éŸ³ï¼Ÿ
 			}
 		}
 
-		// ƒTƒCƒYƒ`ƒFƒbƒN
-		if ( srcsize>(table[i+1].pos-table[i].pos) ) return;	// ƒTƒCƒY‚ª•Ï
+		// ã‚µã‚¤ã‚ºãƒã‚§ãƒƒã‚¯
+		if ( srcsize>(table[i+1].pos-table[i].pos) ) return;	// ã‚µã‚¤ã‚ºãŒå¤‰
 
-		// ‚»[‚·‚ğ“Ç‚İ‚Ş•ƒTƒ“ƒvƒŠƒ“ƒOƒoƒbƒtƒ@—pˆÓ
+		// ããƒ¼ã™ã‚’èª­ã¿è¾¼ã‚€ï¼†ã‚µãƒ³ãƒ—ãƒªãƒ³ã‚°ãƒãƒƒãƒ•ã‚¡ç”¨æ„
 		srcbuf = new unsigned char[srcsize];
 		if ( srcbuf ) {
 			fp = fopen(file, "rb");
@@ -577,7 +577,7 @@ void SOUNDKOE::Play(char* f, int tid, int id)
 			}
 		}
 
-		// ‚Å‚±[‚Ç‚·‚é‚æ
+		// ã§ã“ãƒ¼ã©ã™ã‚‹ã‚ˆ
 		src = srcbuf;
 		dst = koebuf;
 		for (i=0; i<num; i++) {
@@ -590,21 +590,21 @@ void SOUNDKOE::Play(char* f, int tid, int id)
 				} else {
 					data = 0;
 					for (j=0; j<buf[i]*2; ) {
-						s = nibble(src,j);					// ‚Ü‚¸1nibbleE‚¤
+						s = nibble(src,j);					// ã¾ãš1nibbleæ‹¾ã†
 						j++;
-						if ( s==15 ) {						// nibble‚ª15‚Ì‚Í2ƒoƒCƒg·•ª
-							s = nibble(src,j);				// nibble‚ğ2ŒÂE‚¤
+						if ( s==15 ) {						// nibbleãŒ15ã®æ™‚ã¯2ãƒã‚¤ãƒˆå·®åˆ†
+							s = nibble(src,j);				// nibbleã‚’2å€‹æ‹¾ã†
 							j++;
 							s |= (nibble(src,j)<<4);
 							j++;
 						}
-						data += table2[s&255];				// 8bitƒTƒ“ƒvƒŠƒ“ƒOƒf[ƒ^‚É‰ÁZ
-//						*dst++ = table1[data&255];			// 16ƒrƒbƒg‚É•ÏŠ·
+						data += table2[s&255];				// 8bitã‚µãƒ³ãƒ—ãƒªãƒ³ã‚°ãƒ‡ãƒ¼ã‚¿ã«åŠ ç®—
+//						*dst++ = table1[data&255];			// 16ãƒ“ãƒƒãƒˆã«å¤‰æ›
 *dst++ = LinearTable[data&255];
 					}
 					src += buf[i];
 				}
-			} else {					// –³‰¹^›‰¹H
+			} else {					// ç„¡éŸ³ï¼æ’¥éŸ³ï¼Ÿ
 				for (j=0; j<0x400; j++) {
 					*dst++ = 0;
 				}
@@ -612,7 +612,7 @@ void SOUNDKOE::Play(char* f, int tid, int id)
 		}
 		delete[] srcbuf;
 		dstsize = dst-koebuf;
-	} else {			// ¶WAVƒf[ƒ^ƒ^ƒCƒv‚Ìê‡iLinearw’è‚Ìˆ—‚ª“ü‚Á‚Ä‚È‚¢EEEj
+	} else {			// ç”ŸWAVãƒ‡ãƒ¼ã‚¿ã‚¿ã‚¤ãƒ—ã®å ´åˆï¼ˆLinearæŒ‡å®šã®å‡¦ç†ãŒå…¥ã£ã¦ãªã„ãƒ»ãƒ»ãƒ»ï¼‰
 		sprintf(file, ":%s:V:%03d:Z%03d%04d.WAV", f, tid, tid, id);
 		fp = fopen(file, "rb");
 		if ( fp ) {
@@ -625,8 +625,8 @@ void SOUNDKOE::Play(char* f, int tid, int id)
 					break;
 				}
 			}
-			srcbuf = new unsigned char[srcsize+4];			// +4 ‚Í Endian16BitBuffer ‚ª 4 ƒoƒCƒg’PˆÊ‚ÅŒvZ‚·‚é‚½‚ß
-			if ( (CheckHeader(header, "RIFF")) &&			// ‚±‚Ì•Ó‚ÍŒˆ‚ß‘Å‚¿
+			srcbuf = new unsigned char[srcsize+4];			// +4 ã¯ Endian16BitBuffer ãŒ 4 ãƒã‚¤ãƒˆå˜ä½ã§è¨ˆç®—ã™ã‚‹ãŸã‚
+			if ( (CheckHeader(header, "RIFF")) &&			// ã“ã®è¾ºã¯æ±ºã‚æ‰“ã¡
 				 (CheckHeader(&header[8], "WAVE")) &&
 				 (CheckHeader(&header[12], "fmt")) &&
 				 (srcsize>4) &&
@@ -649,7 +649,7 @@ void SOUNDKOE::Play(char* f, int tid, int id)
 		}
 	}
 
-	// Ä¶ŠJn`
+	// å†ç”Ÿé–‹å§‹ã€œ
 	head.sampleRate = (rate<<16);
 	head.numFrames = dstsize;
 	head.samplePtr = (Ptr)koebuf;

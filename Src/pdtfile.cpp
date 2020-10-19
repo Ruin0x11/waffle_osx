@@ -3,7 +3,7 @@
   Copyright 2000, K.Takagi(Kenjo)
 
   pdtfile.cpp
-    PDTƒtƒ@ƒCƒ‹‚Ö‚ÌƒAƒNƒZƒX
+    PDTãƒ•ã‚¡ã‚¤ãƒ«ã¸ã®ã‚¢ã‚¯ã‚»ã‚¹
 =======================================================================*/
 
 #include <stdio.h>
@@ -17,7 +17,7 @@
 #include "system.h"
 
 /************************************************************************
-  ƒ}ƒNƒ‚İ‚½‚¢‚È‚Ì
+  ãƒã‚¯ãƒ­ã¿ãŸã„ãªã®
 ************************************************************************/
 inline int ReadInt(unsigned char* b, int pos)
 {
@@ -42,7 +42,7 @@ inline bool CheckHeader(unsigned char* b, char* header)
 
 /************************************************************************
   class PDTFILE
-    ‰æ‘œƒtƒ@ƒCƒ‹. ˆ³k‚³‚ê‚Ä‚é‚æ
+    ç”»åƒãƒ•ã‚¡ã‚¤ãƒ«. åœ§ç¸®ã•ã‚Œã¦ã‚‹ã‚ˆ
 ************************************************************************/
 
 PDTFILE::PDTFILE(char* fname, SYSTEM* sys)
@@ -67,7 +67,7 @@ PDTFILE::PDTFILE(char* fname, SYSTEM* sys)
 	if ( fp ) {
 		fseek(fp, 0, 0);
 		fread(tmp, 32, 1, fp);
-		if ( CheckHeader(tmp, "PDT1\0") ) {
+		if ( CheckHeader(tmp, "PDT1Â¥0") ) {
 			filesize = ReadInt(tmp, 8);
 			xsize    = ReadInt(tmp, 12);
 			ysize    = ReadInt(tmp, 16);
@@ -93,18 +93,18 @@ FILE* o = fopen(f, "wb");
 fwrite(srcbuf, 1, filesize, o);
 fclose(o);
 }*/
-		if ( CheckHeader(srcbuf, "PDT1\0") ) {
+		if ( CheckHeader(srcbuf, "PDT1Â¥0") ) {
 			xsize   = ReadInt(srcbuf, 12);
 			ysize   = ReadInt(srcbuf, 16);
 			size    = xsize * ysize;
 			maskptr = ReadInt(srcbuf, 28);
 /*{
 FILE* fp = fopen("_file.txt", "a");
-fprintf(fp, "File:%s  Buf:$%08X\n", fname, (int)srcbuf);
+fprintf(fp, "File:%s  Buf:$%08XÂ¥n", fname, (int)srcbuf);
 for(i=0; i<32; i++) {
 fprintf(fp, " %02X", srcbuf[i]);
 }
-fprintf(fp, "\nX=%d Y=%d Mask:$%08X\n", xsize, ysize, maskptr);
+fprintf(fp, "Â¥nX=%d Y=%d Mask:$%08XÂ¥n", xsize, ysize, maskptr);
 fclose(fp);
 }*/
 		} else {
@@ -114,7 +114,7 @@ fclose(fp);
 	}
 
 	if ( srcbuf ) {
-		if ( maskptr ) {								// Mask‚ª‚ ‚éê‡
+		if ( maskptr ) {								// MaskãŒã‚ã‚‹å ´åˆ
 			mask = new unsigned char[size];
 			memset(mask, 0, size);
 			src = srcbuf+maskptr;
@@ -142,11 +142,11 @@ fclose(fp);
 			}
 		}
 
-		size *= 3;	// RGBŠe1ƒoƒCƒg
+		size *= 3;	// RGBå„1ãƒã‚¤ãƒˆ
 		buffer = new unsigned char[size];
 
 		if ( !strcmp((char*)srcbuf, "PDT10") ) {
-		// PDT10Œ`®
+		// PDT10å½¢å¼
 			src = srcbuf+32;
 			bit = 0;
 			if ( maskptr )
@@ -168,10 +168,10 @@ fclose(fp);
 					srccount -= 3;
 				} else {
 					num  = *src++;
-					num += ((*src++)<<8);			// ˆø”‚ÍƒŠƒgƒ‹ƒGƒ“ƒfƒBƒAƒ“‚ÌWORD
+					num += ((*src++)<<8);			// å¼•æ•°ã¯ãƒªãƒˆãƒ«ã‚¨ãƒ³ãƒ‡ã‚£ã‚¢ãƒ³ã®WORD
 					srccount -= 2;
-					count = ((num&15)+1)*3;			// ‰ºˆÊ4bit‚ªƒRƒs[”. 2‰ñ‚ªÅ¬’PˆÊH
-					repeat = buf-((num>>4)+1)*3;	// buf‚ÍŸ‚Ì‘‚«‚İˆÊ’u‚ğw‚µ‚Ä‚é‚Ì‚ÅA1ƒoƒCƒg‘½‚ß‚É–ß‚é
+					count = ((num&15)+1)*3;			// ä¸‹ä½4bitãŒã‚³ãƒ”ãƒ¼æ•°. 2å›ãŒæœ€å°å˜ä½ï¼Ÿ
+					repeat = buf-((num>>4)+1)*3;	// bufã¯æ¬¡ã®æ›¸ãè¾¼ã¿ä½ç½®ã‚’æŒ‡ã—ã¦ã‚‹ã®ã§ã€1ãƒã‚¤ãƒˆå¤šã‚ã«æˆ»ã‚‹
 					for (i=0; (i<count)&&(buf<bufend); i++) *buf++ = *repeat++;
 				}
 				bit--;
@@ -180,7 +180,7 @@ fclose(fp);
 
 		} else {
 		// PDT11
-			for (i=0; i<16; i++) {					// ƒŠƒs[ƒg”‚ÌIndexTable
+			for (i=0; i<16; i++) {					// ãƒªãƒ”ãƒ¼ãƒˆæ•°ã®IndexTable
 				index[i]  = (srcbuf[i*4+0x420]);
 				index[i] |= (srcbuf[i*4+0x421]<<8);
 				index[i] |= (srcbuf[i*4+0x422]<<16);
@@ -207,11 +207,11 @@ fclose(fp);
 					*buf++ = srcbuf[n+2];
 					srccount--;
 				} else {
-					num  = *src++;					// ˆø”‚ÍBYTE
+					num  = *src++;					// å¼•æ•°ã¯BYTE
 					srccount--;
-					count = (((num>>4)&15)+2)*3;	// ãˆÊ4bit‚ªƒRƒs[”. 2‰ñ‚ªÅ¬’PˆÊH
+					count = (((num>>4)&15)+2)*3;	// ä¸Šä½4bitãŒã‚³ãƒ”ãƒ¼æ•°. 2å›ãŒæœ€å°å˜ä½ï¼Ÿ
 					if ( (buf+count)>=bufend ) count = bufend-buf;
-					repeat = buf-(index[num&15])*3;	// Index‚Å–ß‚èˆÊ’u‚ğ‚«‚ß‚éH
+					repeat = buf-(index[num&15])*3;	// Indexã§æˆ»ã‚Šä½ç½®ã‚’ãã‚ã‚‹ï¼Ÿ
 					for (i=0; (i<count)&&(buf<bufend); i++) *buf++ = *repeat++;
 				}
 				bit--;
@@ -224,7 +224,7 @@ fclose(fp);
 	}
 };
 
-PDTFILE::~PDTFILE(void)
+PDTFILE::â€¾PDTFILE(void)
 {
 	delete[] buffer;
 	delete[] mask;

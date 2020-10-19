@@ -3,7 +3,7 @@
   Copyright 2000, K.Takagi(Kenjo)
 
   flags.cpp
-    フラグ管理
+    繝輔Λ繧ｰ邂｡逅�
 =======================================================================*/
 
 #include <stdio.h>
@@ -15,7 +15,7 @@
 
 /************************************************************************
   class FLAGS
-    フラグ管理
+    繝輔Λ繧ｰ邂｡逅�
 ************************************************************************/
 
 FLAGS::FLAGS(void)
@@ -28,7 +28,7 @@ FLAGS::FLAGS(void)
         savedstackindex = 0;
 };
 
-FLAGS::~FLAGS(void)
+FLAGS::窶ｾFLAGS(void)
 {
 };
 
@@ -78,7 +78,7 @@ void FLAGS::SetBit(int i, int n)
                 if ( n )
                         bit[i>>3] |= (0x80>>(i&7));
                 else
-                        bit[i>>3] &= ~(0x80>>(i&7));
+                        bit[i>>3] &= 窶ｾ(0x80>>(i&7));
         } else {
 #ifdef FLAG_ERROR
                 Error("SetBit: out of range.");

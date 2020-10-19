@@ -3,7 +3,7 @@
   Copyright 2000, K.Takagi(Kenjo)
 
   system.cpp
-    MacƒVƒXƒeƒ€ˆË‘¶•”•ª
+    Macã‚·ã‚¹ãƒ†ãƒ ä¾å­˜éƒ¨åˆ†
 =======================================================================*/
 
 #include <stdio.h>
@@ -59,24 +59,24 @@ SYSTEM::SYSTEM(WindowPtr wnd, GWorldPtr os, PixMapHandle pm, PDTBUFFER* pdtb)
 
 	AbortFlag = 0;
 
-	memcpy(menuname[0], "\pSAVE", 5);
-	memcpy(menuname[1], "\pLOAD", 5);
+	memcpy(menuname[0], "Â¥pSAVE", 5);
+	memcpy(menuname[1], "Â¥pLOAD", 5);
 	menu = GetNewMBar(128);
 	SetMenuBar(menu);
 	applmenu = GetMenu(MENU_APPLE);
 	filemenu = GetMenu(MENU_FILE);
-	systmenu = NewMenu(MENU_SYSTEM, "\pƒVƒXƒeƒ€");
-	popupmenu = NewMenu(MENU_POPUP, "\pContextMenu");
+	systmenu = NewMenu(MENU_SYSTEM, "Â¥pã‚·ã‚¹ãƒ†ãƒ ");
+	popupmenu = NewMenu(MENU_POPUP, "Â¥pContextMenu");
 	InsertMenu(applmenu,  0);
 	AppendResMenu(applmenu, 'DRVR');
 	InsertMenu(filemenu,  0);
 	InsertMenu(systmenu,  0);
 #ifdef DEBUGLOG
-	debugmenu = NewMenu(MENU_DEBUG, "\p‚Å‚Î‚Á‚®");
-	InsertMenuItem(debugmenu, "\pƒƒOŠJn", 1);
-	InsertMenuItem(debugmenu, "\pƒƒO’â~", 2);
-	InsertMenuItem(debugmenu, "\pFlag All ON", 3);
-	InsertMenuItem(debugmenu, "\pFlag All OFF", 3);
+	debugmenu = NewMenu(MENU_DEBUG, "Â¥pã§ã°ã£ã");
+	InsertMenuItem(debugmenu, "Â¥pãƒ­ã‚°é–‹å§‹", 1);
+	InsertMenuItem(debugmenu, "Â¥pãƒ­ã‚°åœæ­¢", 2);
+	InsertMenuItem(debugmenu, "Â¥pFlag All ON", 3);
+	InsertMenuItem(debugmenu, "Â¥pFlag All OFF", 3);
 	InsertMenu(debugmenu,  0);
 #endif
 
@@ -113,20 +113,20 @@ SYSTEM::SYSTEM(WindowPtr wnd, GWorldPtr os, PixMapHandle pm, PDTBUFFER* pdtb)
 	SkipEnableFlag = 1;
 	FullScrSW = 0;
 	memset(&scnefct, 0, sizeof(EFFECT));
-	GetFNum("\pOsaka", &fontid);
+	GetFNum("Â¥pOsaka", &fontid);
 	curfont = 2;
 	doubletext = 0;
 	doubleline = 0;
 }
 
 
-SYSTEM::~SYSTEM(void)
+SYSTEM::â€¾SYSTEM(void)
 {
 	int i;
 
 	SaveGlobalFlags(flags);
 
-	if ( FullScrSW ) ChangeFullScreen(0);	// ‰ğ‘œ“x‚ğŒ³‚É–ß‚µ‚Ä‚¨‚­
+	if ( FullScrSW ) ChangeFullScreen(0);	// è§£åƒåº¦ã‚’å…ƒã«æˆ»ã—ã¦ãŠã
 	DisposeGWorld(offscreen);
 
 	if ( scn     ) delete scn;
@@ -186,23 +186,23 @@ void SYSTEM::Init(void)
 	memset(menuflag, 1, sizeof(menuflag));
 	pad = 0;
 	if ( menus[25] ) {
-		InsertMenuItem(popupmenu, "\p ", 0);
+		InsertMenuItem(popupmenu, "Â¥p ", 0);
 		SetMenuItemText(popupmenu, 1, menuname[25]);
-		InsertMenuItem(popupmenu, "\p-", 1);
-		InsertMenuItem(systmenu, "\p ", 0);
+		InsertMenuItem(popupmenu, "Â¥p-", 1);
+		InsertMenuItem(systmenu, "Â¥p ", 0);
 		SetMenuItemText(systmenu, 1, menuname[25]);
-		InsertMenuItem(systmenu, "\p-", 1);
+		InsertMenuItem(systmenu, "Â¥p-", 1);
 		menuid[1] = 25;
 		menusysid[1] = 25;
 		pad += 2;
 	}
 	if ( menus[31] ) {
-		InsertMenuItem(popupmenu, "\p ", pad);
+		InsertMenuItem(popupmenu, "Â¥p ", pad);
 		SetMenuItemText(popupmenu, pad+1, menuname[31]);
-		InsertMenuItem(popupmenu, "\p-", pad+1);
-		InsertMenuItem(systmenu, "\p ", pad);
+		InsertMenuItem(popupmenu, "Â¥p-", pad+1);
+		InsertMenuItem(systmenu, "Â¥p ", pad);
 		SetMenuItemText(systmenu, pad+1, menuname[31]);
-		InsertMenuItem(systmenu, "\p-", pad+1);
+		InsertMenuItem(systmenu, "Â¥p-", pad+1);
 		menuid[pad+1] = 31;
 		menusysid[pad+1] = 31;
 		pad += 2;
@@ -286,7 +286,7 @@ void SYSTEM::Reset(void)
 void SYSTEM::Abort(char* mes)
 {
 	char buf[256];
-	sprintf(buf, "%s ‹­§I—¹‚µ‚Ü‚·.", mes);
+	sprintf(buf, "%s å¼·åˆ¶çµ‚äº†ã—ã¾ã™.", mes);
 	Error(buf);
 	AbortFlag = 1;
 }
@@ -348,14 +348,14 @@ void SYSTEM::EventLoop(void)
 
 
 //--------------------------------------------------------------------
-//   ŠeƒCƒxƒ“ƒgˆ—
+//   å„ã‚¤ãƒ™ãƒ³ãƒˆå‡¦ç†
 //--------------------------------------------------------------------
-// ƒtƒ‹ƒXƒNƒŠ[ƒ“Ø‚è‘Ö‚¦
+// ãƒ•ãƒ«ã‚¹ã‚¯ãƒªãƒ¼ãƒ³åˆ‡ã‚Šæ›¿ãˆ
 /*	Flags
-@	1	ƒJ[ƒ\ƒ‹‚ğÁ‚·
-	2	‘¼‚ÌƒAƒvƒŠ‚É‚à§Œä‚ğˆÚ‚· ‰ğ‘œ“x‚Í•Ï‚í‚ç‚È‚¢
-	4	ƒƒjƒ…[ƒo[‚ğÁ‚³‚È‚¢
-	8	‰ğ‘œ“x‚ğ•Ï‚¦‚È‚¢
+ã€€	1	ã‚«ãƒ¼ã‚½ãƒ«ã‚’æ¶ˆã™
+	2	ä»–ã®ã‚¢ãƒ—ãƒªã«ã‚‚åˆ¶å¾¡ã‚’ç§»ã™ è§£åƒåº¦ã¯å¤‰ã‚ã‚‰ãªã„
+	4	ãƒ¡ãƒ‹ãƒ¥ãƒ¼ãƒãƒ¼ã‚’æ¶ˆã•ãªã„
+	8	è§£åƒåº¦ã‚’å¤‰ãˆãªã„
 */
 void SYSTEM::ChangeFullScreen(int sw)
 {
@@ -365,22 +365,22 @@ void SYSTEM::ChangeFullScreen(int sw)
 	Rect rect;
 	PDTBUFFER *newpdt0 = 0, *oldpdt0, *pdt1bk;
 
-	// ŒÃ‚¢‰æ–Ê‚ğ•Û‘¶‚·‚é‚½‚ß‚ÌPDT—pˆÓ
+	// å¤ã„ç”»é¢ã‚’ä¿å­˜ã™ã‚‹ãŸã‚ã®PDTç”¨æ„
 	oldpdt0 = new PDTBUFFER(640, 480, 3, 640*3, true);
 	if ( oldpdt0 ) {
-		// ˆê“I‚ÉPDT1‚Æ·‚µŠ·‚¦‚ÄƒoƒbƒNƒAƒbƒv‚ğæ‚é
+		// ä¸€æ™‚çš„ã«PDT1ã¨å·®ã—æ›ãˆã¦ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ã‚’å–ã‚‹
 		pdt1bk = mgr->GetPDT(1);
 		mgr->SetPDT(1, oldpdt0);
 		mgr->AllCopy(0, 1, 0);
-		// ŒÃ‚¢GWorld‚ğíœ
+		// å¤ã„GWorldã‚’å‰Šé™¤
 		if ( mgr->GetPDT(0) ) delete (mgr->GetPDT(0));
 		DisposeGWorld(offscreen);
 
-		// V‚µ‚¢ƒIƒtƒXƒNƒŠ[ƒ“‚ğì‚é
+		// æ–°ã—ã„ã‚ªãƒ•ã‚¹ã‚¯ãƒªãƒ¼ãƒ³ã‚’ä½œã‚‹
 		SetRect(&rect, 0, 0, 640, 480);
 		if ( NewGWorld(&offscreen, 32, &rect, 0, 0, 0)==noErr ) {
 
-		// ‰æ–ÊØ‚è‘Ö‚¦
+		// ç”»é¢åˆ‡ã‚Šæ›¿ãˆ
 			if ( sw ) {
 #if 0
 				FullScrMenu = 1;
@@ -410,17 +410,17 @@ void SYSTEM::ChangeFullScreen(int sw)
 			ShowWindow(hWnd);
 		}
 
-		// PDT1‚ğŒ³‚É–ß‚µ‚ÄAƒoƒbƒNƒAƒbƒv—p‚ÌPDT0íœ
+		// PDT1ã‚’å…ƒã«æˆ»ã—ã¦ã€ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ç”¨ã®PDT0å‰Šé™¤
 		mgr->SetPDT(1, pdt1bk);
 		delete oldpdt0;
 	}
 
-	// ƒGƒ‰[‚ª‹N‚±‚Á‚Ä‚¢‚½‚çI—¹‚·‚é
-	if ( !newpdt0 ) Abort("‰æ–ÊØ‚è‘Ö‚¦‚É¸”s‚µ‚Ü‚µ‚½.");
+	// ã‚¨ãƒ©ãƒ¼ãŒèµ·ã“ã£ã¦ã„ãŸã‚‰çµ‚äº†ã™ã‚‹
+	if ( !newpdt0 ) Abort("ç”»é¢åˆ‡ã‚Šæ›¿ãˆã«å¤±æ•—ã—ã¾ã—ãŸ.");
 }
 
 
-// ƒƒjƒ…[
+// ãƒ¡ãƒ‹ãƒ¥ãƒ¼
 void SYSTEM::MenuFunc(long m)
 {
 //	short fontid;
@@ -576,7 +576,7 @@ void SYSTEM::MenuFunc(long m)
 }
 
 
-// ƒ}ƒEƒXƒNƒŠƒbƒN
+// ãƒã‚¦ã‚¹ã‚¯ãƒªãƒƒã‚¯
 void SYSTEM::MouseDownFunc(EventRecord* ev)
 {
 	WindowPtr win;
@@ -584,21 +584,21 @@ void SYSTEM::MouseDownFunc(EventRecord* ev)
 
 	switch(FindWindow(ev->where, &win)) {
 
-		case inContent:			// ƒEƒBƒ“ƒhƒE“à
+		case inContent:			// ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦å†…
 			mouse->ButtonDown();
 			break;
 
-		case inMenuBar:			// ƒƒjƒ…[
+		case inMenuBar:			// ãƒ¡ãƒ‹ãƒ¥ãƒ¼
 			MenuFunc(MenuSelect(ev->where));
 			break;
 
-		case inDrag:			// ƒ^ƒCƒgƒ‹ƒo[
+		case inDrag:			// ã‚¿ã‚¤ãƒˆãƒ«ãƒãƒ¼
 			rect = qd.screenBits.bounds;
 			InsetRect(&rect, 5, 5);
 			DragWindow(win, ev->where, &rect);
 			break;
 
-		case inGoAway:			// ƒNƒ[ƒYƒ{ƒ^ƒ“
+		case inGoAway:			// ã‚¯ãƒ­ãƒ¼ã‚ºãƒœã‚¿ãƒ³
 			if ( TrackGoAway(win, ev->where) ) {
 				if ( QuitDlg() ) RunningFlag = 0;
 			}
@@ -607,13 +607,13 @@ void SYSTEM::MouseDownFunc(EventRecord* ev)
 }
 
 
-// ƒ}ƒEƒXƒŠƒŠ[ƒX
+// ãƒã‚¦ã‚¹ãƒªãƒªãƒ¼ã‚¹
 void SYSTEM::MouseUpFunc(EventRecord* ev)
 {
 	WindowPtr win;
 	switch(FindWindow(ev->where, &win)) {
 
-		case inContent:			// ƒEƒBƒ“ƒhƒE“à
+		case inContent:			// ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦å†…
 			if ( hidewindow ) {
 				hidewindow = 0;
 				MesWin_Setup(MesWinStyle);
@@ -622,19 +622,19 @@ void SYSTEM::MouseUpFunc(EventRecord* ev)
 			}
 			break;
 
-		case inMenuBar:			// ƒƒjƒ…[
+		case inMenuBar:			// ãƒ¡ãƒ‹ãƒ¥ãƒ¼
 			break;
 
-		case inDrag:			// ƒ^ƒCƒgƒ‹ƒo[
+		case inDrag:			// ã‚¿ã‚¤ãƒˆãƒ«ãƒãƒ¼
 			break;
 
-		case inGoAway:			// ‘¼ƒEƒBƒ“ƒhƒE
+		case inGoAway:			// ä»–ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦
 			break;
 	}
 }
 
 
-// ƒL[“ü—Í
+// ã‚­ãƒ¼å…¥åŠ›
 void SYSTEM::KeyDownFunc(char code)
 {
 /*
@@ -643,7 +643,7 @@ sprintf(buf, "KeyDown  Code:$%02X", code);
 Error(buf);
 */
 	switch(code) {
-		case 0x03:				// Return (10key) (ƒ}ƒEƒXƒNƒŠƒbƒN‚É‘Š“–)
+		case 0x03:				// Return (10key) (ãƒã‚¦ã‚¹ã‚¯ãƒªãƒƒã‚¯ã«ç›¸å½“)
 		case 0x0d:				// Return
 			if ( hidewindow ) {
 				hidewindow = 0;
@@ -655,16 +655,16 @@ Error(buf);
 			KeyDownTime = GetCurrentTimer();
 			break;
 
-		case 0x0b:				// Scroll Up (BackLog—p?)
-		case 0x0c:				// Scroll Down (BackLog—p?)
-		case 0x1b:				// ESC (‰EƒNƒŠƒbƒN‘Š“–H «—ˆ“I‚Ég‚¤‚©‚à)
-		case 0x1e:				// Cursor Up (‘I‘ğˆ—p)
-		case 0x1f:				// Cursor Down (‘I‘ğˆ—p)
+		case 0x0b:				// Scroll Up (BackLogç”¨?)
+		case 0x0c:				// Scroll Down (BackLogç”¨?)
+		case 0x1b:				// ESC (å³ã‚¯ãƒªãƒƒã‚¯ç›¸å½“ï¼Ÿ å°†æ¥çš„ã«ä½¿ã†ã‹ã‚‚)
+		case 0x1e:				// Cursor Up (é¸æŠè‚¢ç”¨)
+		case 0x1f:				// Cursor Down (é¸æŠè‚¢ç”¨)
 			KeyDownFlag = code;
 			KeyDownTime = GetCurrentTimer();
 			break;
 
-		case 0x20:				// Space (uƒEƒBƒ“ƒhƒE‚ğÁ‚·v‚É‘Š“–)
+		case 0x20:				// Space (ã€Œã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚’æ¶ˆã™ã€ã«ç›¸å½“)
 			if ( hidewindow ) {
 				hidewindow = 0;
 				MesWin_Setup(MesWinStyle);
@@ -677,7 +677,7 @@ Error(buf);
 }
 
 
-// •\¦‚ÌXV
+// è¡¨ç¤ºã®æ›´æ–°
 void SYSTEM::Update(WindowPtr wnd)
 {
 	SetPort(wnd);
@@ -687,7 +687,7 @@ void SYSTEM::Update(WindowPtr wnd)
 }
 
 
-// OSƒCƒxƒ“ƒg
+// OSã‚¤ãƒ™ãƒ³ãƒˆ
 void SYSTEM::OSEventFunc(unsigned long mes)
 {
 	Point pt;
@@ -709,7 +709,7 @@ void SYSTEM::OSEventFunc(unsigned long mes)
 }
 
 
-// ‰É`
+// æš‡ã€œ
 void SYSTEM::IdleFunc(void)
 {
 	sound->CD_CheckPlay();
@@ -723,7 +723,7 @@ void SYSTEM::IdleFunc(void)
 
 
 //--------------------------------------------------------------------
-//   Šeƒ_ƒCƒAƒƒOˆ—
+//   å„ãƒ€ã‚¤ã‚¢ãƒ­ã‚°å‡¦ç†
 //--------------------------------------------------------------------
 // About Dialog
 void SYSTEM::AboutDlg(void)
@@ -880,10 +880,10 @@ inline int CheckNameString(unsigned char* buf)
 
 	flag = 1;
 	for (i=1; i<=buf[0]; i++) {
-		if ( buf[i]<0x80 ) { flag = 0; break; }						// ”¼Šp
-		if ( (buf[i]>0xa0)&&(buf[i]<0xe0) ) { flag = 0; break; }	// ”¼ŠpƒJƒi
+		if ( buf[i]<0x80 ) { flag = 0; break; }						// åŠè§’
+		if ( (buf[i]>0xa0)&&(buf[i]<0xe0) ) { flag = 0; break; }	// åŠè§’ã‚«ãƒŠ
 		i++;
-		if ( buf[i-1]==0x81 ) {		// yzuvƒ`ƒFƒbƒN
+		if ( buf[i-1]==0x81 ) {		// ã€ã€‘ã€Œã€ãƒã‚§ãƒƒã‚¯
 			if ( (buf[i]==0x75)||(buf[i]==0x76)||(buf[i]==0x79)||(buf[i]==0x7a) ) {
 				flag = 0;
 				break;
@@ -949,7 +949,7 @@ void SYSTEM::NameInputDlg(char* title1, char* title2, int index1, int index2)
 		SetDialogDefaultItem(hDlg, 10);
 		while (1) {
 			ModalDialog(NULL, &num);
-			if ( num == 10 ) {				// I—¹
+			if ( num == 10 ) {				// çµ‚äº†
 				break;
 			}
 		}
@@ -1069,10 +1069,10 @@ void SYSTEM::MsgSpeedDlg(void)
 
 
 /* -------------------------------------------------------------------
-  Window‘€ìŠÖ˜A
+  Windowæ“ä½œé–¢é€£
 ------------------------------------------------------------------- */
 
-// C•¶š—ñ‚ğPASCAL•¶š—ñ‚É•ÏŠ·
+// Cæ–‡å­—åˆ—ã‚’PASCALæ–‡å­—åˆ—ã«å¤‰æ›
 void SYSTEM::ConvertString(unsigned char* out, char* in)
 {
 	int i;
@@ -1087,7 +1087,7 @@ void SYSTEM::ConvertString(unsigned char* out, char* in)
 	}
 };
 
-// ƒEƒBƒ“ƒhƒEƒ^ƒCƒgƒ‹‚Ì•ÏX
+// ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚¿ã‚¤ãƒˆãƒ«ã®å¤‰æ›´
 void SYSTEM::SetWindowTitle(char* s, int flag)
 {
 	char temp[256];
@@ -1100,7 +1100,7 @@ void SYSTEM::SetWindowTitle(char* s, int flag)
 
 
 /* -------------------------------------------------------------------
-  Mouse‘€ìŠÖ˜A
+  Mouseæ“ä½œé–¢é€£
 ------------------------------------------------------------------- */
 int SYSTEM::CheckSkipKey(void)
 {
@@ -1133,7 +1133,7 @@ int SYSTEM::GetKeyInput(void)
 
 
 /* -------------------------------------------------------------------
-  ƒ^ƒCƒ}[A—”
+  ã‚¿ã‚¤ãƒãƒ¼ã€ä¹±æ•°
 ------------------------------------------------------------------- */
 
 void SYSTEM::ResetTimer(void)
@@ -1184,10 +1184,10 @@ int SYSTEM::GetDateTime(int n)
 
 
 /* -------------------------------------------------------------------
-  GAMEEXE.INIƒtƒ@ƒCƒ‹“Ç‚İ‚İ
+  GAMEEXE.INIãƒ•ã‚¡ã‚¤ãƒ«èª­ã¿è¾¼ã¿
 ------------------------------------------------------------------- */
-// GAMEEXE.INI ‹y‚Ñ SETUP.INI ‚©‚ç•K—vî•ñ‚ğ“¾‚éB
-// ‚ ‚Ü‚è‚É‚à“‚·‚¬‚éƒ‹[ƒ`ƒ“iŠ¾  ‚È‚ñ‚Æ‚©‚µ‚æ‚¤EEE
+// GAMEEXE.INI åŠã³ SETUP.INI ã‹ã‚‰å¿…è¦æƒ…å ±ã‚’å¾—ã‚‹ã€‚
+// ã‚ã¾ã‚Šã«ã‚‚é…·ã™ãã‚‹ãƒ«ãƒ¼ãƒãƒ³ï¼ˆæ±—  ãªã‚“ã¨ã‹ã—ã‚ˆã†ãƒ»ãƒ»ãƒ»
 
 bool SYSTEM::CmpStr(char* src, char* dst)
 {
@@ -1228,9 +1228,9 @@ bool SYSTEM::SearchChar(char* &buf, char c)
 void SYSTEM::ReadString(char* &buf, char *out)
 {
 	char *st, *ed;
-	if ( SearchChar(buf, '\"') ) {
+	if ( SearchChar(buf, 'Â¥"') ) {
 		st = buf;
-		if ( SearchChar(buf, '\"') ) {
+		if ( SearchChar(buf, 'Â¥"') ) {
 			ed = buf-1;
 			while (st<ed) *out++ = *st++;
 		}
@@ -1353,7 +1353,7 @@ void SYSTEM::CheckINIItem(char* buf)
 			SearchChar(buf, ','); ini.sel[i].arg5 = ReadNum(buf);
 			SearchChar(buf, ','); ini.sel[i].arg6 = ReadNum(buf);
 			dprintf("Sel[%d] = (%d,%d)-(%d,%d)", i, ini.sel[i].sx1, ini.sel[i].sy1, ini.sel[i].sx2, ini.sel[i].sy2);
-			dprintf("->(%d,%d) Efct:%d Time:%d Step:%d\n", ini.sel[i].dx, ini.sel[i].dy, ini.sel[i].cmd, ini.sel[i].steptime, ini.sel[i].step);
+			dprintf("->(%d,%d) Efct:%d Time:%d Step:%dÂ¥n", ini.sel[i].dx, ini.sel[i].dy, ini.sel[i].cmd, ini.sel[i].steptime, ini.sel[i].step);
 		}
 	} else if ( CmpStr(buf, "#WAKUPDT") ) {
 		SearchChar(buf, '=');
@@ -1381,7 +1381,7 @@ void SYSTEM::CheckINIItem(char* buf)
 		if ( (n<26)&&(n>=0)&&((*buf<'A')||(*buf>'Z')) ) {
 			SearchChar(buf, '=');
 			ReadString(buf, ini.name[n]);
-dprintf("NAME.%c = %s\n", n+0x41, (int)ini.name[n]);
+dprintf("NAME.%c = %sÂ¥n", n+0x41, (int)ini.name[n]);
 		}
 	} else if ( CmpStr(buf, "#COLOR_TABLE") ) {
 		SearchChar(buf, '.');
@@ -1506,7 +1506,7 @@ dprintf("NAME.%c = %s\n", n+0x41, (int)ini.name[n]);
 				ReadString(buf, (char*)&tmp[1]);
 				tmp[0] = strlen((char*)&tmp[1]);
 				if ( i>=2 ) {
-					InsertMenuItem(menus[i], "\p ", n);
+					InsertMenuItem(menus[i], "Â¥p ", n);
 					SetMenuItemText(menus[i], n+1, tmp);
 				}
 				menushier[i] = 1;
@@ -1564,7 +1564,7 @@ int SYSTEM::ReadINIFile(char* f)
 	char c;
 	int size;
 
-	// GAMEEXE.INI ‚©‚çæ“¾‚·‚é Dir
+	// GAMEEXE.INI ã‹ã‚‰å–å¾—ã™ã‚‹ Dir
 	strcpy(ini.pdtdir, "PDT");
 	strcpy(ini.wavdir, "WAV");
 	strcpy(ini.txtdir, "DAT");
@@ -1573,7 +1573,7 @@ int SYSTEM::ReadINIFile(char* f)
 	strcpy(ini.curdir, "DAT");
 	strcpy(ini.othdir, "DAT");
 
-	// SETUP.INI ‚©‚çæ“¾‚·‚é Dir
+	// SETUP.INI ã‹ã‚‰å–å¾—ã™ã‚‹ Dir
 	strcpy(ini.bgmdir, "BGM");
 	strcpy(ini.koedir, "KOE");
 	strcpy(ini.movdir, "MOV");
@@ -1587,10 +1587,10 @@ int SYSTEM::ReadINIFile(char* f)
 
 	fp = fopen(f, "rb");
 	if ( !fp ) {
-		Abort("GAMEEXE.INIƒtƒ@ƒCƒ‹‚ğŠJ‚¯‚Ü‚¹‚ñ.");
+		Abort("GAMEEXE.INIãƒ•ã‚¡ã‚¤ãƒ«ã‚’é–‹ã‘ã¾ã›ã‚“.");
 		return 0;
 	}
-	dprintf("Open GAMEEXE.INI\n");
+	dprintf("Open GAMEEXE.INIÂ¥n");
 	p = buf;
 	*p = 0;
 	while ( !feof(fp) ) {
@@ -1600,7 +1600,7 @@ int SYSTEM::ReadINIFile(char* f)
 			if ( buf[0]=='#' ) {
 				dprintf("Checking ... ");
 				dprintf(buf);
-				dprintf("\n");
+				dprintf("Â¥n");
 				CheckINIItem(buf);
 				buf[0] = 0;
 			}
@@ -1609,14 +1609,14 @@ int SYSTEM::ReadINIFile(char* f)
 			*p++ = c;
 		}
 	}
-	*p++ = 0;		// ƒtƒ@ƒCƒ‹‚ÌÅŒã‚ª‰üs‚ÅI‚í‚Á‚Ä‚È‚¢—p
+	*p++ = 0;		// ãƒ•ã‚¡ã‚¤ãƒ«ã®æœ€å¾ŒãŒæ”¹è¡Œã§çµ‚ã‚ã£ã¦ãªã„æ™‚ç”¨
 	if ( buf[0]=='#' ) CheckINIItem(buf);
 	fclose(fp);
 
-	// ------ SETUP.INI ‚à’²‚×‚é -------
+	// ------ SETUP.INI ã‚‚èª¿ã¹ã‚‹ -------
 	fp = fopen("SETUP.INI", "rb");
 	if ( fp ) {
-		dprintf("Open SETUP.INI\n");
+		dprintf("Open SETUP.INIÂ¥n");
 		p = buf;
 		*p = 0;
 		while ( !feof(fp) ) {
@@ -1626,7 +1626,7 @@ int SYSTEM::ReadINIFile(char* f)
 				if ( buf[0] ) {
 					dprintf("Checking ... ");
 					dprintf(buf);
-					dprintf("\n");
+					dprintf("Â¥n");
 					CheckSetupINIItem(buf);
 					buf[0] = 0;
 				}
@@ -1636,7 +1636,7 @@ int SYSTEM::ReadINIFile(char* f)
 			}
 		}
 	}
-	*p++ = 0;		// ƒtƒ@ƒCƒ‹‚ÌÅŒã‚ª‰üs‚ÅI‚í‚Á‚Ä‚È‚¢—p
+	*p++ = 0;		// ãƒ•ã‚¡ã‚¤ãƒ«ã®æœ€å¾ŒãŒæ”¹è¡Œã§çµ‚ã‚ã£ã¦ãªã„æ™‚ç”¨
 	if ( buf[0] ) CheckSetupINIItem(buf);
 	fclose(fp);
 
@@ -1670,60 +1670,60 @@ int SYSTEM::ReadINIFile(char* f)
 
 
 /* -------------------------------------------------------------------
-  AVG32***.EXE‚Ìƒo[ƒWƒ‡ƒ“ƒ`ƒFƒbƒN
+  AVG32***.EXEã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³ãƒã‚§ãƒƒã‚¯
 ------------------------------------------------------------------- */
-// ƒo[ƒWƒ‡ƒ“‚É‚Í‘å‚«‚­•ª‚¯‚Ä3216Œn‚Æ3217Œn‚ª‚ ‚èA‚Ü‚½‚»‚ê‚¼‚ê‚É
-// D”Å‚ÆM”Å‚ª‘¶İ‚·‚é–Í—lB
-// ÀÛ‚É‚Íƒtƒ@ƒCƒ‹–¼‚Í“¯‚¶‚Å‚à“à•”d—l‚ªˆÙ‚È‚é•¨‚ª‚ ‚é‚æ‚¤‚ÅAÀÛ‚Ì
-// ƒo[ƒWƒ‡ƒ“‚Ì‘”‚Í10‹ß‚­‚ ‚è‚»‚¤B
-// D”Å‚ÆM”Å‚Ìˆá‚¢‚ÍAM”Å‚ÍDSTRACK‚âKOE‚ÌÄ¶‚ª‚Å‚«‚È‚¢A‚Æ‚¢‚Á‚½“_
-// ˆÈŠO‚Í•s–¾B
+// ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã«ã¯å¤§ããåˆ†ã‘ã¦3216ç³»ã¨3217ç³»ãŒã‚ã‚Šã€ã¾ãŸãã‚Œãã‚Œã«
+// Dç‰ˆã¨Mç‰ˆãŒå­˜åœ¨ã™ã‚‹æ¨¡æ§˜ã€‚
+// å®Ÿéš›ã«ã¯ãƒ•ã‚¡ã‚¤ãƒ«åã¯åŒã˜ã§ã‚‚å†…éƒ¨ä»•æ§˜ãŒç•°ãªã‚‹ç‰©ãŒã‚ã‚‹ã‚ˆã†ã§ã€å®Ÿéš›ã®
+// ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã®ç·æ•°ã¯10è¿‘ãã‚ã‚Šãã†ã€‚
+// Dç‰ˆã¨Mç‰ˆã®é•ã„ã¯ã€Mç‰ˆã¯DSTRACKã‚„KOEã®å†ç”ŸãŒã§ããªã„ã€ã¨ã„ã£ãŸç‚¹
+// ä»¥å¤–ã¯ä¸æ˜ã€‚
 
 void SYSTEM::CheckVersion(void)
 {
 	FILE* fp = 0;
 	version = 0;
 
-	// GAMEEXE.INI ‚©‚çƒŒƒWƒXƒgƒŠî•ñ‚ğ’T‚µ‚Ä“®ìƒo[ƒWƒ‡ƒ“‚ğŒˆ‚ß‚éiŒ´n“IEEEj
-	// ŠO‚Éƒf[ƒ^ƒx[ƒXƒtƒ@ƒCƒ‹‚ğ—pˆÓ‚µ‚½•û‚ª‚¢‚¢‚©‚à‚Ë
-	if ( !strcmp(ini.regname, "BONBEE\\RIBBON2") )      version = 1704;
-	if ( !strcmp(ini.regname, "Mebius\\â–]") )         version = 1704;
-	if ( !strcmp(ini.regname, "KEY\\KANON_DEMO") )      version = 1613;
-	if ( !strcmp(ini.regname, "KEY\\KANON") )           version = 1613;
-	if ( !strcmp(ini.regname, "KEY\\KANON_ALL") )       version = 1713;
-	if ( !strcmp(ini.regname, "KEY\\AIR") )             version = 1714;
-	if ( !strcmp(ini.regname, "KEY\\DEMO\\AIR_01") )    version = 1713;
-	if ( !strcmp(ini.regname, "RAM\\NEGAI") )           version = 1613;
-	if ( !strcmp(ini.regname, "RAM\\KOIGOKORO") )       version = 1714;
-	if ( !strcmp(ini.regname, "OTHERWISE\\SENSEOFF") )  version = 1713;
-	if ( !strcmp(ini.regname, "OZ_PROJECT\\BABYFACE") ) version = 1713;
-	if ( !strcmp(ini.regname, "SAGAPLANETS\\P_HEART") ) version = 1713;
-	if ( !strcmp(ini.regname, "SAGAPLANETS\\DEMO\\REN"))version = 1714;
-	if ( !strcmp(ini.regname, "13CM\\SUKI") )           version = 1604;
-	if ( !strcmp(ini.regname, "13CM\\ƒtƒƒŒƒA[ƒ‹") )   version = 1613;
-	if ( !strcmp(ini.regname, "13CM\\DEVOTE") )         version = 1704;
-	if ( !strcmp(ini.regname, "13CM\\LEMON") )          version = 1713;
-	if ( !strcmp(ini.regname, "13CM\\SHIMAI") )         version = 1714;
-	if ( !strcmp(ini.regname, "13CM\\NYUIN") )          version = 1613;
-	if ( !strcmp(ini.regname, "ZERO\\IINARI\\") )       version = 1713;
-	if ( !strcmp(ini.regname, "ZERO\\BALLET\\") )       version = 1613;
-	if ( !strcmp(ini.regname, "ZERO\\RYO_DOU") )        version = 1714;
-	if ( !strcmp(ini.regname, "MANBOU\\MIND") )         version = 1613;
-	if ( !strcmp(ini.regname, "FLADY\\MAYAKU") )        version = 1604;
-	if ( !strcmp(ini.regname, "G-PANDA\MAMAHAHA") )     version = 1714;
-	if ( !strcmp(ini.regname, "CRAFT\\FLOWERS") )       version = 1604;
-	if ( !strcmp(ini.regname, "SIRIUS\\HIME") )         version = 1714;
-	if ( !strcmp(ini.regname, "REX\\HAKO") )            version = 1714;
+	// GAMEEXE.INI ã‹ã‚‰ãƒ¬ã‚¸ã‚¹ãƒˆãƒªæƒ…å ±ã‚’æ¢ã—ã¦å‹•ä½œãƒãƒ¼ã‚¸ãƒ§ãƒ³ã‚’æ±ºã‚ã‚‹ï¼ˆåŸå§‹çš„ãƒ»ãƒ»ãƒ»ï¼‰
+	// å¤–ã«ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ç”¨æ„ã—ãŸæ–¹ãŒã„ã„ã‹ã‚‚ã­
+	if ( !strcmp(ini.regname, "BONBEEÂ¥Â¥RIBBON2") )      version = 1704;
+	if ( !strcmp(ini.regname, "MebiusÂ¥Â¥çµ¶æœ›") )         version = 1704;
+	if ( !strcmp(ini.regname, "KEYÂ¥Â¥KANON_DEMO") )      version = 1613;
+	if ( !strcmp(ini.regname, "KEYÂ¥Â¥KANON") )           version = 1613;
+	if ( !strcmp(ini.regname, "KEYÂ¥Â¥KANON_ALL") )       version = 1713;
+	if ( !strcmp(ini.regname, "KEYÂ¥Â¥AIR") )             version = 1714;
+	if ( !strcmp(ini.regname, "KEYÂ¥Â¥DEMOÂ¥Â¥AIR_01") )    version = 1713;
+	if ( !strcmp(ini.regname, "RAMÂ¥Â¥NEGAI") )           version = 1613;
+	if ( !strcmp(ini.regname, "RAMÂ¥Â¥KOIGOKORO") )       version = 1714;
+	if ( !strcmp(ini.regname, "OTHERWISEÂ¥Â¥SENSEOFF") )  version = 1713;
+	if ( !strcmp(ini.regname, "OZ_PROJECTÂ¥Â¥BABYFACE") ) version = 1713;
+	if ( !strcmp(ini.regname, "SAGAPLANETSÂ¥Â¥P_HEART") ) version = 1713;
+	if ( !strcmp(ini.regname, "SAGAPLANETSÂ¥Â¥DEMOÂ¥Â¥REN"))version = 1714;
+	if ( !strcmp(ini.regname, "13CMÂ¥Â¥SUKI") )           version = 1604;
+	if ( !strcmp(ini.regname, "13CMÂ¥Â¥ãƒ•ãƒ­ãƒ¬ã‚¢ãƒ¼ãƒ«") )   version = 1613;
+	if ( !strcmp(ini.regname, "13CMÂ¥Â¥DEVOTE") )         version = 1704;
+	if ( !strcmp(ini.regname, "13CMÂ¥Â¥LEMON") )          version = 1713;
+	if ( !strcmp(ini.regname, "13CMÂ¥Â¥SHIMAI") )         version = 1714;
+	if ( !strcmp(ini.regname, "13CMÂ¥Â¥NYUIN") )          version = 1613;
+	if ( !strcmp(ini.regname, "ZEROÂ¥Â¥IINARIÂ¥Â¥") )       version = 1713;
+	if ( !strcmp(ini.regname, "ZEROÂ¥Â¥BALLETÂ¥Â¥") )       version = 1613;
+	if ( !strcmp(ini.regname, "ZEROÂ¥Â¥RYO_DOU") )        version = 1714;
+	if ( !strcmp(ini.regname, "MANBOUÂ¥Â¥MIND") )         version = 1613;
+	if ( !strcmp(ini.regname, "FLADYÂ¥Â¥MAYAKU") )        version = 1604;
+	if ( !strcmp(ini.regname, "G-PANDAÂ¥MAMAHAHA") )     version = 1714;
+	if ( !strcmp(ini.regname, "CRAFTÂ¥Â¥FLOWERS") )       version = 1604;
+	if ( !strcmp(ini.regname, "SIRIUSÂ¥Â¥HIME") )         version = 1714;
+	if ( !strcmp(ini.regname, "REXÂ¥Â¥HAKO") )            version = 1714;
 
 	if ( version ) return;
 
-	// ƒŒƒWƒXƒgƒŠ‚©‚çæ“¾‚Å‚«‚È‚©‚Á‚½‚ÍAƒtƒ@ƒCƒ‹–¼‚ÆƒTƒCƒY‚©‚ç‚Ä‚«‚Æ[‚É”»’f
+	// ãƒ¬ã‚¸ã‚¹ãƒˆãƒªã‹ã‚‰å–å¾—ã§ããªã‹ã£ãŸæ™‚ã¯ã€ãƒ•ã‚¡ã‚¤ãƒ«åã¨ã‚µã‚¤ã‚ºã‹ã‚‰ã¦ãã¨ãƒ¼ã«åˆ¤æ–­
 	version = 1613;
 	fp = fopen("AVG3217D.EXE","rb");
 	if ( fp ) {
 		fseek(fp, 330000, 0);
 		if ( ftell(fp)==330000 )
-			version = 1714;							// 17D' (Koigokoro) $FFƒRƒ}ƒ“ƒh‚ÉƒoƒbƒNƒƒOî•ñ‚ª‚ ‚é
+			version = 1714;							// 17D' (Koigokoro) $FFã‚³ãƒãƒ³ãƒ‰ã«ãƒãƒƒã‚¯ãƒ­ã‚°æƒ…å ±ãŒã‚ã‚‹
 		else
 			version = 1704;							// 17D (Ribbon2)
 		fclose(fp);
@@ -1733,9 +1733,9 @@ void SYSTEM::CheckVersion(void)
 	if ( fp ) {
 		fseek(fp, 310000, 0);
 		if ( ftell(fp)==310000 )
-			version = 1714;							// 17M' (AIR) $FFƒRƒ}ƒ“ƒh‚ÉƒoƒbƒNƒƒOî•ñiintj‚ª‚ ‚é
+			version = 1714;							// 17M' (AIR) $FFã‚³ãƒãƒ³ãƒ‰ã«ãƒãƒƒã‚¯ãƒ­ã‚°æƒ…å ±ï¼ˆintï¼‰ãŒã‚ã‚‹
 		else
-			version = 1713;							// 17M Å‹ß‚Ì‚Í‚Ù‚ÚƒRƒŒ
+			version = 1713;							// 17M æœ€è¿‘ã®ã¯ã»ã¼ã‚³ãƒ¬
 		fclose(fp);
 		return;
 	}
@@ -1753,10 +1753,10 @@ void SYSTEM::CheckVersion(void)
 
 
 /* -------------------------------------------------------------------
-  ƒtƒ@ƒCƒ‹“Ç‚İ‚İ
+  ãƒ•ã‚¡ã‚¤ãƒ«èª­ã¿è¾¼ã¿
 ------------------------------------------------------------------- */
-// PACŒ`®‚©RAWƒtƒ@ƒCƒ‹‚©‚ğINI‚©‚ç”»’f‚µA–Ú“Iƒtƒ@ƒCƒ‹‚ğ“Ç‚İ‚Ş
-// ”Ä—pƒ‹[ƒ`ƒ“
+// PACå½¢å¼ã‹RAWãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚’INIã‹ã‚‰åˆ¤æ–­ã—ã€ç›®çš„ãƒ•ã‚¡ã‚¤ãƒ«ã‚’èª­ã¿è¾¼ã‚€
+// æ±ç”¨ãƒ«ãƒ¼ãƒãƒ³
 
 void SYSTEM::ConvertCapital(unsigned char* buf)
 {
@@ -1775,7 +1775,7 @@ unsigned char* SYSTEM::ReadFile(char* file, char* type, int* size)
 	unsigned char* ret = 0, *ret2;
 	int packed = 0;
 	int filenum, i, pos;
-	// PAC‚©RAW‚©‚ğ’²‚×‚Äƒtƒ@ƒCƒ‹–¼‚ğì‚é
+	// PACã‹RAWã‹ã‚’èª¿ã¹ã¦ãƒ•ã‚¡ã‚¤ãƒ«åã‚’ä½œã‚‹
  	if ( !strcmp(type, "PDT") ) {
 		if ( (ini.pdtpackflag=='P')||(ini.pdtpackflag=='p') ) {
 			sprintf(buf, ":%s:%s", ini.pdtdir, ini.pdtpack);
@@ -1828,7 +1828,7 @@ unsigned char* SYSTEM::ReadFile(char* file, char* type, int* size)
 	}
 	fp = fopen(buf, "rb");
 	if ( fp ) {
-		if ( packed ) {			// PACLƒtƒ@ƒCƒ‹
+		if ( packed ) {			// PACLãƒ•ã‚¡ã‚¤ãƒ«
 			ConvertCapital((unsigned char*)file);
 			fseek(fp, 0, 0);
 			fread(tmp, 32, 1, fp);
@@ -1844,7 +1844,7 @@ unsigned char* SYSTEM::ReadFile(char* file, char* type, int* size)
 						if ( ret ) {
 							fseek(fp, pos, 0);
 							fread(ret, *size, 1, fp);
-							ret2 = Unpack(ret, size);	// ‚³‚ç‚ÉPACKˆ³k‚ª‚©‚©‚Á‚Ä‚ê‚Î‰ğ“€
+							ret2 = Unpack(ret, size);	// ã•ã‚‰ã«PACKåœ§ç¸®ãŒã‹ã‹ã£ã¦ã‚Œã°è§£å‡
 							if ( ret2 ) {
 								delete[] ret;
 								ret = ret2;
@@ -1857,7 +1857,7 @@ unsigned char* SYSTEM::ReadFile(char* file, char* type, int* size)
 				}
 			}
 			fclose(fp);
-		} else {				// RAWƒtƒ@ƒCƒ‹
+		} else {				// RAWãƒ•ã‚¡ã‚¤ãƒ«
 			fseek(fp, 0, 2);
 			*size = ftell(fp);
 			ret = new unsigned char[*size];
@@ -1878,7 +1878,7 @@ unsigned char* SYSTEM::ReadFile(char* file, char* type, int* size)
 }
 
 
-// PACKŒ`®‚Ìƒtƒ@ƒCƒ‹‚Ì‰ğ“€
+// PACKå½¢å¼ã®ãƒ•ã‚¡ã‚¤ãƒ«ã®è§£å‡
 unsigned char* SYSTEM::Unpack(unsigned char* src, int* size)
 {
 	int num, srccount;
@@ -1909,11 +1909,11 @@ unsigned char* SYSTEM::Unpack(unsigned char* src, int* size)
 				srccount--;
 			} else {
 				num  = *src++;
-				num += ((*src++)<<8);		// ˆø”‚ÍƒŠƒgƒ‹ƒGƒ“ƒfƒBƒAƒ“‚ÌWORD
+				num += ((*src++)<<8);		// å¼•æ•°ã¯ãƒªãƒˆãƒ«ã‚¨ãƒ³ãƒ‡ã‚£ã‚¢ãƒ³ã®WORD
 				srccount -= 2;
-				count = (num&15)+2;			// ‰ºˆÊ4bit‚ªƒŠƒs[ƒg‰ñ”. 2‰ñ‚ªÅ¬’PˆÊH
-				num >>= 4;					// ãˆÊ24bit‚ª–ß‚èˆÊ’u
-				repeat = (dst-num)-1;		// buf‚ÍŸ‚Ì‘‚«‚İˆÊ’u‚ğw‚µ‚Ä‚é‚Ì‚ÅA1ƒoƒCƒg‘½‚ß‚É–ß‚é
+				count = (num&15)+2;			// ä¸‹ä½4bitãŒãƒªãƒ”ãƒ¼ãƒˆå›æ•°. 2å›ãŒæœ€å°å˜ä½ï¼Ÿ
+				num >>= 4;					// ä¸Šä½24bitãŒæˆ»ã‚Šä½ç½®
+				repeat = (dst-num)-1;		// bufã¯æ¬¡ã®æ›¸ãè¾¼ã¿ä½ç½®ã‚’æŒ‡ã—ã¦ã‚‹ã®ã§ã€1ãƒã‚¤ãƒˆå¤šã‚ã«æˆ»ã‚‹
 				for (i=0; (i<count)&&(dst<bufend); i++) *dst++ = *repeat++;
 			}
 			bit--;
@@ -1925,10 +1925,10 @@ unsigned char* SYSTEM::Unpack(unsigned char* src, int* size)
 
 
 /* -------------------------------------------------------------------
-  ƒƒjƒ…[‘€ì
+  ãƒ¡ãƒ‹ãƒ¥ãƒ¼æ“ä½œ
 ------------------------------------------------------------------- */
-// ƒ|ƒbƒvƒAƒbƒvƒƒjƒ…[‚ÍAƒ}ƒEƒXƒJ[ƒ\ƒ‹‚ªON‚ÅAŠ‚Â‰æ–ÊŒø‰Ê’†‚Å‚à
-// ƒeƒLƒXƒg•\¦’†‚Å‚à–³‚¢ê‡‚¾‚¯Œ»‚ê‚é‚Á‚Û‚¢H ‚¿‚Æ‚Ü‚¾•s–¾
+// ãƒãƒƒãƒ—ã‚¢ãƒƒãƒ—ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã¯ã€ãƒã‚¦ã‚¹ã‚«ãƒ¼ã‚½ãƒ«ãŒONã§ã€ä¸”ã¤ç”»é¢åŠ¹æœä¸­ã§ã‚‚
+// ãƒ†ã‚­ã‚¹ãƒˆè¡¨ç¤ºä¸­ã§ã‚‚ç„¡ã„å ´åˆã ã‘ç¾ã‚Œã‚‹ã£ã½ã„ï¼Ÿ ã¡ã¨ã¾ã ä¸æ˜
 
 void SYSTEM::AddSaveLoadMenu(void)
 {
@@ -1990,8 +1990,8 @@ void SYSTEM::AddSaveLoadMenu(void)
 		savedatatime[i-1] = hour*100+min;
 		strcpy(savedatatitle[i-1], title+14);
 
-		InsertMenuItem(menus[0], "\p ", i-1);
-		InsertMenuItem(menus[1], "\p ", i-1);
+		InsertMenuItem(menus[0], "Â¥p ", i-1);
+		InsertMenuItem(menus[1], "Â¥p ", i-1);
 		EnableMenuItem(menus[0], i);
 		savedataflag[i-1] = 0;
 		if ( (flag)&&(title[13]) ) {
@@ -2015,7 +2015,7 @@ void SYSTEM::AddSaveLoadMenu(void)
 	delete[] buf;
 
 	if ( ini.sysmenusw[12]<3 ) DisableMenuItem(menus[2], 8);
-//	DisableMenuItem(menus[1], 1);		// ‹N“®’¼Œã‚ÍSAVE/LOAD‚ÍOFF‚É‚µ‚Ä‚¨‚­
+//	DisableMenuItem(menus[1], 1);		// èµ·å‹•ç›´å¾Œã¯SAVE/LOADã¯OFFã«ã—ã¦ãŠã
 //	DisableMenuItem(menus[1], 2);
 //	DisableMenuItem(menus[1], 4);
 	savemenuflag = false;
@@ -2033,7 +2033,7 @@ int SYSTEM::PopupLoadMenu(void)
 	p.v = y;
 	LocalToGlobal(&p);
 //	CalcMenuSize(menus[1]);
-	PostEvent(mouseUp, 0);		// ‰æ–ÊŒø‰ÊŒã‚Éƒ|ƒbƒvƒAƒbƒv‚·‚é‚ÆAƒNƒŠƒbƒNƒz[ƒ‹ƒhˆµ‚¢‚É‚È‚Á‚Ä‚µ‚Ü‚¤‚Ì‚Å
+	PostEvent(mouseUp, 0);		// ç”»é¢åŠ¹æœå¾Œã«ãƒãƒƒãƒ—ã‚¢ãƒƒãƒ—ã™ã‚‹ã¨ã€ã‚¯ãƒªãƒƒã‚¯ãƒ›ãƒ¼ãƒ«ãƒ‰æ‰±ã„ã«ãªã£ã¦ã—ã¾ã†ã®ã§
 	n = LoWord(PopUpMenuSelect(menus[1], p.v, p.h, 0));
 	ret = 0;
 	if ( (n>0)&&(n<=ini.savefilenum) ) {
@@ -2130,7 +2130,7 @@ void SYSTEM::PopupContextMenu(void)
 	p.v = y+2;
 	LocalToGlobal(&p);
 	//CalcMenuSize(popupmenu);
-	PostEvent(mouseUp, 0);		// ‰æ–ÊŒø‰ÊŒã‚Éƒ|ƒbƒvƒAƒbƒv‚·‚é‚ÆAƒNƒŠƒbƒNƒz[ƒ‹ƒhˆµ‚¢‚É‚È‚Á‚Ä‚µ‚Ü‚¤‚Ì‚Å
+	PostEvent(mouseUp, 0);		// ç”»é¢åŠ¹æœå¾Œã«ãƒãƒƒãƒ—ã‚¢ãƒƒãƒ—ã™ã‚‹ã¨ã€ã‚¯ãƒªãƒƒã‚¯ãƒ›ãƒ¼ãƒ«ãƒ‰æ‰±ã„ã«ãªã£ã¦ã—ã¾ã†ã®ã§
 	n = PopUpMenuSelect(popupmenu, p.v, p.h, 0);
 	MenuFunc(n);
 };
@@ -2155,7 +2155,7 @@ void SYSTEM::MenuOFF(void)
 
 
 /* -------------------------------------------------------------------
-  ƒVƒiƒŠƒIƒNƒ‰ƒX‚©‚ç‚ÌPDTŠÖ˜A‚ÌƒŠƒ_ƒCƒŒƒNƒ^
+  ã‚·ãƒŠãƒªã‚ªã‚¯ãƒ©ã‚¹ã‹ã‚‰ã®PDTé–¢é€£ã®ãƒªãƒ€ã‚¤ãƒ¬ã‚¯ã‚¿
 ------------------------------------------------------------------- */
 void SYSTEM::SnrPDT_MultiLoadFile(char* f) {
 	MacroItemNum = 1;
@@ -2167,7 +2167,7 @@ void SYSTEM::SnrPDT_MultiLoadFile(char* f) {
 void SYSTEM::SnrPDT_MultiLoadPDT(int n) {
 	MacroItemNum = 1;
 	mm.cmd = 0x97;
-	sprintf(mm.file, "%d\0", n);
+	sprintf(mm.file, "%dÂ¥0", n);
 	mgr->AllCopy(n, 1, 0);
 }
 void SYSTEM::SnrPDT_ScreenFade(unsigned int cmd, unsigned int count, int r, int g, int b) {
@@ -2360,13 +2360,13 @@ void SYSTEM::CopySel(int n, EFFECT* e)
 {
 	if ( n<MAX_SEL ) {
 		memcpy(e, &ini.sel[n], sizeof(EFFECT));
-dprintf("\nSEL#%d Copied(%d bytes). CMD=%d\n", n, sizeof(EFFECT), e->cmd);
+dprintf("Â¥nSEL#%d Copied(%d bytes). CMD=%dÂ¥n", n, sizeof(EFFECT), e->cmd);
 		e->curcount = 0;
 		e->prevtime = GetCurrentTimer();
 		e->srcpdt = 1;
 		e->dstpdt = 0;
 	} else {
-		dprintf("********* SEL#%d is too large!\n");
+		dprintf("********* SEL#%d is too large!Â¥n");
 		memset(e, 0, sizeof(EFFECT));
 	}
 }
@@ -2380,7 +2380,7 @@ void SYSTEM::Effect(EFFECT* effect) {
 
 
 /* -------------------------------------------------------------------
-  ‰æ–ÊXVŠÖ˜A
+  ç”»é¢æ›´æ–°é–¢é€£
 ------------------------------------------------------------------- */
 void SYSTEM::UpdateScreen(void)
 {
@@ -2407,7 +2407,7 @@ void SYSTEM::LockPDT(int n)
 		LockPixels(pixmap);
 		SetGWorld(offscreen, NULL);
 	}
-	// Lock‚ªŠ|‚©‚é–ˆ‚ÉPDT0‚ÌƒAƒhƒŒƒX‚ğÄİ’è‚µ‚Ä‚¨‚­i•Ï“®‚·‚é‚Ì‚Åj
+	// LockãŒæ›ã‹ã‚‹æ¯ã«PDT0ã®ã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’å†è¨­å®šã—ã¦ãŠãï¼ˆå¤‰å‹•ã™ã‚‹ã®ã§ï¼‰
 	mgr->GetPDT(0)->SetBuffer((unsigned char*)GetPixBaseAddr(pixmap));
 }
 
@@ -2444,22 +2444,22 @@ void SYSTEM::ClearScreen(void)
 
 
 /* -------------------------------------------------------------------
-  ƒƒbƒZ[ƒWƒEƒBƒ“ƒhƒEŠÖ˜A
+  ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦é–¢é€£
 ------------------------------------------------------------------- */
-// ƒEƒBƒ“ƒhƒE‚ÍƒVƒXƒeƒ€ƒEƒBƒ“ƒhƒE‚ÆƒTƒuƒEƒBƒ“ƒhƒE‚Ì2í—Ş‚ª‘¶İ‚·‚éB
-// ƒRƒ}ƒ“ƒh$FE/$FF‚Å‚Ì•\¦A$58-$02‚Å‚Ì‘I‘ğˆ‚ÍƒVƒXƒeƒ€ƒEƒBƒ“ƒhƒE‚ÅA
-// $58-$01‚Å‚Ì‘I‘ğ‚ÍƒTƒuƒEƒBƒ“ƒhƒE‚Ås‚í‚ê‚é–Í—lB
+// ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã¯ã‚·ã‚¹ãƒ†ãƒ ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã¨ã‚µãƒ–ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®2ç¨®é¡ãŒå­˜åœ¨ã™ã‚‹ã€‚
+// ã‚³ãƒãƒ³ãƒ‰$FE/$FFã§ã®è¡¨ç¤ºã€$58-$02ã§ã®é¸æŠè‚¢ã¯ã‚·ã‚¹ãƒ†ãƒ ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã§ã€
+// $58-$01ã§ã®é¸æŠã¯ã‚µãƒ–ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã§è¡Œã‚ã‚Œã‚‹æ¨¡æ§˜ã€‚
 // 
-// ƒVƒXƒeƒ€ƒEƒBƒ“ƒhƒE‚ÌƒTƒCƒY‚Í#MESSAGE_SIZE‚Æ#MSG_MOJI_SIZE‚ÅŒˆ’è‚³‚ê‚éB
-// ˆÊ’u‚Í#WINDOW_SYS_POS‚ª¶ã‹÷‚ğw‚·B
+// ã‚·ã‚¹ãƒ†ãƒ ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®ã‚µã‚¤ã‚ºã¯#MESSAGE_SIZEã¨#MSG_MOJI_SIZEã§æ±ºå®šã•ã‚Œã‚‹ã€‚
+// ä½ç½®ã¯#WINDOW_SYS_POSãŒå·¦ä¸Šéš…ã‚’æŒ‡ã™ã€‚
 // 
-// ƒTƒuƒEƒBƒ“ƒhƒE‚ÌƒTƒCƒY‚Í#COM_WIND_MIN_SIZE‚ªÅ¬’lAÀÛ‚Ì‘å‚«‚³‚Í
-// ‘I‘ğˆ‚Ì”‚Æ•¶š—ñ’·‚ÅŒˆ’è‚³‚ê‚é–Í—lB
-// ˆÊ’u‚Í#WINDOW_COM_POS‚ª¶ã‹÷‚ğw‚·‚ªA•¶š—ñ‚ª’·‚­AƒEƒBƒ“ƒhƒE‚ª‰E‘¤‚É
-// ‚Í‚İ‚¾‚·‚æ‚¤‚Èê‡‚ÍA‚Í‚İ‚¾‚·•ª‚±‚ê‚æ‚è¶‚ÉˆÚ“®‚·‚éiBabyFace‚È‚ÇjB
+// ã‚µãƒ–ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®ã‚µã‚¤ã‚ºã¯#COM_WIND_MIN_SIZEãŒæœ€å°å€¤ã€å®Ÿéš›ã®å¤§ãã•ã¯
+// é¸æŠè‚¢ã®æ•°ã¨æ–‡å­—åˆ—é•·ã§æ±ºå®šã•ã‚Œã‚‹æ¨¡æ§˜ã€‚
+// ä½ç½®ã¯#WINDOW_COM_POSãŒå·¦ä¸Šéš…ã‚’æŒ‡ã™ãŒã€æ–‡å­—åˆ—ãŒé•·ãã€ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãŒå³å´ã«
+// ã¯ã¿ã ã™ã‚ˆã†ãªå ´åˆã¯ã€ã¯ã¿ã ã™åˆ†ã“ã‚Œã‚ˆã‚Šå·¦ã«ç§»å‹•ã™ã‚‹ï¼ˆBabyFaceãªã©ï¼‰ã€‚
 // 
-// ®A‚±‚ê‚çƒTƒCƒY^ˆÊ’u‚ÍƒRƒ}ƒ“ƒh$72/$73‚Å•ÏX‰Â”\B
-// NVL_SYSTEM=001 ‚Í‚Ü‚½­‚µˆá‚¤EEE
+// å°šã€ã“ã‚Œã‚‰ã‚µã‚¤ã‚ºï¼ä½ç½®ã¯ã‚³ãƒãƒ³ãƒ‰$72/$73ã§å¤‰æ›´å¯èƒ½ã€‚
+// NVL_SYSTEM=001 æ™‚ã¯ã¾ãŸå°‘ã—é•ã†ãƒ»ãƒ»ãƒ»
 
 bool SYSTEM::MesWin_Setup(int n)
 {
@@ -2472,13 +2472,13 @@ bool SYSTEM::MesWin_Setup(int n)
 	bool redrawicon = MesIconFlag;
 	PDTBUFFER* pdt;
 
-dprintf("Waku Style = %d\n", n);
+dprintf("Waku Style = %dÂ¥n", n);
 	MesWinStyle = n;
 
 	pdt = mgr->GetPDT(WAKUPDT);
 	if ( (pdt)&&(!ini.novelmode) ) MesWin_Hide();
 
-	// ˜gƒf[ƒ^‚Ì“ü‚Á‚½ƒtƒ@ƒCƒ‹‚ğŠJ‚­
+	// æ ãƒ‡ãƒ¼ã‚¿ã®å…¥ã£ãŸãƒ•ã‚¡ã‚¤ãƒ«ã‚’é–‹ã
 	if ( !pdt ) {
 //		sprintf(str, ":%s:%s.PDT", ini.pdtdir, ini.wakufile);
 //		temp = new PDTFILE(str, this);
@@ -2509,47 +2509,47 @@ dprintf("Waku Style = %d\n", n);
 			MesWinFlag = false;
 			MesIconFlag = false;
 		}
-		return true;		// ƒmƒxƒ‹ƒ‚[ƒh‚ÍWAKUPDT‚¾‚¯“Ç‚ß‚Î‚æ‚¢
+		return true;		// ãƒãƒ™ãƒ«ãƒ¢ãƒ¼ãƒ‰æ™‚ã¯WAKUPDTã ã‘èª­ã‚ã°ã‚ˆã„
 	}
 
-	// ƒƒbƒZ[ƒWƒEƒBƒ“ƒhƒE—p‚Ìƒoƒbƒtƒ@‚ğŠm•Û
+	// ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ç”¨ã®ãƒãƒƒãƒ•ã‚¡ã‚’ç¢ºä¿
 	pdt = mgr->GetPDT(MESWINPDT);
 	if ( pdt ) delete pdt;
 	pdt = new PDTBUFFER(640, 480, 3, 640*3, true);
 	mgr->SetPDT(MESWINPDT, pdt);
 	if ( !pdt )  {
 		delete (mgr->GetPDT(WAKUPDT));
-		dprintf("MesWin - Can't create MESWINPDT\n");
+		dprintf("MesWin - Can't create MESWINPDTÂ¥n");
 		return false;
 	}
 
 	n--;
 
-	// ƒƒjƒ…[‚©‚ç‚Ì˜gƒ^ƒCƒv•ÏX‚ÆAƒXƒNƒŠƒvƒg‚©‚ç‚Ì•ÏX‚Å‚ÍAî•ñ‚Í
-	// •ÊX‚É•Û‘¶‚³‚ê‚Ä‚é‚İ‚½‚¢B
-	// ƒXƒNƒŠƒvƒg‚©‚ç‚Ì•ÏX‚ÍƒZ[ƒuƒtƒ@ƒCƒ‹–ˆ‚É•Û‘¶‚³‚ê‚Ä‚éB‚ÅAƒXƒN
-	// ƒŠƒvƒg‚©‚ç‚Ìİ’è‚ª0ˆÈŠO‚È‚ç‚»‚ê‚ğg‚¢A0‚È‚ç‚Î•W€î•ñ‚Ì•û‚ğg
-	// ‚¤A‚Á‚ÄŠ´‚¶iAIR‚Æ‚©j
+	// ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã‹ã‚‰ã®æ ã‚¿ã‚¤ãƒ—å¤‰æ›´ã¨ã€ã‚¹ã‚¯ãƒªãƒ—ãƒˆã‹ã‚‰ã®å¤‰æ›´ã§ã¯ã€æƒ…å ±ã¯
+	// åˆ¥ã€…ã«ä¿å­˜ã•ã‚Œã¦ã‚‹ã¿ãŸã„ã€‚
+	// ã‚¹ã‚¯ãƒªãƒ—ãƒˆã‹ã‚‰ã®å¤‰æ›´ã¯ã‚»ãƒ¼ãƒ–ãƒ•ã‚¡ã‚¤ãƒ«æ¯ã«ä¿å­˜ã•ã‚Œã¦ã‚‹ã€‚ã§ã€ã‚¹ã‚¯
+	// ãƒªãƒ—ãƒˆã‹ã‚‰ã®è¨­å®šãŒ0ä»¥å¤–ãªã‚‰ãã‚Œã‚’ä½¿ã„ã€0ãªã‚‰ã°æ¨™æº–æƒ…å ±ã®æ–¹ã‚’ä½¿
+	// ã†ã€ã£ã¦æ„Ÿã˜ï¼ˆAIRã¨ã‹ï¼‰
 	if ( MesWinStyleForce ) n = MesWinStyleForce;
 
-	// ˜g‚ğ•`‚­
+	// æ ã‚’æã
 	mgr->FillRect(0, 0, 639, 479, MESWINPDT, 255, 255, 255);
 
 
-	// ‘‹ƒTƒCƒYŒvZ
-	// ‚±‚±‚Ü‚Å‚ÉAƒtƒHƒ“ƒgƒTƒCƒY‚ÌÅ‰ºˆÊƒrƒbƒg‚Íƒ}ƒXƒN‚µ‚Ä‚¨‚­‚æ‚¤‚É
+	// çª“ã‚µã‚¤ã‚ºè¨ˆç®—
+	// ã“ã“ã¾ã§ã«ã€ãƒ•ã‚©ãƒ³ãƒˆã‚µã‚¤ã‚ºã®æœ€ä¸‹ä½ãƒ“ãƒƒãƒˆã¯ãƒã‚¹ã‚¯ã—ã¦ãŠãã‚ˆã†ã«
 	if ( subwinflag ) {
-		maxx = ini.winx+((ini.mesx*ini.fontx*2+31)&0xfff0);			// SubWindow‚Í‚¿‚å‚Á‚Æˆá‚¤‚Ì
+		maxx = ini.winx+((ini.mesx*ini.fontx*2+31)&0xfff0);			// SubWindowæ™‚ã¯ã¡ã‚‡ã£ã¨é•ã†ã®
 	} else {
-		maxx = ini.winx+(((ini.mesx+1)*ini.fontx*2+31)&0xfff0);		// ‚±[‚ä[ŒvZ‚ÌƒnƒY
+		maxx = ini.winx+(((ini.mesx+1)*ini.fontx*2+31)&0xfff0);		// ã“ãƒ¼ã‚†ãƒ¼è¨ˆç®—ã®ãƒã‚º
 	}
 /*
 	if ( ini.fontsize<20 )
-		maxy = ini.winy+((ini.mesy*ini.fonty+36)&0xfff0);		// 36‚à“¯—l
+		maxy = ini.winy+((ini.mesy*ini.fonty+36)&0xfff0);		// 36ã‚‚åŒæ§˜
 	else
-		maxy = ini.winy+((ini.mesy*ini.fonty+26)&0xfff0);		// 26‚à“¯—l
+		maxy = ini.winy+((ini.mesy*ini.fonty+26)&0xfff0);		// 26ã‚‚åŒæ§˜
 */
-	maxy = ini.winy+((ini.mesy*ini.fonty+31)&0xfff0);				// ‚±‚ñ‚ÈŠ´‚¶H
+	maxy = ini.winy+((ini.mesy*ini.fonty+31)&0xfff0);				// ã“ã‚“ãªæ„Ÿã˜ï¼Ÿ
 
 	MesWinX1 = ini.winx;
 	MesWinY1 = ini.winy;
@@ -2587,8 +2587,8 @@ dprintf("Waku Style = %d\n", n);
 
 	memset(maskbase, 0, 640*480);
 
-	dprintf("MesWin MesWinX1:%d MesWinY1:%d MesWinX2:%d MesWinY2:%d\n", MesWinX1, MesWinY1, MesWinX2, MesWinY2);
-	dprintf("       ini.mesx:%d mesy:%d\n", ini.mesx, ini.mesy);
+	dprintf("MesWin MesWinX1:%d MesWinY1:%d MesWinX2:%d MesWinY2:%dÂ¥n", MesWinX1, MesWinY1, MesWinX2, MesWinY2);
+	dprintf("       ini.mesx:%d mesy:%dÂ¥n", ini.mesx, ini.mesy);
 
 	for (y=MesWinY1; y<maxy; y++) {
 		if ( y<0 ) continue;
@@ -2603,9 +2603,9 @@ dprintf("Waku Style = %d\n", n);
 					buf[1] = ini.wincolor[1];
 					buf[2] = ini.wincolor[2];
 					if ( ini.wincolorflag )
-						*mask = 255;		// u”¼“§–¾‚É‚µ‚È‚¢v‚Éƒ`ƒFƒbƒN‚³‚ê‚Ä‚é
+						*mask = 255;		// ã€ŒåŠé€æ˜ã«ã—ãªã„ã€ã«ãƒã‚§ãƒƒã‚¯ã•ã‚Œã¦ã‚‹æ™‚
 					else
-						*mask = 128;		// ”¼“§–¾ƒGƒŠƒAiƒƒbƒZ[ƒW‚Ì”wŒij
+						*mask = 128;		// åŠé€æ˜ã‚¨ãƒªã‚¢ï¼ˆãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®èƒŒæ™¯ï¼‰
 				}
 			} else {
 				*mask = 255;
@@ -2738,10 +2738,10 @@ void SYSTEM::MesWin_DrawWaku(void)
 void SYSTEM::MesWin_Draw(void)
 {
 	if ( !MesWinFlag ) {
-		PlaySE(2);						// SE.002 ‚ª–Â‚é‚ç‚µ‚¢
+		PlaySE(2);						// SE.002 ãŒé³´ã‚‹ã‚‰ã—ã„
 		MesWinFlag = true;
 		MesIconFlag = false;
-		if ( ini.novelmode ) {			// ƒmƒxƒ‹ƒVƒXƒeƒ€
+		if ( ini.novelmode ) {			// ãƒãƒ™ãƒ«ã‚·ã‚¹ãƒ†ãƒ æ™‚
 			mgr->AllCopy(0, BACKUPPDT, 0);
 			mgr->AllCopy(BACKUPPDT, MESWINPDT, 0);
 			mgr->MakeColorMask(0, 0, 639, 479, MESWINPDT, ini.wincolor[0], ini.wincolor[1], ini.wincolor[2]);
@@ -2807,10 +2807,10 @@ int SYSTEM::MesWin_InEffect(void)
 
 
 /* -------------------------------------------------------------------
-  ƒƒbƒZ[ƒW•\¦
+  ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸è¡¨ç¤º
 ------------------------------------------------------------------- */
 
-// ‹@íˆË‘¶•¶š•ÏŠ·ƒe[ƒuƒ‹
+// æ©Ÿç¨®ä¾å­˜æ–‡å­—å¤‰æ›ãƒ†ãƒ¼ãƒ–ãƒ«
 static unsigned short SpCharTable[0x60] = {
 /* 8740 */	0x8540, 0x8541, 0x8542, 0x8543, 0x8544, 0x8545, 0x8546, 0x8547,
 /* 8748 */	0x8548, 0x8549, 0x854a, 0x854b, 0x854c, 0x854d, 0x854e, 0x854f,
@@ -2828,14 +2828,14 @@ static unsigned short SpCharTable[0x60] = {
 
 
 
-// NVL_SYSTEM=1 ê—p•¶š•\¦
+// NVL_SYSTEM=1 å°‚ç”¨æ–‡å­—è¡¨ç¤º
 void SYSTEM::MesWin_PutNovelChar(int dx, int dy, int c)
 {
 	unsigned char *dst, *dstbuf, *src, *srcbuf;
 	int dstbpl, x, y, n, nl, nh;
 	int r, g, b;
 
-	srcbuf = nvlfont->GetFont(c);			// FontData‚ğæ‚Á‚Ä‚­‚éB24x24pixel(4bit/pixel)‚Ë
+	srcbuf = nvlfont->GetFont(c);			// FontDataã‚’å–ã£ã¦ãã‚‹ã€‚24x24pixel(4bit/pixel)ã­
 	if ( srcbuf ) {
 		LockPDT(0);
 		r = ini.colortable[ini.fontcolor][0]+1;
@@ -2845,7 +2845,7 @@ void SYSTEM::MesWin_PutNovelChar(int dx, int dy, int c)
 		dstbuf = mgr->GetPDT(0)->GetBuffer();
 		dstbuf += (dx+2)*4+(dy+2)*dstbpl;
 		src = srcbuf;
-		for (y=0; y<24; y++) {				// ‚Ü‚¸‰e‚ğ•`‚­i2dot‚¸‚êHj
+		for (y=0; y<24; y++) {				// ã¾ãšå½±ã‚’æãï¼ˆ2dotãšã‚Œï¼Ÿï¼‰
 			dst = dstbuf;
 			for (x=0; x<12; x++) {
 				n = *src++;
@@ -2864,7 +2864,7 @@ void SYSTEM::MesWin_PutNovelChar(int dx, int dy, int c)
 		dstbuf = mgr->GetPDT(0)->GetBuffer();
 		dstbuf += dx*4+dy*dstbpl;
 		src = srcbuf;
-		for (y=0; y<24; y++) {				// ƒeƒLƒXƒgF‚Å–{‘Ì‚ğ•`‚­
+		for (y=0; y<24; y++) {				// ãƒ†ã‚­ã‚¹ãƒˆè‰²ã§æœ¬ä½“ã‚’æã
 			dst = dstbuf;
 			for (x=0; x<12; x++) {
 				n = *src++;
@@ -2905,13 +2905,13 @@ void SYSTEM::MesWin_ClearMes(void)
 }
 
 
-// •¶Í“r’†‚Å‰üƒy[ƒW‚É‚È‚Á‚½—p
+// æ–‡ç« é€”ä¸­ã§æ”¹ãƒšãƒ¼ã‚¸ã«ãªã£ãŸæ™‚ç”¨
 void SYSTEM::MesWin_ClearWindow(void)
 {
 	unsigned char* s = mesbufptr;
 	unsigned char* d = mesbuf;
 
-	// ƒoƒbƒtƒ@‚ªˆì‚ê‚È‚¢‚æ‚¤‚ÉA‘Oƒy[ƒW•”•ª‚ÍØ‚è‹l‚ß‚é
+	// ãƒãƒƒãƒ•ã‚¡ãŒæº¢ã‚Œãªã„ã‚ˆã†ã«ã€å‰ãƒšãƒ¼ã‚¸éƒ¨åˆ†ã¯åˆ‡ã‚Šè©°ã‚ã‚‹
 	while (*s) {
 		*d++ = *s++;
 	}
@@ -2940,7 +2940,7 @@ void SYSTEM::MesWin_SetMes(char* buf)
 	int firstflag = 0;
 
 	mouse->StartPDTDraw();
-//	dprintf("SetMes - CurX:%d CurY:%d Base:$%08X/Ptr:$%08X\n", curmesx, curmesy, (int)mesbuf, (int)mesbufptr);
+//	dprintf("SetMes - CurX:%d CurY:%d Base:$%08X/Ptr:$%08XÂ¥n", curmesx, curmesy, (int)mesbuf, (int)mesbufptr);
 
 	while ( mesbuf[i] ) i++;			// Add...
 
@@ -2960,7 +2960,7 @@ void SYSTEM::MesWin_SetMes(char* buf)
 			b = *buf++;
 			if ( (a==0x81)&&(b==0x96) ) {
 				buf++;
-				if ( *buf==0x4f ) {		// ExFont (*00`*??)
+				if ( *buf==0x4f ) {		// ExFont (*00ã€œ*??)
 					mesbuf[i++] = a;
 					mesbuf[i++] = b;
 					mesbuf[i++] = (*buf-0x4f)*10+((*(buf+2))-0x4f);
@@ -3022,19 +3022,19 @@ void SYSTEM::MesWin_PutChar_Novel(void)
 		if ( a==0xff ) {
 			hankaku = false;
 			mesbufptr++;
-		} else if ( (a==0x81)&&(b==0x79) ) {	// y
+		} else if ( (a==0x81)&&(b==0x79) ) {	// ã€
 			indentflag = 0;
 			mesindent = 0;
 			curmesx = 0;
 			mesbufptr+=2;
-		} else if ( (a==0x81)&&(b==0x7a) ) {	//@z
-			indentflag = 1000;			// –¼‘O‚ª—ˆ‚½‚çƒCƒ“ƒfƒ“ƒgŠJn
+		} else if ( (a==0x81)&&(b==0x7a) ) {	//ã€€ã€‘
+			indentflag = 1000;			// åå‰ãŒæ¥ãŸã‚‰ã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆé–‹å§‹
 			mesbufptr+=2;
-		} else if ( (a==0x81)&&(b==0x75) ) {	// u
+		} else if ( (a==0x81)&&(b==0x75) ) {	// ã€Œ
 			if ( indentflag==1000 ) mesindent = curmesx;
 			indentflag++;
 			flag = 0;
-		} else if ( (a==0x81)&&(b==0x76) ) {	// v
+		} else if ( (a==0x81)&&(b==0x76) ) {	// ã€
 			indentflag--;
 			if ( indentflag<=0 ) {
 				mesindent = 0;
@@ -3045,11 +3045,11 @@ void SYSTEM::MesWin_PutChar_Novel(void)
 				indentflag = 0;
 			}
 			flag = 0;
-		} else if ( (a==0x81)&&(b==0x77) ) {	// w
+		} else if ( (a==0x81)&&(b==0x77) ) {	// ã€
 			if ( indentflag==1000 ) mesindent = curmesx;
 			indentflag++;
 			flag = 0;
-		} else if ( (a==0x81)&&(b==0x78) ) {	// x
+		} else if ( (a==0x81)&&(b==0x78) ) {	// ã€
 			indentflag--;
 			if ( indentflag<=0 ) {
 				mesindent = 0;
@@ -3062,7 +3062,7 @@ void SYSTEM::MesWin_PutChar_Novel(void)
 			flag = 0;
 		} else {
 			flag = 0;
-			if ( !indentflag ) indentflag = 99;		// Š‡ŒÊˆÈŠO‚Ì•¶š‚ªo‚½Œã‚ÍƒCƒ“ƒfƒ“ƒg‚µ‚È‚¢
+			if ( !indentflag ) indentflag = 99;		// æ‹¬å¼§ä»¥å¤–ã®æ–‡å­—ãŒå‡ºãŸå¾Œã¯ã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆã—ãªã„
 		}
 	}
 
@@ -3089,7 +3089,7 @@ void SYSTEM::MesWin_PutChar_Novel(void)
 	mesbufptr += 2;
 	curmesx += 2;
 
-	if ( *mesbufptr==0x0d ) {		// s––ƒ`ƒFƒbƒN‚ª“ü‚é‘O‚ÉA‚à‚¤ˆê“x‰üsƒ`ƒFƒbƒN‚ğ‚µ‚Æ‚­iPureheartj
+	if ( *mesbufptr==0x0d ) {		// è¡Œæœ«ãƒã‚§ãƒƒã‚¯ãŒå…¥ã‚‹å‰ã«ã€ã‚‚ã†ä¸€åº¦æ”¹è¡Œãƒã‚§ãƒƒã‚¯ã‚’ã—ã¨ãï¼ˆPureheartï¼‰
 		curmesx = 0;
 		curmesy++;
 		mesbufptr++;
@@ -3118,7 +3118,7 @@ void SYSTEM::MesWin_PutExFont(int dx, int dy, int c)
 		srcbpl = mgr->GetPDT(EXFONTPDT)->GetBPL();
 		dstbuf = mgr->GetPDT(0)->GetBuffer();
 		dstbuf += (dx+2)*4+(dy+2)*dstbpl;
-		for (y=0; y<ini.fontsize; y++) {				// ‚Ü‚¸‰e‚ğ•`‚­i2dot‚¸‚êHj
+		for (y=0; y<ini.fontsize; y++) {				// ã¾ãšå½±ã‚’æãï¼ˆ2dotãšã‚Œï¼Ÿï¼‰
 			src = srcbuf;
 			dst = dstbuf;
 			for (x=0; x<ini.fontsize; x++) {
@@ -3139,7 +3139,7 @@ void SYSTEM::MesWin_PutExFont(int dx, int dy, int c)
 		y = c/ini.exfontmaxx;
 		srcbuf = mgr->GetPDT(EXFONTPDT)->GetBuffer();
 		srcbuf += (y*ini.exfonty*mgr->GetPDT(EXFONTPDT)->GetBPL())+x*ini.exfontx*3;
-		for (y=0; y<ini.exfonty; y++) {				// ƒeƒLƒXƒgF‚Å–{‘Ì‚ğ•`‚­
+		for (y=0; y<ini.exfonty; y++) {				// ãƒ†ã‚­ã‚¹ãƒˆè‰²ã§æœ¬ä½“ã‚’æã
 			src = srcbuf;
 			dst = dstbuf;
 			for (x=0; x<ini.exfontx; x++) {
@@ -3195,12 +3195,12 @@ if ( doubleline ) {
 		} else if ( a==0xff ) {
 			hankaku = false;
 			mesbufptr++;
-		} else if ( (a==0x81)&&(b==0x79) ) {	// y
+		} else if ( (a==0x81)&&(b==0x79) ) {	// ã€
 			indentflag = 0;
 			mesindent = 0;
 			curmesx = 0;
 			mesbufptr+=2;
-		} else if ( (a==0x81)&&(b==0x7a) ) {	//@z
+		} else if ( (a==0x81)&&(b==0x7a) ) {	//ã€€ã€‘
 			if ( (*(mesbufptr+2)==0x81)&&(*(mesbufptr+3)==0x40) ) {
 				mesindent = curmesx;
 				indentflag = 1;
@@ -3209,14 +3209,14 @@ if ( doubleline ) {
 					mesindent += 2;
 				}
 			} else {
-				indentflag = 0;			// –¼‘O‚ÍƒCƒ“ƒfƒ“ƒg’â~•¶š‚©‚çœŠO
+				indentflag = 0;			// åå‰ã¯ã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆåœæ­¢æ–‡å­—ã‹ã‚‰é™¤å¤–
 				mesbufptr+=2;
 			}
-		} else if ( (a==0x81)&&(b==0x75) ) {	// u
+		} else if ( (a==0x81)&&(b==0x75) ) {	// ã€Œ
 			if ( !indentflag ) mesindent = curmesx+2;
 			indentflag++;
 			flag = 0;
-		} else if ( (a==0x81)&&(b==0x76) ) {	// v
+		} else if ( (a==0x81)&&(b==0x76) ) {	// ã€
 			indentflag--;
 			if ( indentflag<=0 ) {
 				spindent = mesindent;
@@ -3225,11 +3225,11 @@ if ( doubleline ) {
 //				indentflag = 0;
 			}
 			flag = 0;
-		} else if ( (a==0x81)&&(b==0x77) ) {	// w
+		} else if ( (a==0x81)&&(b==0x77) ) {	// ã€
 			if ( !indentflag ) mesindent = curmesx+2;
 			indentflag++;
 			flag = 0;
-		} else if ( (a==0x81)&&(b==0x78) ) {	// x
+		} else if ( (a==0x81)&&(b==0x78) ) {	// ã€
 			indentflag--;
 			if ( indentflag<=0 ) {
 				spindent = mesindent;
@@ -3240,7 +3240,7 @@ if ( doubleline ) {
 			flag = 0;
 		} else {
 			flag = 0;
-			if ( !indentflag ) indentflag = 99;		// Š‡ŒÊˆÈŠO‚Ì•¶š‚ªo‚½Œã‚ÍƒCƒ“ƒfƒ“ƒg‚µ‚È‚¢
+			if ( !indentflag ) indentflag = 99;		// æ‹¬å¼§ä»¥å¤–ã®æ–‡å­—ãŒå‡ºãŸå¾Œã¯ã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆã—ãªã„
 		}
 	}
 
@@ -3307,7 +3307,7 @@ if ( doubletext ) {
 		curmesx += 1;
 if ( doubletext ) curmesx++;
 	} else {
-		if ( (mesbufptr[0]==0x87) ) {		// ‹@íˆË‘¶•¶š (-_-;
+		if ( (mesbufptr[0]==0x87) ) {		// æ©Ÿç¨®ä¾å­˜æ–‡å­— (-_-;
 			if ( (mesbufptr[1]>=0x40)&&(mesbufptr[1]<0xa0) ) {
 				*((unsigned short*)mesbufptr) = SpCharTable[mesbufptr[1]-0x40];
 			}
@@ -3453,15 +3453,15 @@ void SYSTEM::ChangeMesWinStyle(int n)
 
 
 /* -------------------------------------------------------------------
-  ƒNƒŠƒbƒN‘Ò‚¿ƒAƒCƒRƒ“
+  ã‚¯ãƒªãƒƒã‚¯å¾…ã¡ã‚¢ã‚¤ã‚³ãƒ³
 ------------------------------------------------------------------- */
 
 void SYSTEM::MesWin_DrawIcon_Novel(int n)
 {
 	int x = curmesx;
 	int y = curmesy;
-	if ( x>=(ini.mesx*2) ) {	// s––‚É—ˆ‚½ê‡AƒAƒCƒRƒ“‚ÍŸ‚Ìs‚Ìæ“ª‚É•`‚­
-//		x = mesindent;			// ‚½‚¾‚µA•¶Í©‘Ì‚Í‚±‚Ì“_‚Å‚Ü‚¾‰üs‚µ‚Ä‚¢‚È‚¢
+	if ( x>=(ini.mesx*2) ) {	// è¡Œæœ«ã«æ¥ãŸå ´åˆã€ã‚¢ã‚¤ã‚³ãƒ³ã¯æ¬¡ã®è¡Œã®å…ˆé ­ã«æã
+//		x = mesindent;			// ãŸã ã—ã€æ–‡ç« è‡ªä½“ã¯ã“ã®æ™‚ç‚¹ã§ã¾ã æ”¹è¡Œã—ã¦ã„ãªã„
 		x = 0;
 		y++;
 	}
@@ -3475,7 +3475,7 @@ void SYSTEM::MesWin_DrawIcon(int n)
 	int dstbpl, x, y;
 	unsigned char r, g, b;
 
-	if ( !MesWinFlag ) return;			// ƒƒbƒZ[ƒWƒEƒBƒ“ƒhƒE‚ª–³‚¢‚Í‹A‚é
+	if ( !MesWinFlag ) return;			// ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãŒç„¡ã„æ™‚ã¯å¸°ã‚‹
 
 	if ( ini.novelmode ) { MesWin_DrawIcon_Novel(n); return; }
 
@@ -3529,7 +3529,7 @@ void SYSTEM::MesWin_DrawNovelIcon(int dx, int dy, int chr)
 	int dstbpl, x, y;
 	unsigned char r, g, b;
 
-	if ( !MesWinFlag ) return;			// ƒƒbƒZ[ƒWƒEƒBƒ“ƒhƒE‚ª–³‚¢‚Í‹A‚é
+	if ( !MesWinFlag ) return;			// ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãŒç„¡ã„æ™‚ã¯å¸°ã‚‹
 
 	if ( !MesIconFlag ) {
 		MesIconFlag = 1;
@@ -3598,11 +3598,11 @@ int SYSTEM::MesWin_LineFeed(void)
 		if ( ini.novelmode ) {
 			curmesx = 0;
 			curmesy++;
-			*mesbufptr++ = 0x0d;	// CG•`‰æ“™‚Åˆê‰ñƒeƒLƒXƒg‚ªÁ‚¦‚½Œã‚ÉA
-			*mesbufptr = 0;			// Ä“x‚±‚±‚Ü‚Å‚ÌƒeƒLƒXƒg‚ğ‘‚«’¼‚·‚Ì‚½‚ß
+			*mesbufptr++ = 0x0d;	// CGæç”»ç­‰ã§ä¸€å›ãƒ†ã‚­ã‚¹ãƒˆãŒæ¶ˆãˆãŸå¾Œã«ã€
+			*mesbufptr = 0;			// å†åº¦ã“ã“ã¾ã§ã®ãƒ†ã‚­ã‚¹ãƒˆã‚’æ›¸ãç›´ã™æ™‚ã®ãŸã‚
 			indentflag = 0;
 			mesindent = 0;
-			// ‰æ–ÊŠO‚É‚Í‚İ‚¾‚µ‚½‚ÍuŸƒy[ƒWv‚ÌƒAƒCƒRƒ“‚ğo‚µ‚Ä‘Ò‚Â‚½‚ß
+			// ç”»é¢å¤–ã«ã¯ã¿ã ã—ãŸæ™‚ã¯ã€Œæ¬¡ãƒšãƒ¼ã‚¸ã€ã®ã‚¢ã‚¤ã‚³ãƒ³ã‚’å‡ºã—ã¦å¾…ã¤ãŸã‚
 			if ( (curmesy>=ini.mesy) ) return -1;
 		} else {
 			mesbuf[0] = 0;
@@ -3620,7 +3620,7 @@ int SYSTEM::MesWin_LineFeed(void)
 
 
 /* -------------------------------------------------------------------
-  ‚±‚Ü‚²‚Ü‚Æ‚µ‚½‚ÌFX
+  ã“ã¾ã”ã¾ã¨ã—ãŸã®è‰²ã€…
 ------------------------------------------------------------------- */
 PDTBUFFER* SYSTEM::MakePDT(char* f)
 {
@@ -3635,7 +3635,7 @@ PDTBUFFER* SYSTEM::MakePDT(char* f)
 	if ( pdtfile ) {
 		dprintf("      PDT_MakePDT : ");
 		dprintf(f);
-		dprintf(" X:%d Y:%d\n", pdtfile->GetSizeX(), pdtfile->GetSizeY());
+		dprintf(" X:%d Y:%dÂ¥n", pdtfile->GetSizeX(), pdtfile->GetSizeY());
 		pdtbuf = new PDTBUFFER(pdtfile->GetSizeX(), pdtfile->GetSizeY(), 3, pdtfile->GetSizeX()*3, true);
 		if ( pdtbuf ) pdtfile->CopyBuffer(pdtbuf);
 		delete pdtfile;
@@ -3687,35 +3687,35 @@ void SYSTEM::GetFontSize(int* x, int* y)
 }
 
 
-// CG’B¬—¦‚ğƒp[ƒZƒ“ƒg‚Å•Ô‚·
+// CGé”æˆç‡ã‚’ãƒ‘ãƒ¼ã‚»ãƒ³ãƒˆã§è¿”ã™
 int SYSTEM::GetCGPercentage(void)
 {
 	return cgm->GetPercentage();
 }
 
 
-// iCGƒ‚[ƒhƒtƒ@ƒCƒ‹“à‚É‰—‚¯‚éjn”Ô–Ú‚ÌCG‚ğŒ©‚½‚©‚Ç‚¤‚©ƒ`ƒFƒbƒN‚·‚é
+// ï¼ˆCGãƒ¢ãƒ¼ãƒ‰ãƒ•ã‚¡ã‚¤ãƒ«å†…ã«æ–¼ã‘ã‚‹ï¼‰nç•ªç›®ã®CGã‚’è¦‹ãŸã‹ã©ã†ã‹ãƒã‚§ãƒƒã‚¯ã™ã‚‹
 int SYSTEM::GetCGFlag(int n)
 {
 	return cgm->GetFlag(n);
 }
 
 
-// CGƒ‚[ƒhƒtƒ@ƒCƒ‹‚É‚É“o˜^‚³‚ê‚½CG‚Ì‘”‚ğ•Ô‚·
+// CGãƒ¢ãƒ¼ãƒ‰ãƒ•ã‚¡ã‚¤ãƒ«ã«ã«ç™»éŒ²ã•ã‚ŒãŸCGã®ç·æ•°ã‚’è¿”ã™
 int SYSTEM::GetCGAllNum(void)
 {
 	return cgm->GetCGAllNum();
 }
 
 
-// ¡‚Ü‚Å‚ÉŒ©‚½CG‚Ì”‚ğ•Ô‚·
+// ä»Šã¾ã§ã«è¦‹ãŸCGã®æ•°ã‚’è¿”ã™
 int SYSTEM::GetCGNum(void)
 {
 	return cgm->GetCGNum();
 }
 
 
-// iCGƒ‚[ƒhƒtƒ@ƒCƒ‹“à‚É‰—‚¯‚éjn”Ô–Ú‚ÌCG‚Ìƒtƒ@ƒCƒ‹–¼
+// ï¼ˆCGãƒ¢ãƒ¼ãƒ‰ãƒ•ã‚¡ã‚¤ãƒ«å†…ã«æ–¼ã‘ã‚‹ï¼‰nç•ªç›®ã®CGã®ãƒ•ã‚¡ã‚¤ãƒ«å
 char* SYSTEM::GetCGName(int n)
 {
 	return cgm->GetCGName(n);
@@ -3769,7 +3769,7 @@ void SYSTEM::SetMesWinColor(int flag, int r, int g, int b)
 
 
 /* -------------------------------------------------------------------
-  ‘I‘ğˆˆ—
+  é¸æŠè‚¢å‡¦ç†
 ------------------------------------------------------------------- */
 void SYSTEM::Select_AddItem(char* buf, int flag, int col)
 {
@@ -3820,7 +3820,7 @@ void SYSTEM::Select_SubWinSetup(void)
 	ini.mesy = selitemnum;
 	ini.winx = ini.subwinx;
 	ini.winy = ini.subwiny;
-	subwinflag = 1;			// SubWindow‚ÍƒTƒCƒYŒvZ•û–@‚ªˆá‚¤
+	subwinflag = 1;			// SubWindowæ™‚ã¯ã‚µã‚¤ã‚ºè¨ˆç®—æ–¹æ³•ãŒé•ã†
 	MesWin_Setup(MesWinStyle);
 }
 
@@ -3852,7 +3852,7 @@ int SYSTEM::Select_Novel(void)
 //			selnovelsetup = 1;
 			MesWin_Draw();
 //		}
-		if ( scnefct.cmd ) return -1;		// ƒƒbƒZ[ƒWƒEƒBƒ“ƒhƒE‚Ì•`‰æ‚ªI‚í‚é‚Ì‚ğ‘Ò‚Â
+		if ( scnefct.cmd ) return -1;		// ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®æç”»ãŒçµ‚ã‚ã‚‹ã®ã‚’å¾…ã¤
 		MesWin_ClearMes();
 		selitemflag = true;
 		selitemold = 0;
@@ -3914,7 +3914,7 @@ int SYSTEM::Select_Novel(void)
 		selitemold = sel;
 		mesicon = 0;
 		mesiconbase = GetCurrentTimer()-ini.mesiconwait;
-		PlaySE(0);						// ƒZƒŒƒNƒgASE.000 ‚ª–Â‚é‚ç‚µ‚¢
+		PlaySE(0);						// ã‚»ãƒ¬ã‚¯ãƒˆæ™‚ã€SE.000 ãŒé³´ã‚‹ã‚‰ã—ã„
 	}
 	if ( !btn ) {
 		selfinish = (sel+1);
@@ -3923,7 +3923,7 @@ int SYSTEM::Select_Novel(void)
 		selitemnum = 0;
 		selitemold =0;
 		selitemflag = false;
-		PlaySE(1);						// Œˆ’èASE.001 ‚ª–Â‚é‚ç‚µ‚¢
+		PlaySE(1);						// æ±ºå®šæ™‚ã€SE.001 ãŒé³´ã‚‹ã‚‰ã—ã„
 	}
 	MesWin_DrawNovelIcon(x1, selitemold*ini.fonty+y1, 2);
 	return -1;
@@ -3947,7 +3947,7 @@ int SYSTEM::Select(void)
 		MesWin_Draw();
 		selitemflag = true;
 		selitemold = -1;
-		dprintf("MesWin MesWinX1:%d MesWinY1:%d MesWinX2:%d MesWinY2:%d\n", MesWinX1, MesWinY1, MesWinX2, MesWinY2);
+		dprintf("MesWin MesWinX1:%d MesWinY1:%d MesWinX2:%d MesWinY2:%dÂ¥n", MesWinX1, MesWinY1, MesWinX2, MesWinY2);
 		LockPDT(0);
 
 		TextFont(fontid);
@@ -4037,7 +4037,7 @@ int SYSTEM::Select(void)
 	if ( !KeySelect ) {
 		if ( (x>=x1)&&(x<x2)&&(y>=ypad)&&(y<(ini.fonty*selitemnum+ypad))&&(y<(ini.fonty*ini.mesy+ypad)) ) {
 			sel = (y-ypad)/ini.fonty;
-			if ( (selitemnum>ini.mesy)&&(x>=(((MesWinX2-MesWinX1)>>1)+x1)) ) {	// “ñ—ñŠ‚Â‰E‘¤
+			if ( (selitemnum>ini.mesy)&&(x>=(((MesWinX2-MesWinX1)>>1)+x1)) ) {	// äºŒåˆ—ä¸”ã¤å³å´
 				sel += ini.mesy;
 			}
 			if ( !selitemenable[sel] ) sel = -1;
@@ -4047,7 +4047,7 @@ int SYSTEM::Select(void)
 	if ( sel!=selitemold ) {
 		LockPDT(0);
 		if ( selitemold!=(-1) ) {
-			if ( selitemnum>ini.mesy ) {	// “ñ—ñ
+			if ( selitemnum>ini.mesy ) {	// äºŒåˆ—
 				i = selitemold%ini.mesy;
 				x1 = MesWinX1+(ini.fontsize-ini.fontx*2)/2 + (MesWinX2-MesWinX1-ini.fontx*ini.mesx*2)/2;
 				x2 = x1 + ini.mesx*2*ini.fontx - (ini.fontsize-ini.fontx*2)/2;
@@ -4064,7 +4064,7 @@ int SYSTEM::Select(void)
 			}
 		}
 		if ( sel!=(-1) ) {
-			if ( selitemnum>ini.mesy ) {	// “ñ—ñ
+			if ( selitemnum>ini.mesy ) {	// äºŒåˆ—
 				i = sel%ini.mesy;
 				x1 = MesWinX1+(ini.fontsize-ini.fontx*2)/2 + (MesWinX2-MesWinX1-ini.fontx*ini.mesx*2)/2;
 				x2 = x1 + ini.mesx*2*ini.fontx - (ini.fontsize-ini.fontx*2)/2;
@@ -4079,7 +4079,7 @@ int SYSTEM::Select(void)
 				SetRect(&r, x1, sel*ini.fonty+ypad, x2, (sel+1)*ini.fonty+ypad);
 				InvertRect(&r);
 			}
-			PlaySE(0);					// ƒZƒŒƒNƒgASE.000 ‚ª–Â‚é‚ç‚µ‚¢
+			PlaySE(0);					// ã‚»ãƒ¬ã‚¯ãƒˆæ™‚ã€SE.000 ãŒé³´ã‚‹ã‚‰ã—ã„
 		}
 		UnlockPDT(0, MesWinX1, MesWinY1, MesWinX2, MesWinY2, 1);
 		selitemold = sel;
@@ -4090,7 +4090,7 @@ int SYSTEM::Select(void)
 		selfinishbase = GetCurrentTimer();
 		selitemold =0;
 		selitemflag = false;
-		PlaySE(1);						// Œˆ’èASE.001 ‚ª–Â‚é‚ç‚µ‚¢
+		PlaySE(1);						// æ±ºå®šæ™‚ã€SE.001 ãŒé³´ã‚‹ã‚‰ã—ã„
 	}
 
 	return -1;
@@ -4121,7 +4121,7 @@ int SYSTEM::Select_Finish(void)
 			ypad = MesWinY1+(ini.fontsize-ini.fonty)/2 + 4 + (MesWinY2-MesWinY1-ini.fonty*ini.mesy)/2;
 			x1 = MesWinX1+(ini.fontsize-ini.fontx*2)/2 + (MesWinX2-MesWinX1-ini.fontx*ini.mesx*2)/2;
 			x2 = x1 + ini.mesx*2*ini.fontx - (ini.fontsize-ini.fontx*2)/2;
-			if ( selitemnum>ini.mesy ) {	// “ñ—ñ
+			if ( selitemnum>ini.mesy ) {	// äºŒåˆ—
 				i = (selfinish-1)%ini.mesy;
 				if ( selfinish>ini.mesy ) {
 					x1 += ((MesWinX2-MesWinX1)>>1);
@@ -4152,7 +4152,7 @@ int SYSTEM::Select_Finish(void)
 
 
 /* -------------------------------------------------------------------
-  ‰æ–Ê—h‚êˆ—
+  ç”»é¢æºã‚Œå‡¦ç†
 ------------------------------------------------------------------- */
 void SYSTEM::ScreenShakeSetup(int n)
 {
@@ -4211,7 +4211,7 @@ bool SYSTEM::ScreenShake(void)
 
 
 /* -------------------------------------------------------------------
-  ƒAƒjƒ[ƒVƒ‡ƒ“ˆ—
+  ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³å‡¦ç†
 ------------------------------------------------------------------- */
 inline int GetInt(unsigned char* buf)
 {
@@ -4269,7 +4269,7 @@ bool SYSTEM::AnimationSetup(char* f, int n)
 	maxanmstream = GetInt(anmbuf+0x90);
 	maxanmseen = GetInt(anmbuf+0x94);
 	for (i=0; i<maxanmframe; i++) {
-		anmcell[i].sx1  = GetInt(anmbuf+0xb8+(i*0x60));			// 0xb8:Base 0x60:1cell‚ ‚½‚è‚ÌƒTƒCƒY
+		anmcell[i].sx1  = GetInt(anmbuf+0xb8+(i*0x60));			// 0xb8:Base 0x60:1cellã‚ãŸã‚Šã®ã‚µã‚¤ã‚º
 		anmcell[i].sy1  = GetInt(anmbuf+0xb8+(i*0x60)+0x04);
 		anmcell[i].sx2  = GetInt(anmbuf+0xb8+(i*0x60)+0x08);
 		anmcell[i].sy2  = GetInt(anmbuf+0xb8+(i*0x60)+0x0c);
@@ -4352,7 +4352,7 @@ void SYSTEM::MultiAnimationSetup(char* f, int n)
 			maxanmstream = GetInt(anmbuf+0x90);
 			maxanmseen = GetInt(anmbuf+0x94);
 			for (i=0; i<maxanmframe; i++) {
-				anmcell[i].sx1  = GetInt(anmbuf+0xb8+(i*0x60));			// 0xb8:Base 0x60:1cell‚ ‚½‚è‚ÌƒTƒCƒY
+				anmcell[i].sx1  = GetInt(anmbuf+0xb8+(i*0x60));			// 0xb8:Base 0x60:1cellã‚ãŸã‚Šã®ã‚µã‚¤ã‚º
 				anmcell[i].sy1  = GetInt(anmbuf+0xb8+(i*0x60)+0x04);
 				anmcell[i].sx2  = GetInt(anmbuf+0xb8+(i*0x60)+0x08);
 				anmcell[i].sy2  = GetInt(anmbuf+0xb8+(i*0x60)+0x0c);
@@ -4443,7 +4443,7 @@ void SYSTEM::MultiAnimationStop(char* /*f*/, int n)
 
 
 /* -------------------------------------------------------------------
-  SAVE.INIƒ[ƒh
+  SAVE.INIãƒ­ãƒ¼ãƒ‰
 ------------------------------------------------------------------- */
 
 int SYSTEM::LoadInt(unsigned char* buf, int pos) {
@@ -4505,8 +4505,8 @@ void SYSTEM::LoadGlobalFlags(FLAGS* f)
 	MesWinStyle = LoadInt(buf, 0x11d0)+1;
 
 	j = 0;
-	for ( i=0; i<26; i++) {				// ‚±‚ê‚Ü‚Å‚Ìini.name‚ªƒZ[ƒu‚³‚ê‚Ä‚¢‚È‚¢
-		if ( buf[i*16+0x11e4] ) j = 1;	// ƒf[ƒ^‚Ì‘Îˆ ^^;
+	for ( i=0; i<26; i++) {				// ã“ã‚Œã¾ã§ã®ini.nameãŒã‚»ãƒ¼ãƒ–ã•ã‚Œã¦ã„ãªã„
+		if ( buf[i*16+0x11e4] ) j = 1;	// ãƒ‡ãƒ¼ã‚¿æ™‚ã®å¯¾å‡¦ ^^;
 	}
 	if ( j ) {
 		for ( i=0; i<26; i++ ) {
@@ -4587,12 +4587,12 @@ int SYSTEM::Load(FLAGS* f, int n, int* seenptr, int* posptr)
 	fread(buf, size, 1, fp);
 	fclose(fp);
 
-	// ƒ^ƒCƒgƒ‹
+	// ã‚¿ã‚¤ãƒˆãƒ«
 	LoadStr(buf, pad+0x14, loadingtitle, 32);
 
 	ver = LoadInt(buf, size-4);		// Save Data Version (Mac original)
 
-	// •Ï”‚Æƒtƒ‰ƒO
+	// å¤‰æ•°ã¨ãƒ•ãƒ©ã‚°
 	for ( i=0; i<1000; i++ ) {
 		f->SetVal(i, LoadInt(buf, pad+0x10a38+(i*4)));
 	}
@@ -4616,23 +4616,23 @@ int SYSTEM::Load(FLAGS* f, int n, int* seenptr, int* posptr)
 		LoadStr(buf, pad+0x12a72+i*64, f->GetStr(i), 64);
 	}
 
-	// ƒV[ƒ“”Ô†‚ÆƒV[ƒ““àƒ|ƒCƒ“ƒ^
+	// ã‚·ãƒ¼ãƒ³ç•ªå·ã¨ã‚·ãƒ¼ãƒ³å†…ãƒã‚¤ãƒ³ã‚¿
 	*seenptr = LoadInt(buf, pad+0x14372);
 	*posptr = LoadInt(buf, pad+0x14382);
 
-	// Œ»İ‚ÌBGM
+	// ç¾åœ¨ã®BGM
 	LoadStr(buf, cdpos, loadingbgm, 64);
 
-	// ƒXƒ^ƒbƒN‚Ì“à—e
+	// ã‚¹ã‚¿ãƒƒã‚¯ã®å†…å®¹
 	f->ClearStack();
 	j = LoadInt(buf, stackpos);
-	dprintf("Load Stack - Num:%d\n", i);
+	dprintf("Load Stack - Num:%dÂ¥n", i);
 	for (i=0 ; i<j; i++) {
 		f->PushStack(LoadInt(buf, stackpos+ 4+i*20), LoadInt(buf, stackpos+20+i*20));
-		dprintf("Load Stack - Seen:%d Pos:%d\n", LoadInt(buf, stackpos+ 4+i*20), LoadInt(buf, stackpos+20+i*20));
+		dprintf("Load Stack - Seen:%d Pos:%dÂ¥n", LoadInt(buf, stackpos+ 4+i*20), LoadInt(buf, stackpos+20+i*20));
 	}
 
-	// ‰æ–Ê•œ‹Œ—pƒ}ƒNƒ
+	// ç”»é¢å¾©æ—§ç”¨ãƒã‚¯ãƒ­
 	macro->ClearMacro();
 	i = LoadInt(buf, macropos);
 	for (j=0; j<i; j++) {
@@ -4677,10 +4677,10 @@ int SYSTEM::Load(FLAGS* f, int n, int* seenptr, int* posptr)
 
 
 /* -------------------------------------------------------------------
-  ƒ[ƒh’¼Œã‚Ì‰æ–ÊƒGƒtƒFƒNƒg
-    Å‰‚Í•‚ÉƒtƒF[ƒhƒAƒEƒgiEffect#4jA
-    ‰æ–Ê‚ª•‚¢ŠÔ‚Éƒ}ƒNƒ‚©‚ç‰æ‘œ‚ğ¶¬A
-    ÅŒã‚É¶¬‚µ‚½‰æ‘œ‚ğEffect#4‚ÅƒtƒF[ƒhƒCƒ“‚µ‚È‚ª‚çƒXƒNƒŠ[ƒ“‚É•\¦
+  ãƒ­ãƒ¼ãƒ‰ç›´å¾Œã®ç”»é¢ã‚¨ãƒ•ã‚§ã‚¯ãƒˆ
+    æœ€åˆã¯é»’ã«ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¢ã‚¦ãƒˆï¼ˆEffect#4ï¼‰ã€
+    ç”»é¢ãŒé»’ã„é–“ã«ãƒã‚¯ãƒ­ã‹ã‚‰ç”»åƒã‚’ç”Ÿæˆã€
+    æœ€å¾Œã«ç”Ÿæˆã—ãŸç”»åƒã‚’Effect#4ã§ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¤ãƒ³ã—ãªãŒã‚‰ã‚¹ã‚¯ãƒªãƒ¼ãƒ³ã«è¡¨ç¤º
 ------------------------------------------------------------------- */
 
 bool SYSTEM::LoadingProc(void)
@@ -4722,7 +4722,7 @@ bool SYSTEM::LoadingProc(void)
 
 
 /* -------------------------------------------------------------------
-  SAVE.INIƒZ[ƒu
+  SAVE.INIã‚»ãƒ¼ãƒ–
 ------------------------------------------------------------------- */
 
 void SYSTEM::SaveInt(unsigned char* buf, int pos, int n) {
@@ -4765,7 +4765,7 @@ void SYSTEM::SaveGlobalFlags(FLAGS* f)
 
 	SaveStr(buf, 0, ini.saveheader, 128);
 
-	// •Ï”‚Æƒtƒ‰ƒO
+	// å¤‰æ•°ã¨ãƒ•ãƒ©ã‚°
 	for ( i=0; i<1000; i++ ) {
 		SaveInt(buf, 0x80+(i*4), f->GetVal(i+1000));
 	}
@@ -4861,7 +4861,7 @@ void SYSTEM::Save(FLAGS* f, int n, int seen, int curpos)
 	memset(buf, 0, size);
 
 	fseek(fp, header-1, 0);
-	if ( ftell(fp)!=(header-1) ) {		// ƒwƒbƒ_‚·‚ç–³‚¢
+	if ( ftell(fp)!=(header-1) ) {		// ãƒ˜ãƒƒãƒ€ã™ã‚‰ç„¡ã„æ™‚
 		fseek(fp, 0, 0);
 		SaveStr(buf, 0, ini.saveheader, 128);
 		fwrite(buf, header, 1, fp);
@@ -4874,7 +4874,7 @@ void SYSTEM::Save(FLAGS* f, int n, int seen, int curpos)
 		}
 	}
 
-	// “ú•t‚Æƒ^ƒCƒgƒ‹
+	// æ—¥ä»˜ã¨ã‚¿ã‚¤ãƒˆãƒ«
 	savedatadate[n] = GetDateTime(1);
 	savedatatime[n] = GetDateTime(2);
 	strcpy(savedatatitle[n], curtitle);
@@ -4893,7 +4893,7 @@ void SYSTEM::Save(FLAGS* f, int n, int seen, int curpos)
 	else
 		SaveStr(buf, pad+0x14, "No Title", 32);
 
-	// •Ï”‚Æƒtƒ‰ƒO
+	// å¤‰æ•°ã¨ãƒ•ãƒ©ã‚°
 	for ( i=0; i<2000; i++ ) {
 		SaveInt(buf, pad+0x10a38+(i*4), f->GetVal(i));
 	}
@@ -4908,23 +4908,23 @@ void SYSTEM::Save(FLAGS* f, int n, int seen, int curpos)
 		SaveStr(buf, pad+0x12a72+i*64, f->GetStr(i), 64);
 	}
 
-	// ƒV[ƒ“”Ô†‚ÆƒV[ƒ““àƒ|ƒCƒ“ƒ^
+	// ã‚·ãƒ¼ãƒ³ç•ªå·ã¨ã‚·ãƒ¼ãƒ³å†…ãƒã‚¤ãƒ³ã‚¿
 	SaveInt(buf, pad+0x14372, seen);
 	SaveInt(buf, pad+0x14382, curpos);
 
 	SaveStr(buf, cdpos, sound->GetCurrentBGM(), 64);
 
-	// ƒXƒ^ƒbƒN‚Ì“à—e
+	// ã‚¹ã‚¿ãƒƒã‚¯ã®å†…å®¹
 	SaveInt(buf, stackpos, f->GetSavedStackNum());
-	dprintf("Save Stack - Num:%d\n", f->GetSavedStackNum());
+	dprintf("Save Stack - Num:%dÂ¥n", f->GetSavedStackNum());
 	for (i=0; i<f->GetSavedStackNum(); i++) {
 		f->GetSavedStackItem(i, &sseen, &spos);
 		SaveInt(buf, stackpos+ 4+i*20, sseen);
 		SaveInt(buf, stackpos+20+i*20, spos);
-		dprintf("Save Stack - Seen:%d Pos:%d\n", sseen, spos);
+		dprintf("Save Stack - Seen:%d Pos:%dÂ¥n", sseen, spos);
 	}
 
-	// ‰æ–Ê•œ‹Œ—pƒ}ƒNƒ
+	// ç”»é¢å¾©æ—§ç”¨ãƒã‚¯ãƒ­
 	i = macro->GetMacroNum();
 	SaveInt(buf, macropos, i);
 	for (j=0; j<i; j++) {
@@ -4958,7 +4958,7 @@ void SYSTEM::Save(FLAGS* f, int n, int seen, int curpos)
 	}
 */
 
-	fseek(fp, size*n+header, 0);		// ˜”Õ‚Åƒtƒ@ƒCƒ‹ƒTƒCƒY‚ğ’²®‚µ‚Ä‚¨‚¢‚½‚©‚çAƒV[ƒN‚Å‚«‚é‚Í‚¸
+	fseek(fp, size*n+header, 0);		// åºç›¤ã§ãƒ•ã‚¡ã‚¤ãƒ«ã‚µã‚¤ã‚ºã‚’èª¿æ•´ã—ã¦ãŠã„ãŸã‹ã‚‰ã€ã‚·ãƒ¼ã‚¯ã§ãã‚‹ã¯ãš
 	fwrite(buf, size, 1, fp);
 	fclose(fp);
 
@@ -5025,14 +5025,14 @@ int SYSTEM::CheckNovelSave(void)
 
 
 /* -------------------------------------------------------------------
-  SEŠÖ˜A
+  SEé–¢é€£
 ------------------------------------------------------------------- */
-// Šî–{“I‚É‚ÍƒTƒEƒ“ƒhƒRƒ}ƒ“ƒh‚Ì$44‚Å–Â‚ç‚·‚Ì‚¾‚¯‚ÇA000`003”Ô‚ÌSE‚Í
-// ‚»‚êˆÈŠO‚Å‚à©“®‚Å–Â‚é–Í—lB
-//   0 : ‘I‘ğˆƒZƒŒƒNƒg•ÏX
-//   1 : ‘I‘ğˆŒˆ’è
-//   2 : ƒƒbƒZ[ƒWƒEƒBƒ“ƒhƒE‚ªŠJ‚¢‚½H
-//   3 : ƒƒbƒZ[ƒWƒEƒBƒ“ƒhƒE‚Ì‰üƒy[ƒW‚ª”­¶‚µ‚½H
+// åŸºæœ¬çš„ã«ã¯ã‚µã‚¦ãƒ³ãƒ‰ã‚³ãƒãƒ³ãƒ‰ã®$44ã§é³´ã‚‰ã™ã®ã ã‘ã©ã€000ã€œ003ç•ªã®SEã¯
+// ãã‚Œä»¥å¤–ã§ã‚‚è‡ªå‹•ã§é³´ã‚‹æ¨¡æ§˜ã€‚
+//   0 : é¸æŠè‚¢ã‚»ãƒ¬ã‚¯ãƒˆå¤‰æ›´æ™‚
+//   1 : é¸æŠè‚¢æ±ºå®šæ™‚
+//   2 : ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãŒé–‹ã„ãŸæ™‚ï¼Ÿ
+//   3 : ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®æ”¹ãƒšãƒ¼ã‚¸ãŒç™ºç”Ÿã—ãŸæ™‚ï¼Ÿ
 
 void SYSTEM::PlaySE(int n)
 {

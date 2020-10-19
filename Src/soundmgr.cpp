@@ -3,7 +3,7 @@
   Copyright 2000, K.Takagi(Kenjo)
 
   sound.cpp
-    ƒTƒEƒ“ƒhŠÖ˜A
+    ã‚µã‚¦ãƒ³ãƒ‰é–¢é€£
 =======================================================================*/
 
 #include <stdio.h>
@@ -28,7 +28,7 @@
 
 /************************************************************************
   class SOUND
-    ƒTƒEƒ“ƒhŠÖ˜A
+    ã‚µã‚¦ãƒ³ãƒ‰é–¢é€£
 ************************************************************************/
 
 SOUND::SOUND(SYSTEM* s, INIFILE* inifile)
@@ -46,7 +46,7 @@ SOUND::SOUND(SYSTEM* s, INIFILE* inifile)
 		DS_GetVolume(&VolL, &VolR);
 		CD_Stop();
 	} else {						// CD-DA
-		if ( OpenDriver("\p.AppleCD", &cddev) ) {
+		if ( OpenDriver("Â¥p.AppleCD", &cddev) ) {
 			cddev = -1;
 		} else {
 //			VolL = CDDA_GetVolume();
@@ -69,10 +69,10 @@ SOUND::SOUND(SYSTEM* s, INIFILE* inifile)
 	sys->ConvertCapital((unsigned char*)(ini->koedir));
 };
 
-SOUND::~SOUND(void)
+SOUND::â€¾SOUND(void)
 {
 	CD_Stop();
-	// Œ³‚Ì‰¹—Ê‚É•œ‹A‚µ‚Ä‚¨‚­
+	// å…ƒã®éŸ³é‡ã«å¾©å¸°ã—ã¦ãŠã
 	if ( ini->musictype==2 ) {		// DSound
 //		DS_SetVolume(VolL, VolR);
 		if ( bgm ) delete bgm;
@@ -106,13 +106,13 @@ void SOUND::Reset(void)
 
 
 /* -------------------------------------------------------------------
-  CD/DSoundÄ¶ ŒöŠJI/F
+  CD/DSoundå†ç”Ÿ å…¬é–‹I/F
 ------------------------------------------------------------------- */
 void SOUND::CD_Play(char* trk, int loop)
 {
 dprintf("Play BGM   MusicType:%d  Loop:%d  Name:", ini->musictype, loop);
 dprintf(trk);
-dprintf("\n");
+dprintf("Â¥n");
 	if ( ini->musictype==2 ) {		// DSound
 		DS_Stop();
 		DS_SetVolume(VolL, VolR);
@@ -182,7 +182,7 @@ void SOUND::CD_Rewind(void)
 
 
 /* -------------------------------------------------------------------
-  WAVÄ¶
+  WAVå†ç”Ÿ
 ------------------------------------------------------------------- */
 void SOUND::Sound_Play(char* f, int loop)
 {
@@ -218,7 +218,7 @@ int SOUND::Sound_IsPlaying(void)
 
 
 /* -------------------------------------------------------------------
-  CD-DAÄ¶ (Internal routine)
+  CD-DAå†ç”Ÿ (Internal routine)
 ------------------------------------------------------------------- */
 void SOUND::CDDA_Play(char* trk)
 {
@@ -226,18 +226,18 @@ void SOUND::CDDA_Play(char* trk)
 	unsigned char params[10] = {0,CDCTRL_TRKADR,0,0,0,0/*TrackNo*/,0,0,0,CDCTRL_STEREO};
 
 	strcpy(CurBGMName, trk);
-	if ( cddev==-1 ) return;		// CD‚ª–³‚¢
+	if ( cddev==-1 ) return;		// CDãŒç„¡ã„
 
-	for (i=0; i<100; i++) {			// INIƒtƒ@ƒCƒ‹‚©‚çƒgƒ‰ƒbƒNNo‚ğ“¾‚é
+	for (i=0; i<100; i++) {			// INIãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰ãƒˆãƒ©ãƒƒã‚¯Noã‚’å¾—ã‚‹
 		if ( !strcmp(trk, ini->cd[i]) ) { n=i; break; }
 	}
 	CurTrack = n;
 	if ( n == -1 ) return;
 
-	params[5] = ((n/10)*16)+(n%10);	// BCD•ÏŠ·
-	params[7] = 1;					// I—¹ƒgƒ‰ƒbƒNw’è
+	params[5] = ((n/10)*16)+(n%10);	// BCDå¤‰æ›
+	params[7] = 1;					// çµ‚äº†ãƒˆãƒ©ãƒƒã‚¯æŒ‡å®š
 	Control(cddev, CDCTRL_PLAY, &params);
-	params[7] = 0;					// ŠJnƒgƒ‰ƒbƒNw’è
+	params[7] = 0;					// é–‹å§‹ãƒˆãƒ©ãƒƒã‚¯æŒ‡å®š
 	Control(cddev, CDCTRL_PLAY, &params);
 }
 
@@ -247,7 +247,7 @@ void SOUND::CDDA_Stop(void)
 	ParamBlockRec pb;
 
 	CurBGMName[0] = 0;
-	if ( cddev==-1 ) return;		// CD‚ª–³‚¢
+	if ( cddev==-1 ) return;		// CDãŒç„¡ã„
 
 	memset(&pb, 0, sizeof(CntrlParam));
 	pb.cntrlParam.ioCRefNum = cddev;
@@ -262,10 +262,10 @@ void SOUND::CDDA_CheckPlay(void)
 	unsigned char* st;
 	int t, l;
 
-	if ( cddev==-1 ) return;		// CD‚ª–³‚¢
+	if ( cddev==-1 ) return;		// CDãŒç„¡ã„
 
-	if ( CD_FadeTime>0 ) {				// ƒtƒF[ƒhƒAƒEƒg’†
-		t = 1000-(((sys->GetCurrentTimer()-CD_FadeTimeBase)*1000)/(CD_FadeTime*5));	// ‹C‚¿’·‚­æ‚Á‚Ä‚¨‚±‚¤
+	if ( CD_FadeTime>0 ) {				// ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¢ã‚¦ãƒˆä¸­
+		t = 1000-(((sys->GetCurrentTimer()-CD_FadeTimeBase)*1000)/(CD_FadeTime*5));	// æ°—æŒã¡é•·ãå–ã£ã¦ãŠã“ã†
 		if ( (t<0)||(t>1000) ) {
 			CD_Stop();
 			CD_FadeTime = 0;
@@ -273,7 +273,7 @@ void SOUND::CDDA_CheckPlay(void)
 		}
 		l = (VolL*t)/1000;
 		CDDA_SetVolume(l);
-	} else if ( CD_FadeTime<0 ) {		// •‰‚Ì‚ÍƒtƒF[ƒhƒCƒ“
+	} else if ( CD_FadeTime<0 ) {		// è² ã®æ™‚ã¯ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¤ãƒ³
 		t = (((sys->GetCurrentTimer()-CD_FadeTimeBase)*1000)/(-CD_FadeTime*5));
 		if ( (t<0)||(t>1000) ) {
 			t = 1000;
@@ -283,7 +283,7 @@ void SOUND::CDDA_CheckPlay(void)
 		CDDA_SetVolume(l);
 	}
 
-	if ( !CD_LoopFlag ) return;		// ƒ‹[ƒv‰‰‘t’†‚Å‚Í‚È‚¢
+	if ( !CD_LoopFlag ) return;		// ãƒ«ãƒ¼ãƒ—æ¼”å¥ä¸­ã§ã¯ãªã„
 
 	st = (unsigned char*)&pb.cntrlParam.csParam[0];
 	memset(&pb, 0, sizeof(CntrlParam));
@@ -335,7 +335,7 @@ int SOUND::CDDA_GetVolume(void) {
 
 
 /* -------------------------------------------------------------------
-  DSoundÄ¶ (Internal routine)
+  DSoundå†ç”Ÿ (Internal routine)
 ------------------------------------------------------------------- */
 void SOUND::DS_Play(char* trk, int loop)
 {
@@ -363,7 +363,7 @@ void SOUND::DS_Play(char* trk, int loop)
 
 dprintf("  DS - File:");
 dprintf(file);
-dprintf("  Loop:%d  Size:%d\n", loop, size);
+dprintf("  Loop:%d  Size:%dÂ¥n", loop, size);
 }
 
 
@@ -379,7 +379,7 @@ void SOUND::DS_Stop(void)
 void SOUND::DS_CheckPlay(void)
 {
 	int t, l, r;
-	if ( CD_FadeTime>0 ) {				// ƒtƒF[ƒhƒAƒEƒg’†
+	if ( CD_FadeTime>0 ) {				// ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¢ã‚¦ãƒˆä¸­
 		t = 1000-(((sys->GetCurrentTimer()-CD_FadeTimeBase)*1000)/(CD_FadeTime));
 		if ( (t<0)||(t>1000) ) {
 			CD_Stop();
@@ -389,7 +389,7 @@ void SOUND::DS_CheckPlay(void)
 		l = (VolL*t)/1000;
 		r = (VolR*t)/1000;
 		DS_SetVolume(l, r);
-	} else if ( CD_FadeTime<0 ) {		// •‰‚Ì‚ÍƒtƒF[ƒhƒCƒ“
+	} else if ( CD_FadeTime<0 ) {		// è² ã®æ™‚ã¯ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¤ãƒ³
 		t = (((sys->GetCurrentTimer()-CD_FadeTimeBase)*1000)/(-CD_FadeTime));
 		if ( (t<0)||(t>1000) ) {
 			t = 1000;
@@ -399,7 +399,7 @@ void SOUND::DS_CheckPlay(void)
 		r = (VolR*t)/1000;
 		DS_SetVolume(l, r);
 	}
-	// DS‚Íƒ‹[ƒvƒ`ƒFƒbƒN‚Í‚¢‚ç‚È‚¢
+	// DSã¯ãƒ«ãƒ¼ãƒ—ãƒã‚§ãƒƒã‚¯ã¯ã„ã‚‰ãªã„
 }
 
 
@@ -419,7 +419,7 @@ void SOUND::DS_GetVolume(int* l, int* r) {
 
 
 /* -------------------------------------------------------------------
-  KOEÄ¶ ŒöŠJI/F
+  KOEå†ç”Ÿ å…¬é–‹I/F
 ------------------------------------------------------------------- */
 void SOUND::KOE_Play(int id)
 {
@@ -427,7 +427,7 @@ void SOUND::KOE_Play(int id)
 
 	if ( (!koe)||(!KOE_SW) ) return;
 	if ( sys->Version()>=1714 ) {
-		// —ö‚²‚±‚ë^Œp•ê’²‹³‚Æ‚©B17D'Œn‚©‚ÈH
+		// æ‹ã”ã“ã‚ï¼ç¶™æ¯èª¿æ•™ã¨ã‹ã€‚17D'ç³»ã‹ãªï¼Ÿ
 		tid = id/100000;
 		num = id%100000;
 	} else {

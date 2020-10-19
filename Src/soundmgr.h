@@ -3,7 +3,7 @@
   Copyright 2000, K.Takagi(Kenjo)
 
   soundmgr.h
-     サウンド管理クラス
+     繧ｵ繧ｦ繝ｳ繝臥ｮ｡逅�繧ｯ繝ｩ繧ｹ
 =======================================================================*/
 
 #ifndef _avg32sound_h
@@ -48,7 +48,7 @@ private:
 
 public:
 	SOUND(SYSTEM* sys, INIFILE* ini);
-	~SOUND(void);
+	窶ｾSOUND(void);
 	void Reset(void);
 
 	void CD_Play(char* trk, int loop);

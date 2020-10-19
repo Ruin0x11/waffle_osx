@@ -3,7 +3,7 @@
   Copyright 2000, K.Takagi(Kenjo)
 
   pdtfile.h
-    PDTファイルへのアクセスクラス
+    PDT繝輔ぃ繧､繝ｫ縺ｸ縺ｮ繧｢繧ｯ繧ｻ繧ｹ繧ｯ繝ｩ繧ｹ
 =======================================================================*/
 
 #ifndef _fileio_h
@@ -21,7 +21,7 @@ private:
 
 public:
 	PDTFILE(char* fname, SYSTEM* sys);
-	~PDTFILE(void);
+	窶ｾPDTFILE(void);
 	void CopyBuffer(PDTBUFFER* pdt);
 	unsigned char* GetBuffer(void) { return buffer; }
 	unsigned char* GetMaskBuffer(void) { return mask; }

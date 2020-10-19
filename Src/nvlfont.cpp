@@ -3,7 +3,7 @@
   Copyright 2000, K.Takagi(Kenjo)
 
   nvlfont.cpp
-    NVL_SYSTEM=1 ���̃t�H���g�f�[�^�̃N���X
+    NVL_SYSTEM=1 時のフォントデータのクラス
 =======================================================================*/
 
 #include <stdio.h>
@@ -20,7 +20,7 @@
   class NOVELFONT
 ************************************************************************/
 
-// ���񂷂Ƃ炭��
+// こんすとらくた
 NOVELFONT::NOVELFONT(SYSTEM* s)
 {
 	int temp;
@@ -29,15 +29,15 @@ NOVELFONT::NOVELFONT(SYSTEM* s)
 };
 
 
-// �ł��Ƃ炭��
-NOVELFONT::~NOVELFONT(void)
+// ですとらくた
+NOVELFONT::‾NOVELFONT(void)
 {
 	if ( buf ) delete[] buf;
 };
 
 
-// SJIS -> JIS �R�[�h�ϊ����[�`��
-// �ь�̐X�̎q�L�B�ɖ���Ă����ɂ�i����j
+// SJIS -> JIS コード変換ルーチン
+// 林檎の森の子猫達に貰ってきたにゅ（豪謎）
 int NOVELFONT::SJIS2JIS(int sjis) {
 
 	int	codeh, tmp, codel;
@@ -73,9 +73,9 @@ int NOVELFONT::SJIS2JIS(int sjis) {
 }
 
 
-// �t�H���g�̃A�h���X�����߂�
-// JIS�R�[�h����$2121�������āA(��ʃo�C�g x $5e + ���ʃo�C�g) x 288(1����������̃o�C�g��)
-// �E�E�E�ō����Ă�Ǝv���񂾂��ǁi��
+// フォントのアドレスを求める
+// JISコードから$2121を引いて、(上位バイト x $5e + 下位バイト) x 288(1文字当たりのバイト数)
+// ・・・で合ってると思うんだけど（汗
 unsigned char* NOVELFONT::GetFont(int num)
 {
 	int h, l, pos;

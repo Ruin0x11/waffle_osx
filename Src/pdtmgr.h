@@ -3,13 +3,13 @@
   Copyright 2000, K.Takagi(Kenjo)
 
   pdtmgr.h
-     PDT描画関連クラス
+     PDT謠冗判髢｢騾｣繧ｯ繝ｩ繧ｹ
 =======================================================================*/
 
 #ifndef _pdtmgr_h
 #define _pdtmgr_h
 
-#define MAXPDT 32		// PDTバッファの最大数
+#define MAXPDT 32		// PDT繝舌ャ繝輔ぃ縺ｮ譛螟ｧ謨ｰ
 #define WAKUPDT MAXPDT-1
 #define MESWINPDT MAXPDT-2
 #define BACKUPPDT MAXPDT-3
@@ -33,7 +33,7 @@ private:
 
 public:
 	PDTMGR(SYSTEM* sys, PDTBUFFER* pdtb, unsigned char* b);
-	~PDTMGR(void);
+	窶ｾPDTMGR(void);
 
 	void ScreenFade(unsigned int cmd, unsigned int count, int r, int g, int b);
 	void ClearScreen(void);

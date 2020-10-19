@@ -3,7 +3,7 @@
   Copyright 2000, K.Takagi(Kenjo)
 
   soundwav.h
-     WAVƒTƒEƒ“ƒhŠÇ—ƒNƒ‰ƒX
+     WAVã‚µã‚¦ãƒ³ãƒ‰ç®¡ç†ã‚¯ãƒ©ã‚¹
 =======================================================================*/
 
 #ifndef _soundwav_h
@@ -12,36 +12,36 @@
 #include <QuickTimeComponents.h>
 #include <Sound.h>
 
-#define SNDBUFSIZE 44100		// 4‚ÅŠ„‚èØ‚ê‚é‚æ[‚É‚µ‚Æ‚¢‚Ä‚Ëi1frameÅ‘å‚ª16bit x stereo‚È‚Ì‚Åj
+#define SNDBUFSIZE 44100		// 4ã§å‰²ã‚Šåˆ‡ã‚Œã‚‹ã‚ˆãƒ¼ã«ã—ã¨ã„ã¦ã­ï¼ˆ1frameæœ€å¤§ãŒ16bit x stereoãªã®ã§ï¼‰
 
 
 /************************************************************************
   class SOUNDWAV
 ************************************************************************/
 
-// WAVƒf[ƒ^–„‚ß—v‹ƒR[ƒ‹ƒoƒbƒN‚É“n‚³‚ê‚éƒf[ƒ^
+// WAVãƒ‡ãƒ¼ã‚¿åŸ‹ã‚è¦æ±‚ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯ã«æ¸¡ã•ã‚Œã‚‹ãƒ‡ãƒ¼ã‚¿
 struct WAVINFO {
-	int playflag;			// Ä¶’†ƒtƒ‰ƒO
-	int playingflag;		// Ä¶’†ƒtƒ‰ƒO
-	int loopflag;			// ƒ‹[ƒvÄ¶
-	int start;			// WAVƒf[ƒ^—ñ‚ÌAƒtƒ@ƒCƒ‹æ“ª‚©‚ç‚ÌƒIƒtƒZƒbƒg
-	int end;			// ƒf[ƒ^I’[ˆÊ’u
-	int repeat;			// ƒŠƒs[ƒg‚ÌŠª‚«–ß‚µˆÊ’u
-	int pos;			// Œ»İ‚Ìƒtƒ@ƒCƒ‹ƒ|ƒCƒ“ƒg
-	int channel;			// ƒ`ƒƒƒlƒ‹”i1:mono 2:stereo)
-	int bits;			// ƒf[ƒ^ƒrƒbƒg”i8 or 16j
-	int linear;			//  üŒ`ˆ³kƒtƒ‰ƒO
-	long backupedA5;		// A5‚ÌƒoƒbƒNƒAƒbƒv
+	int playflag;			// å†ç”Ÿä¸­ãƒ•ãƒ©ã‚°
+	int playingflag;		// å†ç”Ÿä¸­ãƒ•ãƒ©ã‚°
+	int loopflag;			// ãƒ«ãƒ¼ãƒ—å†ç”Ÿ
+	int start;			// WAVãƒ‡ãƒ¼ã‚¿åˆ—ã®ã€ãƒ•ã‚¡ã‚¤ãƒ«å…ˆé ­ã‹ã‚‰ã®ã‚ªãƒ•ã‚»ãƒƒãƒˆ
+	int end;			// ãƒ‡ãƒ¼ã‚¿çµ‚ç«¯ä½ç½®
+	int repeat;			// ãƒªãƒ”ãƒ¼ãƒˆæ™‚ã®å·»ãæˆ»ã—ä½ç½®
+	int pos;			// ç¾åœ¨ã®ãƒ•ã‚¡ã‚¤ãƒ«ãƒã‚¤ãƒ³ãƒˆ
+	int channel;			// ãƒãƒ£ãƒãƒ«æ•°ï¼ˆ1:mono 2:stereo)
+	int bits;			// ãƒ‡ãƒ¼ã‚¿ãƒ“ãƒƒãƒˆæ•°ï¼ˆ8 or 16ï¼‰
+	int linear;			//  ç·šå½¢åœ§ç¸®ãƒ•ãƒ©ã‚°
+	long backupedA5;		// A5ã®ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—
 };
 
 
-// ƒtƒ@ƒCƒ‹“Ç‚İ‚İI—¹ƒR[ƒ‹ƒoƒbƒN‚É“n‚³‚ê‚éƒf[ƒ^iParamBlockRec‚ÌŠg’£j
+// ãƒ•ã‚¡ã‚¤ãƒ«èª­ã¿è¾¼ã¿çµ‚äº†ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯ã«æ¸¡ã•ã‚Œã‚‹ãƒ‡ãƒ¼ã‚¿ï¼ˆParamBlockRecã®æ‹¡å¼µï¼‰
 struct WAVFILEINFO {
-	ParamBlockRec pb;		// ƒpƒ‰ƒ[ƒ^ƒuƒƒbƒNƒŒƒR[ƒhiPBReadAsync‚Åg—pj
-	SndDoubleBufferPtr buf;		// DoubleBuffer‚Ì•Ğ‚Á‚Û‚Ìƒ|ƒCƒ“ƒ^
-	int num;			// ƒoƒbƒtƒ@”Ô†i0‚©1j
-	int inuse;			// ƒfƒBƒXƒN“Ç‚İ‚İÀs’†ƒtƒ‰ƒO
-	WAVINFO* wav;			// WAVINFO‚Ö‚Ìƒ|ƒCƒ“ƒ^
+	ParamBlockRec pb;		// ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãƒ–ãƒ­ãƒƒã‚¯ãƒ¬ã‚³ãƒ¼ãƒ‰ï¼ˆPBReadAsyncã§ä½¿ç”¨ï¼‰
+	SndDoubleBufferPtr buf;		// DoubleBufferã®ç‰‡ã£ã½ã®ãƒã‚¤ãƒ³ã‚¿
+	int num;			// ãƒãƒƒãƒ•ã‚¡ç•ªå·ï¼ˆ0ã‹1ï¼‰
+	int inuse;			// ãƒ‡ã‚£ã‚¹ã‚¯èª­ã¿è¾¼ã¿å®Ÿè¡Œä¸­ãƒ•ãƒ©ã‚°
+	WAVINFO* wav;			// WAVINFOã¸ã®ãƒã‚¤ãƒ³ã‚¿
 };
 
 
@@ -57,7 +57,7 @@ private:
 	int linear;
 public:
 	SOUNDWAV(int l);
-	~SOUNDWAV(void);
+	â€¾SOUNDWAV(void);
 
 	void Play(char* f, int loop, int cutsize);
 	void Stop(void);
@@ -102,7 +102,7 @@ private:
 
 public:
 	SOUNDKOE(int type, int l);
-	~SOUNDKOE(void);
+	â€¾SOUNDKOE(void);
 
 	void Play(char* f, int tid, int id);
 	void Stop(void);

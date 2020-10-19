@@ -3,7 +3,7 @@
   Copyright 2000, K.Takagi(Kenjo)
 
   pdtbuf.cpp
-    PDTƒoƒbƒtƒ@
+    PDTãƒãƒƒãƒ•ã‚¡
 =======================================================================*/
 
 #include <stdio.h>
@@ -15,7 +15,7 @@
 
 /************************************************************************
   class PDTBUF
-    ‰æ‘œƒoƒbƒtƒ@
+    ç”»åƒãƒãƒƒãƒ•ã‚¡
 ************************************************************************/
 
 PDTBUFFER::PDTBUFFER(int x, int y, int p, int l, bool flag)
@@ -28,17 +28,17 @@ PDTBUFFER::PDTBUFFER(int x, int y, int p, int l, bool flag)
 	buffer = NULL;
 	if ( flag ) {
 		buffer = new unsigned char[x*y*p];
-		bufdel = true;	// ƒfƒXƒgƒ‰ƒNƒ^‚Åƒoƒbƒtƒ@‚ğÁ‚·
+		bufdel = true;	// ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã§ãƒãƒƒãƒ•ã‚¡ã‚’æ¶ˆã™
 		memset(buffer, 0, x*y*p);
 	} else {
 		buffer = 0;
-		bufdel = false;	// ƒoƒbƒtƒ@‚ğ•ÊŠm•Û‚µ‚Ä‚é‚ÍÁ‚³‚È‚¢i•\¦PDT—pj
+		bufdel = false;	// ãƒãƒƒãƒ•ã‚¡ã‚’åˆ¥ç¢ºä¿ã—ã¦ã‚‹æ™‚ã¯æ¶ˆã•ãªã„ï¼ˆè¡¨ç¤ºPDTç”¨ï¼‰
 	}
 	mask = new unsigned char[x*y];
 	memset(mask, 255, x*y);
 };
 
-PDTBUFFER::~PDTBUFFER(void)
+PDTBUFFER::â€¾PDTBUFFER(void)
 {
 	if (bufdel) delete[] buffer;
 	delete[] mask;

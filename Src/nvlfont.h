@@ -3,7 +3,7 @@
   Copyright 2000, K.Takagi(Kenjo)
 
   nvlfont.h
-    NVL_SYSTEM=1 時のフォントデータのクラス
+    NVL_SYSTEM=1 譎ゅ�ｮ繝輔か繝ｳ繝医ョ繝ｼ繧ｿ縺ｮ繧ｯ繝ｩ繧ｹ
 =======================================================================*/
 
 #ifndef _nvlfont_h
@@ -20,7 +20,7 @@ private:
 
 public:
 	NOVELFONT(SYSTEM* s);
-	~NOVELFONT(void);
+	窶ｾNOVELFONT(void);
 	unsigned char* GetFont(int num);
 };
 

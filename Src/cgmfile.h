@@ -3,7 +3,7 @@
   Copyright 2000, K.Takagi(Kenjo)
 
   cgmfile.h
-    CGƒ‚[ƒhƒf[ƒ^iMODE.CGMjŠÇ——p‚ÌƒNƒ‰ƒX
+    CGãƒ¢ãƒ¼ãƒ‰ãƒ‡ãƒ¼ã‚¿ï¼ˆMODE.CGMï¼‰ç®¡ç†ç”¨ã®ã‚¯ãƒ©ã‚¹
 =======================================================================*/
 
 #ifndef _cgmfile_h
@@ -24,7 +24,7 @@ private:
 	SYSTEM* sys;
 public:
 	CGMODE(SYSTEM* s, FLAGS* flg);
-	~CGMODE(void);
+	â€¾CGMODE(void);
 	void SetFlag(char* f);
 	int GetPercentage(void);
 	int GetFlag(int n);

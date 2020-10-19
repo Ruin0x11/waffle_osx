@@ -3,7 +3,7 @@
   Copyright 2000, K.Takagi(Kenjo)
 
   cgmfile.h
-    CGƒ‚[ƒhƒf[ƒ^iMODE.CGMjŠÇ——p‚ÌƒNƒ‰ƒX
+    CGãƒ¢ãƒ¼ãƒ‰ãƒ‡ãƒ¼ã‚¿ï¼ˆMODE.CGMï¼‰ç®¡ç†ç”¨ã®ã‚¯ãƒ©ã‚¹
 =======================================================================*/
 
 #include <stdio.h>
@@ -15,8 +15,8 @@
 #include "debug.h"
 #include "common.h"
 
-// ‚È‚ñ‚©ˆÃ†‰»‚³‚ê‚Ä‚é‚ËEEE
-// ‚Á‚Ä‚±‚Æ‚Å‰ğ“ÇƒL[B‚Ç‚ÌƒQ[ƒ€‚Å‚à‹¤’Ê‚Á‚Û‚¢B
+// ãªã‚“ã‹æš—å·åŒ–ã•ã‚Œã¦ã‚‹ã­ãƒ»ãƒ»ãƒ»
+// ã£ã¦ã“ã¨ã§è§£èª­ã‚­ãƒ¼ã€‚ã©ã®ã‚²ãƒ¼ãƒ ã§ã‚‚å…±é€šã£ã½ã„ã€‚
 static const unsigned char cgmkey[256] = {
 	0x8b, 0xe5, 0x5d, 0xc3, 0xa1, 0xe0, 0x30, 0x44, 0x00, 0x85, 0xc0, 0x74, 0x09, 0x5f, 0x5e, 0x33,
 	0xc0, 0x5b, 0x8b, 0xe5, 0x5d, 0xc3, 0x8b, 0x45, 0x0c, 0x85, 0xc0, 0x75, 0x14, 0x8b, 0x55, 0xec,
@@ -40,7 +40,7 @@ static const unsigned char cgmkey[256] = {
   class NOVELFONT
 ************************************************************************/
 
-// ‚±‚ñ‚·‚Æ‚ç‚­‚½
+// ã“ã‚“ã™ã¨ã‚‰ããŸ
 CGMODE::CGMODE(SYSTEM* s, FLAGS* flg)
 {
 	int filesize, i;
@@ -58,20 +58,20 @@ CGMODE::CGMODE(SYSTEM* s, FLAGS* flg)
 
 	if ( tmpbuf ) {
 		cgnum = (tmpbuf[16]|(tmpbuf[17]<<8)|(tmpbuf[18]<<16)|(tmpbuf[19]<<24));
-		// ˆÃ†‰»‰ğœ
+		// æš—å·åŒ–è§£é™¤
 		for ( i=0; i<(filesize-32); i++ ) {
 			tmpbuf[i+32] ^= cgmkey[i&255];
 		}
-		// PACKƒtƒ@ƒCƒ‹‚ªo‚Ä‚­‚é‚Ì‚ÅAUnpack‚·‚é
+		// PACKãƒ•ã‚¡ã‚¤ãƒ«ãŒå‡ºã¦ãã‚‹ã®ã§ã€Unpackã™ã‚‹
 		buf = sys->Unpack(tmpbuf+32, &filesize);
 		delete[] tmpbuf;
 	}
-	// ƒtƒ@ƒCƒ‹–¼(32byte){‘Î‰ƒtƒ‰ƒO”Ô†(Int)‚ª•À‚Ô\‘¢
+	// ãƒ•ã‚¡ã‚¤ãƒ«å(32byte)ï¼‹å¯¾å¿œãƒ•ãƒ©ã‚°ç•ªå·(Int)ãŒä¸¦ã¶æ§‹é€ 
 	if ( buf ) {
 /*{
 FILE* fp;
 fp = fopen("_cgmode.log","a");
-fprintf(fp, "Total CG : #%d\n", cgnum);
+fprintf(fp, "Total CG : #%dÂ¥n", cgnum);
 fclose(fp);
 }*/
 		for (i=0; i<cgnum; i++) {
@@ -80,7 +80,7 @@ fclose(fp);
 /*{
 FILE* fp;
 fp = fopen("_cgmode.log","a");
-fprintf(fp, "  %s - Bit[%d]\n", file[i], flagbit[i]);
+fprintf(fp, "  %s - Bit[%d]Â¥n", file[i], flagbit[i]);
 fclose(fp);
 }*/
 		}
@@ -89,13 +89,13 @@ fclose(fp);
 };
 
 
-// ‚Å‚·‚Æ‚ç‚­‚½
-CGMODE::~CGMODE(void)
+// ã§ã™ã¨ã‚‰ããŸ
+CGMODE::â€¾CGMODE(void)
 {
 };
 
 
-// ƒtƒ@ƒCƒ‹–¼‚Ì‰æ‘œ‚ªCGM’†‚É‚ ‚ê‚ÎA‘Î‰ƒrƒbƒg‚ğ‚½‚Ä‚é
+// ãƒ•ã‚¡ã‚¤ãƒ«åã®ç”»åƒãŒCGMä¸­ã«ã‚ã‚Œã°ã€å¯¾å¿œãƒ“ãƒƒãƒˆã‚’ãŸã¦ã‚‹
 void CGMODE::SetFlag(char* f)
 {
 	int i;
@@ -105,7 +105,7 @@ void CGMODE::SetFlag(char* f)
 /*{
 FILE* fp;
 fp = fopen("_cgmode.log","a");
-fprintf(fp, "  %s - Set Bit[%d]\n", f, flagbit[i]);
+fprintf(fp, "  %s - Set Bit[%d]Â¥n", f, flagbit[i]);
 fclose(fp);
 }*/
 			break;
@@ -114,7 +114,7 @@ fclose(fp);
 }
 
 
-// ’B¬—¦‚ğ•Ô‚·
+// é”æˆç‡ã‚’è¿”ã™
 int CGMODE::GetPercentage(void)
 {
 	int i, count, ret;
@@ -127,7 +127,7 @@ int CGMODE::GetPercentage(void)
 }
 
 
-// CGM’†‚Ìn”Ô–Ú‚Ì‰æ‘œ‚ğŒ©‚½‚©‚Ç‚¤‚©‚ğ•Ô‚·
+// CGMä¸­ã®nç•ªç›®ã®ç”»åƒã‚’è¦‹ãŸã‹ã©ã†ã‹ã‚’è¿”ã™
 int CGMODE::GetFlag(int n)
 {
 	int ret = 0;
@@ -138,14 +138,14 @@ int CGMODE::GetFlag(int n)
 }
 
 
-// CGM‚É“o˜^‚³‚ê‚Ä‚¢‚é‘CG”‚ğ•Ô‚·
+// CGMã«ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ç·CGæ•°ã‚’è¿”ã™
 int CGMODE::GetCGAllNum(void)
 {
 	return cgnum;
 }
 
 
-// ‚±‚ê‚Ü‚Å‚ÉŒ©‚½CG”‚ğ•Ô‚·
+// ã“ã‚Œã¾ã§ã«è¦‹ãŸCGæ•°ã‚’è¿”ã™
 int CGMODE::GetCGNum(void)
 {
 	int i;
@@ -157,7 +157,7 @@ int CGMODE::GetCGNum(void)
 }
 
 
-// CGM’†‚Ìn”Ô–Ú‚ÌCGƒtƒ@ƒCƒ‹–¼‚ğ•Ô‚·
+// CGMä¸­ã®nç•ªç›®ã®CGãƒ•ã‚¡ã‚¤ãƒ«åã‚’è¿”ã™
 char* CGMODE::GetCGName(int n)
 {
 	char* ret = 0;
@@ -168,7 +168,7 @@ char* CGMODE::GetCGName(int n)
 }
 
 
-// n”Ô–Ú‚ÌCG‚É‘Î‰‚·‚éƒtƒ‰ƒO”Ô†‚ğ•Ô‚·
+// nç•ªç›®ã®CGã«å¯¾å¿œã™ã‚‹ãƒ•ãƒ©ã‚°ç•ªå·ã‚’è¿”ã™
 int CGMODE::GetCGFlagNum(int n)
 {
 	int ret = 0;

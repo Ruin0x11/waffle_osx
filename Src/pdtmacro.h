@@ -3,7 +3,7 @@
   Copyright 2000, K.Takagi(Kenjo)
 
   pdtmacro.h
-    PDT操作セーブ用マクロのクラス
+    PDT謫堺ｽ懊そ繝ｼ繝也畑繝槭け繝ｭ縺ｮ繧ｯ繝ｩ繧ｹ
 =======================================================================*/
 
 #ifndef _pdtmacro_h
@@ -29,7 +29,7 @@ private:
 
 public:
 	PDTMACRO(PDTMGR* m);
-	~PDTMACRO(void);
+	窶ｾPDTMACRO(void);
 	void Reset(void);
 	void RedrawPDT(void);
 	void StackMacro(MACROITEM* item);

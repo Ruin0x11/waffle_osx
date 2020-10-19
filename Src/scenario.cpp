@@ -3,7 +3,7 @@
   Copyright 2000, K.Takagi(Kenjo)
 
   scenario.cpp
-    ƒVƒiƒŠƒIƒfƒR[ƒ_
+    ã‚·ãƒŠãƒªã‚ªãƒ‡ã‚³ãƒ¼ãƒ€
 =======================================================================*/
 
 #include <stdio.h>
@@ -22,10 +22,10 @@
 
 /************************************************************************
   class SCENARIO
-    Às’†‚ÌƒVƒiƒŠƒIƒf[ƒ^‚ÌƒNƒ‰ƒX
+    å®Ÿè¡Œä¸­ã®ã‚·ãƒŠãƒªã‚ªãƒ‡ãƒ¼ã‚¿ã®ã‚¯ãƒ©ã‚¹
 ************************************************************************/
 
-// Åˆ«`
+// æœ€æ‚ªã€œ
 bool SCENARIO::Decode(void)
 {
 	switch(cmd) {
@@ -97,27 +97,27 @@ bool SCENARIO::Decode(void)
 
 
 /* -------------------------------------------------------------------
-  ƒfƒR[ƒhƒ‹[ƒ`ƒ“W
-  3216Œn‚ÍŒ‹\ô‚¢o‚µ‚½‚Æv‚¤‚ñ‚¾‚¯‚ÇA3217Œn‚Å‚Ìô‚¢o‚µ‚ª‚Ü‚¾`
+  ãƒ‡ã‚³ãƒ¼ãƒ‰ãƒ«ãƒ¼ãƒãƒ³é›†
+  3216ç³»ã¯çµæ§‹æ´—ã„å‡ºã—ãŸã¨æ€ã†ã‚“ã ã‘ã©ã€3217ç³»ã§ã®æ´—ã„å‡ºã—ãŒã¾ã ã€œ
 ------------------------------------------------------------------- */
 
-#define ERROR dprintf("\n************************************\nError!!!!!!\n************************************\n")
+#define ERROR dprintf("Â¥n************************************Â¥nError!!!!!!Â¥n************************************Â¥n")
 
 // -------------------------------------------------------------------
-// 00 - Cmd:$01 Text:ƒ}ƒEƒXƒNƒŠƒbƒN‘Ò‚¿iƒNƒŠƒbƒN‘Ò‚¿ƒAƒCƒRƒ“•t‚«j
+// 00 - Cmd:$01 Text:ãƒã‚¦ã‚¹ã‚¯ãƒªãƒƒã‚¯å¾…ã¡ï¼ˆã‚¯ãƒªãƒƒã‚¯å¾…ã¡ã‚¢ã‚¤ã‚³ãƒ³ä»˜ãï¼‰
 // -------------------------------------------------------------------
 
 bool SCENARIO::d00(void)
 {
-	// NVL_SYSTEM = 0 ‚ÍƒNƒŠƒbƒNŒã‚ÉƒeƒLƒXƒg‚ğÁ‹‚·‚é–Í—lB
-	// NVL_SYSTEM = 1 ‚ÍƒNƒŠƒbƒNŒã‚É‰üsB
+	// NVL_SYSTEM = 0 æ™‚ã¯ã‚¯ãƒªãƒƒã‚¯å¾Œã«ãƒ†ã‚­ã‚¹ãƒˆã‚’æ¶ˆå»ã™ã‚‹æ¨¡æ§˜ã€‚
+	// NVL_SYSTEM = 1 æ™‚ã¯ã‚¯ãƒªãƒƒã‚¯å¾Œã«æ”¹è¡Œã€‚
 	if ( sys->CheckSkip() ) {
 		cmd = 0;
 		sys->MesWin_HideIcon();
 		mouse->TextIconEnd();
 		mesflag = sys->MesWin_LineFeed();
 		SavePoint();
-		sys->PlaySE(3);			// SE.003 ‚ª–Â‚é‚ç‚µ‚¢
+		sys->PlaySE(3);			// SE.003 ãŒé³´ã‚‹ã‚‰ã—ã„
 	} else {
 		sys->MesWin_DrawIcon(0);
 		mouse->TextIconStart();
@@ -127,7 +127,7 @@ bool SCENARIO::d00(void)
 			mouse->TextIconEnd();
 			mesflag = sys->MesWin_LineFeed();
 			SavePoint();
-			sys->PlaySE(3);		// SE.003 ‚ª–Â‚é‚ç‚µ‚¢
+			sys->PlaySE(3);		// SE.003 ãŒé³´ã‚‹ã‚‰ã—ã„
 		}
 	}
 	return true;
@@ -135,7 +135,7 @@ bool SCENARIO::d00(void)
 
 
 // -------------------------------------------------------------------
-// 01 - Cmd:$02 Text:‰üs
+// 01 - Cmd:$02 Text:æ”¹è¡Œ
 // -------------------------------------------------------------------
 bool SCENARIO::d01(void)
 {
@@ -145,19 +145,19 @@ bool SCENARIO::d01(void)
 	subcmd = databuf[curpos++];
 
 	switch (subcmd) {
-		case 1:					// ‰üsŒãAƒCƒ“ƒfƒ“ƒg‚Í0‚É–ß‚é
+		case 1:					// æ”¹è¡Œå¾Œã€ã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆã¯0ã«æˆ»ã‚‹
 			buf[0] = 0x0d;
 			buf[1] = 0x00;
 			sys->MesWin_SetMes(buf);
 			cmd = 0;
 			break;
-		case 2:					// ‰üsŒã‚à‰üs‘O‚ÌƒCƒ“ƒfƒ“ƒg‚ğg‚¤
+		case 2:					// æ”¹è¡Œå¾Œã‚‚æ”¹è¡Œå‰ã®ã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆã‚’ä½¿ã†
 			buf[0] = 0x0d;
 			buf[1] = 0x00;
 			sys->MesWin_SetMes(buf);
 			cmd = 0;
 			break;
-		case 3:					// “äi‚·‚í‚Á‚ÕA‚Ó‚§`Bj
+		case 3:					// è¬ï¼ˆã™ã‚ã£ã·Aãµã‰ã€œBï¼‰
 			buf[0] = 0x0d;
 			buf[1] = 0x00;
 			sys->MesWin_SetMes(buf);
@@ -169,7 +169,7 @@ bool SCENARIO::d01(void)
 
 
 // -------------------------------------------------------------------
-// 02 - Cmd:$03 Text:ƒNƒŠƒbƒN‘Ò‚¿BƒNƒŠƒbƒNŒã‚ÍƒƒbƒZ[ƒW‚ğƒNƒŠƒA‚¹‚¸‚É‘±‚¯‚Ä‘‚­
+// 02 - Cmd:$03 Text:ã‚¯ãƒªãƒƒã‚¯å¾…ã¡ã€‚ã‚¯ãƒªãƒƒã‚¯å¾Œã¯ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ã‚¯ãƒªã‚¢ã›ãšã«ç¶šã‘ã¦æ›¸ã
 // -------------------------------------------------------------------
 bool SCENARIO::d02(void)
 {
@@ -193,7 +193,7 @@ bool SCENARIO::d02(void)
 
 
 // -------------------------------------------------------------------
-// 03 - Cmd:$04 Text:ƒEƒBƒ“ƒhƒEÁ‹Œn
+// 03 - Cmd:$04 Text:ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦æ¶ˆå»ç³»
 // -------------------------------------------------------------------
 bool SCENARIO::d03(void)
 {
@@ -201,38 +201,38 @@ bool SCENARIO::d03(void)
 
 	subcmd = databuf[curpos];
 	switch (subcmd) {
-		case 0x01:			// ƒEƒBƒ“ƒhƒEÁ‹BƒƒbƒZ[ƒWƒoƒbƒtƒ@‚àƒNƒŠƒA
-			dprintf("Text - Hide Window (subcmd $%02X)\n", subcmd);
+		case 0x01:			// ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦æ¶ˆå»ã€‚ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒãƒƒãƒ•ã‚¡ã‚‚ã‚¯ãƒªã‚¢
+			dprintf("Text - Hide Window (subcmd $%02X)Â¥n", subcmd);
 			sys->MesWin_ClearMes();
 			sys->MesWin_Hide();
 			curpos++;
 			cmd = 0;
 			break;
-		case 0x02:			// ƒEƒBƒ“ƒhƒE‚ğ‚¤‚É‚å‚ñ‚ÆÁ‹iHjƒƒbƒZ[ƒWƒoƒbƒtƒ@‚àƒNƒŠƒA
-			// ‚Ü‚¸c•ûŒü‚ª’†S‚ÉŒü‚©‚Á‚Äk‚ñ‚¾Œãi‚±‚Ì’iŠK‚Å‰¡‚É×’·‚­‚È‚Á‚Ä‚¢‚éjA
-			// ‰¡•ûŒü‚ª’†S‚ÉŒü‚©‚Á‚Äk‚ñ‚Å‚¢‚Á‚ÄÁ‚¦‚éB
-			dprintf("Text - Hide Window w/ effect (subcmd $%02X)\n", subcmd);
+		case 0x02:			// ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚’ã†ã«ã‚‡ã‚“ã¨æ¶ˆå»ï¼ˆï¼Ÿï¼‰ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒãƒƒãƒ•ã‚¡ã‚‚ã‚¯ãƒªã‚¢
+			// ã¾ãšç¸¦æ–¹å‘ãŒä¸­å¿ƒã«å‘ã‹ã£ã¦ç¸®ã‚“ã å¾Œï¼ˆã“ã®æ®µéšã§æ¨ªã«ç´°é•·ããªã£ã¦ã„ã‚‹ï¼‰ã€
+			// æ¨ªæ–¹å‘ãŒä¸­å¿ƒã«å‘ã‹ã£ã¦ç¸®ã‚“ã§ã„ã£ã¦æ¶ˆãˆã‚‹ã€‚
+			dprintf("Text - Hide Window w/ effect (subcmd $%02X)Â¥n", subcmd);
 			sys->MesWin_ClearMes();
 			sys->MesWin_Hide();
 			curpos++;
 			cmd = 0;
 			break;
-		case 0x03:			// ƒEƒBƒ“ƒhƒE‚ª‚¤‚É‚å‚ñ‚Æã‘‚«AƒƒbƒZ[ƒWƒoƒbƒtƒ@‚àƒNƒŠƒA
-			// 0x02‚Æ‹tè‡‚Å•\¦B‚±‚ÌA¡•\¦‚³‚ê‚Ä‚¢‚éƒEƒBƒ“ƒhƒE‚ÍÁ‚³‚È‚¢B
-			dprintf("Text - Mes buffer clear w/ redraw window (subcmd $%02X)\n", subcmd);
+		case 0x03:			// ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãŒã†ã«ã‚‡ã‚“ã¨ä¸Šæ›¸ãã€ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒãƒƒãƒ•ã‚¡ã‚‚ã‚¯ãƒªã‚¢
+			// 0x02ã¨é€†æ‰‹é †ã§è¡¨ç¤ºã€‚ã“ã®æ™‚ã€ä»Šè¡¨ç¤ºã•ã‚Œã¦ã„ã‚‹ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã¯æ¶ˆã•ãªã„ã€‚
+			dprintf("Text - Mes buffer clear w/ redraw window (subcmd $%02X)Â¥n", subcmd);
 			sys->MesWin_ClearMes();
 			curpos++;
 			cmd = 0;
 			break;
-		case 0x04:			// ƒNƒŠƒbƒN‚ğ‘Ò‚Á‚ÄƒƒbƒZ[ƒWƒoƒbƒtƒ@ƒNƒŠƒA
+		case 0x04:			// ã‚¯ãƒªãƒƒã‚¯ã‚’å¾…ã£ã¦ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒãƒƒãƒ•ã‚¡ã‚¯ãƒªã‚¢
 			if ( sys->CheckSkip() ) {
 				cmd = 0;
 				curpos++;
 				mouse->TextIconEnd();
 				sys->MesWin_ClearMes();
 				SavePoint();
-				sys->PlaySE(3);			// SE.003 ‚ª–Â‚é‚ç‚µ‚¢
-				dprintf("Text - Mouse Click Wait / Hide Window (subcmd $%02X)\n", subcmd);
+				sys->PlaySE(3);			// SE.003 ãŒé³´ã‚‹ã‚‰ã—ã„
+				dprintf("Text - Mouse Click Wait / Hide Window (subcmd $%02X)Â¥n", subcmd);
 			} else {
 				mouse->TextIconStart();
 				sys->MesWin_DrawIcon(1);
@@ -242,19 +242,19 @@ bool SCENARIO::d03(void)
 					mouse->TextIconEnd();
 					sys->MesWin_ClearMes();
 					SavePoint();
-					sys->PlaySE(3);		// SE.003 ‚ª–Â‚é‚ç‚µ‚¢
-					dprintf("Text - Mouse Click Wait / Hide Window (subcmd $%02X)\n", subcmd);
+					sys->PlaySE(3);		// SE.003 ãŒé³´ã‚‹ã‚‰ã—ã„
+					dprintf("Text - Mouse Click Wait / Hide Window (subcmd $%02X)Â¥n", subcmd);
 				}
 			}
 			break;
-		case 0x05:			// ƒeƒLƒXƒgƒNƒŠƒABƒEƒBƒ“ƒhƒE‚ÍÁ‚³‚È‚¢iâ–], Ribbon2 NovelModej
-			dprintf("Clear Text??? - (subcmd $%02X)\n", subcmd);
+		case 0x05:			// ãƒ†ã‚­ã‚¹ãƒˆã‚¯ãƒªã‚¢ã€‚ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã¯æ¶ˆã•ãªã„ï¼ˆçµ¶æœ›, Ribbon2 NovelModeæ™‚ï¼‰
+			dprintf("Clear Text??? - (subcmd $%02X)Â¥n", subcmd);
 			sys->MesWin_ClearMes();
 			curpos++;
 			cmd = 0;
 			break;
-		default:		// ‚±‚±‚É‚Í—ˆ‚È‚¢‚Í‚¸
-			dprintf("Text??? - (subcmd $%02X)\n", subcmd);
+		default:		// ã“ã“ã«ã¯æ¥ãªã„ã¯ãš
+			dprintf("Text??? - (subcmd $%02X)Â¥n", subcmd);
 			ERROR;
 			curpos++;
 			cmd = 0;
@@ -265,24 +265,24 @@ bool SCENARIO::d03(void)
 
 
 // -------------------------------------------------------------------
-// 04 - Cmd:$05 Text:ƒeƒLƒXƒgƒtƒHƒ“ƒgCü
+// 04 - Cmd:$05 Text:ãƒ†ã‚­ã‚¹ãƒˆãƒ•ã‚©ãƒ³ãƒˆä¿®é£¾
 // -------------------------------------------------------------------
 bool SCENARIO::d04(void)
 {
 	int subcmd;
 
-	subcmd = ReadValue();		// “à•”“I‚É‚Í‰Â•Ï’·”’l‚Åƒf[ƒ^‚ğæ‚Á‚Ä‚é‚İ‚½‚¢
+	subcmd = ReadValue();		// å†…éƒ¨çš„ã«ã¯å¯å¤‰é•·æ•°å€¤ã§ãƒ‡ãƒ¼ã‚¿ã‚’å–ã£ã¦ã‚‹ã¿ãŸã„
 	switch (subcmd) {
 		case 0x01:
-			dprintf("Font Hx1 Wx1 (Normal Size) SubCmd:$%02X\n", subcmd);
+			dprintf("Font Hx1 Wx1 (Normal Size) SubCmd:$%02XÂ¥n", subcmd);
 			sys->MesWin_DoubleText(0);
 			break;
 		case 0x02:
-			dprintf("Font Hx2 Wx2 (Double Size) SubCmd:$%02X\n", subcmd);
+			dprintf("Font Hx2 Wx2 (Double Size) SubCmd:$%02XÂ¥n", subcmd);
 			sys->MesWin_DoubleText(1);
 			break;
 		default:
-			dprintf("Font???  SubCmd:$%02X\n", subcmd);
+			dprintf("Font???  SubCmd:$%02XÂ¥n", subcmd);
 			ERROR;
 			break;
 	}
@@ -323,14 +323,14 @@ bool SCENARIO::d06(void)
 			ERROR;
 			break;
 	}
-	dprintf("???????  SubCmd:$%02X Arg:%d\n", subcmd, data);
+	dprintf("???????  SubCmd:$%02X Arg:%dÂ¥n", subcmd, data);
 	cmd = 0;
 	return true;
 };
 
 
 // -------------------------------------------------------------------
-// 07 - Cmd:$0B ƒOƒ‰ƒtƒBƒbƒN“Ç‚İ‚İ
+// 07 - Cmd:$0B ã‚°ãƒ©ãƒ•ã‚£ãƒƒã‚¯èª­ã¿è¾¼ã¿
 // -------------------------------------------------------------------
 bool SCENARIO::d07(void)
 {
@@ -349,7 +349,7 @@ bool SCENARIO::d07(void)
 
 	switch (subcmd) {
 
-	case 0x01:			// ˆá‚¢‚ª‚Ó‚ß[
+	case 0x01:			// é•ã„ãŒãµã‚ãƒ¼
 	case 0x03:
 	case 0x05:
 		ReadText(buf);
@@ -357,11 +357,11 @@ bool SCENARIO::d07(void)
 		sys->CopySel(idx, &effect);
 		dprintf("Grp '");
 		dprintf(buf);
-		dprintf(".PDT' Load and Displayed  w/ effect  Cmd:%d Step:%d Time:%d\n", effect.cmd, effect.step, effect.steptime);
+		dprintf(".PDT' Load and Displayed  w/ effect  Cmd:%d Step:%d Time:%dÂ¥n", effect.cmd, effect.step, effect.steptime);
 		sys->SnrPDT_LoadEffect(buf, &effect);
 		break;
 
-	case 0x02:			// ˆá‚¢‚ª‚Ó‚ß[
+	case 0x02:			// é•ã„ãŒãµã‚ãƒ¼
 	case 0x04:
 	case 0x06:
 		ReadText(buf);
@@ -381,7 +381,7 @@ bool SCENARIO::d07(void)
 		dprintf("Graphics - Graphic Load w/ effect, File:");
 		dprintf(buf);
 		dprintf(".PDT  Cmd:%d Step:%d Time:%d", effect.cmd, effect.step, effect.steptime);
-		dprintf(".%d:(%d,%d)-(%d,%d)\n", 1, effect.sx1, effect.sy1, effect.sx2, effect.sy2);
+		dprintf(".%d:(%d,%d)-(%d,%d)Â¥n", 1, effect.sx1, effect.sy1, effect.sx2, effect.sy2);
 		sys->SnrPDT_LoadEffect(buf, &effect);
 		break;
 
@@ -390,7 +390,7 @@ bool SCENARIO::d07(void)
 		idx = ReadValue();
 		dprintf("??? Grp '");
 		dprintf(buf);
-		dprintf("' Load to Buffer#%d\n", idx);
+		dprintf("' Load to Buffer#%dÂ¥n", idx);
 		sys->SnrPDT_LoadFile(buf, idx);
 		break;
 
@@ -400,7 +400,7 @@ bool SCENARIO::d07(void)
 		idx = ReadValue();
 		dprintf("Grp '");
 		dprintf(buf);
-		dprintf("' Load to Buffer#%d\n", idx);
+		dprintf("' Load to Buffer#%dÂ¥n", idx);
 		sys->SnrPDT_LoadFile(buf, idx);
 		break;
 
@@ -408,32 +408,32 @@ bool SCENARIO::d07(void)
 		ReadText(buf);
 		dprintf("Graphic '");
 		dprintf(buf);
-		dprintf("' Cached???\n");
+		dprintf("' Cached???Â¥n");
 		break;
 
 	case 0x13:
-		dprintf("?????????????\n");
+		dprintf("?????????????Â¥n");
 		break;
 
-	case 0x22:			// •¡”‚ÌPDT‚Ìd‚Ë‡‚í‚¹Hiƒx[ƒX‚Íƒtƒ@ƒCƒ‹j
-		count = databuf[curpos++];		// ã‚Éd‚Ë‚é–‡”
-		ReadText(buf);					// ƒx[ƒX‚Æ‚È‚éƒtƒ@ƒCƒ‹iƒtƒ@ƒCƒ‹–¼j
-		sys->SnrPDT_MultiLoadFile(buf);		// PDT#1‚ğg‚¤‚ç‚µ‚¢
-		idx = ReadValue();				// •\¦ƒGƒtƒFƒNƒg”Ô†ifrom GAMEEXE.INIj
+	case 0x22:			// è¤‡æ•°ã®PDTã®é‡ã­åˆã‚ã›ï¼Ÿï¼ˆãƒ™ãƒ¼ã‚¹ã¯ãƒ•ã‚¡ã‚¤ãƒ«ï¼‰
+		count = databuf[curpos++];		// ä¸Šã«é‡ã­ã‚‹æšæ•°
+		ReadText(buf);					// ãƒ™ãƒ¼ã‚¹ã¨ãªã‚‹ãƒ•ã‚¡ã‚¤ãƒ«ï¼ˆãƒ•ã‚¡ã‚¤ãƒ«åï¼‰
+		sys->SnrPDT_MultiLoadFile(buf);		// PDT#1ã‚’ä½¿ã†ã‚‰ã—ã„
+		idx = ReadValue();				// è¡¨ç¤ºã‚¨ãƒ•ã‚§ã‚¯ãƒˆç•ªå·ï¼ˆfrom GAMEEXE.INIï¼‰
 		sys->CopySel(idx, &effect);
 		dprintf("%d Grps are copies on '", count);
 		dprintf(buf);
-		dprintf("' w/ effect#%d (EfctCmd:%d)\n", idx, effect.cmd);
+		dprintf("' w/ effect#%d (EfctCmd:%d)Â¥n", idx, effect.cmd);
 		for (i=0; i<count; i++) {
-			idx = databuf[curpos++];	// d‚Ë•ûH
-			ReadText(buf2);				// d‚Ë‚éƒtƒ@ƒCƒ‹iƒtƒ@ƒCƒ‹–¼j
+			idx = databuf[curpos++];	// é‡ã­æ–¹ï¼Ÿ
+			ReadText(buf2);				// é‡ã­ã‚‹ãƒ•ã‚¡ã‚¤ãƒ«ï¼ˆãƒ•ã‚¡ã‚¤ãƒ«åï¼‰
 			if ( buf2[0] ) strcpy(buf, buf2);
 			dprintf(buf);
-			dprintf("\n");
+			dprintf("Â¥n");
 			switch (idx) {
 				case 0x01:
 					sys->SnrPDT_LoadCopy(buf, 0, 0, 639, 479, 0, 0, 1, 0, idx);
-					dprintf("SubSubCmd $01 : (0,0)-(639.479)->(0,0)\n");
+					dprintf("SubSubCmd $01 : (0,0)-(639.479)->(0,0)Â¥n");
 					break;
 
 				case 0x02:
@@ -441,7 +441,7 @@ bool SCENARIO::d07(void)
 					sys->CopySel(num, &e);
 					sys->SnrPDT_LoadCopy(buf, e.sx1, e.sy1, e.sx2, e.sy2, e.dx, e.dy, 1, 0, idx);
 					dprintf("SubSubCmd $02 : Effect:%d (%d,%d)-(%d,%d)->", num, e.sx1, e.sy1, e.sx2, e.sy2);
-					dprintf("(%d,%d)\n", e.dx, e.dy);
+					dprintf("(%d,%d)Â¥n", e.dx, e.dy);
 					break;
 
 				case 0x03:
@@ -450,7 +450,7 @@ bool SCENARIO::d07(void)
 					dstx1 = ReadValue(); dsty1 = ReadValue();
 					sys->SnrPDT_LoadCopy(buf, srcx1, srcy1, srcx2, srcy2, dstx1, dsty1, 1, 0, idx);
 					dprintf("SubSubCmd $02 : (%d,%d)-(%d,%d)->", srcx1, srcy1, srcx2, srcy2);
-					dprintf("(%d,%d)\n", dstx1, dsty1);
+					dprintf("(%d,%d)Â¥n", dstx1, dsty1);
 					break;
 
 				case 0x04:
@@ -460,27 +460,27 @@ bool SCENARIO::d07(void)
 					arg1 = ReadValue();
 					sys->SnrPDT_LoadCopy(buf, srcx1, srcy1, srcx2, srcy2, dstx1, dsty1, 1, arg1, idx);
 					dprintf("SubSubCmd $02 : (%d,%d)-(%d,%d)->", srcx1, srcy1, srcx2, srcy2);
-					dprintf("(%d,%d) Arg:%d\n", dstx1, dsty1, arg1);
+					dprintf("(%d,%d) Arg:%dÂ¥n", dstx1, dsty1, arg1);
 					break;
 			}
 		}
 		sys->SnrPDT_Effect(&effect);
 		break;
 
-	case 0x24:			// •¡”‚ÌPDT‚Ìd‚Ë‡‚í‚¹Hiƒx[ƒX‚ÍŠù‘¶‚ÌPDTj
-		count = databuf[curpos++];		// ã‚Éd‚Ë‚é–‡”
-		i = ReadValue();			// ƒx[ƒX‚Æ‚È‚éƒtƒ@ƒCƒ‹iPDT No.j
+	case 0x24:			// è¤‡æ•°ã®PDTã®é‡ã­åˆã‚ã›ï¼Ÿï¼ˆãƒ™ãƒ¼ã‚¹ã¯æ—¢å­˜ã®PDTï¼‰
+		count = databuf[curpos++];		// ä¸Šã«é‡ã­ã‚‹æšæ•°
+		i = ReadValue();			// ãƒ™ãƒ¼ã‚¹ã¨ãªã‚‹ãƒ•ã‚¡ã‚¤ãƒ«ï¼ˆPDT No.ï¼‰
 		sys->SnrPDT_MultiLoadPDT(i);
-		idx = ReadValue();				// •\¦ƒGƒtƒFƒNƒg”Ô†ifrom GAMEEXE.INIj
+		idx = ReadValue();				// è¡¨ç¤ºã‚¨ãƒ•ã‚§ã‚¯ãƒˆç•ªå·ï¼ˆfrom GAMEEXE.INIï¼‰
 		sys->CopySel(idx, &effect);
-		dprintf("%d Grps are copies on PDT#%d\n", count, i);
-		dprintf("  w/ Effect(Index:%d)  Cmd:%d Time:%d Step:%d\n", idx, effect.cmd, effect.steptime, effect.step);
+		dprintf("%d Grps are copies on PDT#%dÂ¥n", count, i);
+		dprintf("  w/ Effect(Index:%d)  Cmd:%d Time:%d Step:%dÂ¥n", idx, effect.cmd, effect.steptime, effect.step);
 		for (i=0; i<count; i++) {
-			idx = databuf[curpos++];	// d‚Ë•ûH
-			ReadText(buf2);				// d‚Ë‚éƒtƒ@ƒCƒ‹iƒtƒ@ƒCƒ‹–¼j
+			idx = databuf[curpos++];	// é‡ã­æ–¹ï¼Ÿ
+			ReadText(buf2);				// é‡ã­ã‚‹ãƒ•ã‚¡ã‚¤ãƒ«ï¼ˆãƒ•ã‚¡ã‚¤ãƒ«åï¼‰
 			if ( buf2[0] ) strcpy(buf, buf2);
 			dprintf(buf);
-			dprintf("\n");
+			dprintf("Â¥n");
 			switch (idx) {
 				case 0x01:
 					sys->SnrPDT_LoadCopy(buf, 0, 0, 639, 479, 0, 0, 1, 0, idx);
@@ -511,37 +511,37 @@ bool SCENARIO::d07(void)
 		break;
 
 	case 0x30:
-		dprintf("Macro Buffer Clear\n");
+		dprintf("Macro Buffer ClearÂ¥n");
 		sys->ClearMacro();
 		break;
 
 	case 0x31:
 		idx = ReadValue();
-		dprintf("Delete %d Macros\n", idx);
+		dprintf("Delete %d MacrosÂ¥n", idx);
 		sys->DeleteMacro(idx);
 		break;
 
 	case 0x32:
 		idx = ReadValue();
-		dprintf("Macro Buffer??? Arg:%d\n", idx);
+		dprintf("Macro Buffer??? Arg:%dÂ¥n", idx);
 		break;
 
 	case 0x33:
 		idx = ReadValue();
 		flags->SetVal(idx, sys->GetMacroNum());
-		dprintf("Set Macro Num to Val[%d] <- %d\n", idx, flags->GetVal(idx));
+		dprintf("Set Macro Num to Val[%d] <- %dÂ¥n", idx, flags->GetVal(idx));
 		break;
 
-	case 0x50:			// ƒXƒNƒŠ[ƒ“ƒoƒbƒtƒ@‘Ş”ğH
-		dprintf("Backup Screen Buffer???  No Arg\n");
+	case 0x50:			// ã‚¹ã‚¯ãƒªãƒ¼ãƒ³ãƒãƒƒãƒ•ã‚¡é€€é¿ï¼Ÿ
+		dprintf("Backup Screen Buffer???  No ArgÂ¥n");
 		sys->SnrPDT_Copy(0, 0, 639, 479, 0, 0, 0, HIDEPDT, 0);
 		break;
 
-	case 0x52:			// $50‚Å‘Ş”ğ‚µ‚½•¨‚ğAidx”Ô‚ÌƒGƒtƒFƒNƒg‚Å•\¦H
+	case 0x52:			// $50ã§é€€é¿ã—ãŸç‰©ã‚’ã€idxç•ªã®ã‚¨ãƒ•ã‚§ã‚¯ãƒˆã§è¡¨ç¤ºï¼Ÿ
 		idx = ReadValue();
 		sys->CopySel(idx, &effect);
 		effect.srcpdt = HIDEPDT;
-		dprintf("Display backuped Screen Buffer w/ Effect#%d ???\n", idx);
+		dprintf("Display backuped Screen Buffer w/ Effect#%d ???Â¥n", idx);
 		sys->SnrPDT_Effect(&effect);
 		break;
 
@@ -553,7 +553,7 @@ bool SCENARIO::d07(void)
 
 
 // -------------------------------------------------------------------
-// 08 - Cmd:$0C ƒAƒjƒ[ƒVƒ‡ƒ“
+// 08 - Cmd:$0C ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³
 // -------------------------------------------------------------------
 bool SCENARIO::d08(void)
 {
@@ -568,7 +568,7 @@ bool SCENARIO::d08(void)
 		}
 	} else {
 		subcmd = databuf[curpos++];
-		dprintf("Animation - SubCmd:$%02X\n", subcmd);
+		dprintf("Animation - SubCmd:$%02XÂ¥n", subcmd);
 
 		switch( subcmd ) {
 			case 0x10:
@@ -576,11 +576,11 @@ bool SCENARIO::d08(void)
 				idx = ReadValue();
 				dprintf("   File - ");
 				dprintf(buf);
-				dprintf("  Index:%d\n", idx);
+				dprintf("  Index:%dÂ¥n", idx);
 				if ( sys->AnimationSetup(buf, idx) ) {
 					anmflag = true;
 				} else {
-					dprintf("***** Animation Initialize Fault.\n");
+					dprintf("***** Animation Initialize Fault.Â¥n");
 					cmd = 0;
 				}
 				break;
@@ -591,29 +591,29 @@ bool SCENARIO::d08(void)
 				arg2 = ReadValue();
 				dprintf("   File - ");
 				dprintf(buf);
-				dprintf("  Arg1=%d, Arg2=%d\n", arg1, arg2);
+				dprintf("  Arg1=%d, Arg2=%dÂ¥n", arg1, arg2);
 				if ( sys->AnimationSetup(buf, 0) ) {
 					anmflag = true;
 				} else {
-					dprintf("***** Animation Initialize Fault.\n");
+					dprintf("***** Animation Initialize Fault.Â¥n");
 					cmd = 0;
 				}
 				break;
 
 			case 0x12:			// Multi Animation Caching
-			case 0x30:			// .KOE‚É“¯Šú‚ÌƒAƒjƒiæŠ¸‚¦‚¸MultiAnimeˆµ‚¢‚É‚µ‚Æ‚­j
+			case 0x30:			// .KOEã«åŒæœŸã®ã‚¢ãƒ‹ãƒ¡ï¼ˆå–æ•¢ãˆãšMultiAnimeæ‰±ã„ã«ã—ã¨ãï¼‰
 				ReadText(buf);
 				dprintf("  File:");
 				dprintf(buf);
 //				idx = ReadValue();
 				while (databuf[curpos]) {
 					idx = ReadValue();
-					dprintf("  Data:%d\n", idx);
+					dprintf("  Data:%dÂ¥n", idx);
 					sys->MultiAnimationSetup(buf, idx);
 				}
-				dprintf("  Data:%d\n", idx);
+				dprintf("  Data:%dÂ¥n", idx);
 				curpos++;
-				if ( subcmd==0x30 )		// .KOE“¯Šú
+				if ( subcmd==0x30 )		// .KOEåŒæœŸ
 					multianmflag = -1;
 				else
 					multianmflag = 1;
@@ -621,7 +621,7 @@ bool SCENARIO::d08(void)
 				break;
 				
 			case 0x13:
-				dprintf("***** Animation Timer?\n");
+				dprintf("***** Animation Timer?Â¥n");
 				cmd = 0;
 				break;
 			case 0x16:
@@ -631,7 +631,7 @@ bool SCENARIO::d08(void)
 				arg2 = ReadValue();
 				dprintf("   File - ");
 				dprintf(buf);
-				dprintf("  Index:%d Arg1:%d Arg2:%d\n", idx, arg1, arg2);
+				dprintf("  Index:%d Arg1:%d Arg2:%dÂ¥n", idx, arg1, arg2);
 				if ( sys->AnimationSetup(buf, idx) ) {
 					anmflag = true;
 				} else {
@@ -646,13 +646,13 @@ bool SCENARIO::d08(void)
 				dprintf(buf);
 				while (databuf[curpos]) {
 					idx = ReadValue();
-					dprintf("  Data:%d\n", idx);
+					dprintf("  Data:%dÂ¥n", idx);
 					sys->MultiAnimationStop(buf, idx);
 				}
 				curpos++;
 				cmd = 0;
 				break;
-			case 0x21:		// $12‚ÅƒLƒƒƒbƒVƒ…‚µ‚½‚Ì‚ğÁ‹‚µAMultiAnimation’â~
+			case 0x21:		// $12ã§ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã—ãŸã®ã‚’æ¶ˆå»ã—ã€MultiAnimationåœæ­¢
 			case 0x25:
 				sys->MultiAnimationClear();
 				multianmflag = 0;
@@ -665,7 +665,7 @@ bool SCENARIO::d08(void)
 
 
 // -------------------------------------------------------------------
-// 09 - Cmd:$0E ƒTƒEƒ“ƒhŠÖ˜A
+// 09 - Cmd:$0E ã‚µã‚¦ãƒ³ãƒ‰é–¢é€£
 // -------------------------------------------------------------------
 bool SCENARIO::d09(void)
 {
@@ -675,7 +675,7 @@ bool SCENARIO::d09(void)
 	int data, idx, num, arg;
 	int x1, y1, x2, y2;
 
-	if ( soundwait ) {			// Ä¶I—¹‚Ü‚Å’â~w’è‚Ì‚Ìˆ—
+	if ( soundwait ) {			// å†ç”Ÿçµ‚äº†ã¾ã§åœæ­¢æŒ‡å®šã®æ™‚ã®å‡¦ç†
 		switch (soundwait) {
 //			case 0x02:			// BGM
 //			case 0x06:
@@ -698,33 +698,33 @@ bool SCENARIO::d09(void)
 	} else {
 
 	subcmd = databuf[curpos++];
-	dprintf("Music - SubCmd:$%02X\n", subcmd);
+	dprintf("Music - SubCmd:$%02XÂ¥n", subcmd);
 
 	switch( subcmd ) {
-		// BGM (CD-DA/DSound) ŠÖ˜A
-		// $00,04,08`0F,13` ‚ÌƒRƒ}ƒ“ƒh‚Í–³‚¢–Í—l
-		case 0x01:			// BGMƒ‹[ƒvÄ¶
+		// BGM (CD-DA/DSound) é–¢é€£
+		// $00,04,08ã€œ0F,13ã€œ ã®ã‚³ãƒãƒ³ãƒ‰ã¯ç„¡ã„æ¨¡æ§˜
+		case 0x01:			// BGMãƒ«ãƒ¼ãƒ—å†ç”Ÿ
 			ReadText(buf);
 			dprintf("Play CD w/ loop : Track ");
 			dprintf(buf);
-			dprintf("\n");
+			dprintf("Â¥n");
 			sound->CD_Play(buf, 1);
 			cmd = 0;
 			break;
-		case 0x02:			// BGM’P”­Ä¶ Ä¶I—¹‚Ü‚Å‚±‚±‚Å’â~
+		case 0x02:			// BGMå˜ç™ºå†ç”Ÿ å†ç”Ÿçµ‚äº†ã¾ã§ã“ã“ã§åœæ­¢
 			ReadText(buf);
 			dprintf("Play CD w/ wait : Track ");
 			dprintf(buf);
-			dprintf("\n");
+			dprintf("Â¥n");
 			sound->CD_Play(buf, 0);
 			soundwait = subcmd;
 //			cmd = 0;
 			break;
-		case 0x03:			// BGM’P”­Ä¶
+		case 0x03:			// BGMå˜ç™ºå†ç”Ÿ
 			ReadText(buf);
 			dprintf("Play CD once : Track ");
 			dprintf(buf);
-			dprintf("\n");
+			dprintf("Â¥n");
 			sound->CD_Play(buf, 0);
 			cmd = 0;
 			break;
@@ -733,7 +733,7 @@ bool SCENARIO::d09(void)
 			data = ReadValue();
 			dprintf("Fade In CD w/ loop  Arg:%d  Track ", data);
 			dprintf(buf);
-			dprintf("\n");
+			dprintf("Â¥n");
 			sound->CD_FadeIn(buf, 1, data);
 			cmd = 0;
 			break;
@@ -742,7 +742,7 @@ bool SCENARIO::d09(void)
 			data = ReadValue();
 			dprintf("Fade In CD w/ wait Arg:%d  Track ", data);
 			dprintf(buf);
-			dprintf("\n");
+			dprintf("Â¥n");
 			sound->CD_FadeIn(buf, 0, data);
 			soundwait = subcmd;
 //			cmd = 0;
@@ -752,29 +752,29 @@ bool SCENARIO::d09(void)
 			data = ReadValue();
 			dprintf("Fade In CD and play once Arg:%d  Track ", data);
 			dprintf(buf);
-			dprintf("\n");
+			dprintf("Â¥n");
 			sound->CD_FadeIn(buf, 0, data);
 			cmd = 0;
 			break;
 		case 0x10:			// BGM FadeOut / Stop
 			data = ReadValue();
-			dprintf("FadeOut CD ($10)  Arg:%d\n", data);
+			dprintf("FadeOut CD ($10)  Arg:%dÂ¥n", data);
 			sound->CD_FadeOut(data);
 			cmd = 0;
 			break;
 		case 0x11:			// BGM Stop
-			dprintf("Stop CD ?? ($11)\n");
+			dprintf("Stop CD ?? ($11)Â¥n");
 			sound->CD_Stop();
 			cmd = 0;
 			break;
 		case 0x12:			// BGM Rewind
-			dprintf("Rewind CD ? ($12)\n");
+			dprintf("Rewind CD ? ($12)Â¥n");
 			sound->CD_Stop();
 			cmd = 0;
 			break;
 
-		// --- KOE ŠÖ˜A ---
-		case 0x20:			// KOEƒtƒ@ƒCƒ‹Ä¶iÄ¶I—¹‚Ü‚ÅƒVƒiƒŠƒI’â~j
+		// --- KOE é–¢é€£ ---
+		case 0x20:			// KOEãƒ•ã‚¡ã‚¤ãƒ«å†ç”Ÿï¼ˆå†ç”Ÿçµ‚äº†ã¾ã§ã‚·ãƒŠãƒªã‚ªåœæ­¢ï¼‰
 			data = ReadValue();
 			if ( sys->Version()>=1714 ) {
 				idx = data/100000;
@@ -783,7 +783,7 @@ bool SCENARIO::d09(void)
 				idx = data/10000;
 				num = data%10000;
 			}
-			dprintf("Play Voice w/ wait Idx:%d (Z%03d / %04d)\n", data, idx, num);
+			dprintf("Play Voice w/ wait Idx:%d (Z%03d / %04d)Â¥n", data, idx, num);
 			sound->KOE_Play(data);
 /*			if ( koetextskip ) {
 				if ( (databuf[curpos]==0xff)||(databuf[curpos]==0xfe) ) {
@@ -797,7 +797,7 @@ bool SCENARIO::d09(void)
 			soundwait = subcmd;
 //			cmd = 0;
 			break;
-		case 0x21:			// KOEƒtƒ@ƒCƒ‹Ä¶iƒVƒiƒŠƒI‚ÍŒp‘±j
+		case 0x21:			// KOEãƒ•ã‚¡ã‚¤ãƒ«å†ç”Ÿï¼ˆã‚·ãƒŠãƒªã‚ªã¯ç¶™ç¶šï¼‰
 			data = ReadValue();
 			if ( sys->Version()>=1714 ) {
 				idx = data/100000;
@@ -806,7 +806,7 @@ bool SCENARIO::d09(void)
 				idx = data/10000;
 				num = data%10000;
 			}
-			dprintf("Play Voice Idx:%d (Z%03d / %04d)\n", data, idx, num);
+			dprintf("Play Voice Idx:%d (Z%03d / %04d)Â¥n", data, idx, num);
 			sound->KOE_Play(data);
 /*			if ( koetextskip ) {
 				if ( (databuf[curpos]==0xff)||(databuf[curpos]==0xfe) ) {
@@ -819,9 +819,9 @@ bool SCENARIO::d09(void)
 */
 			cmd = 0;
 			break;
-		case 0x22:			// KOEƒtƒ@ƒCƒ‹Ä¶2iƒVƒiƒŠƒI‚ÍŒp‘±j
+		case 0x22:			// KOEãƒ•ã‚¡ã‚¤ãƒ«å†ç”Ÿ2ï¼ˆã‚·ãƒŠãƒªã‚ªã¯ç¶™ç¶šï¼‰
 			data = ReadValue();
-			arg = ReadValue();		// —p“r•s–¾
+			arg = ReadValue();		// ç”¨é€”ä¸æ˜
 			if ( sys->Version()>=1714 ) {
 				idx = data/100000;
 				num = data%100000;
@@ -829,7 +829,7 @@ bool SCENARIO::d09(void)
 				idx = data/10000;
 				num = data%10000;
 			}
-			dprintf("Play Voice Idx:%d (Z%03d / %04d), Arg:%d\n", data, idx, num, arg);
+			dprintf("Play Voice Idx:%d (Z%03d / %04d), Arg:%dÂ¥n", data, idx, num, arg);
 			sound->KOE_Play(data);
 /*			if ( koetextskip ) {
 				if ( (databuf[curpos]==0xff)||(databuf[curpos]==0xfe) ) {
@@ -843,129 +843,129 @@ bool SCENARIO::d09(void)
 			cmd = 0;
 			break;
 
-		// --- WAV ŠÖ˜A ---
-		case 0x30:			// WAV’P”­Ä¶
+		// --- WAV é–¢é€£ ---
+		case 0x30:			// WAVå˜ç™ºå†ç”Ÿ
 			ReadText(buf);
 			dprintf("[$30] Play WAV file :");
 			dprintf(buf);
-			dprintf("\n");
+			dprintf("Â¥n");
 			sound->Sound_Play(buf, 0);
 			cmd = 0;
 			break;
-		case 0x31:			// WAV’P”­Ä¶2iArg•t‚«j
+		case 0x31:			// WAVå˜ç™ºå†ç”Ÿ2ï¼ˆArgä»˜ãï¼‰
 			ReadText(buf);
-			idx = ReadValue();		// —p“r•s–¾
+			idx = ReadValue();		// ç”¨é€”ä¸æ˜
 			dprintf("[$31] Play WAV file :");
 			dprintf(buf);
 			dprintf(" Arg:%d($%08X)", idx, idx);
-			dprintf("\n");
+			dprintf("Â¥n");
 			sound->Sound_Play(buf, 0);
 			cmd = 0;
 			break;
-		case 0x32:			// WAVƒ‹[ƒvÄ¶ ($30 w/ loop)
+		case 0x32:			// WAVãƒ«ãƒ¼ãƒ—å†ç”Ÿ ($30 w/ loop)
 			ReadText(buf);
 			dprintf("[$32] Play WAV file w/ loop :");
 			dprintf(buf);
-			dprintf("\n");
+			dprintf("Â¥n");
 			sound->Sound_Play(buf, 1);
 			cmd = 0;
 			break;
-		case 0x33:			// WAVƒ‹[ƒvÄ¶2 ($31 w/ loop)
+		case 0x33:			// WAVãƒ«ãƒ¼ãƒ—å†ç”Ÿ2 ($31 w/ loop)
 			ReadText(buf);
-			idx = ReadValue();		// —p“r•s–¾
+			idx = ReadValue();		// ç”¨é€”ä¸æ˜
 			dprintf("[$33] Play WAV file  w/ loop :");
 			dprintf(buf);
 			dprintf(" Arg:%d($%08X)", idx, idx);
-			dprintf("\n");
+			dprintf("Â¥n");
 			sound->Sound_Play(buf, 1);
 			cmd = 0;
 			break;
-		case 0x34:			// WAV’P”­Ä¶AI—¹‚Ü‚Å‚±‚±‚Å’â~ ($30 w/ wait)
+		case 0x34:			// WAVå˜ç™ºå†ç”Ÿã€çµ‚äº†ã¾ã§ã“ã“ã§åœæ­¢ ($30 w/ wait)
 			ReadText(buf);
 			dprintf("[$34] Play WAV file w/ wait :");
 			dprintf(buf);
-			dprintf("\n");
+			dprintf("Â¥n");
 			sound->Sound_Play(buf, 0);
 			soundwait = subcmd;
 //			cmd = 0;
 			break;
-		case 0x35:			// WAV’P”­Ä¶2AI—¹‚Ü‚Å‚±‚±‚Å’â~ ($31 w/ wait)
+		case 0x35:			// WAVå˜ç™ºå†ç”Ÿ2ã€çµ‚äº†ã¾ã§ã“ã“ã§åœæ­¢ ($31 w/ wait)
 			ReadText(buf);
-			idx = ReadValue();		// —p“r•s–¾
+			idx = ReadValue();		// ç”¨é€”ä¸æ˜
 			dprintf("[$35] Play WAV file w/ wait :");
 			dprintf(buf);
 			dprintf(" Arg:%d($%08X)", idx, idx);
-			dprintf("\n");
+			dprintf("Â¥n");
 			sound->Sound_Play(buf, 0);
 			soundwait = subcmd;
 //			cmd = 0;
 			break;
-		case 0x36:			// WAV’â~H
-			dprintf("[$36] WAV stop?\n");
+		case 0x36:			// WAVåœæ­¢ï¼Ÿ
+			dprintf("[$36] WAV stop?Â¥n");
 			sound->Sound_Stop();
 			cmd = 0;
 			break;
-		case 0x37:			// WAV’â~2H
-			data = ReadValue();		// —p“r•s–¾
-			dprintf("[$37] WAV stop?  Arg:%d\n", data);
+		case 0x37:			// WAVåœæ­¢2ï¼Ÿ
+			data = ReadValue();		// ç”¨é€”ä¸æ˜
+			dprintf("[$37] WAV stop?  Arg:%dÂ¥n", data);
 			sound->Sound_Stop();
 			cmd = 0;
 			break;
-		case 0x38:			// WAV’â~3H
-			dprintf("[$38] WAV stop?\n");
+		case 0x38:			// WAVåœæ­¢3ï¼Ÿ
+			dprintf("[$38] WAV stop?Â¥n");
 			sound->Sound_Stop();
 			cmd = 0;
 			break;
 		case 0x39:			// ?????
 			data = ReadValue();
-			dprintf("[$39] WAV ??????  Arg:%d\n", data);
+			dprintf("[$39] WAV ??????  Arg:%dÂ¥n", data);
 			cmd = 0;
 			break;
 
-		case 0x44:			// SE (GAMEEXE.INI’†‚Åw’è‚µ‚½WAV‚ğ–Â‚ç‚·)
+		case 0x44:			// SE (GAMEEXE.INIä¸­ã§æŒ‡å®šã—ãŸWAVã‚’é³´ã‚‰ã™)
 			data = ReadValue();
-			dprintf("[$44] WAV Play 'SE'  Arg:%d\n", data);
+			dprintf("[$44] WAV Play 'SE'  Arg:%dÂ¥n", data);
 			sys->PlaySE(data);
 			cmd = 0;
 			break;
 
-		// --- Movie ŠÖ˜AAƒTƒCƒY‚É‡‚í‚¹‚ÄŠg‘åk¬‚à‚µ‚Ü‚· ---
-		case 0x50:			// Movie(AVI)Ä¶‚µ‚Â‚ÂƒVƒiƒŠƒI‘±s
-		case 0x51:			// Movie(AVI)Ä¶‚µ‚Â‚ÂƒVƒiƒŠƒI‘±s ƒ‹[ƒvÄ¶
+		// --- Movie é–¢é€£ã€ã‚µã‚¤ã‚ºã«åˆã‚ã›ã¦æ‹¡å¤§ç¸®å°ã‚‚ã—ã¾ã™ ---
+		case 0x50:			// Movie(AVI)å†ç”Ÿã—ã¤ã¤ã‚·ãƒŠãƒªã‚ªç¶šè¡Œ
+		case 0x51:			// Movie(AVI)å†ç”Ÿã—ã¤ã¤ã‚·ãƒŠãƒªã‚ªç¶šè¡Œ ãƒ«ãƒ¼ãƒ—å†ç”Ÿ
 			ReadText(buf);
 			x1 = ReadValue(); y1 = ReadValue();
 			x2 = ReadValue(); y2 = ReadValue();
 			dprintf("[$50/$51] Play Movie(2)   File - ");
 			dprintf(buf);
-			dprintf("\n");
-			dprintf("   Pos : (%d,%d)-(%d,%d)\n", x1, y1, x2, y2);
+			dprintf("Â¥n");
+			dprintf("   Pos : (%d,%d)-(%d,%d)Â¥n", x1, y1, x2, y2);
 			cmd = 0;
 			break;
-		case 0x52:			// Movie(AVI)Ä¶ I—¹‚Ü‚ÅƒVƒiƒŠƒI’â~ ƒ}ƒEƒXƒLƒƒƒ“ƒZƒ‹‚È‚µ
-		case 0x53:			// Movie(AVI)Ä¶ I—¹‚Ü‚ÅƒVƒiƒŠƒI’â~ ƒ}ƒEƒXƒLƒƒƒ“ƒZƒ‹‚ ‚è
+		case 0x52:			// Movie(AVI)å†ç”Ÿ çµ‚äº†ã¾ã§ã‚·ãƒŠãƒªã‚ªåœæ­¢ ãƒã‚¦ã‚¹ã‚­ãƒ£ãƒ³ã‚»ãƒ«ãªã—
+		case 0x53:			// Movie(AVI)å†ç”Ÿ çµ‚äº†ã¾ã§ã‚·ãƒŠãƒªã‚ªåœæ­¢ ãƒã‚¦ã‚¹ã‚­ãƒ£ãƒ³ã‚»ãƒ«ã‚ã‚Š
 			ReadText(buf);
 			x1 = ReadValue(); y1 = ReadValue();
 			x2 = ReadValue(); y2 = ReadValue();
 			dprintf("[$52/$53] Play Movie(2)   File - ");
 			dprintf(buf);
-			dprintf("\n");
-			dprintf("   Pos : (%d,%d)-(%d,%d)\n", x1, y1, x2, y2);
+			dprintf("Â¥n");
+			dprintf("   Pos : (%d,%d)-(%d,%d)Â¥n", x1, y1, x2, y2);
 			cmd = 0;
 			break;
-		case 0x54:			// Movie(AVI)Ä¶2 I—¹‚Ü‚ÅƒVƒiƒŠƒI’â~ ƒ}ƒEƒXƒLƒƒƒ“ƒZƒ‹‚È‚µ
-		case 0x55:			// Movie(AVI)Ä¶2 I—¹‚Ü‚ÅƒVƒiƒŠƒI’â~ ƒ}ƒEƒXƒLƒƒƒ“ƒZƒ‹‚ ‚è
+		case 0x54:			// Movie(AVI)å†ç”Ÿ2 çµ‚äº†ã¾ã§ã‚·ãƒŠãƒªã‚ªåœæ­¢ ãƒã‚¦ã‚¹ã‚­ãƒ£ãƒ³ã‚»ãƒ«ãªã—
+		case 0x55:			// Movie(AVI)å†ç”Ÿ2 çµ‚äº†ã¾ã§ã‚·ãƒŠãƒªã‚ªåœæ­¢ ãƒã‚¦ã‚¹ã‚­ãƒ£ãƒ³ã‚»ãƒ«ã‚ã‚Š
 			ReadText(buf);
-			ReadText(temp);		// ‚±‚±‚ÌƒeƒLƒXƒg‚Ì—p“r•s–¾i•¡”AVI˜A‘±Ä¶‚Á‚Ä‚í‚¯‚À‚á‚È‚¢‚İ‚½‚¢j
+			ReadText(temp);		// ã“ã“ã®ãƒ†ã‚­ã‚¹ãƒˆã®ç”¨é€”ä¸æ˜ï¼ˆè¤‡æ•°AVIé€£ç¶šå†ç”Ÿã£ã¦ã‚ã‘ã¢ã‚ƒãªã„ã¿ãŸã„ï¼‰
 			x1 = ReadValue(); y1 = ReadValue();
 			x2 = ReadValue(); y2 = ReadValue();
 			dprintf("[$54/$55] Play Movie(2)   File - ");
 			dprintf(buf);
-			dprintf("\n");
-			dprintf("   Pos : (%d,%d)-(%d,%d)\n", x1, y1, x2, y2);
+			dprintf("Â¥n");
+			dprintf("   Pos : (%d,%d)-(%d,%d)Â¥n", x1, y1, x2, y2);
 			cmd = 0;
 			break;
 
-		default:			// SubCmd $23 ‚Æ‚©‚ªo‚Ä‚­‚é‚±‚Æ‚à‚ ‚é‚İ‚½‚¢‚È‚Ì‚Åi—ö‚²‚±‚ë‚Æ‚©j
+		default:			// SubCmd $23 ã¨ã‹ãŒå‡ºã¦ãã‚‹ã“ã¨ã‚‚ã‚ã‚‹ã¿ãŸã„ãªã®ã§ï¼ˆæ‹ã”ã“ã‚ã¨ã‹ï¼‰
 			cmd = 0;
 			break;
 	}
@@ -976,7 +976,7 @@ bool SCENARIO::d09(void)
 
 
 // -------------------------------------------------------------------
-// 0A - Cmd:$10 •¶š—ñ‚ğ‰æ‘œƒoƒbƒtƒ@‚Éƒ_ƒCƒŒƒNƒg‚É•\¦
+// 0A - Cmd:$10 æ–‡å­—åˆ—ã‚’ç”»åƒãƒãƒƒãƒ•ã‚¡ã«ãƒ€ã‚¤ãƒ¬ã‚¯ãƒˆã«è¡¨ç¤º
 // -------------------------------------------------------------------
 bool SCENARIO::d0a(void)
 {
@@ -994,7 +994,7 @@ bool SCENARIO::d0a(void)
 			sys->MesWin_SetMes(buf);
 			dprintf("Draw Val[%d] as Text - (subcmd $%02X) : ", idx, subcmd);
 			dprintf(&buf[1]);
-			dprintf("\n", subcmd, idx);
+			dprintf("Â¥n", subcmd, idx);
 			break;
 		case 0x02:
 			idx = ReadValue();
@@ -1006,7 +1006,7 @@ bool SCENARIO::d0a(void)
 		sys->MesWin_SetMes(buf);
 			dprintf("Draw Val[%d] as Text w/ %d digit - (subcmd $%02X) : ", idx, idx2, subcmd);
 			dprintf(&buf[1]);
-			dprintf("\n", subcmd, idx);
+			dprintf("Â¥n", subcmd, idx);
 			break;
 		case 0x03:
 			idx = ReadValue();
@@ -1016,7 +1016,7 @@ bool SCENARIO::d0a(void)
 			sys->MesWin_SetMes(buf);
 			dprintf("Draw Str[%d] as Text - (subcmd $%02X) : ", idx, subcmd);
 			dprintf(&buf[1]);
-			dprintf("\n", subcmd, idx);
+			dprintf("Â¥n", subcmd, idx);
 			break;
 	}
 	meswaitbase = sys->GetCurrentTimer();
@@ -1027,7 +1027,7 @@ bool SCENARIO::d0a(void)
 
 
 // -------------------------------------------------------------------
-// 0B - Cmd:$13 ƒtƒF[ƒhƒCƒ“^ƒAƒEƒg
+// 0B - Cmd:$13 ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¤ãƒ³ï¼ã‚¢ã‚¦ãƒˆ
 // -------------------------------------------------------------------
 bool SCENARIO::d0b(void)
 {
@@ -1040,7 +1040,7 @@ bool SCENARIO::d0b(void)
 			sys->SnrPDT_ScreenFade(fadecmd, fadecount, fader, fadeg, fadeb);
 			fadecount++;
 			if ( fadecount==16 ) {
-				sys->SnrPDT_FillRect(0, 0, 639, 479, 3, fader, fadeg, fadeb);	// ƒGƒtƒFƒNƒg‚Æ“¯‚¶‚Å#3‚ğ–„‚ß‚Æ‚­•K—v‚ ‚èHiflowersj
+				sys->SnrPDT_FillRect(0, 0, 639, 479, 3, fader, fadeg, fadeb);	// ã‚¨ãƒ•ã‚§ã‚¯ãƒˆã¨åŒã˜ã§#3ã‚’åŸ‹ã‚ã¨ãå¿…è¦ã‚ã‚Šï¼Ÿï¼ˆflowersï¼‰
 				mouse->FinishPDTDraw();
 				fadecmd = 0;
 				cmd = 0;
@@ -1058,33 +1058,33 @@ bool SCENARIO::d0b(void)
 				fadestep = sys->GetFadeTime();
 				sys->GetFadeColor(idx, &fader, &fadeg, &fadeb);
 				sys->SnrPDT_FillRect(0, 0, 639, 479, 1, fader, fadeg, fadeb);
-				dprintf("Fade In/Out  SubCmd:$%02X  FadePattern:%d\n", subcmd, idx);
+				dprintf("Fade In/Out  SubCmd:$%02X  FadePattern:%dÂ¥n", subcmd, idx);
 				break;
 			case 0x02:
 				idx = ReadValue();
 				fadestep = ReadValue();
 				sys->GetFadeColor(idx, &fader, &fadeg, &fadeb);
 				sys->SnrPDT_FillRect(0, 0, 639, 479, 1, fader, fadeg, fadeb);
-				dprintf("Fade In/Out w/ Time  SubCmd:$%02X  FadePattern:%d  FadeTime:%d\n", subcmd, idx, fadestep);
+				dprintf("Fade In/Out w/ Time  SubCmd:$%02X  FadePattern:%d  FadeTime:%dÂ¥n", subcmd, idx, fadestep);
 				break;
 			case 0x03:
 				fader = ReadValue(); fadeg = ReadValue(); fadeb = ReadValue();
 				fadestep = sys->GetFadeTime();
 				sys->SnrPDT_FillRect(0, 0, 639, 479, 1, fader, fadeg, fadeb);
-				dprintf("Fade In/Out  SubCmd:$%02X  R:%d G:%d B:%d\n", fadecmd, fader, fadeg, fadeb);
+				dprintf("Fade In/Out  SubCmd:$%02X  R:%d G:%d B:%dÂ¥n", fadecmd, fader, fadeg, fadeb);
 				break;
 			case 0x04:
 				fader = ReadValue(); fadeg = ReadValue(); fadeb = ReadValue();
 				fadestep = ReadValue();
 				sys->SnrPDT_FillRect(0, 0, 639, 479, 1, fader, fadeg, fadeb);
-				dprintf("Fade In/Out w/ Time  SubCmd:$%02X  R:%d G:%d B:%d  FadeTime:%d\n", fadecmd, fader, fadeg, fadeb, fadestep);
+				dprintf("Fade In/Out w/ Time  SubCmd:$%02X  R:%d G:%d B:%d  FadeTime:%dÂ¥n", fadecmd, fader, fadeg, fadeb, fadestep);
 				break;
 			case 0x10:
 				idx = ReadValue();
 				fadestep = 0;
 				sys->GetFadeColor(idx, &fader, &fadeg, &fadeb);
 //				sys->SnrPDT_FillRect(0, 0, 639, 479, 1, fader, fadeg, fadeb);
-				dprintf("Fade In/Out (Fill Screen?)  SubCmd:$%02X  FadePattern:%d\n", subcmd, idx);
+				dprintf("Fade In/Out (Fill Screen?)  SubCmd:$%02X  FadePattern:%dÂ¥n", subcmd, idx);
 				fadecount = 15;
 //				cmd = 0;
 				break;
@@ -1092,12 +1092,12 @@ bool SCENARIO::d0b(void)
 				fader = ReadValue(); fadeg = ReadValue(); fadeb = ReadValue();
 				fadestep = 0;
 //				sys->SnrPDT_FillRect(0, 0, 639, 479, 1, fader, fadeg, fadeb);
-				dprintf("Fade In/Out (Fill Screen?)  SubCmd:$%02X  R:%d G:%d B:%d\n", fadecmd, fader, fadeg, fadeb);
+				dprintf("Fade In/Out (Fill Screen?)  SubCmd:$%02X  R:%d G:%d B:%dÂ¥n", fadecmd, fader, fadeg, fadeb);
 				fadecount = 15;
 //				cmd = 0;
 				break;
 			default:
-				dprintf("?????? Fade In/Out?  SubCmd:$%02X\n", subcmd);
+				dprintf("?????? Fade In/Out?  SubCmd:$%02XÂ¥n", subcmd);
 				break;
 		}
 		multianmflag = 0;
@@ -1107,7 +1107,7 @@ bool SCENARIO::d0b(void)
 
 
 // -------------------------------------------------------------------
-// 0C - Cmd:$15 ğŒ•ªŠò
+// 0C - Cmd:$15 æ¡ä»¶åˆ†å²
 // -------------------------------------------------------------------
 bool SCENARIO::d0c(void)
 {
@@ -1117,9 +1117,9 @@ bool SCENARIO::d0c(void)
 	condition = DecodeConditions();
 	ptr = ReadInt();
 	if ( condition ) {
-		dprintf(" - true; Decode next command\n");
+		dprintf(" - true; Decode next commandÂ¥n");
 	} else {
-		dprintf(" - false; Jump to $%08X\n", ptr);
+		dprintf(" - false; Jump to $%08XÂ¥n", ptr);
 		curpos = ptr+jumpbase;
 	}
 	cmd = 0;
@@ -1128,7 +1128,7 @@ bool SCENARIO::d0c(void)
 
 
 // -------------------------------------------------------------------
-// 0D - Cmd:$16 ‘¼ƒV[ƒ“‚Ö‚ÌƒWƒƒƒ“ƒv^ƒR[ƒ‹
+// 0D - Cmd:$16 ä»–ã‚·ãƒ¼ãƒ³ã¸ã®ã‚¸ãƒ£ãƒ³ãƒ—ï¼ã‚³ãƒ¼ãƒ«
 // -------------------------------------------------------------------
 bool SCENARIO::d0d(void)
 {
@@ -1137,7 +1137,7 @@ bool SCENARIO::d0d(void)
 
 	subcmd = databuf[curpos++];
 	ptr = ReadValue();
-	if ( subcmd!=1 ) {					// ‘¼ƒV[ƒ“ƒR[ƒ‹
+	if ( subcmd!=1 ) {					// ä»–ã‚·ãƒ¼ãƒ³ã‚³ãƒ¼ãƒ«
 		flags->PushStack(seennum, curpos);
 		dprintf("Call", seennum);
 	} else {
@@ -1145,14 +1145,14 @@ bool SCENARIO::d0d(void)
 	}
 	if ( !ChangeSeen(ptr) ) sys->Terminate();
 	SavePoint();
-	dprintf(" to other seen #%d\n", seennum);
+	dprintf(" to other seen #%dÂ¥n", seennum);
 	cmd = 0;
 	return false;
 };
 
 
 // -------------------------------------------------------------------
-// 0E - Cmd:$17 ‰æ–Ê—h‚ê
+// 0E - Cmd:$17 ç”»é¢æºã‚Œ
 // -------------------------------------------------------------------
 bool SCENARIO::d0e(void)
 {
@@ -1171,10 +1171,10 @@ bool SCENARIO::d0e(void)
 				idx = ReadValue();
 				sys->ScreenShakeSetup(idx);
 				shakeflag = true;
-				dprintf("Screen Shake : Shake Pattern:%d\n", idx);
+				dprintf("Screen Shake : Shake Pattern:%dÂ¥n", idx);
 				break;
 			default:
-				dprintf("???????????  Screen Shake???(SubCmd:$%02X) Unknown\n", subcmd);
+				dprintf("???????????  Screen Shake???(SubCmd:$%02X) UnknownÂ¥n", subcmd);
 				break;
 		}
 	}
@@ -1183,7 +1183,7 @@ bool SCENARIO::d0e(void)
 
 
 // -------------------------------------------------------------------
-// 0F - Cmd:$18 Text:ƒtƒHƒ“ƒgF•ÏX
+// 0F - Cmd:$18 Text:ãƒ•ã‚©ãƒ³ãƒˆè‰²å¤‰æ›´
 // -------------------------------------------------------------------
 bool SCENARIO::d0f(void)
 {
@@ -1195,10 +1195,10 @@ bool SCENARIO::d0f(void)
 		case 0x01:
 			idx = ReadValue();
 			sys->ChangeFontColor(idx);
-			dprintf("Text Color Change: Color#%d\n", idx);
+			dprintf("Text Color Change: Color#%dÂ¥n", idx);
 			break;
 		default:
-			dprintf("?????????  Unimpremented Text Color???(SubCmd:$%02X), Unknown\n", subcmd);
+			dprintf("?????????  Unimpremented Text Color???(SubCmd:$%02X), UnknownÂ¥n", subcmd);
 			break;
 	}
 	cmd = 0;
@@ -1207,13 +1207,13 @@ bool SCENARIO::d0f(void)
 
 
 // -------------------------------------------------------------------
-// 10 - Cmd:$19 ƒEƒFƒCƒg
+// 10 - Cmd:$19 ã‚¦ã‚§ã‚¤ãƒˆ
 // -------------------------------------------------------------------
 bool SCENARIO::d10(void)
 {
 	int idx;
 
-	if ( waitcmd ) {					// WaitƒRƒ}ƒ“ƒhÀs’†
+	if ( waitcmd ) {					// Waitã‚³ãƒãƒ³ãƒ‰å®Ÿè¡Œä¸­
 			switch( waitcmd ) {
 			case 0x01:
 				if ( sys->CheckSkip() ) {
@@ -1242,7 +1242,7 @@ bool SCENARIO::d10(void)
 				break;
 			case 0x04:
 				if ( (sys->GetTimer())>=waittime ) {
-					dprintf("  Timer done. Acctual:%d us\n", sys->GetTimer());
+					dprintf("  Timer done. Acctual:%d usÂ¥n", sys->GetTimer());
 					cmd = 0;
 					waitcmd = 0;
 				}
@@ -1260,65 +1260,65 @@ bool SCENARIO::d10(void)
 				break;
 		}
 		if ( !waitcmd ) mouse->FinishPDTDraw();
-	} else {							// V‹K‚ÌWaitƒRƒ}ƒ“ƒh
+	} else {							// æ–°è¦ã®Waitã‚³ãƒãƒ³ãƒ‰
 		waitcmd = databuf[curpos++];
 		switch( waitcmd ) {
 			case 0x01:
 				mouse->StartPDTDraw();
 				waittime = (unsigned int)ReadValue();
 				waitbase = sys->GetCurrentTimer();
-				dprintf("Wait %d us\n", waittime);
+				dprintf("Wait %d usÂ¥n", waittime);
 				break;
 			case 0x02:
 				mouse->StartPDTDraw();
 				waittime = (unsigned int)ReadValue();
 				waitcancelindex = ReadValue();
 				waitbase = sys->GetCurrentTimer();
-				dprintf("Wait %d us / Break by mouse flag:Val[%d]\n", waittime, waitcancelindex);
+				dprintf("Wait %d us / Break by mouse flag:Val[%d]Â¥n", waittime, waitcancelindex);
 				break;
 			case 0x03:
 				sys->ResetTimer();
-				dprintf("Set Current time to Base Time\n");
+				dprintf("Set Current time to Base TimeÂ¥n");
 				waitcmd = 0;
-				cmd = 0;		// ‚·‚®‚É‹A‚éiŸƒRƒ}ƒ“ƒhj
+				cmd = 0;		// ã™ãã«å¸°ã‚‹ï¼ˆæ¬¡ã‚³ãƒãƒ³ãƒ‰ï¼‰
 				break;
 			case 0x04:
 				mouse->StartPDTDraw();
 				waittime = (unsigned int)ReadValue();
-				dprintf("Wait %d us from Base Time\n", waittime);
+				dprintf("Wait %d us from Base TimeÂ¥n", waittime);
 				break;
 			case 0x05:
 				mouse->StartPDTDraw();
 				waittime = (unsigned int)ReadValue();
 				waitcancelindex = ReadValue();
-				dprintf("Wait %d us from Base Time / Break by mouse flag:Val[%d]\n", waittime, waitcancelindex);
+				dprintf("Wait %d us from Base Time / Break by mouse flag:Val[%d]Â¥n", waittime, waitcancelindex);
 				break;
 			case 0x06:
 				idx = ReadValue();
 				flags->SetVal(idx, sys->GetTimer());
-				dprintf("Set times from Base Time to Val[%d]  <- %d\n", idx, flags->GetVal(idx));
+				dprintf("Set times from Base Time to Val[%d]  <- %dÂ¥n", idx, flags->GetVal(idx));
 				waitcmd = 0;
 				cmd = 0;
 				break;
 			case 0x10:
-				dprintf("($10) ??????????? SkipModeFlag = 1 ???\n");
+				dprintf("($10) ??????????? SkipModeFlag = 1 ???Â¥n");
 //				mouse->EnablePopup();
 				waitcmd = 0;
 				cmd = 0;
 				break;
 			case 0x11:
-				dprintf("($11) ??????????? SkipModeFlag = 0 ???\n");
+				dprintf("($11) ??????????? SkipModeFlag = 0 ???Â¥n");
 //				mouse->DisablePopup();
 				waitcmd = 0;
 				cmd = 0;
 				break;
 			case 0x12:
-				dprintf("($12) ??????????? Wait??? Flag = 1 ???\n");
+				dprintf("($12) ??????????? Wait??? Flag = 1 ???Â¥n");
 				waitcmd = 0;
 				cmd = 0;
 				break;
 			case 0x13:
-				dprintf("($13) ??????????? Wait??? Flag = 0 ???\n");
+				dprintf("($13) ??????????? Wait??? Flag = 0 ???Â¥n");
 				waitcmd = 0;
 				cmd = 0;
 				break;
@@ -1339,14 +1339,14 @@ bool SCENARIO::d11(void)
 
 
 // -------------------------------------------------------------------
-// 12 - Cmd:$1B “¯ˆêƒV[ƒ““àƒTƒuƒ‹[ƒ`ƒ“ƒR[ƒ‹
+// 12 - Cmd:$1B åŒä¸€ã‚·ãƒ¼ãƒ³å†…ã‚µãƒ–ãƒ«ãƒ¼ãƒãƒ³ã‚³ãƒ¼ãƒ«
 // -------------------------------------------------------------------
 bool SCENARIO::d12(void)
 {
 	int ptr;
 
 	ptr = ReadInt();
-	dprintf("Call (in this seen) to $%08X\n", ptr);
+	dprintf("Call (in this seen) to $%08XÂ¥n", ptr);
 	flags->PushStack(seennum, curpos);
 	curpos = ptr+jumpbase;
 	cmd = 0;
@@ -1355,14 +1355,14 @@ bool SCENARIO::d12(void)
 
 
 // -------------------------------------------------------------------
-// 13 - Cmd:$1C –³ğŒJump
+// 13 - Cmd:$1C ç„¡æ¡ä»¶Jump
 // -------------------------------------------------------------------
 bool SCENARIO::d13(void)
 {
 	int ptr;
 
 	ptr = ReadInt();
-	dprintf("Jump to $%08X\n", ptr);
+	dprintf("Jump to $%08XÂ¥n", ptr);
 	curpos = ptr+jumpbase;
 	cmd = 0;
 	return false;
@@ -1370,7 +1370,7 @@ bool SCENARIO::d13(void)
 
 
 // -------------------------------------------------------------------
-// 14 - Cmd:$1D/1E ƒe[ƒuƒ‹ƒTƒuƒ‹[ƒ`ƒ“ƒR[ƒ‹/ƒe[ƒuƒ‹ƒWƒƒƒ“ƒv
+// 14 - Cmd:$1D/1E ãƒ†ãƒ¼ãƒ–ãƒ«ã‚µãƒ–ãƒ«ãƒ¼ãƒãƒ³ã‚³ãƒ¼ãƒ«/ãƒ†ãƒ¼ãƒ–ãƒ«ã‚¸ãƒ£ãƒ³ãƒ—
 // -------------------------------------------------------------------
 bool SCENARIO::d14(void)
 {
@@ -1385,7 +1385,7 @@ bool SCENARIO::d14(void)
 		else
 			curpos += 4;
 	}
-	dprintf("In Seen#%d ... Table Call/Jump Num:Val[%d](%d) in %d choices ... to $%08X\n", seennum, idx, flags->GetVal(idx), n, ptr);
+	dprintf("In Seen#%d ... Table Call/Jump Num:Val[%d](%d) in %d choices ... to $%08XÂ¥n", seennum, idx, flags->GetVal(idx), n, ptr);
 	if ( ptr!=(-1) ) {
 		if ( cmd==0x1d ) flags->PushStack(seennum, curpos);
 		curpos = ptr+jumpbase;
@@ -1396,7 +1396,7 @@ bool SCENARIO::d14(void)
 
 
 // -------------------------------------------------------------------
-// 15 - Cmd:$20 ƒTƒuƒ‹[ƒ`ƒ“ƒŠƒ^[ƒ“
+// 15 - Cmd:$20 ã‚µãƒ–ãƒ«ãƒ¼ãƒãƒ³ãƒªã‚¿ãƒ¼ãƒ³
 // -------------------------------------------------------------------
 bool SCENARIO::d15(void)
 {
@@ -1405,28 +1405,28 @@ bool SCENARIO::d15(void)
 
 	subcmd = databuf[curpos++];
 	switch (subcmd) {
-		case 0x01:						// “¯ˆêƒV[ƒ““àƒŠƒ^[ƒ“
-			dprintf(" Return in the same seen\n");
+		case 0x01:						// åŒä¸€ã‚·ãƒ¼ãƒ³å†…ãƒªã‚¿ãƒ¼ãƒ³
+			dprintf(" Return in the same seenÂ¥n");
 			flags->PopStack(&seennum, &curpos);
 			break;
-		case 0x02:						// ‘¼ƒV[ƒ“‚©‚ç‚ÌƒŠƒ^[ƒ“
-			dprintf(" Return to the other seen\n");
+		case 0x02:						// ä»–ã‚·ãƒ¼ãƒ³ã‹ã‚‰ã®ãƒªã‚¿ãƒ¼ãƒ³
+			dprintf(" Return to the other seenÂ¥n");
 			flags->PopStack(&n, &ptr);
 			if ( !ChangeSeen(n) ) sys->Terminate();
 			curpos = ptr;
 			SavePoint();
 			break;
-		case 0x03:						// ƒXƒ^ƒbƒN‚Ì“à—e‚ğˆêŒÂÁ‚·Hi‚·‚í‚Á‚ÕA‚Ó‚§`Bj
+		case 0x03:						// ã‚¹ã‚¿ãƒƒã‚¯ã®å†…å®¹ã‚’ä¸€å€‹æ¶ˆã™ï¼Ÿï¼ˆã™ã‚ã£ã·Aãµã‰ã€œBï¼‰
 			flags->PopStack(&dmy1, &dmy2);
 			break;
-		case 0x06:						// ƒXƒ^ƒbƒN‰Šú‰»H
-			dprintf(" Stack clear?\n");
+		case 0x06:						// ã‚¹ã‚¿ãƒƒã‚¯åˆæœŸåŒ–ï¼Ÿ
+			dprintf(" Stack clear?Â¥n");
 			flags->ClearStack();
 			break;
 		default:
-			dprintf(" Return Unknown. - subcmd:$%02X\n", subcmd);
+			dprintf(" Return Unknown. - subcmd:$%02XÂ¥n", subcmd);
 	}
-	dprintf(" Return to seen #%d\n", seennum);
+	dprintf(" Return to seen #%dÂ¥n", seennum);
 	cmd = 0;
 	return false;
 };
@@ -1455,10 +1455,10 @@ bool SCENARIO::d17(void)
 	switch( subcmd ) {
 		case 0x01:
 			idx = ReadValue();
-			dprintf("???????????????? - SubCmd:$%02X Arg:%d\n", subcmd, idx);
+			dprintf("???????????????? - SubCmd:$%02X Arg:%dÂ¥n", subcmd, idx);
 			break;
 		default:
-			dprintf("???????????????? - SubCmd:$%02X\n", subcmd);
+			dprintf("???????????????? - SubCmd:$%02XÂ¥n", subcmd);
 			ERROR;
 			break;
 	}
@@ -1480,24 +1480,24 @@ bool SCENARIO::d18(void)
 	switch( subcmd ) {
 		case 0x01:
 			idx = ReadValue();
-			dprintf("???????????????? - SubCmd:$%02X Arg:%d\n", subcmd, idx);
+			dprintf("???????????????? - SubCmd:$%02X Arg:%dÂ¥n", subcmd, idx);
 			break;
 		case 0x02:
 			idx = ReadValue();
-			dprintf("???????????????? - SubCmd:$%02X Arg:%d\n", subcmd, idx);
+			dprintf("???????????????? - SubCmd:$%02X Arg:%dÂ¥n", subcmd, idx);
 			break;
 		case 0x03:
 			idx = ReadValue();
 			data = ReadValue();
-			dprintf("???????????????? - SubCmd:$%02X Arg1:%d Arg2:%d\n", subcmd, idx, data);
+			dprintf("???????????????? - SubCmd:$%02X Arg1:%d Arg2:%dÂ¥n", subcmd, idx, data);
 			break;
 		case 0x04:
 			idx = ReadValue();
 			data = ReadValue();
-			dprintf("???????????????? - SubCmd:$%02X Arg1:%d Arg2:%d\n", subcmd, idx, data);
+			dprintf("???????????????? - SubCmd:$%02X Arg1:%d Arg2:%dÂ¥n", subcmd, idx, data);
 			break;
 		default:
-			dprintf("???????????????? - SubCmd:$%02X\n", subcmd);
+			dprintf("???????????????? - SubCmd:$%02XÂ¥n", subcmd);
 			ERROR;
 			break;
 	}
@@ -1511,8 +1511,8 @@ bool SCENARIO::d18(void)
 // -------------------------------------------------------------------
 bool SCENARIO::d19(void)
 {
-	// ƒVƒiƒŠƒIƒƒjƒ…[‚Ì‘I‘ğˆ‚Ì•ÏX‚ğ‚·‚é‚İ‚½‚¢‚¾‚¯‚ÇEEE
-	// Ú×•s–¾
+	// ã‚·ãƒŠãƒªã‚ªãƒ¡ãƒ‹ãƒ¥ãƒ¼ã®é¸æŠè‚¢ã®å¤‰æ›´ã‚’ã™ã‚‹ã¿ãŸã„ã ã‘ã©ãƒ»ãƒ»ãƒ»
+	// è©³ç´°ä¸æ˜
 	unsigned char subcmd;
 	int idx, data;
 
@@ -1520,14 +1520,14 @@ bool SCENARIO::d19(void)
 
 	switch( subcmd ) {
 		case 0x01:
-			// w’èƒrƒbƒg‚É•ÏXA‚©‚È‚ŸEEE
+			// æŒ‡å®šãƒ“ãƒƒãƒˆã«å¤‰æ›´ã€ã‹ãªããƒ»ãƒ»ãƒ»
 			data = ReadValue();
 			smenu.bitcount = data-1;
 			smenu.bit = (1<<smenu.bitcount);
-			dprintf("???????????????? - SubCmd:$%02X Arg:%d\n", subcmd, data);
+			dprintf("???????????????? - SubCmd:$%02X Arg:%dÂ¥n", subcmd, data);
 			break;  
 		case 0x02:
-			// ‚±‚ê‚à‚¾‚Æv‚¤‚¯‚ÇB‚±‚Á‚¿‚ÍƒTƒuƒƒjƒ…[—pH
+			// ã“ã‚Œã‚‚ã ã¨æ€ã†ã‘ã©ã€‚ã“ã£ã¡ã¯ã‚µãƒ–ãƒ¡ãƒ‹ãƒ¥ãƒ¼ç”¨ï¼Ÿ
 			idx = ReadValue()-1;
 			data = ReadValue();
 //			smenu.bit = (1<<(data-1));
@@ -1535,10 +1535,10 @@ bool SCENARIO::d19(void)
 			smenu.subbit = (1<<smenu.subbitcount);
 //			smenu.subbitcount[idx] = (data-1);
 //			smenu.subbit[idx] = (1<<smenu.subbitcount[idx]);
-			dprintf("???????????????? - SubCmd:$%02X Arg1:%d Arg2:%d\n", subcmd, idx, data);
+			dprintf("???????????????? - SubCmd:$%02X Arg1:%d Arg2:%dÂ¥n", subcmd, idx, data);
 			break;
 		default:
-			dprintf("???????????????? - SubCmd:$%02X\n", subcmd);
+			dprintf("???????????????? - SubCmd:$%02XÂ¥n", subcmd);
 			ERROR;
 			break;
 	}
@@ -1562,10 +1562,10 @@ bool SCENARIO::d1a(void)
 			idx = ReadValue();
 			idx2 = ReadValue();
 			idx3 = ReadValue();
-			dprintf("???????????????? - SubCmd:$%02X Arg1:%d Arg2:%d Arg3:%d\n", subcmd, idx, idx2, idx3);
+			dprintf("???????????????? - SubCmd:$%02X Arg1:%d Arg2:%d Arg3:%dÂ¥n", subcmd, idx, idx2, idx3);
 			break;
 		default:
-			dprintf("???????????????? - SubCmd:$%02X\n", subcmd);
+			dprintf("???????????????? - SubCmd:$%02XÂ¥n", subcmd);
 			ERROR;
 			break;
 	}
@@ -1585,10 +1585,10 @@ bool SCENARIO::d1b(void)
 
 	switch( subcmd ) {
 		case 0x01:
-			dprintf("???????????????? - SubCmd:$%02X\n", subcmd);
+			dprintf("???????????????? - SubCmd:$%02XÂ¥n", subcmd);
 			break;
 		default:
-			dprintf("???????????????? - SubCmd:$%02X\n", subcmd);
+			dprintf("???????????????? - SubCmd:$%02XÂ¥n", subcmd);
 			ERROR;
 			break;
 	}
@@ -1610,13 +1610,13 @@ bool SCENARIO::d1c(void)
 	switch( subcmd ) {
 		case 0x01:
 			idx = ReadValue();
-			dprintf("???????????????? - SubCmd:$%02X Arg:%d\n", subcmd, idx);
+			dprintf("???????????????? - SubCmd:$%02X Arg:%dÂ¥n", subcmd, idx);
 			break;
 		case 0x02:
-			dprintf("???????????????? - SubCmd:$%02X\n", subcmd);
+			dprintf("???????????????? - SubCmd:$%02XÂ¥n", subcmd);
 			break;
 		default:
-			dprintf("???????????????? - SubCmd:$%02X\n", subcmd);
+			dprintf("???????????????? - SubCmd:$%02XÂ¥n", subcmd);
 			ERROR;
 			break;
 	}
@@ -1626,7 +1626,7 @@ bool SCENARIO::d1c(void)
 
 
 // -------------------------------------------------------------------
-// 1D - Cmd:$37/39/3B-43/49-51/56/57 •Ï”Eƒtƒ‰ƒO‘€ì
+// 1D - Cmd:$37/39/3B-43/49-51/56/57 å¤‰æ•°ãƒ»ãƒ•ãƒ©ã‚°æ“ä½œ
 // -------------------------------------------------------------------
 bool SCENARIO::d1d(void)
 {
@@ -1638,92 +1638,92 @@ bool SCENARIO::d1d(void)
 	switch( cmd ) {
 
 	case 0x37:
-		dprintf("Bit[%d] = %d\n", idx, data);
+		dprintf("Bit[%d] = %dÂ¥n", idx, data);
 		flags->SetBit(idx, data);
 		break;
 	case 0x39:
-		dprintf("Bit[%d] = Bit[%d]\n", idx, data);
+		dprintf("Bit[%d] = Bit[%d]Â¥n", idx, data);
 		flags->SetBit(idx, flags->GetBit(data));
 		break;
 	case 0x3b:
-		dprintf("Val[%d] = %d\n", idx, data);
+		dprintf("Val[%d] = %dÂ¥n", idx, data);
 		flags->SetVal(idx, data);
 		break;
 	case 0x3c:
-		dprintf("Val[%d] += %d\n", idx, data);
+		dprintf("Val[%d] += %dÂ¥n", idx, data);
 		flags->SetVal(idx, flags->GetVal(idx)+data);
 		break;
 	case 0x3d:
-		dprintf("Val[%d] -= %d\n", idx, data);
+		dprintf("Val[%d] -= %dÂ¥n", idx, data);
 		flags->SetVal(idx, flags->GetVal(idx)-data);
 		break;
 	case 0x3e:
-		dprintf("Val[%d] *= %d\n", idx, data);
+		dprintf("Val[%d] *= %dÂ¥n", idx, data);
 		flags->SetVal(idx, flags->GetVal(idx)*data);
 		break;
 	case 0x3f:
-		dprintf("Val[%d] /= %d\n", idx, data);
+		dprintf("Val[%d] /= %dÂ¥n", idx, data);
 		flags->SetVal(idx, flags->GetVal(idx)/data);
 		break;
 	case 0x40:
-		dprintf("Val[%d] %%= %d\n", idx, data);
+		dprintf("Val[%d] %%= %dÂ¥n", idx, data);
 		flags->SetVal(idx, flags->GetVal(idx)%data);
 		break;
 	case 0x41:
-		dprintf("Val[%d] &= %d\n", idx, data);
+		dprintf("Val[%d] &= %dÂ¥n", idx, data);
 		flags->SetVal(idx, flags->GetVal(idx)&data);
 		break;
 	case 0x42:
-		dprintf("Val[%d] |= %d\n", idx, data);
+		dprintf("Val[%d] |= %dÂ¥n", idx, data);
 		flags->SetVal(idx, flags->GetVal(idx)|data);
 		break;
 	case 0x43:
-		dprintf("Val[%d] ^= %d\n", idx, data);
+		dprintf("Val[%d] ^= %dÂ¥n", idx, data);
 		flags->SetVal(idx, flags->GetVal(idx)^data);
 		break;
 	case 0x49:
-		dprintf("Val[%d] = Val[%d]\n", idx, data);
+		dprintf("Val[%d] = Val[%d]Â¥n", idx, data);
 		flags->SetVal(idx, flags->GetVal(data));
 		break;
 	case 0x4a:
-		dprintf("Val[%d](%d) += Val[%d](%d)\n", idx, flags->GetVal(idx), data, flags->GetVal(data));
+		dprintf("Val[%d](%d) += Val[%d](%d)Â¥n", idx, flags->GetVal(idx), data, flags->GetVal(data));
 		flags->SetVal(idx, flags->GetVal(idx)+flags->GetVal(data));
 		break;
 	case 0x4b:
-		dprintf("Val[%d] -= Val[%d]\n", idx, data);
+		dprintf("Val[%d] -= Val[%d]Â¥n", idx, data);
 		flags->SetVal(idx, flags->GetVal(idx)-flags->GetVal(data));
 		break;
 	case 0x4c:
-		dprintf("Val[%d] *= Val[%d]\n", idx, data);
+		dprintf("Val[%d] *= Val[%d]Â¥n", idx, data);
 		flags->SetVal(idx, flags->GetVal(idx)*flags->GetVal(data));
 		break;
 	case 0x4d:
-		dprintf("Val[%d] /= Val[%d]\n", idx, data);
+		dprintf("Val[%d] /= Val[%d]Â¥n", idx, data);
 		flags->SetVal(idx, flags->GetVal(idx)/flags->GetVal(data));
 		break;
 	case 0x4e:
-		dprintf("Val[%d] %%= Val[%d]\n", idx, data);
+		dprintf("Val[%d] %%= Val[%d]Â¥n", idx, data);
 		flags->SetVal(idx, flags->GetVal(idx)%flags->GetVal(data));
 		break;
 	case 0x4f:
-		dprintf("Val[%d] &= Val[%d]\n", idx, data);
+		dprintf("Val[%d] &= Val[%d]Â¥n", idx, data);
 		flags->SetVal(idx, flags->GetVal(idx)&flags->GetVal(data));
 		break;
 	case 0x50:
-		dprintf("Val[%d] |= Val[%d]\n", idx, data);
+		dprintf("Val[%d] |= Val[%d]Â¥n", idx, data);
 		flags->SetVal(idx, flags->GetVal(idx)|flags->GetVal(data));
 		break;
 	case 0x51:
-		dprintf("Val[%d] ^= Val[%d]\n", idx, data);
+		dprintf("Val[%d] ^= Val[%d]Â¥n", idx, data);
 		flags->SetVal(idx, flags->GetVal(idx)^flags->GetVal(data));
 		break;
-	case 0x56:		// ƒ‰ƒ“ƒ_ƒ€‚É bit[idx] ‚ğƒZƒbƒg^ƒŠƒZƒbƒg‚·‚é
-		dprintf("Bit[%d] = Rand(0,1)\n", idx);
+	case 0x56:		// ãƒ©ãƒ³ãƒ€ãƒ ã« bit[idx] ã‚’ã‚»ãƒƒãƒˆï¼ãƒªã‚»ãƒƒãƒˆã™ã‚‹
+		dprintf("Bit[%d] = Rand(0,1)Â¥n", idx);
 		flags->SetBit(idx, sys->GetRandom(0, 1));
 		break;
-	case 0x57:		// data`rnd ‚ÌŠÔ‚Ì—”‚ğ val[idx] ‚ÉƒZƒbƒg‚·‚é
+	case 0x57:		// dataã€œrnd ã®é–“ã®ä¹±æ•°ã‚’ val[idx] ã«ã‚»ãƒƒãƒˆã™ã‚‹
 		rnd = ReadValue();
-		dprintf("Val[%d] = Rand(%d,%d)\n", idx, data, rnd);
+		dprintf("Val[%d] = Rand(%d,%d)Â¥n", idx, data, rnd);
 		flags->SetVal(idx, sys->GetRandom(data, rnd));
 		break;
 	}
@@ -1733,7 +1733,7 @@ bool SCENARIO::d1d(void)
 
 
 // -------------------------------------------------------------------
-// 1E - Cmd:$58 ‘I‘ğˆ
+// 1E - Cmd:$58 é¸æŠè‚¢
 // -------------------------------------------------------------------
 bool SCENARIO::d1e(void)
 {
@@ -1748,7 +1748,7 @@ bool SCENARIO::d1e(void)
 				if ( i!=(-1) ) {
 					flags->SetVal(selectindex, i);
 					cmd = 0;
-					dprintf("### Selected - %d\n", i);
+					dprintf("### Selected - %dÂ¥n", i);
 					sys->MesWin_ClearMes();
 //					sys->MesWin_Draw();
 					if ( selectflag==0x01 ) sys->Select_SubWinClose();
@@ -1765,15 +1765,15 @@ bool SCENARIO::d1e(void)
 		selectflag = databuf[curpos++];
 		i = 0;
 		switch (selectflag) {
-			case 0x01:		// •Ê‘‹‚Å‘I‘ğ
+			case 0x01:		// åˆ¥çª“ã§é¸æŠ
 			case 0x02:
 				curpos-=2; SavePoint(); curpos+=2;
 				selectindex = ReadValue();
-				dprintf("Select SubCmd:$%02X  Result:Val[%d]\n", selectflag, selectindex);
+				dprintf("Select SubCmd:$%02X  Result:Val[%d]Â¥n", selectflag, selectindex);
 				dprintf("Dump: ");
 				for (i=0; i<128; i++) {
 					dprintf("%02X ", databuf[curpos+i]);
-					if ( (i%16)==15 ) dprintf("\n");
+					if ( (i%16)==15 ) dprintf("Â¥n");
 				}
 				if ( databuf[curpos++]==0x22 ) {
 					if ( !databuf[curpos] ) curpos++;
@@ -1781,25 +1781,25 @@ bool SCENARIO::d1e(void)
 						flag = ReadFormattedText(buf, &attr);
 						if ( flag ) {
 							switch ( attr&0xff ) {
-								case 0x00:		// ‚Ì[‚Ü‚é
+								case 0x00:		// ã®ãƒ¼ã¾ã‚‹
 									sys->Select_AddItem(buf, 1, 0);
 									break;
-								case 0x20:		// F•t‚«A‘I‘ğ‰Â
+								case 0x20:		// è‰²ä»˜ãã€é¸æŠå¯
 									sys->Select_AddItem(buf, 1, (attr>>8));
 									break;
-								case 0x21:		// ‘I‘ğˆ‚Æ‚µ‚Äo‚³‚È‚¢H
-									sys->Select_AddItem(buf, -1, 0);	// ƒ_ƒ~[‚ğ’Ç‰Á
+								case 0x21:		// é¸æŠè‚¢ã¨ã—ã¦å‡ºã•ãªã„ï¼Ÿ
+									sys->Select_AddItem(buf, -1, 0);	// ãƒ€ãƒŸãƒ¼ã‚’è¿½åŠ 
 									break;
-								case 0x22:		// F•t‚«A‘I‘ğ‚Í•s‰Â
+								case 0x22:		// è‰²ä»˜ãã€é¸æŠã¯ä¸å¯
 									sys->Select_AddItem(buf, 0, (attr>>8));
 									break;
 							}
 						} else {
-							sys->Select_AddItem(buf, -1, 0);	// ƒ_ƒ~[‚ğ’Ç‰Á
+							sys->Select_AddItem(buf, -1, 0);	// ãƒ€ãƒŸãƒ¼ã‚’è¿½åŠ 
 						}
 						dprintf("  Item - ");
 						dprintf(buf);
-						dprintf(" (Flag:%d)\n", flag);
+						dprintf(" (Flag:%d)Â¥n", flag);
 					} while (databuf[curpos]!=0x23);
 					curpos++;
 				}
@@ -1809,7 +1809,7 @@ bool SCENARIO::d1e(void)
 				break;
 			case 0x04:
 				idx = ReadValue();
-				dprintf("Select - OpenLoadMenu SubCmd:$%02X\n", selectflag);
+				dprintf("Select - OpenLoadMenu SubCmd:$%02XÂ¥n", selectflag);
 				flags->SetVal(idx, sys->PopupLoadMenu());
 				selectflag = 0;
 				cmd = 0;
@@ -1821,7 +1821,7 @@ bool SCENARIO::d1e(void)
 
 
 // -------------------------------------------------------------------
-// 1F - Cmd:$59 •¶š—ñ‘€ì
+// 1F - Cmd:$59 æ–‡å­—åˆ—æ“ä½œ
 // -------------------------------------------------------------------
 bool SCENARIO::d1f(void)
 {
@@ -1830,7 +1830,7 @@ bool SCENARIO::d1f(void)
 	unsigned char subcmd;
 
 	subcmd = databuf[curpos++];
-	dprintf("String Handle - SubCmd:$%02X\n", subcmd);
+	dprintf("String Handle - SubCmd:$%02XÂ¥n", subcmd);
 
 	idx = ReadValue();
 
@@ -1842,13 +1842,13 @@ bool SCENARIO::d1f(void)
 //			flags->str[idx][i] = 0;
 			dprintf("strcpy  Str[%d] = ", idx);
 			dprintf(buf);
-			dprintf("\n");
+			dprintf("Â¥n");
 			break;
 		case 0x02:
 			idx2 = ReadValue();
 			dprintf("Val[%d] = strlen(Str[%d])  (", idx, idx2);
 			dprintf(flags->GetStr(idx2));
-			dprintf(")\n");
+			dprintf(")Â¥n");
 			flags->SetVal(idx, strlen(flags->GetStr(idx2)));
 			break;
 		case 0x03:
@@ -1858,7 +1858,7 @@ bool SCENARIO::d1f(void)
 			dprintf(flags->GetStr(idx2));
 			dprintf(", ");
 			dprintf(flags->GetStr(idx3));
-			dprintf(")\n");
+			dprintf(")Â¥n");
 			flags->SetVal(idx, strcmp(flags->GetStr(idx2), flags->GetStr(idx3)));
 //			flags->val[idx] = strcmp(flags->str[idx2], flags->str[idx3]);
 			break;
@@ -1868,7 +1868,7 @@ bool SCENARIO::d1f(void)
 			dprintf(flags->GetStr(idx));
 			dprintf(", ");
 			dprintf(flags->GetStr(idx2));
-			dprintf(")\n");
+			dprintf(")Â¥n");
 			strcat(flags->GetStr(idx), flags->GetStr(idx2));
 			break;
 		case 0x05:
@@ -1876,36 +1876,36 @@ bool SCENARIO::d1f(void)
 			flags->SetStr(idx, flags->GetStr(idx2));
 			dprintf("strcpy(Str[%d], Str[%d])  (", idx, idx2);
 			dprintf(flags->GetStr(idx));
-			dprintf(")\n");
+			dprintf(")Â¥n");
 			break;
 		case 0x06:
 			idx2 = ReadValue();
 			idx3 = ReadValue();
-			if ( idx3==10 ) {			// 10i
+			if ( idx3==10 ) {			// 10é€²
 				sprintf(flags->GetStr(idx2), "%d", flags->GetVal(idx));
-			} else if ( idx3==16 ) {	// 16i
+			} else if ( idx3==16 ) {	// 16é€²
 				sprintf(flags->GetStr(idx2), "%X", flags->GetVal(idx));
 			}
 			dprintf("Str[%d] (", idx2);
 			dprintf(flags->GetStr(idx2));
-			dprintf(") = itoa(val[%d]) (%d)\n", idx, flags->GetVal(idx));
-			dprintf("%di•¶š—ñ•ÏŠ·\n", idx3);
+			dprintf(") = itoa(val[%d]) (%d)Â¥n", idx, flags->GetVal(idx));
+			dprintf("%dé€²æ–‡å­—åˆ—å¤‰æ›Â¥n", idx3);
 			break;
 		case 0x07:
-			dprintf("Hankaku to Zenkaku\n");
+			dprintf("Hankaku to ZenkakuÂ¥n");
 			dprintf("Str[%d] ", idx);
 			dprintf(flags->GetStr(idx));
 			dprintf(" -> ");
 			Han2Zen(flags->GetStr(idx));
 			dprintf(flags->GetStr(idx));
-			dprintf("\n");
+			dprintf("Â¥n");
 			break;
 		case 0x08:
 			idx2 = ReadValue();
 			flags->SetVal(idx2, atoi(flags->GetStr(idx)));
 			dprintf("Val[%d](%d) = atoi(str[%d])  (", flags->GetVal(idx), idx, idx2);
 			dprintf(flags->GetStr(idx2));
-			dprintf(")\n");
+			dprintf(")Â¥n");
 			break;
 	}
 	cmd = 0;
@@ -1914,26 +1914,26 @@ bool SCENARIO::d1f(void)
 
 
 // -------------------------------------------------------------------
-// 20 - Cmd:$5B •¡”‚Ì•Ï”‚É‡”Ô‚Éƒf[ƒ^‚ğƒZƒbƒg
+// 20 - Cmd:$5B è¤‡æ•°ã®å¤‰æ•°ã«é †ç•ªã«ãƒ‡ãƒ¼ã‚¿ã‚’ã‚»ãƒƒãƒˆ
 // -------------------------------------------------------------------
 bool SCENARIO::d20(void)
 {
 	unsigned char subcmd;
 	int idx, data;
 
-	dprintf("Multiple Value Set\n");
+	dprintf("Multiple Value SetÂ¥n");
 	subcmd = databuf[curpos++];
 	idx = ReadValue();
 	if ( subcmd==1 ) {
 		while (databuf[curpos]) {
 			data =  ReadValue();
-			dprintf("  Val[%d] = %d\n", idx, data);
+			dprintf("  Val[%d] = %dÂ¥n", idx, data);
 			flags->SetVal(idx++, data);
 		}
 	} else if ( subcmd==2 ) {
 		while (databuf[curpos]) {
 			data =  ReadValue();
-			dprintf("  Bit[%d] = %d\n", idx, data);
+			dprintf("  Bit[%d] = %dÂ¥n", idx, data);
 			flags->SetBit(idx++, data);
 		}
 	}
@@ -1944,7 +1944,7 @@ bool SCENARIO::d20(void)
 
 
 // -------------------------------------------------------------------
-// 21 - Cmd:$5C •¡”‚Ì•Ï”‚É“¯ˆêƒf[ƒ^‚ğƒZƒbƒg
+// 21 - Cmd:$5C è¤‡æ•°ã®å¤‰æ•°ã«åŒä¸€ãƒ‡ãƒ¼ã‚¿ã‚’ã‚»ãƒƒãƒˆ
 // -------------------------------------------------------------------
 bool SCENARIO::d21(void)
 {
@@ -1958,10 +1958,10 @@ bool SCENARIO::d21(void)
 	if (idx2 >= 2000) idx2 = 1999;
 	if ( subcmd==1 ) {
 		for (i=idx; i<=idx2; i++) flags->SetVal(i, data);
-		dprintf("Val[%d`%d] = %d\n", idx, idx2, data);
+		dprintf("Val[%dã€œ%d] = %dÂ¥n", idx, idx2, data);
 	} else if ( subcmd==2 ) {
 		for (i=idx; i<=idx2; i++) flags->SetBit(i, data);
-		dprintf("Bit[%d`%d] = %d\n", idx, idx2, data);
+		dprintf("Bit[%dã€œ%d] = %dÂ¥n", idx, idx2, data);
 	}
 	cmd = 0;
 	return false;
@@ -1969,7 +1969,7 @@ bool SCENARIO::d21(void)
 
 
 // -------------------------------------------------------------------
-// 22 - Cmd:$5D •¡”‚Ì•Ï”‚ğ‚Ü‚Æ‚ß‚Ä‘¼‚ÖƒRƒs[
+// 22 - Cmd:$5D è¤‡æ•°ã®å¤‰æ•°ã‚’ã¾ã¨ã‚ã¦ä»–ã¸ã‚³ãƒ”ãƒ¼
 // -------------------------------------------------------------------
 bool SCENARIO::d22(void)
 {
@@ -1981,13 +1981,13 @@ bool SCENARIO::d22(void)
 	idx2 = ReadValue();
 	i = ReadValue();
 	if ( subcmd==1 ) {
-		dprintf("Val[%d`%d] = Val[%d`%d]\n", idx2, idx2+i-1, idx, idx+i-1);
+		dprintf("Val[%dã€œ%d] = Val[%dã€œ%d]Â¥n", idx2, idx2+i-1, idx, idx+i-1);
 		for ( ; i>0; i--) {
-			dprintf("  Val[%d] = %d\n", idx, flags->GetVal(idx));
+			dprintf("  Val[%d] = %dÂ¥n", idx, flags->GetVal(idx));
 			flags->SetVal(idx2++, flags->GetVal(idx++));
 		}
 	} else if ( cmd==2 ) {
-		dprintf("Bit[%d`%d] = Bit[%d`%d]\n", idx2, idx2+i-1, idx, idx+i-1);
+		dprintf("Bit[%dã€œ%d] = Bit[%dã€œ%d]Â¥n", idx2, idx2+i-1, idx, idx+i-1);
 		for ( ; i>0; i--) flags->SetBit(idx2++, flags->GetBit(idx++));
 	}
 	cmd = 0;
@@ -1996,7 +1996,7 @@ bool SCENARIO::d22(void)
 
 
 // -------------------------------------------------------------------
-// 23 - Cmd:$5E “ú‚âƒV[ƒ“”Ô†‚ğæ“¾
+// 23 - Cmd:$5E æ—¥æ™‚ã‚„ã‚·ãƒ¼ãƒ³ç•ªå·ã‚’å–å¾—
 // -------------------------------------------------------------------
 bool SCENARIO::d23(void)
 {
@@ -2012,14 +2012,14 @@ bool SCENARIO::d23(void)
 		case 0x03:
 		case 0x04:
 			data = sys->GetDateTime(subcmd);
-			dprintf("SubCmd:$%02X - Get Date/Time Idx:%d Data:%d\n", subcmd, idx, data);
+			dprintf("SubCmd:$%02X - Get Date/Time Idx:%d Data:%dÂ¥n", subcmd, idx, data);
 			break;
 		case 0x10:
 			data = seennum;
-			dprintf("SubCmd:$%02X - Get Seen# Idx:%d Data:%d\n", subcmd, idx, data);
+			dprintf("SubCmd:$%02X - Get Seen# Idx:%d Data:%dÂ¥n", subcmd, idx, data);
 			break;
 		default:
-			dprintf("SubCmd:$%02X - ?????????? Unimplemented\n", subcmd);
+			dprintf("SubCmd:$%02X - ?????????? UnimplementedÂ¥n", subcmd);
 			break;
 	}
 	flags->SetVal(idx, data);
@@ -2029,7 +2029,7 @@ bool SCENARIO::d23(void)
 
 
 // -------------------------------------------------------------------
-// 24 - Cmd:$5F •¡””’l‚Ì‰ÁZ‚È‚Ç
+// 24 - Cmd:$5F è¤‡æ•°æ•°å€¤ã®åŠ ç®—ãªã©
 // -------------------------------------------------------------------
 bool SCENARIO::d24(void)
 {
@@ -2053,7 +2053,7 @@ bool SCENARIO::d24(void)
 				case 0x02:
 					i = ReadValue();
 					idx2 = ReadValue();
-					dprintf("Val[%d`%d] ", i, idx2);
+					dprintf("Val[%dã€œ%d] ", i, idx2);
 					for ( ; i<=idx2; i++) data += flags->GetVal(i);
 					break;
 				case 0x11:
@@ -2064,36 +2064,36 @@ bool SCENARIO::d24(void)
 				case 0x12:
 					i = ReadValue();
 					idx2 = ReadValue();
-					dprintf("Bit[%d`%d] ", i, idx2);
+					dprintf("Bit[%dã€œ%d] ", i, idx2);
 					for ( ; i<=idx2; i++) data += flags->GetBit(i);
 					break;
 				}
 				subcmd = databuf[curpos++];
 			} while (subcmd);
-			dprintf("(%d)\n", data);
+			dprintf("(%d)Â¥n", data);
 			flags->SetVal(idx, data);
 			break;
 		case 0x10:
 			idx = ReadValue();
 			idx2 = ReadValue();
 			data = ReadValue();
-			dprintf("Value Percentage  Val[%d] = %d / %d %%\n", idx, idx2, data);
+			dprintf("Value Percentage  Val[%d] = %d / %d %%Â¥n", idx, idx2, data);
 			i = (idx2*100)/data;
-			if ( i>100 ) i = 100;		// 100%ƒI[ƒo‚µ‚½‚ç100H(Œp•ê’²‹³)
-			if ( i<  0 ) i = 0;			// ‚±‚ê‚àˆê‰
+			if ( i>100 ) i = 100;		// 100%ã‚ªãƒ¼ãƒã—ãŸã‚‰100ï¼Ÿ(ç¶™æ¯èª¿æ•™)
+			if ( i<  0 ) i = 0;			// ã“ã‚Œã‚‚ä¸€å¿œ
 			flags->SetVal(idx, i);
 			break;
 		case 0x20:
 			i = databuf[curpos++];
 			idx = ReadValue();
 			idx2 = ReadValue();
-			dprintf("Multiple Value Copy w/ index  Val[%d`%d] = Val[%d + n]\n", idx, idx+i-1, idx2);
+			dprintf("Multiple Value Copy w/ index  Val[%dã€œ%d] = Val[%d + n]Â¥n", idx, idx+i-1, idx2);
 			for ( ; i>0; i--) {
 				flags->SetVal(idx++, flags->GetVal(idx2+ReadValue()));
 			}
 			break;
 		default:
-			dprintf("???? Multiple Value Copy? (SubCmd:$%02X)\n", subcmd);
+			dprintf("???? Multiple Value Copy? (SubCmd:$%02X)Â¥n", subcmd);
 			break;
 	}
 	cmd = 0;
@@ -2102,7 +2102,7 @@ bool SCENARIO::d24(void)
 
 
 // -------------------------------------------------------------------
-// 25 - Cmd:$60 ƒVƒXƒeƒ€§Œä^ƒZ[ƒuƒ[ƒh‘¼
+// 25 - Cmd:$60 ã‚·ã‚¹ãƒ†ãƒ åˆ¶å¾¡ï¼ã‚»ãƒ¼ãƒ–ãƒ­ãƒ¼ãƒ‰ä»–
 // -------------------------------------------------------------------
 bool SCENARIO::d25(void)
 {
@@ -2121,7 +2121,7 @@ bool SCENARIO::d25(void)
 
 		case 0x02:
 			idx = ReadValue();
-			dprintf("SaveData Loading - LoadFile:%d\n", idx);
+			dprintf("SaveData Loading - LoadFile:%dÂ¥n", idx);
 			if ( sys->Load(flags, idx-1, &idx2, &idx3) ) {
 				sys->Reset();
 				Reset(idx2, idx3);
@@ -2135,7 +2135,7 @@ bool SCENARIO::d25(void)
 
 		case 0x03:
 			idx = ReadValue();
-			dprintf("SaveData Saving - #%d\n", idx);
+			dprintf("SaveData Saving - #%dÂ¥n", idx);
 			sys->Save(flags, idx-1, seennum, curpos);
 			cmd = 0;
 			break;
@@ -2145,18 +2145,18 @@ bool SCENARIO::d25(void)
 			sys->SetWindowTitle(buf, idx);
 			dprintf("SetTitle - ");
 			dprintf(buf);
-			dprintf("\n");
+			dprintf("Â¥n");
 			cmd = 0;
 			break;
 
 		case 0x05:
-			dprintf("Make Popup???\n");
+			dprintf("Make Popup???Â¥n");
 			sys->PopupContextMenu();
 			cmd = 0;
 			break;
 
 		case 0x20:
-			dprintf("Game End.($20)\n");
+			dprintf("Game End.($20)Â¥n");
 			sys->Terminate();
 			cmd = 0;
 			break;
@@ -2164,18 +2164,18 @@ bool SCENARIO::d25(void)
 		case 0x30:
 			data = ReadValue();
 			idx = ReadValue();
-			dprintf("Get SaveData Title - Idx:%d Data:%d\n", idx, data);
+			dprintf("Get SaveData Title - Idx:%d Data:%dÂ¥n", idx, data);
 			sys->SetSaveDataTitle(data-1, flags->GetStr(idx));
 			dprintf("  Str[%d] = ", idx);
 			dprintf(flags->GetStr(idx));
-			dprintf("\n");
+			dprintf("Â¥n");
 			cmd = 0;
 			break;
 
 		case 0x31:
 			data = ReadValue();
 			idx = ReadValue();
-			dprintf("Check SaveData - Idx:%d Data:%d\n", idx, data);
+			dprintf("Check SaveData - Idx:%d Data:%dÂ¥n", idx, data);
 			flags->SetVal(idx, sys->CheckSaveData(data-1));
 			cmd = 0;
 			break;
@@ -2183,7 +2183,7 @@ bool SCENARIO::d25(void)
 		case 0x35:
 			data = ReadValue();
 			idx = ReadValue();
-			dprintf("($35) ????????? - Idx:%d Data:%d\n", idx, data);
+			dprintf("($35) ????????? - Idx:%d Data:%dÂ¥n", idx, data);
 			flags->SetStr(idx, sys->CheckSaveDataTitle(data-1));
 			cmd = 0;
 			break;
@@ -2191,23 +2191,23 @@ bool SCENARIO::d25(void)
 		case 0x36:
 			data = ReadValue();
 			idx = ReadValue();
-			dprintf("($36) ????????? - Idx:%d Data:%d\n", idx, data);
+			dprintf("($36) ????????? - Idx:%d Data:%dÂ¥n", idx, data);
 			flags->SetVal(idx, sys->CheckSaveDataDate(data-1));
-			dprintf("  Val[%d] = %d\n", idx, flags->GetVal(idx));
+			dprintf("  Val[%d] = %dÂ¥n", idx, flags->GetVal(idx));
 			cmd = 0;
 			break;
 
 		case 0x37:
 			data = ReadValue();
 			idx = ReadValue();
-			dprintf("($37) ????????? - Idx:%d Data:%d\n", idx, data);
+			dprintf("($37) ????????? - Idx:%d Data:%dÂ¥n", idx, data);
 			flags->SetVal(idx, sys->CheckSaveDataTime(data-1));
-			dprintf("  Val[%d] = %d\n", idx, flags->GetVal(idx));
+			dprintf("  Val[%d] = %dÂ¥n", idx, flags->GetVal(idx));
 			cmd = 0;
 			break;
 
 		default:
-			dprintf("Unknown System Command:$%02X\n", subcmd);
+			dprintf("Unknown System Command:$%02XÂ¥n", subcmd);
 			cmd = 0;
 			break;
 		}
@@ -2217,7 +2217,7 @@ bool SCENARIO::d25(void)
 
 
 // -------------------------------------------------------------------
-// 26 - Cmd:$61 –¼‘O•Ï”‚Ì‘€ì‚Æ‚©
+// 26 - Cmd:$61 åå‰å¤‰æ•°ã®æ“ä½œã¨ã‹
 // -------------------------------------------------------------------
 bool SCENARIO::d26(void)
 {
@@ -2231,57 +2231,57 @@ bool SCENARIO::d26(void)
 
 	subcmd = databuf[curpos++];
 	switch (subcmd) {
-		case 0x01:		// ƒƒCƒ“ƒXƒNƒŠ[ƒ““à‚Å‚»‚Ì‚Ü‚Ü–¼‘O“ü—ÍHiD‚«D‚«j
-			x = ReadValue(); y = ReadValue();		// ƒeƒLƒXƒgƒ{ƒbƒNƒXn“_H
-			ex = ReadValue(); ey = ReadValue();		// ƒeƒLƒXƒgƒ{ƒbƒNƒXI“_H
-			r = ReadValue(); g = ReadValue(); b = ReadValue();		// ƒeƒLƒXƒgF
-			br = ReadValue(); bg = ReadValue(); bb = ReadValue();	// ”wŒiF
+		case 0x01:		// ãƒ¡ã‚¤ãƒ³ã‚¹ã‚¯ãƒªãƒ¼ãƒ³å†…ã§ãã®ã¾ã¾åå‰å…¥åŠ›ï¼Ÿï¼ˆå¥½ãå¥½ãï¼‰
+			x = ReadValue(); y = ReadValue();		// ãƒ†ã‚­ã‚¹ãƒˆãƒœãƒƒã‚¯ã‚¹å§‹ç‚¹ï¼Ÿ
+			ex = ReadValue(); ey = ReadValue();		// ãƒ†ã‚­ã‚¹ãƒˆãƒœãƒƒã‚¯ã‚¹çµ‚ç‚¹ï¼Ÿ
+			r = ReadValue(); g = ReadValue(); b = ReadValue();		// ãƒ†ã‚­ã‚¹ãƒˆè‰²
+			br = ReadValue(); bg = ReadValue(); bb = ReadValue();	// èƒŒæ™¯è‰²
 			dprintf("SubCmd:$%02X - Name Input text box?  (%d,%d)-(%d,%d) ", subcmd, x, y, ex, ey);
 			dprintf("TextColor(%d,%d,%d) ", r, g, b);
-			dprintf("BG Color(%d,%d,%d)\n", br, bg, bb);
+			dprintf("BG Color(%d,%d,%d)Â¥n", br, bg, bb);
 			break;
-		case 0x02:		// $01‚Åì‚Á‚½ƒeƒLƒXƒgƒ{ƒbƒNƒX‚Ì’l‚Ì‘ã“üæHi“ü—ÍŠ®—¹Hj
+		case 0x02:		// $01ã§ä½œã£ãŸãƒ†ã‚­ã‚¹ãƒˆãƒœãƒƒã‚¯ã‚¹ã®å€¤ã®ä»£å…¥å…ˆï¼Ÿï¼ˆå…¥åŠ›å®Œäº†ï¼Ÿï¼‰
 			idx = ReadValue();
-			dprintf("SubCmd:$%02X - Name Input text box?  Str[%d] = Input? (Finish?)\n", subcmd, idx);
+			dprintf("SubCmd:$%02X - Name Input text box?  Str[%d] = Input? (Finish?)Â¥n", subcmd, idx);
 			break;
-		case 0x03:		// $01‚Åì‚Á‚½ƒeƒLƒXƒgƒ{ƒbƒNƒX‚Ì’l‚Ì‘ã“üæHiÀÛ‚Ì“ü—ÍŠJnHj
+		case 0x03:		// $01ã§ä½œã£ãŸãƒ†ã‚­ã‚¹ãƒˆãƒœãƒƒã‚¯ã‚¹ã®å€¤ã®ä»£å…¥å…ˆï¼Ÿï¼ˆå®Ÿéš›ã®å…¥åŠ›é–‹å§‹ï¼Ÿï¼‰
 			idx = ReadValue();
-			dprintf("SubCmd:$%02X - Name Input text box?  Str[%d] = Input? (Start?)\n", subcmd, idx);
+			dprintf("SubCmd:$%02X - Name Input text box?  Str[%d] = Input? (Start?)Â¥n", subcmd, idx);
 			break;
-		case 0x04:		// $01‚Åì‚Á‚½ƒeƒLƒXƒgƒ{ƒbƒNƒX‚ÌƒNƒ[ƒYH
-			dprintf("SubCmd:$%02X - Name Input text box close?\n", subcmd);
+		case 0x04:		// $01ã§ä½œã£ãŸãƒ†ã‚­ã‚¹ãƒˆãƒœãƒƒã‚¯ã‚¹ã®ã‚¯ãƒ­ãƒ¼ã‚ºï¼Ÿ
+			dprintf("SubCmd:$%02X - Name Input text box close?Â¥n", subcmd);
 			break;
 		case 0x11:
 			idx = ReadValue();
 			data = ReadValue();
-			dprintf("SubCmd:$%02X - Change Name String Value NAME.%c = Str[%d]\n", subcmd, idx+0x41, data);
+			dprintf("SubCmd:$%02X - Change Name String Value NAME.%c = Str[%d]Â¥n", subcmd, idx+0x41, data);
 			sys->SetNameString(idx, flags->GetStr(data));
 			break;
 		case 0x10:
 		case 0x12:
 			idx = ReadValue();
 			data = ReadValue();
-			dprintf("SubCmd:$%02X - Get Name String? Str[%d] = NAME.%c ???\n", subcmd, data, idx+0x41);
+			dprintf("SubCmd:$%02X - Get Name String? Str[%d] = NAME.%c ???Â¥n", subcmd, data, idx+0x41);
 			sys->GetNameString(idx, flags->GetStr(data));
 			break;
-		case 0x20:		// –¼‘O“ü—Íi1€–Ú‚¾‚¯A€–Ú–¼ŒÅ’èji–‚–òj
+		case 0x20:		// åå‰å…¥åŠ›ï¼ˆ1é …ç›®ã ã‘ã€é …ç›®åå›ºå®šï¼‰ï¼ˆé­”è–¬ï¼‰
 			nameindex[0] = ReadValue()+1;
-			sprintf(nametitle[0], "–¼‘O");
+			sprintf(nametitle[0], "åå‰");
 			nametitle[1][0] = 0;
 			nameindex[1] = 0;
-			dprintf("SubCmd:$%02X - Name Change (NAME.%c)\n", subcmd, 0x40+nameindex[0]);
+			dprintf("SubCmd:$%02X - Name Change (NAME.%c)Â¥n", subcmd, 0x40+nameindex[0]);
 			sys->NameInputDlg(nametitle[0], nametitle[1], nameindex[0], nameindex[1]);
 			break;
-		case 0x21:		// HHH •¶šˆê——‚©‚ç‘I‘ğ®‚Ì“ü—ÍHiâ–]j
+		case 0x21:		// ï¼Ÿï¼Ÿï¼Ÿ æ–‡å­—ä¸€è¦§ã‹ã‚‰é¸æŠå¼ã®å…¥åŠ›ï¼Ÿï¼ˆçµ¶æœ›ï¼‰
 			idx = ReadValue();
 			ReadText(buf);
 			ReadValue(); ReadValue(); ReadValue();
 			ReadValue(); ReadValue(); ReadValue();
 			ReadValue(); ReadValue(); ReadValue();
 			break;
-		case 0x24:		// –¼‘O“ü—ÍiÅ‘å2€–ÚA€–Ú–¼w’è‰Âj
+		case 0x24:		// åå‰å…¥åŠ›ï¼ˆæœ€å¤§2é …ç›®ã€é …ç›®åæŒ‡å®šå¯ï¼‰
 			data = databuf[curpos++];
-			dprintf("SubCmd:$%02X - Name Change (%d item(s))\n", subcmd, data);
+			dprintf("SubCmd:$%02X - Name Change (%d item(s))Â¥n", subcmd, data);
 			nametitle[0][0] = 0;
 			nametitle[1][0] = 0;
 			nameindex[0] = 0;
@@ -2295,16 +2295,16 @@ bool SCENARIO::d26(void)
 				}
 				dprintf("   Idx:%d Str:", idx);
 				dprintf(buf);
-				dprintf("\n");
+				dprintf("Â¥n");
 			}
 			sys->NameInputDlg(nametitle[0], nametitle[1], nameindex[0], nameindex[1]);
 			break;
 		case 0x30:
 		case 0x31:
-			dprintf("SubCmd:$%02X - ????? No Arg Cmd.\n", subcmd);
+			dprintf("SubCmd:$%02X - ????? No Arg Cmd.Â¥n", subcmd);
 			break;
 		default:
-			dprintf("SubCmd:$%02X - Unimplemented\n", subcmd);
+			dprintf("SubCmd:$%02X - UnimplementedÂ¥n", subcmd);
 			break;
 	}
 	cmd = 0;
@@ -2313,7 +2313,7 @@ bool SCENARIO::d26(void)
 
 
 // -------------------------------------------------------------------
-// 27 - Cmd:$63 Graphics:Get/PutŒn
+// 27 - Cmd:$63 Graphics:Get/Putç³»
 // -------------------------------------------------------------------
 bool SCENARIO::d27(void)
 {
@@ -2328,22 +2328,22 @@ bool SCENARIO::d27(void)
 			srcx1 = ReadValue(); srcy1 = ReadValue();
 			srcx2 = ReadValue(); srcy2 = ReadValue();
 			srcpdt = ReadValue();
-			dprintf("Graphics - Get/Put Get (subcmd 1)  %d:(%d,%d)-(%d,%d)\n", srcpdt, srcx1, srcy1, srcx2, srcy2);
+			dprintf("Graphics - Get/Put Get (subcmd 1)  %d:(%d,%d)-(%d,%d)Â¥n", srcpdt, srcx1, srcy1, srcx2, srcy2);
 			sys->SnrPDT_Get(srcx1, srcy1, srcx2, srcy2, srcpdt);
 			break;
 		case 0x02:
 			dstx1 = ReadValue(); dsty1 = ReadValue();
 			dstpdt = ReadValue();
-			dprintf("Graphics - Get/Put Put (subcmd 2) X:%d Y:%d PDT:%d\n", dstx1, dsty1, dstpdt);
+			dprintf("Graphics - Get/Put Put (subcmd 2) X:%d Y:%d PDT:%dÂ¥n", dstx1, dsty1, dstpdt);
 			sys->SnrPDT_Put(dstx1, dsty1, dstpdt);
 			break;
 		case 0x20:
 			n = databuf[curpos++];
 			data = ReadValue();
-			dprintf("Graphics - ????????? (SubCmd:$20)  Arg1:%d  Arg2:%d\n", n, data);
+			dprintf("Graphics - ????????? (SubCmd:$20)  Arg1:%d  Arg2:%dÂ¥n", n, data);
 			break;
 		default:
-			dprintf("Graphics - ????????? (Cmd:$%02X SubCmd:$%02X)\n", cmd, subcmd);
+			dprintf("Graphics - ????????? (Cmd:$%02X SubCmd:$%02X)Â¥n", cmd, subcmd);
 			break;
 	}
 	cmd = 0;
@@ -2352,7 +2352,7 @@ bool SCENARIO::d27(void)
 
 
 // -------------------------------------------------------------------
-// 28 - Cmd:$64/65/67-6A Graphics:ƒoƒbƒtƒ@•`‰æŠÖ˜A
+// 28 - Cmd:$64/65/67-6A Graphics:ãƒãƒƒãƒ•ã‚¡æç”»é–¢é€£
 // -------------------------------------------------------------------
 bool SCENARIO::d28(void)
 {
@@ -2366,7 +2366,7 @@ bool SCENARIO::d28(void)
 
 	switch (cmd)
 	{
-	case 0x64:				// —Ìˆæ‚É‘Î‚·‚é‘€ìŠÖ˜AiƒNƒŠƒA‚Æ‚©Fƒ}ƒXƒN‚Æ‚©j
+	case 0x64:				// é ˜åŸŸã«å¯¾ã™ã‚‹æ“ä½œé–¢é€£ï¼ˆã‚¯ãƒªã‚¢ã¨ã‹è‰²ãƒã‚¹ã‚¯ã¨ã‹ï¼‰
 		subcmd = databuf[curpos++];
 		switch (subcmd)
 		{
@@ -2376,7 +2376,7 @@ bool SCENARIO::d28(void)
 			srcpdt = ReadValue();
 			r = ReadValue(); g = ReadValue(); b = ReadValue();
 			dprintf("Graphics - Clear Rect (subcmd $02)  %d:(%d,%d)-(%d,%d)", srcpdt, srcx1, srcy1, srcx2, srcy2);
-			dprintf(" Col(%d,%d,%d)\n", r, g, b);
+			dprintf(" Col(%d,%d,%d)Â¥n", r, g, b);
 			sys->SnrPDT_ClearRect(srcx1, srcy1, srcx2, srcy2, srcpdt, r, g, b);
 			break;
 
@@ -2386,7 +2386,7 @@ bool SCENARIO::d28(void)
 			srcpdt = ReadValue();
 			r = ReadValue(); g = ReadValue(); b = ReadValue();
 			dprintf("Graphics - Draw Rect Line (subcmd $04)  %d:(%d,%d)-(%d,%d)", srcpdt, srcx1, srcy1, srcx2, srcy2);
-			dprintf(" Col(%d,%d,%d)\n", r, g, b);
+			dprintf(" Col(%d,%d,%d)Â¥n", r, g, b);
 			sys->SnrPDT_DrawRectLine(srcx1, srcy1, srcx2, srcy2, srcpdt, r, g, b);
 			break;
 
@@ -2394,7 +2394,7 @@ bool SCENARIO::d28(void)
 			srcx1 = ReadValue(); srcy1 = ReadValue();
 			srcx2 = ReadValue(); srcy2 = ReadValue();
 			srcpdt = ReadValue();
-			dprintf("Graphics - Invert Color (subcmd $07)\n");
+			dprintf("Graphics - Invert Color (subcmd $07)Â¥n");
 			sys->SnrPDT_MakeInvert(srcx1, srcy1, srcx2, srcy2, srcpdt);
 			break;
 
@@ -2404,7 +2404,7 @@ bool SCENARIO::d28(void)
 			srcpdt = ReadValue();
 			r = ReadValue(); g = ReadValue(); b = ReadValue();
 			dprintf("Graphics - ColorMask (subcmd $10)  %d:(%d,%d)-(%d,%d)", srcpdt, srcx1, srcy1, srcx2, srcy2);
-			dprintf("  RGB:%d,%d,%d\n", r, g, b);
+			dprintf("  RGB:%d,%d,%dÂ¥n", r, g, b);
 			sys->SnrPDT_MakeColorMask(srcx1, srcy1, srcx2, srcy2, srcpdt, r, g, b);
 			break;
 
@@ -2412,7 +2412,7 @@ bool SCENARIO::d28(void)
 			srcx1 = ReadValue(); srcy1 = ReadValue();
 			srcx2 = ReadValue(); srcy2 = ReadValue();
 			srcpdt = ReadValue();
-			dprintf("Graphics - Fade Out Color (subcmd $11)  %d:(%d,%d)-(%d,%d)\n", srcpdt, srcx1, srcy1, srcx2, srcy2);
+			dprintf("Graphics - Fade Out Color (subcmd $11)  %d:(%d,%d)-(%d,%d)Â¥n", srcpdt, srcx1, srcy1, srcx2, srcy2);
 			sys->SnrPDT_FadeColor(srcx1, srcy1, srcx2, srcy2, srcpdt, 0, 0, 0, 0x80);
 			break;
 
@@ -2420,7 +2420,7 @@ bool SCENARIO::d28(void)
 			srcx1 = ReadValue(); srcy1 = ReadValue();
 			srcx2 = ReadValue(); srcy2 = ReadValue();
 			srcpdt = ReadValue();
-			dprintf("Graphics - Fade Out Color (subcmd $12)  %d:(%d,%d)-(%d,%d)\n", srcpdt, srcx1, srcy1, srcx2, srcy2);
+			dprintf("Graphics - Fade Out Color (subcmd $12)  %d:(%d,%d)-(%d,%d)Â¥n", srcpdt, srcx1, srcy1, srcx2, srcy2);
 			sys->SnrPDT_FadeColor(srcx1, srcy1, srcx2, srcy2, srcpdt, 0, 0, 0, 0xc0);
 			break;
 
@@ -2433,7 +2433,7 @@ bool SCENARIO::d28(void)
 			b = ReadValue();
 			count = ReadValue();
 			dprintf("Graphics - FadeOutColor($15), %d:(%d,%d)-(%d,%d)", srcpdt, srcx1, srcy1, srcx2, srcy2);
-			dprintf(" -> Col:%d,%d,%d Cnt:%d\n", r, g, b, count);
+			dprintf(" -> Col:%d,%d,%d Cnt:%dÂ¥n", r, g, b, count);
 			sys->SnrPDT_FadeColor(srcx1, srcy1, srcx2, srcy2, srcpdt, r, g, b, count);
 			break;
 
@@ -2441,7 +2441,7 @@ bool SCENARIO::d28(void)
 			srcx1 = ReadValue(); srcy1 = ReadValue();
 			srcx2 = ReadValue(); srcy2 = ReadValue();
 			srcpdt = ReadValue();
-			dprintf("Graphics - Make Mono Image (subcmd $20)\n");
+			dprintf("Graphics - Make Mono Image (subcmd $20)Â¥n");
 			sys->SnrPDT_MakeMonochrome(srcx1, srcy1, srcx2, srcy2, srcpdt);
 			break;
 
@@ -2452,9 +2452,9 @@ bool SCENARIO::d28(void)
 			dstx1 = ReadValue(); dsty1 = ReadValue();
 			dstx2 = ReadValue(); dsty2 = ReadValue();
 			dstpdt = ReadValue();
-			dprintf("Graphics - Stretch Blt (subcmd $30)\n");
+			dprintf("Graphics - Stretch Blt (subcmd $30)Â¥n");
 			dprintf("  %d:(%d,%d)-(%d,%d)->", srcpdt, srcx1, srcy1, srcx2, srcy2);
-			dprintf("%d:(%d,%d)-(%d,%d)\n", dstpdt, dstx1, dsty1, dstx2, dsty2);
+			dprintf("%d:(%d,%d)-(%d,%d)Â¥n", dstpdt, dstx1, dsty1, dstx2, dsty2);
 			sys->SnrPDT_StretchCopy(srcx1, srcy1, srcx2, srcy2, srcpdt, dstx1, dsty1, dstx2, dsty2, dstpdt);
 			break;
 
@@ -2472,7 +2472,7 @@ bool SCENARIO::d28(void)
 			effect.cmd = 9999;
 			effect.curcount = 0;
 			effect.prevtime = sys->GetCurrentTimer();
-			if (effect.sx1>639) effect.sy1 = 639;		// —öˆ¤CHU!ƒfƒ‚
+			if (effect.sx1>639) effect.sy1 = 639;		// æ‹æ„›CHU!ãƒ‡ãƒ¢
 			if (effect.sx2>639) effect.sy2 = 639;
 			if (effect.sx1<0) effect.sy1 = 0;
 			if (effect.sx2<0) effect.sy2 = 0;
@@ -2480,16 +2480,16 @@ bool SCENARIO::d28(void)
 			if (effect.sy2>479) effect.sy2 = 479;
 			if (effect.sy1<0) effect.sy1 = 0;
 			if (effect.sy2<0) effect.sy2 = 0;
-			dprintf("Graphics - Stretch Blt (subcmd $32)\n");
+			dprintf("Graphics - Stretch Blt (subcmd $32)Â¥n");
 			dprintf("%d:(%d,%d)-(%d,%d)->", effect.srcpdt, effect.sx1, effect.sy1, effect.sx2, effect.sy2);
 			dprintf("(%d,%d)-(%d,%d)  Dst:%d:", effect.arg3, effect.arg4, effect.arg5, effect.arg6, effect.dstpdt);
-			dprintf("(%d,%d)-(%d,%d)\n", effect.dx, effect.dy, effect.arg1, effect.arg2);
-			dprintf("Wait:%d  TotalStep:%d\n", effect.steptime, effect.step);
+			dprintf("(%d,%d)-(%d,%d)Â¥n", effect.dx, effect.dy, effect.arg1, effect.arg2);
+			dprintf("Wait:%d  TotalStep:%dÂ¥n", effect.steptime, effect.step);
 			sys->SnrPDT_Effect(&effect);
 			break;
 
 		default:
-			dprintf("Graphics - ??? (subcmd $%02X)\n", subcmd);
+			dprintf("Graphics - ??? (subcmd $%02X)Â¥n", subcmd);
 			break;
 		}
 		cmd = 0;
@@ -2499,7 +2499,7 @@ bool SCENARIO::d28(void)
 		cmd = 0;
 		break;
 
-	case 0x67:				// ƒoƒbƒtƒ@ƒRƒs[‚Æ•\¦ŠÖ˜A
+	case 0x67:				// ãƒãƒƒãƒ•ã‚¡ã‚³ãƒ”ãƒ¼ã¨è¡¨ç¤ºé–¢é€£
 		subcmd = databuf[curpos++];
 		switch (subcmd)
 		{
@@ -2508,15 +2508,15 @@ bool SCENARIO::d28(void)
 			srcx2 = ReadValue(); srcy2 = ReadValue();
 			srcpdt = ReadValue();
 			flag = ReadValue();
-			dprintf("Graphics - Copy to Display PDT(#0), Same Pos (subcmd $00)\n");
+			dprintf("Graphics - Copy to Display PDT(#0), Same Pos (subcmd $00)Â¥n");
 			dprintf("    %d:(%d,%d)-(%d,%d)", srcpdt, srcx1, srcy1, srcx2, srcy2);
-			dprintf(" -> 0:(%d,%d)  UpdateFlag:$%02X\n", srcx1, srcy1, flag);
+			dprintf(" -> 0:(%d,%d)  UpdateFlag:$%02XÂ¥n", srcx1, srcy1, flag);
 			sys->SnrPDT_CopyBackBuffer(srcx1, srcy1, srcx2, srcy2, srcpdt, 1/*flag*/);
 			break;
 
-		case 0x01:		// ƒ}ƒXƒN‚àƒRƒs[‚³‚ê‚é–Í—lH (Ribbon2•ú‰ÛŒã‚Ì‘I‘ğ‚Ì”š)
-						// iKanon CGƒ‚[ƒh‚ÌCG‚ª‚È‚¢•”•ª‚ğ‚İ‚é‚ÆAƒ}ƒXƒN‚ÍƒRƒs[‚³‚ê‚È‚¢•û‚ª³‚µ‚¢‚Á‚Û‚¢EEEj
-						// Œ©‚½–Ú‚Ì•”•ª‚Å‚ÍRibbon2‚Ì•û‚ª‰˜‚­Œ©‚¦‚é‚Ì‚ÅA‚»‚Á‚¿‚ğ—Dæ
+		case 0x01:		// ãƒã‚¹ã‚¯ã‚‚ã‚³ãƒ”ãƒ¼ã•ã‚Œã‚‹æ¨¡æ§˜ï¼Ÿ (Ribbon2æ”¾èª²å¾Œã®é¸æŠæ™‚ã®æ•°å­—)
+						// ï¼ˆKanon CGãƒ¢ãƒ¼ãƒ‰ã®CGãŒãªã„éƒ¨åˆ†ã‚’ã¿ã‚‹ã¨ã€ãƒã‚¹ã‚¯ã¯ã‚³ãƒ”ãƒ¼ã•ã‚Œãªã„æ–¹ãŒæ­£ã—ã„ã£ã½ã„ãƒ»ãƒ»ãƒ»ï¼‰
+						// è¦‹ãŸç›®ã®éƒ¨åˆ†ã§ã¯Ribbon2ã®æ–¹ãŒæ±šãè¦‹ãˆã‚‹ã®ã§ã€ãã£ã¡ã‚’å„ªå…ˆ
 			srcx1 = ReadValue(); srcy1 = ReadValue();
 			srcx2 = ReadValue(); srcy2 = ReadValue();
 			srcpdt = ReadValue();
@@ -2525,7 +2525,7 @@ bool SCENARIO::d28(void)
 			flag = 0;
 			if ( sys->Version()>=1704 ) flag = ReadValue();		// AVG32 New Version (>17D) Only
 			dprintf("Graphics - Copy($01), %d:(%d,%d)-(%d,%d)", srcpdt, srcx1, srcy1, srcx2, srcy2);
-			dprintf(" -> %d:(%d,%d)  Flag:$%02X\n", dstpdt, dstx1, dsty1, flag);
+			dprintf(" -> %d:(%d,%d)  Flag:$%02XÂ¥n", dstpdt, dstx1, dsty1, flag);
 			sys->SnrPDT_Copy(srcx1, srcy1, srcx2, srcy2, srcpdt, dstx1, dsty1, dstpdt, flag);
 			break;
 
@@ -2537,7 +2537,7 @@ bool SCENARIO::d28(void)
 			dstpdt = ReadValue();
 			if ( sys->Version()>=1613 ) flag = ReadValue();			// AVG32 New Version (>16M) Only??
 			dprintf("Graphics - Mask Copy($02), %d:(%d,%d)-(%d,%d)", srcpdt, srcx1, srcy1, srcx2, srcy2);
-			dprintf(" -> %d:(%d,%d) Flag:$%02X\n", dstpdt, dstx1, dsty1, flag);
+			dprintf(" -> %d:(%d,%d) Flag:$%02XÂ¥n", dstpdt, dstx1, dsty1, flag);
 			sys->SnrPDT_MaskCopy(srcx1, srcy1, srcx2, srcy2, srcpdt, dstx1, dsty1, dstpdt, flag);
 			break;
 
@@ -2550,7 +2550,7 @@ bool SCENARIO::d28(void)
 			r = ReadValue(); g = ReadValue(); b = ReadValue();
 			dprintf("Graphics - Copy w/o Color ($03), %d:(%d,%d)-(%d,%d)", srcpdt, srcx1, srcy1, srcx2, srcy2);
 			dprintf(" -> %d:(%d,%d)", dstpdt, dstx1, dsty1);
-			dprintf(" RGB:$%02X%02X%02X\n", r, g, b);
+			dprintf(" RGB:$%02X%02X%02XÂ¥n", r, g, b);
 			sys->SnrPDT_MonoCopy(srcx1, srcy1, srcx2, srcy2, srcpdt, dstx1, dsty1, dstpdt, r, g, b);
 			break;
 
@@ -2560,7 +2560,7 @@ bool SCENARIO::d28(void)
 			srcpdt = ReadValue();
 			dstx1 = ReadValue(); dsty1 = ReadValue();
 			dstpdt = ReadValue();
-			dprintf("Graphics - Swap (subcmd $05)\n");
+			dprintf("Graphics - Swap (subcmd $05)Â¥n");
 			sys->SnrPDT_Swap(srcx1, srcy1, srcx2, srcy2, srcpdt, dstx1, dsty1, dstpdt);
 			break;
 
@@ -2573,48 +2573,48 @@ bool SCENARIO::d28(void)
 			flag = ReadValue();
 			sys->SnrPDT_CopyWithMask(srcx1, srcy1, srcx2, srcy2, srcpdt, dstx1, dsty1, dstpdt, flag);
 			dprintf("Graphics - Copy w/ Mask (subcmd $08), %d:(%d,%d)-(%d,%d)", srcpdt, srcx1, srcy1, srcx2, srcy2);
-			dprintf(" -> %d:(%d,%d)  Flag:$%02X\n", dstpdt, dstx1, dsty1, flag);
-			dprintf("************************* Unimplemented!!!\n");
+			dprintf(" -> %d:(%d,%d)  Flag:$%02XÂ¥n", dstpdt, dstx1, dsty1, flag);
+			dprintf("************************* Unimplemented!!!Â¥n");
 			break;
 
-		case 0x11:		// ‘S‰æ–ÊƒRƒs[Bƒ}ƒXƒNƒoƒbƒtƒ@‚Ì“à—e‚àƒRƒs[‚³‚ê‚é‚İ‚½‚¢B
+		case 0x11:		// å…¨ç”»é¢ã‚³ãƒ”ãƒ¼ã€‚ãƒã‚¹ã‚¯ãƒãƒƒãƒ•ã‚¡ã®å†…å®¹ã‚‚ã‚³ãƒ”ãƒ¼ã•ã‚Œã‚‹ã¿ãŸã„ã€‚
 			srcpdt = ReadValue();
 			dstpdt = ReadValue();
 			flag = 0;
 			if ( sys->Version()>=1704 ) flag = ReadValue();		// AVG32 New Version (>17D) Only
 			sys->SnrPDT_AllCopy(srcpdt, dstpdt, flag);
 //			sys->SnrPDT_MaskCopy(0, 0, 639, 479, srcpdt, 0, 0, dstpdt, flag);
-			dprintf("Graphics - Copy all screen(buffer) (subcmd $11) %d->%d Flag:%d\n", srcpdt, dstpdt, flag);
+			dprintf("Graphics - Copy all screen(buffer) (subcmd $11) %d->%d Flag:%dÂ¥n", srcpdt, dstpdt, flag);
 			break;
 
-		case 0x12:		// ‘S‰æ–Êƒ}ƒXƒNƒRƒs[
+		case 0x12:		// å…¨ç”»é¢ãƒã‚¹ã‚¯ã‚³ãƒ”ãƒ¼
 			srcpdt = ReadValue();
 			dstpdt = ReadValue();
 			flag = 0;
 			if ( sys->Version()>=1613 ) flag = ReadValue();		// AVG32 New Version (>16M) Only
 //			flag = ReadValue();
 			sys->SnrPDT_MaskCopy(0, 0, 639, 479, srcpdt, 0, 0, dstpdt, flag);
-			dprintf("Graphics - Copy all screen? w/ fade (subcmd $12) %d->%d  Flag:$%02X\n", srcpdt, dstpdt, flag);
+			dprintf("Graphics - Copy all screen? w/ fade (subcmd $12) %d->%d  Flag:$%02XÂ¥n", srcpdt, dstpdt, flag);
 			break;
 
-		case 0x20:		// PureHeart‚Æ‚© ”š•\¦H
-			n = ReadValue();							// •\¦‚·‚é”’l‚Ì“ü‚Á‚½•Ï””Ô†
+		case 0x20:		// PureHeartã¨ã‹ æ•°å­—è¡¨ç¤ºï¼Ÿ
+			n = ReadValue();							// è¡¨ç¤ºã™ã‚‹æ•°å€¤ã®å…¥ã£ãŸå¤‰æ•°ç•ªå·
 			data = flags->GetVal(n);
-			srcx1 = ReadValue(); srcy1 = ReadValue();	// Œ³ƒf[ƒ^‚ÌŠJnÀ•W
-			srcx2 = ReadValue(); srcy2 = ReadValue();	// Œ³ƒf[ƒ^‚Ì1•¶š“–‚½‚è‚Ì•^‚‚³
-			srcdx = ReadValue(); srcdy = ReadValue();	// Œ³ƒf[ƒ^‚ÌŸ‚Ì•¶šˆÊ’u‚Ü‚Å‚ÌˆÚ“®—Ê
+			srcx1 = ReadValue(); srcy1 = ReadValue();	// å…ƒãƒ‡ãƒ¼ã‚¿ã®é–‹å§‹åº§æ¨™
+			srcx2 = ReadValue(); srcy2 = ReadValue();	// å…ƒãƒ‡ãƒ¼ã‚¿ã®1æ–‡å­—å½“ãŸã‚Šã®å¹…ï¼é«˜ã•
+			srcdx = ReadValue(); srcdy = ReadValue();	// å…ƒãƒ‡ãƒ¼ã‚¿ã®æ¬¡ã®æ–‡å­—ä½ç½®ã¾ã§ã®ç§»å‹•é‡
 			srcpdt = ReadValue();
-			dstx1 = ReadValue(); dsty1 = ReadValue();	// •\¦ŠJnˆÊ’u
-			dstx2 = ReadValue(); dsty2 = ReadValue();	// Ÿ‚ÌŒ…‚Ü‚Å‚ÌˆÚ“®—Ê
-			count = ReadValue();						// •\¦Œ…”
-			zero = ReadValue();							// Œ…”•ª‚Ü‚Åæ“ª‚ğ0‚Å–„‚ß‚é‚©‚Ç‚¤‚©
+			dstx1 = ReadValue(); dsty1 = ReadValue();	// è¡¨ç¤ºé–‹å§‹ä½ç½®
+			dstx2 = ReadValue(); dsty2 = ReadValue();	// æ¬¡ã®æ¡ã¾ã§ã®ç§»å‹•é‡
+			count = ReadValue();						// è¡¨ç¤ºæ¡æ•°
+			zero = ReadValue();							// æ¡æ•°åˆ†ã¾ã§å…ˆé ­ã‚’0ã§åŸ‹ã‚ã‚‹ã‹ã©ã†ã‹
 			dstpdt = ReadValue();
 
-			dprintf("Graphics - Disp Strings??? (subcmd $20)\n");
-			dprintf("  Disp Num:%d\n", data);
+			dprintf("Graphics - Disp Strings??? (subcmd $20)Â¥n");
+			dprintf("  Disp Num:%dÂ¥n", data);
 			for (count-- ; count>=0; count--) {
 				n = data%10;
-				dprintf("  Disp %d on Pos:%d\n", n, count);
+				dprintf("  Disp %d on Pos:%dÂ¥n", n, count);
 				sys->SnrPDT_Copy(srcx1+(srcdx*n), srcy1+(srcdy*n),
 							  srcx1+(srcdx*n)+srcx2-1, srcy1+(srcdy*n)+srcy2-1,
 							  srcpdt,
@@ -2625,17 +2625,17 @@ bool SCENARIO::d28(void)
 			}
 			break;
 
-		case 0x21:		// #$20‚Ìƒ}ƒXƒNƒRƒs[”Å
-			n = ReadValue();							// •\¦‚·‚é”’l‚Ì“ü‚Á‚½•Ï””Ô†
+		case 0x21:		// #$20ã®ãƒã‚¹ã‚¯ã‚³ãƒ”ãƒ¼ç‰ˆ
+			n = ReadValue();							// è¡¨ç¤ºã™ã‚‹æ•°å€¤ã®å…¥ã£ãŸå¤‰æ•°ç•ªå·
 			data = flags->GetVal(n);
-			srcx1 = ReadValue(); srcy1 = ReadValue();	// Œ³ƒf[ƒ^‚ÌŠJnÀ•W
-			srcx2 = ReadValue(); srcy2 = ReadValue();	// Œ³ƒf[ƒ^‚Ì1•¶š“–‚½‚è‚Ì•^‚‚³
-			srcdx = ReadValue(); srcdy = ReadValue();	// Œ³ƒf[ƒ^‚ÌŸ‚Ì•¶šˆÊ’u‚Ü‚Å‚ÌˆÚ“®—Ê
+			srcx1 = ReadValue(); srcy1 = ReadValue();	// å…ƒãƒ‡ãƒ¼ã‚¿ã®é–‹å§‹åº§æ¨™
+			srcx2 = ReadValue(); srcy2 = ReadValue();	// å…ƒãƒ‡ãƒ¼ã‚¿ã®1æ–‡å­—å½“ãŸã‚Šã®å¹…ï¼é«˜ã•
+			srcdx = ReadValue(); srcdy = ReadValue();	// å…ƒãƒ‡ãƒ¼ã‚¿ã®æ¬¡ã®æ–‡å­—ä½ç½®ã¾ã§ã®ç§»å‹•é‡
 			srcpdt = ReadValue();
-			dstx1 = ReadValue(); dsty1 = ReadValue();	// •\¦ŠJnˆÊ’u
-			dstx2 = ReadValue(); dsty2 = ReadValue();	// Ÿ‚ÌŒ…‚Ü‚Å‚ÌˆÚ“®—Ê
-			count = ReadValue();						// •\¦Œ…”
-			zero = ReadValue();							// Œ…”•ª‚Ü‚Åæ“ª‚ğ0‚Å–„‚ß‚é‚©‚Ç‚¤‚©
+			dstx1 = ReadValue(); dsty1 = ReadValue();	// è¡¨ç¤ºé–‹å§‹ä½ç½®
+			dstx2 = ReadValue(); dsty2 = ReadValue();	// æ¬¡ã®æ¡ã¾ã§ã®ç§»å‹•é‡
+			count = ReadValue();						// è¡¨ç¤ºæ¡æ•°
+			zero = ReadValue();							// æ¡æ•°åˆ†ã¾ã§å…ˆé ­ã‚’0ã§åŸ‹ã‚ã‚‹ã‹ã©ã†ã‹
 			dstpdt = ReadValue();
 			flag = ReadValue();
 
@@ -2650,20 +2650,20 @@ bool SCENARIO::d28(void)
 				if ( (!data)&&(!zero) ) break;
 			}
 
-			dprintf("Graphics - Disp Strings? (subcmd $21)\n");
+			dprintf("Graphics - Disp Strings? (subcmd $21)Â¥n");
 			break;
 
-		case 0x22:		// #$20‚Ìƒ‚ƒmƒNƒƒRƒs[”Å
-			n = ReadValue();							// •\¦‚·‚é”’l‚Ì“ü‚Á‚½•Ï””Ô†
+		case 0x22:		// #$20ã®ãƒ¢ãƒã‚¯ãƒ­ã‚³ãƒ”ãƒ¼ç‰ˆ
+			n = ReadValue();							// è¡¨ç¤ºã™ã‚‹æ•°å€¤ã®å…¥ã£ãŸå¤‰æ•°ç•ªå·
 			data = flags->GetVal(n);
-			srcx1 = ReadValue(); srcy1 = ReadValue();	// Œ³ƒf[ƒ^‚ÌŠJnÀ•W
-			srcx2 = ReadValue(); srcy2 = ReadValue();	// Œ³ƒf[ƒ^‚Ì1•¶š“–‚½‚è‚Ì•^‚‚³
-			srcdx = ReadValue(); srcdy = ReadValue();	// Œ³ƒf[ƒ^‚ÌŸ‚Ì•¶šˆÊ’u‚Ü‚Å‚ÌˆÚ“®—Ê
+			srcx1 = ReadValue(); srcy1 = ReadValue();	// å…ƒãƒ‡ãƒ¼ã‚¿ã®é–‹å§‹åº§æ¨™
+			srcx2 = ReadValue(); srcy2 = ReadValue();	// å…ƒãƒ‡ãƒ¼ã‚¿ã®1æ–‡å­—å½“ãŸã‚Šã®å¹…ï¼é«˜ã•
+			srcdx = ReadValue(); srcdy = ReadValue();	// å…ƒãƒ‡ãƒ¼ã‚¿ã®æ¬¡ã®æ–‡å­—ä½ç½®ã¾ã§ã®ç§»å‹•é‡
 			srcpdt = ReadValue();
-			dstx1 = ReadValue(); dsty1 = ReadValue();	// •\¦ŠJnˆÊ’u
-			dstx2 = ReadValue(); dsty2 = ReadValue();	// Ÿ‚ÌŒ…‚Ü‚Å‚ÌˆÚ“®—Ê
-			count = ReadValue();						// •\¦Œ…”
-			zero = ReadValue();							// Œ…”•ª‚Ü‚Åæ“ª‚ğ0‚Å–„‚ß‚é‚©‚Ç‚¤‚©
+			dstx1 = ReadValue(); dsty1 = ReadValue();	// è¡¨ç¤ºé–‹å§‹ä½ç½®
+			dstx2 = ReadValue(); dsty2 = ReadValue();	// æ¬¡ã®æ¡ã¾ã§ã®ç§»å‹•é‡
+			count = ReadValue();						// è¡¨ç¤ºæ¡æ•°
+			zero = ReadValue();							// æ¡æ•°åˆ†ã¾ã§å…ˆé ­ã‚’0ã§åŸ‹ã‚ã‚‹ã‹ã©ã†ã‹
 			dstpdt = ReadValue();
 			r = ReadValue(); g = ReadValue(); b = ReadValue();
 
@@ -2678,23 +2678,23 @@ bool SCENARIO::d28(void)
 				if ( (!data)&&(!zero) ) break;
 			}
 
-			dprintf("Graphics - Disp Strings? (subcmd $22)\n");
+			dprintf("Graphics - Disp Strings? (subcmd $22)Â¥n");
 			break;
 
 		default:
-			dprintf("Graphics - ??? (subcmd $%02X)\n", subcmd);
+			dprintf("Graphics - ??? (subcmd $%02X)Â¥n", subcmd);
 			break;
 		}
 		cmd = 0;
 		break;
 
 	case 0x68:
-		if ( flashcount ) {			// ‰æ–Êƒtƒ‰ƒbƒVƒ…‚¿‚¤`
+		if ( flashcount ) {			// ç”»é¢ãƒ•ãƒ©ãƒƒã‚·ãƒ¥ã¡ã†ã€œ
 			if ( flashcount&1 ) {
 				sys->SnrPDT_Copy(0, 0, 639, 479, HIDEPDT, 0, 0, 0, 0);
 				flashbase = sys->GetCurrentTimer();
 				flashcount--;
-				if ( !flashcount ) {		// ‚¨‚í‚è`
+				if ( !flashcount ) {		// ãŠã‚ã‚Šã€œ
 					cmd = 0;
 				}
 			} else {
@@ -2705,43 +2705,43 @@ bool SCENARIO::d28(void)
 		} else {
 			subcmd = databuf[curpos++];
 			switch (subcmd) {
-				case 0x01:				// F‚Å‚¤‚ß‚éH
+				case 0x01:				// è‰²ã§ã†ã‚ã‚‹ï¼Ÿ
 					dstpdt = ReadValue();
 					r = ReadValue(); g= ReadValue(); b = ReadValue();
 					sys->SnrPDT_FillRect(0, 0, 639, 479, dstpdt, r, g, b);
-					dprintf("Graphics - FillScreen w/ Color? (subcmd $01)  PDT:%d %d,%d,%d\n", dstpdt, r, g, b);
+					dprintf("Graphics - FillScreen w/ Color? (subcmd $01)  PDT:%d %d,%d,%dÂ¥n", dstpdt, r, g, b);
 					cmd = 0;
 					break;
-				case 0x10:				// ‰æ–Êƒtƒ‰ƒbƒVƒ…Œø‰Ê‚İ‚½‚¢‚È‚ÌH
+				case 0x10:				// ç”»é¢ãƒ•ãƒ©ãƒƒã‚·ãƒ¥åŠ¹æœã¿ãŸã„ãªã®ï¼Ÿ
 					flashr = ReadValue();
 					flashg = ReadValue();
-					flashb = ReadValue();				// ƒtƒ‰ƒbƒVƒ…F
-					flashtime = ReadValue();			// ŠÔŠÔŠu
-					flashcount = ReadValue()*2;			// ‰ñ”
-					dprintf("Graphics - Flash Screen? (subcmd $10)\n");
+					flashb = ReadValue();				// ãƒ•ãƒ©ãƒƒã‚·ãƒ¥è‰²
+					flashtime = ReadValue();			// æ™‚é–“é–“éš”
+					flashcount = ReadValue()*2;			// å›æ•°
+					dprintf("Graphics - Flash Screen? (subcmd $10)Â¥n");
 					if ( flashcount ) {
 						sys->SnrPDT_Copy(0, 0, 639, 479, 0, 0, 0, HIDEPDT, 0);
 						sys->SnrPDT_FillRect(0, 0, 639, 479, 0, flashr, flashg, flashb);
 						flashcount--;
-					} else {							// ”O‚Ìˆ×
+					} else {							// å¿µã®ç‚º
 						cmd = 0;
 					}
 					break;
 				default:
-					dprintf("Graphics - ??? (subcmd $%02X)\n", subcmd);
+					dprintf("Graphics - ??? (subcmd $%02X)Â¥n", subcmd);
 					cmd = 0;
 					break;
 			}
 		}
 		break;
 
-	case 0x69:				// 2‰æ–ÊiPDT0/1j‚ğg‚Á‚½ƒXƒNƒ[ƒ‹Ø‚è‘Ö‚¦H
-		// ƒzƒ“ƒg‚ÍƒXƒNƒ[ƒ‹‚·‚é‚ñ‚¾‚¯‚Ç ^^;
-		// ‚ ‚ÆAPDT0‚©‚çƒXƒNƒ[ƒ‹ƒAƒEƒg‚µ‚½•ª‚ÍAPDT1‚É‚¢‚È‚«‚á‚È‚ñ‚È‚¢H‚Ì‚©‚ÈH
-		//    subcmd–ğŠ„•s–¾i–‚–ò‚Å‚Íí‚É2Hj •Ê”’l‚Å¶‰E‚Æ‚©‚É‚È‚é‚Ì‚©‚à
-		//    data‚Í•ûŒü‚İ‚½‚¢B0‚Åã‚ÖA1‚Å‰º‚Ö‚ÌƒXƒNƒ[ƒ‹‚ç‚µ‚¢
-		//    count‚ªƒXƒNƒ[ƒ‹—Ê
-		//    n‚Í—p“r•s–¾i–‚–ò‚Å‚Í400‚ªw’è‚³‚ê‚Ä‚¢‚éjBØ‚è‘Ö‚¦ƒXƒs[ƒh‚Æ‚©H
+	case 0x69:				// 2ç”»é¢ï¼ˆPDT0/1ï¼‰ã‚’ä½¿ã£ãŸã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«åˆ‡ã‚Šæ›¿ãˆï¼Ÿ
+		// ãƒ›ãƒ³ãƒˆã¯ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã™ã‚‹ã‚“ã ã‘ã© ^^;
+		// ã‚ã¨ã€PDT0ã‹ã‚‰ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã‚¢ã‚¦ãƒˆã—ãŸåˆ†ã¯ã€PDT1ã«ã„ãªãã‚ƒãªã‚“ãªã„ï¼Ÿã®ã‹ãªï¼Ÿ
+		//    subcmdå½¹å‰²ä¸æ˜ï¼ˆé­”è–¬ã§ã¯å¸¸ã«2ï¼Ÿï¼‰ åˆ¥æ•°å€¤ã§å·¦å³ã¨ã‹ã«ãªã‚‹ã®ã‹ã‚‚
+		//    dataã¯æ–¹å‘ã¿ãŸã„ã€‚0ã§ä¸Šã¸ã€1ã§ä¸‹ã¸ã®ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã‚‰ã—ã„
+		//    countãŒã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«é‡
+		//    nã¯ç”¨é€”ä¸æ˜ï¼ˆé­”è–¬ã§ã¯400ãŒæŒ‡å®šã•ã‚Œã¦ã„ã‚‹ï¼‰ã€‚åˆ‡ã‚Šæ›¿ãˆã‚¹ãƒ”ãƒ¼ãƒ‰ã¨ã‹ï¼Ÿ
 #if 0
 		subcmd = databuf[curpos++];
 		data = databuf[curpos++];
@@ -2750,15 +2750,15 @@ bool SCENARIO::d28(void)
 		count = ReadValue();
 		n = ReadValue();
 		if ( data ) {
-			// ‹t•ûŒüB–¢À‘•
+			// é€†æ–¹å‘ã€‚æœªå®Ÿè£…
 		} else {
 			sys->SnrPDT_Copy(srcx1, srcy1+count, srcx2, srcy2, 0, srcx1, 0, 0, 0);
 			sys->SnrPDT_Copy(srcx1, 0, srcx2, count-1, 1, srcx1, srcy2-srcy1-count+1, 0, 0);
 			sys->SnrPDT_Copy(srcx1, count, srcx2, srcy2, 1, srcx1, 0, 1, 0);
 		}
-		dprintf("Graphics - 2 Screens camera panning???\n");
+		dprintf("Graphics - 2 Screens camera panning???Â¥n");
 		dprintf("  SubCmd?:$%02X Direction:$%02X  (%d,%d)-(%d,", subcmd, data, srcx1, srcy1, srcx2);
-		dprintf("%d) Line:%d Arg8:%d\n", srcy2, count, n);
+		dprintf("%d) Line:%d Arg8:%dÂ¥n", srcy2, count, n);
 #else
 		subcmd = databuf[curpos++];
 		effect.arg4 = databuf[curpos++];		// Direction
@@ -2786,7 +2786,7 @@ bool SCENARIO::d28(void)
 
 
 // -------------------------------------------------------------------
-// 29 - Cmd:$66 PDTƒoƒbƒtƒ@‚Ö‚Ì’¼Ú•¶š—ñ•`‰æ
+// 29 - Cmd:$66 PDTãƒãƒƒãƒ•ã‚¡ã¸ã®ç›´æ¥æ–‡å­—åˆ—æç”»
 // -------------------------------------------------------------------
 bool SCENARIO::d29(void)
 {
@@ -2794,16 +2794,16 @@ bool SCENARIO::d29(void)
 	int x, y, r, g, b, idx, attr;
 	char buf[256];
 
-	subcmd = databuf[curpos++];		// SubCmd ˆÓ–¡–³‚µH
+	subcmd = databuf[curpos++];		// SubCmd æ„å‘³ç„¡ã—ï¼Ÿ
 	x = ReadValue(); y = ReadValue();
-	idx = ReadValue();						// •`‰æ‚·‚éPDT
+	idx = ReadValue();						// æç”»ã™ã‚‹PDT
 	r = ReadValue(); g = ReadValue(); b = ReadValue();
 	ReadFormattedText(buf, &attr);
-	dprintf("Draw string to PDT\n");
+	dprintf("Draw string to PDTÂ¥n");
 	dprintf("  %d:(%d,%d) ", idx, x, y);
 	dprintf("Col:(%d,%d,%d) Str:", r, g, b);
 	dprintf(buf);
-	dprintf("\n");
+	dprintf("Â¥n");
 	sys->SnrPDT_DrawString(x, y, idx, r, g, b, buf);
 
 	cmd = 0;
@@ -2812,7 +2812,7 @@ bool SCENARIO::d29(void)
 
 
 // -------------------------------------------------------------------
-// 2A - Cmd:$6C ƒGƒŠƒAî•ñŠÖ˜A
+// 2A - Cmd:$6C ã‚¨ãƒªã‚¢æƒ…å ±é–¢é€£
 // -------------------------------------------------------------------
 bool SCENARIO::d2a(void)
 {
@@ -2823,65 +2823,65 @@ bool SCENARIO::d2a(void)
 	subcmd = databuf[curpos++];
 	switch (subcmd) {
 		case 0x02:
-			dprintf("SubCmd:$%02X - Read Area Data from ARD/CUR(?) file\n  CUR:", subcmd);
+			dprintf("SubCmd:$%02X - Read Area Data from ARD/CUR(?) fileÂ¥n  CUR:", subcmd);
 			ReadText(buf);
 			dprintf(buf);
-			dprintf("\n  ARD:");
+			dprintf("Â¥n  ARD:");
 			ReadText(buf);
 			dprintf(buf);
-			dprintf("\n");
+			dprintf("Â¥n");
 			Area_Read(buf);
 			break;
 		case 0x03:
-			dprintf("SubCmd:$%02X -  Init Area Buffer\n", subcmd);
+			dprintf("SubCmd:$%02X -  Init Area BufferÂ¥n", subcmd);
 			Area_Clear();
 			break;
 		case 0x04:
-			dprintf("SubCmd:$%02X -  Return clicked Area Number w/ mouse button data?\n", subcmd);
+			dprintf("SubCmd:$%02X -  Return clicked Area Number w/ mouse button data?Â¥n", subcmd);
 			idx = ReadValue();
 			idx2 = ReadValue();
 			mouse->GetState(&x, &y, &flag);
-			flags->SetVal(idx2, (flag<=0)?0:1);		// ‰EƒNƒŠƒbƒNˆÈŠO‚Í0‚ª•Ô‚éHiflowersj
-			if ( flag==0 ) {		// ƒNƒŠƒbƒN‚ª‚ ‚Á‚½‚¾‚¯ƒGƒŠƒA#‚ğ•Ô‚·‚İ‚½‚¢ (flowers)
+			flags->SetVal(idx2, (flag<=0)?0:1);		// å³ã‚¯ãƒªãƒƒã‚¯ä»¥å¤–ã¯0ãŒè¿”ã‚‹ï¼Ÿï¼ˆflowersï¼‰
+			if ( flag==0 ) {		// ã‚¯ãƒªãƒƒã‚¯ãŒã‚ã£ãŸæ™‚ã ã‘ã‚¨ãƒªã‚¢#ã‚’è¿”ã™ã¿ãŸã„ (flowers)
 				flags->SetVal(idx, Area_Find(x, y));
 			} else {
 				flags->SetVal(idx, 0);
 			}
-			dprintf("X:%d Y:%d Area:%d Mouse:%d\n", x, y, flags->GetVal(idx), flags->GetVal(idx2));
+			dprintf("X:%d Y:%d Area:%d Mouse:%dÂ¥n", x, y, flags->GetVal(idx), flags->GetVal(idx2));
 			break;
 		case 0x05:
-			dprintf("SubCmd:$%02X -  Return clicked Area Number w/ mouse button data(2)\n", subcmd);
+			dprintf("SubCmd:$%02X -  Return clicked Area Number w/ mouse button data(2)Â¥n", subcmd);
 			idx = ReadValue();
 			idx2 = ReadValue();
 			mouse->GetState(&x, &y, &flag);
 			flags->SetVal(idx2, flag);
 			flags->SetVal(idx, Area_Find(x, y));
-			dprintf("X:%d Y:%d Area:%d Mouse:%d\n", x, y, flags->GetVal(idx), flags->GetVal(idx2));
+			dprintf("X:%d Y:%d Area:%d Mouse:%dÂ¥n", x, y, flags->GetVal(idx), flags->GetVal(idx2));
 			break;
 		case 0x10:
 			idx = ReadValue();
-			dprintf("SubCmd:$%02X -  Disable Area Num#%d\n", subcmd, idx);
+			dprintf("SubCmd:$%02X -  Disable Area Num#%dÂ¥n", subcmd, idx);
 			Area_Disable(idx);
 			break;
 		case 0x11:
 			idx = ReadValue();
-			dprintf("SubCmd:$%02X -  Enable Area Num#%d\n", subcmd, idx);
+			dprintf("SubCmd:$%02X -  Enable Area Num#%dÂ¥n", subcmd, idx);
 			Area_Enable(idx);
 			break;
 		case 0x15:
 			idx2 = ReadValue();
 			idx3 = ReadValue();
 			idx = ReadValue();
-			dprintf("SubCmd:$%02X - Get Area Num from Area Buffer  Idx:%d X:%d Y:%d\n", subcmd, idx, idx2, idx3);
+			dprintf("SubCmd:$%02X - Get Area Num from Area Buffer  Idx:%d X:%d Y:%dÂ¥n", subcmd, idx, idx2, idx3);
 			flags->SetVal(idx, Area_Find(idx2, idx3));
 			break;
 		case 0x20:
 			idx = ReadValue();
 			idx2 = ReadValue();
-			dprintf("SubCmd:$%02X - Area# assign change? Num:%d to #%d ???\n", subcmd, idx, idx2);
+			dprintf("SubCmd:$%02X - Area# assign change? Num:%d to #%d ???Â¥n", subcmd, idx, idx2);
 			break;
 		default:
-			dprintf("SubCmd:$%02X - Unimplemented\n", subcmd);
+			dprintf("SubCmd:$%02X - UnimplementedÂ¥n", subcmd);
 			ERROR;
 			break;
 	}
@@ -2891,7 +2891,7 @@ bool SCENARIO::d2a(void)
 
 
 // -------------------------------------------------------------------
-// 2B - Cmd:$6D ƒ}ƒEƒX§Œä
+// 2B - Cmd:$6D ãƒã‚¦ã‚¹åˆ¶å¾¡
 // -------------------------------------------------------------------
 bool SCENARIO::d2b(void)
 {
@@ -2899,7 +2899,7 @@ bool SCENARIO::d2b(void)
 	int idx, idx2, idx3, flag, x, y;
 
 	subcmd = databuf[curpos++];
-	dprintf("Mouse Control  SubCmd:$%02X\n", subcmd);
+	dprintf("Mouse Control  SubCmd:$%02XÂ¥n", subcmd);
 	switch (subcmd) {
 		case 0x01:
 			mouse->GetState(&x, &y, &flag);
@@ -2911,7 +2911,7 @@ bool SCENARIO::d2b(void)
 				flags->SetVal(idx2, y);
 				flags->SetVal(idx3, flag);
 				cmd = 0;
-			} else {		// ƒ}ƒEƒXƒNƒŠƒbƒN‚Ü‚ÅA‚±‚Ì–½—ß‚Å‘Ò‹@
+			} else {		// ãƒã‚¦ã‚¹ã‚¯ãƒªãƒƒã‚¯ã¾ã§ã€ã“ã®å‘½ä»¤ã§å¾…æ©Ÿ
 				curpos--;
 			}
 			break;
@@ -2924,21 +2924,21 @@ bool SCENARIO::d2b(void)
 			flags->SetVal(idx2, y);
 			flags->SetVal(idx3, flag);
 			dprintf("   V[%d,%d,%d]=", idx, idx2, idx3);
-			dprintf("(X:%d,Y:%d,Btn:%d)\n", x, y, flag);
+			dprintf("(X:%d,Y:%d,Btn:%d)Â¥n", x, y, flag);
 			cmd = 0;
 			break;
 		case 0x03:
-			dprintf("   Click Data Flush?\n");
+			dprintf("   Click Data Flush?Â¥n");
 			mouse->ClickFlush();
 			cmd = 0;
 			break;
 		case 0x20:
-			dprintf("   Cursor OFF???\n");
+			dprintf("   Cursor OFF???Â¥n");
 			mouse->Hide();
 			cmd = 0;
 			break;
 		case 0x21:
-			dprintf("   Cursor ON???\n");
+			dprintf("   Cursor ON???Â¥n");
 			mouse->Show();
 			cmd = 0;
 			break;
@@ -2952,7 +2952,7 @@ bool SCENARIO::d2b(void)
 
 
 // -------------------------------------------------------------------
-// 2C - Cmd:$6E CGƒ‚[ƒh§ŒäiMODE.CGMƒnƒ“ƒhƒ‹jŠÖ˜A
+// 2C - Cmd:$6E CGãƒ¢ãƒ¼ãƒ‰åˆ¶å¾¡ï¼ˆMODE.CGMãƒãƒ³ãƒ‰ãƒ«ï¼‰é–¢é€£
 // -------------------------------------------------------------------
 bool SCENARIO::d2c(void)
 {
@@ -2961,42 +2961,42 @@ bool SCENARIO::d2c(void)
 
 	subcmd = databuf[curpos++];
 	switch(subcmd) {
-		case 0x01:		// CGƒ‚[ƒh‘ÎÛ‚Ì‘CG”‚ğ•Ô‚·
+		case 0x01:		// CGãƒ¢ãƒ¼ãƒ‰å¯¾è±¡ã®ç·CGæ•°ã‚’è¿”ã™
 			idx = ReadValue();
-			dprintf("CG Mode GetTotal CG Num  SubCmd:$%02X  Val[%d]=TotalCGNum\n", subcmd, idx);
+			dprintf("CG Mode GetTotal CG Num  SubCmd:$%02X  Val[%d]=TotalCGNumÂ¥n", subcmd, idx);
 			flags->SetVal(idx, sys->GetCGAllNum());
 			break;
-		case 0x02:		// Œ©‚½CG–‡”‚ğ•Ô‚·
+		case 0x02:		// è¦‹ãŸCGæšæ•°ã‚’è¿”ã™
 			idx = ReadValue();
-			dprintf("CG Mode Get Displayed CG Num  SubCmd:$%02X  Val[%d]=DispayedNum\n", subcmd, idx);
+			dprintf("CG Mode Get Displayed CG Num  SubCmd:$%02X  Val[%d]=DispayedNumÂ¥n", subcmd, idx);
 			flags->SetVal(idx, sys->GetCGNum());
 			break;
-		case 0x03:		// CG’B¬—¦‚ğ•Ô‚·‚İ‚½‚¢
+		case 0x03:		// CGé”æˆç‡ã‚’è¿”ã™ã¿ãŸã„
 			idx = ReadValue();
-			dprintf("CG Mode Percentage  SubCmd:$%02X  Val[%d]=Percentage\n", subcmd, idx);
+			dprintf("CG Mode Percentage  SubCmd:$%02X  Val[%d]=PercentageÂ¥n", subcmd, idx);
 			flags->SetVal(idx, sys->GetCGPercentage());
 			break;
-		case 0x04:		// ƒXƒ‰ƒCƒhƒVƒ‡[
+		case 0x04:		// ã‚¹ãƒ©ã‚¤ãƒ‰ã‚·ãƒ§ãƒ¼
 			if ( DecodeAutoCGMode() ) {
 				idx = ReadValue();
-				dprintf("CG Mode AutoMode  SubCmd:$%02X Arg:%d\n", subcmd, idx);
+				dprintf("CG Mode AutoMode  SubCmd:$%02X Arg:%dÂ¥n", subcmd, idx);
 			} else {
 				curpos--;
 				return true;
 			}
 			break;
-		case 0x05:		// Val[idx]”Ô–Ú‚ÌCG‚ÌCGƒtƒ@ƒCƒ‹–¼‚ğStr[idx2]‚ÉAƒt ƒ‰ ƒO ”Ô † ‚ğVal[idx3]‚É•Ô‚·
+		case 0x05:		// Val[idx]ç•ªç›®ã®CGã®CGãƒ•ã‚¡ã‚¤ãƒ«åã‚’Str[idx2]ã«ã€ãƒ• ãƒ© ã‚° ç•ª å· ã‚’Val[idx3]ã«è¿”ã™
 			idx = ReadValue();
 			idx2 = ReadValue();
 			idx3 = ReadValue();
-			dprintf("CG Mode ?????  SubCmd:$%02X  Arg1:%d Arg2:%d Arg3:%d\n", subcmd, idx, idx2, idx3);
-			dprintf("V[Arg1] = %d  V[Arg3] = %d  Arg3 = %d\n", flags->GetVal(idx), flags->GetVal(idx3), idx3);
+			dprintf("CG Mode ?????  SubCmd:$%02X  Arg1:%d Arg2:%d Arg3:%dÂ¥n", subcmd, idx, idx2, idx3);
+			dprintf("V[Arg1] = %d  V[Arg3] = %d  Arg3 = %dÂ¥n", flags->GetVal(idx), flags->GetVal(idx3), idx3);
 //			flags->SetBit(flags->GetVal(idx3), sys->GetCGFlag(flags->GetVal(idx)));
 			flags->SetStr(idx2, sys->GetCGName(flags->GetVal(idx)));
 			flags->SetVal(idx3, sys->GetCGFlagNum(flags->GetVal(idx)));
 			break;
-		default:	// ‚±‚±‚É—ˆ‚½‚ç‚¨‚©‚µ‚¢
-			dprintf("CG Mode ?????  SubCmd:$%02X\n", subcmd);
+		default:	// ã“ã“ã«æ¥ãŸã‚‰ãŠã‹ã—ã„
+			dprintf("CG Mode ?????  SubCmd:$%02XÂ¥n", subcmd);
 			ERROR;
 			break;
 	}
@@ -3016,7 +3016,7 @@ bool SCENARIO::d2d(void)
 	idx  = ReadValue();
 	idx2 = ReadValue();
 	idx3 = ReadValue();
-	// ƒf[ƒ^‚Í“Ç‚ñ‚Å‚é‚¯‚ÇA‰½‚©‚ğ‚µ‚Ä‚é‹C”z‚Í‚È‚¢
+	// ãƒ‡ãƒ¼ã‚¿ã¯èª­ã‚“ã§ã‚‹ã‘ã©ã€ä½•ã‹ã‚’ã—ã¦ã‚‹æ°—é…ã¯ãªã„
 
 	cmd = 0;
 	return true;
@@ -3024,7 +3024,7 @@ bool SCENARIO::d2d(void)
 
 
 // -------------------------------------------------------------------
-// 2E - Cmd:$70 ƒVƒXƒeƒ€’læ“¾Eİ’èiƒƒbƒZ[ƒWƒEƒBƒ“ƒhƒDHj
+// 2E - Cmd:$70 ã‚·ã‚¹ãƒ†ãƒ å€¤å–å¾—ãƒ»è¨­å®šï¼ˆãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚¦ã‚£ãƒ³ãƒ‰ã‚¥ï¼Ÿï¼‰
 // -------------------------------------------------------------------
 bool SCENARIO::d2e(void)
 {
@@ -3033,53 +3033,53 @@ bool SCENARIO::d2e(void)
 
 	subcmd = databuf[curpos++];
 	switch (subcmd) {
-		case 0x01:				// â–]AMesWin”wŒiF‚Æ”¼“§–¾ON(0)/OFF(1)‚Ìƒtƒ‰ƒO‚ğ“¾‚é
+		case 0x01:				// çµ¶æœ›ã€MesWinèƒŒæ™¯è‰²ã¨åŠé€æ˜ON(0)/OFF(1)ã®ãƒ•ãƒ©ã‚°ã‚’å¾—ã‚‹
 			data = ReadValue();
 			idx  = ReadValue();
 			idx2 = ReadValue();
 			idx3 = ReadValue();
 			sys->GetMesWinColor(&attr, &r, &g, &b);
 			dprintf("SubCmd:$%02X - Get MesWin BG Flag/Color TransFlag->val[%d] R->val[%d] ", subcmd, attr, r);
-			dprintf("G->val[%d] b->val[%d]\n", g, b);
+			dprintf("G->val[%d] b->val[%d]Â¥n", g, b);
 			flags->SetVal(data, attr);
 			flags->SetVal(idx , r);
 			flags->SetVal(idx2, g);
 			flags->SetVal(idx3, b);
 			break;
-		case 0x02:				// MesWin”wŒiF‚Æ”¼“§–¾ON(0)/OFF(1)‚Ìƒtƒ‰ƒO‚ğƒZƒbƒg
+		case 0x02:				// MesWinèƒŒæ™¯è‰²ã¨åŠé€æ˜ON(0)/OFF(1)ã®ãƒ•ãƒ©ã‚°ã‚’ã‚»ãƒƒãƒˆ
 			attr = ReadValue();
 			r = ReadValue();
 			g = ReadValue();
 			b = ReadValue();
 			sys->SetMesWinColor(attr, r, g, b);
-			dprintf("SubCmd:$%02X - Set MesWin BG Flag/Color TransFlag=%d  RGB=(%d,%d,%d)\n", subcmd, attr, r, g, b);
+			dprintf("SubCmd:$%02X - Set MesWin BG Flag/Color TransFlag=%d  RGB=(%d,%d,%d)Â¥n", subcmd, attr, r, g, b);
 			break;
 		case 0x03:
 			idx = ReadValue();
-			dprintf("SubCmd:$%02X - Get #WINDOW_MOVE to Val[%d]\n", subcmd, idx);
+			dprintf("SubCmd:$%02X - Get #WINDOW_MOVE to Val[%d]Â¥n", subcmd, idx);
 			break;
 		case 0x04:
 			idx = ReadValue();
-			dprintf("SubCmd:$%02X - Set %d for #WINDOW_MOVE\n", subcmd, idx);
+			dprintf("SubCmd:$%02X - Set %d for #WINDOW_MOVEÂ¥n", subcmd, idx);
 			break;
 		case 0x05:
 			idx = ReadValue();
-			dprintf("SubCmd:$%02X - Get #WINDOW_CLEAR_BOX to Val[%d]\n", subcmd, idx);
+			dprintf("SubCmd:$%02X - Get #WINDOW_CLEAR_BOX to Val[%d]Â¥n", subcmd, idx);
 			break;
 		case 0x06:
 			idx = ReadValue();
-			dprintf("SubCmd:$%02X - Set %d for #WINDOW_CLEAR_BOX\n", subcmd, idx);
+			dprintf("SubCmd:$%02X - Set %d for #WINDOW_CLEAR_BOXÂ¥n", subcmd, idx);
 			break;
 		case 0x10:
 			idx = ReadValue();
-			dprintf("SubCmd:$%02X - Get Window(Waku) Type to Val[%d]\n", subcmd, idx);
+			dprintf("SubCmd:$%02X - Get Window(Waku) Type to Val[%d]Â¥n", subcmd, idx);
 			break;
 		case 0x11:
 			idx = ReadValue();
-			dprintf("SubCmd:$%02X - Set Window(Waku) Type  #%d\n", subcmd, idx+1);
+			dprintf("SubCmd:$%02X - Set Window(Waku) Type  #%dÂ¥n", subcmd, idx+1);
 			sys->ChangeMesWinStyle(idx);
 			break;
-		default:	// ‚±‚±‚É—ˆ‚½‚ç‚¨‚©‚µ‚¢
+		default:	// ã“ã“ã«æ¥ãŸã‚‰ãŠã‹ã—ã„
 			ERROR;
 			break;
 	}
@@ -3089,7 +3089,7 @@ bool SCENARIO::d2e(void)
 
 
 // -------------------------------------------------------------------
-// 2F - Cmd:$72 ƒƒbƒZ[ƒWƒEƒBƒ“ƒhƒDŠÖ˜AƒVƒXƒeƒ€’l æ“¾Eİ’è
+// 2F - Cmd:$72 ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚¦ã‚£ãƒ³ãƒ‰ã‚¥é–¢é€£ã‚·ã‚¹ãƒ†ãƒ å€¤ å–å¾—ãƒ»è¨­å®š
 // -------------------------------------------------------------------
 bool SCENARIO::d2f(void)
 {
@@ -3098,22 +3098,22 @@ bool SCENARIO::d2f(void)
 
 	subcmd = databuf[curpos++];
 	cmd = 0;
-	dprintf("MesWin Control???  SubCmd:$%02X\n", subcmd);
+	dprintf("MesWin Control???  SubCmd:$%02XÂ¥n", subcmd);
 	switch (subcmd) {
 		case 0x01:		// Get #WINDOW_MSG_POS
-			// Œ»İ‚ÌƒƒbƒZ[ƒWƒEƒBƒ“ƒhƒE‚ÌˆÊ’u‚ğ(Val[idx],Val[idx2])‚ÉƒZƒbƒg
+			// ç¾åœ¨ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®ä½ç½®ã‚’(Val[idx],Val[idx2])ã«ã‚»ãƒƒãƒˆ
 			idx  = ReadValue();
 			idx2 = ReadValue();
-			dprintf("Set Cur MesWin Pos to Val[%d],Val[%d]\n", idx, idx2);
+			dprintf("Set Cur MesWin Pos to Val[%d],Val[%d]Â¥n", idx, idx2);
 			sys->MesWin_GetPos(&x, &y);
 			flags->SetVal(idx , x);
 			flags->SetVal(idx2, y);
 			break;
 		case 0x02:		// Get #WINDOW_COM_POS
-			// Œ»İ‚ÌƒTƒuƒEƒBƒ“ƒhƒE‚ÌˆÊ’u‚ğ(Val[idx],Val[idx2])‚ÉƒZƒbƒg
+			// ç¾åœ¨ã®ã‚µãƒ–ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®ä½ç½®ã‚’(Val[idx],Val[idx2])ã«ã‚»ãƒƒãƒˆ
 			idx  = ReadValue();
 			idx2 = ReadValue();
-			dprintf("Set Cur SubWin Pos to Val[%d],Val[%d]\n", idx, idx2);
+			dprintf("Set Cur SubWin Pos to Val[%d],Val[%d]Â¥n", idx, idx2);
 			sys->MesWin_GetSubPos(&x, &y);
 			flags->SetVal(idx , x);
 			flags->SetVal(idx2, y);
@@ -3121,48 +3121,48 @@ bool SCENARIO::d2f(void)
 		case 0x03:		// Get #WINDOW_SYS_POS
 			idx  = ReadValue();
 			idx2 = ReadValue();
-			dprintf("Get #WINDOW_SYS_POS to Val[%d],Val[%d]\n", idx, idx2);
+			dprintf("Get #WINDOW_SYS_POS to Val[%d],Val[%d]Â¥n", idx, idx2);
 			break;
 		case 0x04:		// Get #WINDOW_SUB_POS
 			idx  = ReadValue();
 			idx2 = ReadValue();
-			dprintf("Get #WINDOW_SUB_POS to Val[%d],Val[%d]\n", idx, idx2);
+			dprintf("Get #WINDOW_SUB_POS to Val[%d],Val[%d]Â¥n", idx, idx2);
 			break;
 		case 0x05:		// Get #WINDOW_GRP_POS
 			idx  = ReadValue();
 			idx2 = ReadValue();
-			dprintf("Get #WINDOW_GRP_POS to Val[%d],Val[%d]\n", idx, idx2);
+			dprintf("Get #WINDOW_GRP_POS to Val[%d],Val[%d]Â¥n", idx, idx2);
 			break;
 		case 0x11:		// Set #WINDOW_MSG_POS
-			// ƒƒbƒZ[ƒWƒEƒBƒ“ƒhƒE‚ÌˆÊ’u‚ğ•ÏX
+			// ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®ä½ç½®ã‚’å¤‰æ›´
 			x = ReadValue();
 			y = ReadValue();
-			dprintf("Set (%d,%d) for MesWin Pos\n", x, y);
+			dprintf("Set (%d,%d) for MesWin PosÂ¥n", x, y);
 			sys->MesWin_SetPos(x, y);
 			break;
 		case 0x12:		// Set #WINDOW_COM_POS
-			// ƒTƒuƒEƒBƒ“ƒhƒE‚ÌˆÊ’u‚ğ•ÏX
+			// ã‚µãƒ–ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®ä½ç½®ã‚’å¤‰æ›´
 			x = ReadValue();
 			y = ReadValue();
-			dprintf("Set (%d,%d) for SubWin Pos\n", x, y);
+			dprintf("Set (%d,%d) for SubWin PosÂ¥n", x, y);
 			sys->MesWin_SetSubPos(x, y);
 			break;
 		case 0x13:		// Set #WINDOW_SYS_POS
 			x = ReadValue();
 			y = ReadValue();
-			dprintf("Set (%d,%d) for #WINDOW_SYS_POS\n", x, y);
+			dprintf("Set (%d,%d) for #WINDOW_SYS_POSÂ¥n", x, y);
 			break;
 		case 0x14:		// Set #WINDOW_SUB_POS
 			x = ReadValue();
 			y = ReadValue();
-			dprintf("Set (%d,%d) for #WINDOW_SUB_POS\n", x, y);
+			dprintf("Set (%d,%d) for #WINDOW_SUB_POSÂ¥n", x, y);
 			break;
 		case 0x15:		// Set #WINDOW_GRP_POS
 			x = ReadValue();
 			y = ReadValue();
-			dprintf("Set (%d,%d) for #WINDOW_GRP_POS\n", x, y);
+			dprintf("Set (%d,%d) for #WINDOW_GRP_POSÂ¥n", x, y);
 			break;
-		default:	// ‚±‚±‚É—ˆ‚½‚ç‚¨‚©‚µ‚¢
+		default:	// ã“ã“ã«æ¥ãŸã‚‰ãŠã‹ã—ã„
 			ERROR;
 			break;
 	}
@@ -3172,7 +3172,7 @@ bool SCENARIO::d2f(void)
 
 
 // -------------------------------------------------------------------
-// 30 - Cmd:$73 ƒVƒXƒeƒ€’læ“¾Eİ’è
+// 30 - Cmd:$73 ã‚·ã‚¹ãƒ†ãƒ å€¤å–å¾—ãƒ»è¨­å®š
 // -------------------------------------------------------------------
 bool SCENARIO::d30(void)
 {
@@ -3180,181 +3180,181 @@ bool SCENARIO::d30(void)
 	int idx, idx2, data, x, y;
 
 	subcmd = databuf[curpos++];
-	dprintf("Get/Set System Nums(in GAMEEXE.INI)  SubCmd:$%02X\n", subcmd);
+	dprintf("Get/Set System Nums(in GAMEEXE.INI)  SubCmd:$%02XÂ¥n", subcmd);
 	switch (subcmd) {
 		case 0x01:		// Get #MESSAGE_SIZE
-			// Œ»İ‚ÌƒƒbƒZ[ƒWƒEƒBƒ“ƒhƒE‚ÌƒTƒCƒYi•¶š”j‚ğ“¾‚é
+			// ç¾åœ¨ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®ã‚µã‚¤ã‚ºï¼ˆæ–‡å­—æ•°ï¼‰ã‚’å¾—ã‚‹
 			idx  = ReadValue();
 			idx2 = ReadValue();
-			dprintf("Set Current Meswin W/H(MOJI_X/Y) to Val[%d],Val[%d]\n", idx, idx2);
+			dprintf("Set Current Meswin W/H(MOJI_X/Y) to Val[%d],Val[%d]Â¥n", idx, idx2);
 			sys->MesWin_GetSize(&x, &y);
 			flags->SetVal(idx , x);
 			flags->SetVal(idx2, y);
 			break;
 		case 0x02:		// Set #MESSAGE_SIZE
-			// ƒƒbƒZ[ƒWƒEƒBƒ“ƒhƒE‚ÌƒTƒCƒYi•¶š”j‚ğ•ÏX
+			// ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®ã‚µã‚¤ã‚ºï¼ˆæ–‡å­—æ•°ï¼‰ã‚’å¤‰æ›´
 			x = ReadValue();
 			y = ReadValue();
-			dprintf("Set %d,%d for Current MesWin W/H(MOJI_X/Y)\n", x, y);
+			dprintf("Set %d,%d for Current MesWin W/H(MOJI_X/Y)Â¥n", x, y);
 			sys->MesWin_SetSize(x, y);
 			break;
 		case 0x05:		// Get #MSG_MOJI_SIZE
-			// ƒƒbƒZ[ƒWƒEƒBƒ“ƒhƒE‚ÌƒtƒHƒ“ƒgƒTƒCƒY‚ğ“¾‚éHHH
+			// ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®ãƒ•ã‚©ãƒ³ãƒˆã‚µã‚¤ã‚ºã‚’å¾—ã‚‹ï¼Ÿï¼Ÿï¼Ÿ
 			idx = ReadValue();
 			idx2 = ReadValue();
-			dprintf("GetFontSize to Val[%d], Val[%d]\n", idx, idx2);
+			dprintf("GetFontSize to Val[%d], Val[%d]Â¥n", idx, idx2);
 			sys->GetFontSize(&x, &y);
 			flags->SetVal(idx , x);
 			flags->SetVal(idx2, y);
 			break;
 		case 0x06:		// Set #MSG_MOJI_SIZE
-			// ƒƒbƒZ[ƒWƒEƒBƒ“ƒhƒE‚ÌƒtƒHƒ“ƒgƒTƒCƒY‚ğ•ÏX
+			// ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®ãƒ•ã‚©ãƒ³ãƒˆã‚µã‚¤ã‚ºã‚’å¤‰æ›´
 			x = ReadValue();
 			y = ReadValue();
-			dprintf("Set X:%d,Y:%d for FontSize\n", x, y);
+			dprintf("Set X:%d,Y:%d for FontSizeÂ¥n", x, y);
 			sys->SetFontSize(x, y);
 			break;
 		case 0x10:		// Get #MOJI_COLOR
 			idx = ReadValue();
-			dprintf("Get #MOJI_COLOR to Val[%d]\n", idx);
+			dprintf("Get #MOJI_COLOR to Val[%d]Â¥n", idx);
 			break;
 		case 0x11:		// Set #MOJI_COLOR
 			data = ReadValue();
-			dprintf("Set %d for #MOJI_COLOR\n", data);
+			dprintf("Set %d for #MOJI_COLORÂ¥n", data);
 			break;
 		case 0x12:		// Get #MSG_CANCEL
 			idx = ReadValue();
-			dprintf("Get #MSG_CANCEL to Val[%d]\n", idx);
+			dprintf("Get #MSG_CANCEL to Val[%d]Â¥n", idx);
 			break;
 		case 0x13:		// Set #MSG_CANCEL
 			data = ReadValue();
-			dprintf("Set %d for #MSG_CANCEL\n", data);
+			dprintf("Set %d for #MSG_CANCELÂ¥n", data);
 			break;
 		case 0x16:		// Get #MOJI_KAGE
 			idx = ReadValue();
-			dprintf("Get #MOJI_KAGE to Val[%d]\n", idx);
+			dprintf("Get #MOJI_KAGE to Val[%d]Â¥n", idx);
 			break;
 		case 0x17:		// Set #MOJI_KAGE
 			data = ReadValue();
-			dprintf("Set %d for #MOJI_KAGE\n", data);
+			dprintf("Set %d for #MOJI_KAGEÂ¥n", data);
 			break;
 		case 0x18:		// Get #KAGE_COLOR
 			idx = ReadValue();
-			dprintf("Get #KAGE_COLOR to Val[%d]\n", idx);
+			dprintf("Get #KAGE_COLOR to Val[%d]Â¥n", idx);
 			break;
 		case 0x19:		// Set #KAGE_COLOR
 			data = ReadValue();
-			dprintf("Set %d for #KAGE_COLOR\n", data);
+			dprintf("Set %d for #KAGE_COLORÂ¥n", data);
 			break;
 		case 0x1a:		// Get #SEL_CANCEL
 			idx = ReadValue();
-			dprintf("Get #SEL_CANCEL to Val[%d]\n", idx);
+			dprintf("Get #SEL_CANCEL to Val[%d]Â¥n", idx);
 			break;
 		case 0x1b:		// Set #SEL_CANCEL
 			data = ReadValue();
-			dprintf("Set %d for #SEL_CANCEL\n", data);
+			dprintf("Set %d for #SEL_CANCELÂ¥n", data);
 			break;
 		case 0x1c:		// Get #CTRL_KEY
 			idx = ReadValue();
-			dprintf("Get #CTRL_KEY to Val[%d]\n", idx);
+			dprintf("Get #CTRL_KEY to Val[%d]Â¥n", idx);
 			break;
 		case 0x1d:		// Set #CTRL_KEY
-			// CtrlƒL[‚É‚æ‚éƒXƒLƒbƒv‚Ì—LŒø‰»^–³Œø‰»
+			// Ctrlã‚­ãƒ¼ã«ã‚ˆã‚‹ã‚¹ã‚­ãƒƒãƒ—ã®æœ‰åŠ¹åŒ–ï¼ç„¡åŠ¹åŒ–
 			data = ReadValue();
-			dprintf("CtrlKey Ignore SW Value %d\n", data);
+			dprintf("CtrlKey Ignore SW Value %dÂ¥n", data);
 			sys->SetSkipEnable((data)?false:true);
 			break;
 		case 0x1e:		// Get #SAVE_START
 			idx = ReadValue();
-			dprintf("Get #SAVE_START to Val[%d]\n", idx);
+			dprintf("Get #SAVE_START to Val[%d]Â¥n", idx);
 			break;
 		case 0x1f:		// Set #SAVE_START
 			data = ReadValue();
-			dprintf("Set %d for #SAVE_START\n", data);
+			dprintf("Set %d for #SAVE_STARTÂ¥n", data);
 			break;
-		case 0x20:		// Get DisableNvlText flag (NvlƒeƒLƒXƒg•`ÊOFFƒtƒ‰ƒO)
+		case 0x20:		// Get DisableNvlText flag (Nvlæ™‚ãƒ†ã‚­ã‚¹ãƒˆæå†™OFFãƒ•ãƒ©ã‚°)
 			idx = ReadValue();
-			dprintf("Get DisableNvlText flag to Val[%d]\n", idx);
+			dprintf("Get DisableNvlText flag to Val[%d]Â¥n", idx);
 			break;
 		case 0x21:		// Set DisableNvlText flag
 			data = ReadValue();
-			dprintf("Set %d for DisableNvlText flag\n", data);
+			dprintf("Set %d for DisableNvlText flagÂ¥n", data);
 			break;
 		case 0x22:		// Get #FADE_TIME
 			idx = ReadValue();
-			dprintf("Get #FADE_TIME to Val[%d]\n", idx);
+			dprintf("Get #FADE_TIME to Val[%d]Â¥n", idx);
 			break;
 		case 0x23:		// Set #FADE_TIME
 			data = ReadValue();
-			dprintf("Set %d for #FADE_TIME\n", data);
+			dprintf("Set %d for #FADE_TIMEÂ¥n", data);
 			break;
 		case 0x24:		// Get #CURSOR_MONO
 			idx = ReadValue();
-			dprintf("Get #CURSOR_MONO to Val[%d]\n", idx);
+			dprintf("Get #CURSOR_MONO to Val[%d]Â¥n", idx);
 			break;
 		case 0x25:		// Set #CURSOR_MONO
 			data = ReadValue();
-			dprintf("Set %d for #CURSOR_MONO\n", data);
+			dprintf("Set %d for #CURSOR_MONOÂ¥n", data);
 			break;
 		case 0x26:		// Get #COPY_WIND_SW
 			idx = ReadValue();
-			dprintf("Get #COPY_WIND_SW to Val[%d]\n", idx);
+			dprintf("Get #COPY_WIND_SW to Val[%d]Â¥n", idx);
 			break;
 		case 0x27:		// Set #COPY_WIND_SW
 			data = ReadValue();
-			dprintf("Set %d for #COPY_WIND_SW\n", data);
+			dprintf("Set %d for #COPY_WIND_SWÂ¥n", data);
 			break;
 		case 0x28:		// Get #MSG SPEED
 		case 0x2a:
-			// Œ»İ‚ÌƒƒbƒZ[ƒW‘¬“x‚ğ“¾‚é
+			// ç¾åœ¨ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€Ÿåº¦ã‚’å¾—ã‚‹
 			data = ReadValue();
-			dprintf("GetMsgSpeed to Val[%d]\n", data);
+			dprintf("GetMsgSpeed to Val[%d]Â¥n", data);
 			flags->SetVal(data, sys->GetMsgSpeed());
 			break;
 		case 0x29:		// Set #MSG SPEED
 		case 0x2b:
-			// ƒƒbƒZ[ƒW‘¬“x‚ğ•ÏX
+			// ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€Ÿåº¦ã‚’å¤‰æ›´
 			data = ReadValue();
-			dprintf("Set %d for Msg Speed\n", data);
+			dprintf("Set %d for Msg SpeedÂ¥n", data);
 			sys->SetMsgSpeed(data);
 			break;
 		case 0x2c:		// Get #RETURN_KEY_WAIT
 			idx = ReadValue();
-			dprintf("Get #RETURN_KEY_WAIT to Val[%d]\n", idx);
+			dprintf("Get #RETURN_KEY_WAIT to Val[%d]Â¥n", idx);
 			break;
 		case 0x2d:		// Set #RETURN_KEY_WAIT
 			data = ReadValue();
-			dprintf("Set %d for #RETURN_KEY_WAIT\n", data);
+			dprintf("Set %d for #RETURN_KEY_WAITÂ¥n", data);
 			break;
 		case 0x2e:		// Get #KOE_TEXT_TYPE
 			idx = ReadValue();
-			dprintf("Get #KOE_TEXT_TYPE to Val[%d]\n", idx);
+			dprintf("Get #KOE_TEXT_TYPE to Val[%d]Â¥n", idx);
 			break;
 		case 0x2f:		// Set #KOE_TEXT_TYPE
-			// KOEÄ¶Œã‚ÌƒƒbƒZ[ƒW‚ğ•\¦‚µ‚È‚­‚·‚é
+			// KOEå†ç”Ÿå¾Œã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’è¡¨ç¤ºã—ãªãã™ã‚‹
 			data = ReadValue();
-			dprintf("Make KOE Text disable Arg:%d\n", data);
+			dprintf("Make KOE Text disable Arg:%dÂ¥n", data);
 			koetextskip = data;
 			break;
 		case 0x30:		// Get #GAME_SPECK_INIT
 		case 0x33:
 			idx = ReadValue();
-			dprintf("Get #GAME_SPECK_INIT to Val[%d]\n", idx);
+			dprintf("Get #GAME_SPECK_INIT to Val[%d]Â¥n", idx);
 			break;
 		case 0x31:		// Set Cursor position
 			x = ReadValue();
 			y = ReadValue();
-			dprintf("Set cursor pos : (%d,%d)\n", x, y);
+			dprintf("Set cursor pos : (%d,%d)Â¥n", x, y);
 			break;
-		case 0x32:		// Set DisableKeyMouse flagiƒL[‚É‚æ‚éƒJ[ƒ\ƒ‹ˆÚ“®‹Ö~ƒtƒ‰ƒOj
+		case 0x32:		// Set DisableKeyMouse flagï¼ˆã‚­ãƒ¼ã«ã‚ˆã‚‹ã‚«ãƒ¼ã‚½ãƒ«ç§»å‹•ç¦æ­¢ãƒ•ãƒ©ã‚°ï¼‰
 			idx = ReadValue();
-			dprintf("Set DisableKeyMouse flag : %d\n", idx);
+			dprintf("Set DisableKeyMouse flag : %dÂ¥n", idx);
 			break;
 		case 0x34:		// Set #GAME_SPECK_INIT
 			idx = ReadValue();
-			dprintf("Set %d for #GAME_SPECK_INIT\n", idx);
+			dprintf("Set %d for #GAME_SPECK_INITÂ¥n", idx);
 			break;
-		default:	// ‚±‚±‚É—ˆ‚½‚ç‚¨‚©‚µ‚¢
+		default:	// ã“ã“ã«æ¥ãŸã‚‰ãŠã‹ã—ã„
 			ERROR;
 			break;
 	}
@@ -3364,7 +3364,7 @@ bool SCENARIO::d30(void)
 
 
 // -------------------------------------------------------------------
-// 31 - Cmd:$74 ƒ|ƒbƒvƒAƒbƒvƒƒjƒ…[§Œä
+// 31 - Cmd:$74 ãƒãƒƒãƒ—ã‚¢ãƒƒãƒ—ãƒ¡ãƒ‹ãƒ¥ãƒ¼åˆ¶å¾¡
 // -------------------------------------------------------------------
 bool SCENARIO::d31(void)
 {
@@ -3372,16 +3372,16 @@ bool SCENARIO::d31(void)
 	int idx, data;
 
 	subcmd = databuf[curpos++];
-	dprintf("PopupMenu   SubCmd:$%02X\n", subcmd);
+	dprintf("PopupMenu   SubCmd:$%02XÂ¥n", subcmd);
 	switch (subcmd) {
 		case 0x01:
 			idx = ReadValue();
-			dprintf("    Get PopupMenu Disable SW to Val[%d]\n", idx);
+			dprintf("    Get PopupMenu Disable SW to Val[%d]Â¥n", idx);
 			flags->SetVal(idx, mouse->GetPopupFlag());
 			break;
 		case 0x02:
 			idx = ReadValue();
-			dprintf("     PopupMenu Disable SW???  Arg:%d\n", idx);
+			dprintf("     PopupMenu Disable SW???  Arg:%dÂ¥n", idx);
 			if ( idx )
 				mouse->DisablePopup();
 			else
@@ -3391,15 +3391,15 @@ bool SCENARIO::d31(void)
 			idx = ReadValue();
 			data = ReadValue();
 			flags->SetVal(data, sys->GetMenuEnable(idx));
-			dprintf("     Get PopupMenu Item Enable/Disable Menu#:%d to Val[%d]\n", idx, data);
+			dprintf("     Get PopupMenu Item Enable/Disable Menu#:%d to Val[%d]Â¥n", idx, data);
 			break;
 		case 0x04:
 			idx = ReadValue();
 			data = ReadValue();
 			sys->MenuEnable(idx, data);
-			dprintf("     PopupMenu Item Enable/Disable Menu#:%d - SW:%d\n", idx, data);
+			dprintf("     PopupMenu Item Enable/Disable Menu#:%d - SW:%dÂ¥n", idx, data);
 			break;
-		default:	// ‚±‚±‚É—ˆ‚½‚ç‚¨‚©‚µ‚¢
+		default:	// ã“ã“ã«æ¥ãŸã‚‰ãŠã‹ã—ã„
 			ERROR;
 			break;
 	}
@@ -3420,44 +3420,44 @@ bool SCENARIO::d32(void)
 	data = ReadValue();
 	switch (subcmd) {
 		case 0x01:			// Get BGM Volume
-			dprintf("SubCmd:$%02X  Val[%d] <- BGM Volume\n", subcmd, data);
+			dprintf("SubCmd:$%02X  Val[%d] <- BGM VolumeÂ¥n", subcmd, data);
 			break;
 		case 0x02:			// Get WAV Volume
-			dprintf("SubCmd:$%02X  Val[%d] <- WAV Volume\n", subcmd, data);
+			dprintf("SubCmd:$%02X  Val[%d] <- WAV VolumeÂ¥n", subcmd, data);
 			break;
 		case 0x03:			// Get KOE Volume
-			dprintf("SubCmd:$%02X  Val[%d] <- KOE Volume\n", subcmd, data);
+			dprintf("SubCmd:$%02X  Val[%d] <- KOE VolumeÂ¥n", subcmd, data);
 			break;
 		case 0x04:			// Get SE Volume
-			dprintf("SubCmd:$%02X  Val[%d] <- SE Volume\n", subcmd, data);
+			dprintf("SubCmd:$%02X  Val[%d] <- SE VolumeÂ¥n", subcmd, data);
 			break;
 		case 0x11:			// Set BGM Volume
-			dprintf("SubCmd:$%02X  Set BGM Volume : %d\n", subcmd, data);
+			dprintf("SubCmd:$%02X  Set BGM Volume : %dÂ¥n", subcmd, data);
 			break;
 		case 0x12:			// Set BGM Volume
-			dprintf("SubCmd:$%02X  Set WAV Volume : %d\n", subcmd, data);
+			dprintf("SubCmd:$%02X  Set WAV Volume : %dÂ¥n", subcmd, data);
 			break;
 		case 0x13:			// Set BGM Volume
-			dprintf("SubCmd:$%02X  Set KOE Volume : %d\n", subcmd, data);
+			dprintf("SubCmd:$%02X  Set KOE Volume : %dÂ¥n", subcmd, data);
 			break;
 		case 0x14:			// Set BGM Volume
-			dprintf("SubCmd:$%02X  Set SE Volume : %d\n", subcmd, data);
+			dprintf("SubCmd:$%02X  Set SE Volume : %dÂ¥n", subcmd, data);
 			break;
 		case 0x21:			// Mute BGM
-			dprintf("SubCmd:$%02X  Mute BGM : %d\n", subcmd, data);
+			dprintf("SubCmd:$%02X  Mute BGM : %dÂ¥n", subcmd, data);
 			break;
 		case 0x22:			// Mute WAV
-			dprintf("SubCmd:$%02X  Mute WAV : %d\n", subcmd, data);
+			dprintf("SubCmd:$%02X  Mute WAV : %dÂ¥n", subcmd, data);
 			break;
 		case 0x23:			// Mute KOE
-			dprintf("SubCmd:$%02X  Mute KOE : %d\n", subcmd, data);
+			dprintf("SubCmd:$%02X  Mute KOE : %dÂ¥n", subcmd, data);
 			sound->KOE_Disable(data);
 			break;
 		case 0x24:			// Mute SE
-			dprintf("SubCmd:$%02X  Mute SE : %d\n", subcmd, data);
+			dprintf("SubCmd:$%02X  Mute SE : %dÂ¥n", subcmd, data);
 			break;
-		default:	// ‚±‚±‚É—ˆ‚½‚ç‚¨‚©‚µ‚¢
-			dprintf("SubCmd:$%02X  ??????????? : %d\n", subcmd, data);
+		default:	// ã“ã“ã«æ¥ãŸã‚‰ãŠã‹ã—ã„
+			dprintf("SubCmd:$%02X  ??????????? : %dÂ¥n", subcmd, data);
 			ERROR;
 			break;
 	}
@@ -3467,7 +3467,7 @@ bool SCENARIO::d32(void)
 
 
 // -------------------------------------------------------------------
-// 33 - Cmd:$76 ƒmƒxƒ‹ƒ‚[ƒh§Œä
+// 33 - Cmd:$76 ãƒãƒ™ãƒ«ãƒ¢ãƒ¼ãƒ‰åˆ¶å¾¡
 // -------------------------------------------------------------------
 bool SCENARIO::d33(void)
 {
@@ -3475,26 +3475,26 @@ bool SCENARIO::d33(void)
 	int data;
 
 	subcmd = databuf[curpos++];
-	// SubCmd=1 ˆÈŠO‚ÍƒGƒ‰[H
+	// SubCmd=1 ä»¥å¤–ã¯ã‚¨ãƒ©ãƒ¼ï¼Ÿ
 	switch (subcmd) {
 		case 0x01:
-			// NVL_SYSTEM ƒtƒ‰ƒO‚Ì’l‚ğ•ÏX‚·‚é
+			// NVL_SYSTEM ãƒ•ãƒ©ã‚°ã®å€¤ã‚’å¤‰æ›´ã™ã‚‹
 			data = ReadValue();
-			dprintf("SubCmd:$%02X  Set NvlMode Flag : %d\n", subcmd, data);
+			dprintf("SubCmd:$%02X  Set NvlMode Flag : %dÂ¥n", subcmd, data);
 			sys->SetNovelModeFlag(data);
 			break;
 		case 0x02:
 			data = ReadValue();
-			dprintf("SubCmd:$%02X  ???????? Set Somthing flag? : %d\n", subcmd, data);
+			dprintf("SubCmd:$%02X  ???????? Set Somthing flag? : %dÂ¥n", subcmd, data);
 			break;
 		case 0x04:
-			dprintf("SubCmd:$%02X  ???????? No Arg\n", subcmd);
+			dprintf("SubCmd:$%02X  ???????? No ArgÂ¥n", subcmd);
 			break;
 		case 0x05:
-			dprintf("SubCmd:$%02X  ???????? No Arg\n", subcmd);
+			dprintf("SubCmd:$%02X  ???????? No ArgÂ¥n", subcmd);
 			break;
-		default:	// ‚±‚±‚É—ˆ‚½‚ç‚¨‚©‚µ‚¢
-			dprintf("?????????  SubCmd:$%02X\n", subcmd);
+		default:	// ã“ã“ã«æ¥ãŸã‚‰ãŠã‹ã—ã„
+			dprintf("?????????  SubCmd:$%02XÂ¥n", subcmd);
 			ERROR;
 			break;
 	}
@@ -3510,7 +3510,7 @@ bool SCENARIO::d34(void)
 {
 	int data;
 
-	// SubCmd–³‚µAArg‚Í1ŒÂŒÅ’è
+	// SubCmdç„¡ã—ã€Argã¯1å€‹å›ºå®š
 	data = ReadValue();
 
 	cmd = 0;
@@ -3519,7 +3519,7 @@ bool SCENARIO::d34(void)
 
 
 // -------------------------------------------------------------------
-// 35 - Cmd:$FE ƒeƒLƒXƒg•\¦i”¼Špj
+// 35 - Cmd:$FE ãƒ†ã‚­ã‚¹ãƒˆè¡¨ç¤ºï¼ˆåŠè§’ï¼‰
 // -------------------------------------------------------------------
 bool SCENARIO::d35(void)
 {
@@ -3528,7 +3528,7 @@ bool SCENARIO::d35(void)
 
 
 // -------------------------------------------------------------------
-// 36 - Cmd:$FF ƒeƒLƒXƒg•\¦i‘SŠpj
+// 36 - Cmd:$FF ãƒ†ã‚­ã‚¹ãƒˆè¡¨ç¤ºï¼ˆå…¨è§’ï¼‰
 // -------------------------------------------------------------------
 bool SCENARIO::d36(void)
 {
@@ -3543,7 +3543,7 @@ bool SCENARIO::d36(void)
 	sys->MesWin_SetMes(buf);
 	dprintf("Text:");
 	dprintf(buf+1);
-	dprintf("\n");
+	dprintf("Â¥n");
 	mesflag = 1;
 	cmd = databuf[curpos];
 	while ( (cmd==0xff)||(cmd==0xfe) ) {
@@ -3556,7 +3556,7 @@ bool SCENARIO::d36(void)
 	}
 	meswaitbase = sys->GetCurrentTimer();
 	cmd = 0;
-	dprintf("Cmd $FE/FF End.\n");
+	dprintf("Cmd $FE/FF End.Â¥n");
 	return true;
 };
 
@@ -3567,18 +3567,18 @@ bool SCENARIO::d36(void)
 bool SCENARIO::d37(void)
 {
 	if ( !cmd ) {
-		if ( smenu.num ) {						// ScenarioFileMenu‚ª‚ ‚éê‡
-			if ( (curpos-1)==smenu.start ) {	// ƒƒjƒ…[•\¦Pos‚¾‚Á‚½‚ç
-				curpos--;						// ƒZƒŒƒNƒgI‚í‚é‚Ü‚ÅA‚±‚Ìê‚Å‘Ò‹@
+		if ( smenu.num ) {						// ScenarioFileMenuãŒã‚ã‚‹å ´åˆ
+			if ( (curpos-1)==smenu.start ) {	// ãƒ¡ãƒ‹ãƒ¥ãƒ¼è¡¨ç¤ºPosã ã£ãŸã‚‰
+				curpos--;						// ã‚»ãƒ¬ã‚¯ãƒˆçµ‚ã‚ã‚‹ã¾ã§ã€ã“ã®å ´ã§å¾…æ©Ÿ
 				ScnMenuSel();
-			} else {							// ‚»‚êˆÈŠO‚ÌêŠ‚Å00‚É‘˜‹ö‚µ‚½‚çƒGƒ‰[
+			} else {							// ãã‚Œä»¥å¤–ã®å ´æ‰€ã§00ã«é­é‡ã—ãŸã‚‰ã‚¨ãƒ©ãƒ¼
 				ERROR;
 			}
 		} else {
-			dprintf("Scenario End.\n");
-			// ScenarioFile––’[‚ÅCmd:00‚ªŒ»‚ê‚½‚çƒQ[ƒ€I—¹ˆµ‚¢?iŸEŸGj
+			dprintf("Scenario End.Â¥n");
+			// ScenarioFileæœ«ç«¯ã§Cmd:00ãŒç¾ã‚ŒãŸã‚‰ã‚²ãƒ¼ãƒ çµ‚äº†æ‰±ã„?ï¼ˆæª¸æª¬ï¼‰
 			if ( (databuf+curpos)>=(databuf_base+bufsize-1) ) {
-				dprintf("Game End.($20)\n");
+				dprintf("Game End.($20)Â¥n");
 				sys->Terminate();
 			} else {
 				ERROR;
@@ -3601,7 +3601,7 @@ void SCENARIO::ScnMenuSel(void)
 	if ( selectflag ) {
 		if ( smenu.cur!=-1 ) {
 			if ( smenu.subnum[smenu.cur]==1 ) {
-				// ƒTƒuƒAƒCƒeƒ€‚ª1‚Â‚È‚ç‘I‘ğ•s—v
+				// ã‚µãƒ–ã‚¢ã‚¤ãƒ†ãƒ ãŒ1ã¤ãªã‚‰é¸æŠä¸è¦
 				i = 1;
 			} else 
 				i = sys->Select();
@@ -3609,7 +3609,7 @@ void SCENARIO::ScnMenuSel(void)
 			i = sys->Select();
 		if ( i!=(-1) ) {
 //			flags->SetVal(selectindex, i);
-			dprintf("### Selected - %d\n", i);
+			dprintf("### Selected - %dÂ¥n", i);
 			sys->MesWin_ClearMes();
 //			sys->MesWin_Draw();
 			selectflag = 0;
@@ -3633,7 +3633,7 @@ void SCENARIO::ScnMenuSel(void)
 						smenu.subbit = (1<<smenu.subbitcount);
 					}
 				}
-				dprintf("Selected. - %d,%d,%d  jump to $%08X\n", smenu.cur, smenu.cursub, smenu.cursubsub, curpos+(int)(databuf-databuf_base));
+				dprintf("Selected. - %d,%d,%d  jump to $%08XÂ¥n", smenu.cur, smenu.cursub, smenu.cursubsub, curpos+(int)(databuf-databuf_base));
 				smenu.cur = -1;
 				jumpbase = curpos;
 			}
@@ -3644,7 +3644,7 @@ void SCENARIO::ScnMenuSel(void)
 //		curpos-=2; SavePoint(); curpos+=2;
 		if ( smenu.cur==-1 ) {
 			if ( smenu.num==1 ) {
-				// eƒƒjƒ…[‚ª1‚Â‚Ìê‡‚Í‘I‘ğƒXƒLƒbƒv
+				// è¦ªãƒ¡ãƒ‹ãƒ¥ãƒ¼ãŒ1ã¤ã®å ´åˆã¯é¸æŠã‚¹ã‚­ãƒƒãƒ—
 				smenu.cur = 0;
 				selectflag = 0;
 			} else {
@@ -3657,12 +3657,12 @@ void SCENARIO::ScnMenuSel(void)
 			}
 		} else {
 			if ( (smenu.subnum[smenu.cur]>=2) ) {
-				 // ƒTƒuƒAƒCƒeƒ€‚ª1‚Â‚Ìê‡‚Í‘I‘ğƒXƒLƒbƒv
+				 // ã‚µãƒ–ã‚¢ã‚¤ãƒ†ãƒ ãŒ1ã¤ã®å ´åˆã¯é¸æŠã‚¹ã‚­ãƒƒãƒ—
 				for (i=0; i<smenu.subnum[smenu.cur]; i++) {
 					if ( smenu.subid[smenu.cur][i]&smenu.subbit )
 						sys->Select_AddItem((char*)smenu.str[smenu.substrid[smenu.cur][i]], 1, 0);
 					else
-						sys->Select_AddItem((char*)smenu.str[smenu.substrid[smenu.cur][i]], -1, 0);	// ƒ_ƒ~[‚ğ’Ç‰Á
+						sys->Select_AddItem((char*)smenu.str[smenu.substrid[smenu.cur][i]], -1, 0);	// ãƒ€ãƒŸãƒ¼ã‚’è¿½åŠ 
 				}
 			}
 		}
@@ -3675,7 +3675,7 @@ void SCENARIO::ScnMenuSel(void)
 
 
 /* -------------------------------------------------------------------
-  ‚±‚ñ‚·‚Æ‚ç‚­‚½
+  ã“ã‚“ã™ã¨ã‚‰ããŸ
 ------------------------------------------------------------------- */
 SCENARIO::SCENARIO(SYSTEM* s, FLAGS* f, SOUND* snd, AVG32MOUSE* m)
 {
@@ -3687,9 +3687,9 @@ SCENARIO::SCENARIO(SYSTEM* s, FLAGS* f, SOUND* snd, AVG32MOUSE* m)
 	seennum = -1;
 
 	if ( ChangeSeen(sys->GetStartSeen()) ) {
-		dprintf("Base:$%08X  DataBuf:$%08X\n", (int)databuf_base, (int)databuf);
+		dprintf("Base:$%08X  DataBuf:$%08XÂ¥n", (int)databuf_base, (int)databuf);
 	} else {
-		sys->Abort("ƒVƒiƒŠƒIƒtƒ@ƒCƒ‹‚ğŠJ‚¯‚Ü‚¹‚ñ‚Å‚µ‚½.");
+		sys->Abort("ã‚·ãƒŠãƒªã‚ªãƒ•ã‚¡ã‚¤ãƒ«ã‚’é–‹ã‘ã¾ã›ã‚“ã§ã—ãŸ.");
 	}
 
 	curpos = 0;
@@ -3721,9 +3721,9 @@ SCENARIO::SCENARIO(SYSTEM* s, FLAGS* f, SOUND* snd, AVG32MOUSE* m)
 
 
 /* -------------------------------------------------------------------
-  ‚Å‚·‚Æ‚ç‚­‚½
+  ã§ã™ã¨ã‚‰ããŸ
 ------------------------------------------------------------------- */
-SCENARIO::~SCENARIO(void)
+SCENARIO::â€¾SCENARIO(void)
 {
 	int i;
 	delete[] databuf_base;
@@ -3734,7 +3734,7 @@ SCENARIO::~SCENARIO(void)
 
 
 /* -------------------------------------------------------------------
-  ‚è‚¹‚Á‚Æiuƒƒjƒ…[‚É–ß‚év—pj
+  ã‚Šã›ã£ã¨ï¼ˆã€Œãƒ¡ãƒ‹ãƒ¥ãƒ¼ã«æˆ»ã‚‹ã€ç”¨ï¼‰
 ------------------------------------------------------------------- */
 void SCENARIO::Reset(int seen, int pos)
 {
@@ -3766,18 +3766,18 @@ void SCENARIO::Reset(int seen, int pos)
 
 
 /* -------------------------------------------------------------------
-  ƒVƒiƒŠƒI‚ÌŒ»İˆÊ’u‚©‚ç NullEnd ‚Ì String ‚ğ“Ç‚Ş
+  ã‚·ãƒŠãƒªã‚ªã®ç¾åœ¨ä½ç½®ã‹ã‚‰ NullEnd ã® String ã‚’èª­ã‚€
 ------------------------------------------------------------------- */
 void SCENARIO::ReadText(char* buf)
 {
 	int n;
-	if (databuf[curpos] == '@') { // •¶š—ñ•Ï”
+	if (databuf[curpos] == '@') { // æ–‡å­—åˆ—å¤‰æ•°
 		curpos++;
 		n =  ReadValue();
 		strcpy(buf, flags->GetStr(n));
 		dprintf("flags->str[%d] : ", n);
 		dprintf(buf);
-		dprintf("\n");
+		dprintf("Â¥n");
 	} else {
 		n = strlen((char*)&databuf[curpos]);
 		strcpy(buf, (char*)&databuf[curpos]);
@@ -3787,7 +3787,7 @@ void SCENARIO::ReadText(char* buf)
 
 
 /* -------------------------------------------------------------------
-  ƒVƒiƒŠƒI‚ÌŒ»İˆÊ’u‚©‚ç NullEnd ‚Ì String ‚ğƒtƒH[ƒ}ƒbƒg•t‚«‚Å“Ç‚Ş
+  ã‚·ãƒŠãƒªã‚ªã®ç¾åœ¨ä½ç½®ã‹ã‚‰ NullEnd ã® String ã‚’ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆä»˜ãã§èª­ã‚€
 ------------------------------------------------------------------- */
 int SCENARIO::ReadFormattedText(char* b, int* attr)
 {
@@ -3799,13 +3799,13 @@ int SCENARIO::ReadFormattedText(char* b, int* attr)
 	*attr = 0;
 	do {
 		c = databuf[curpos++];
-dprintf("RFT:c=$%02x\n", (int)c);
-		switch (c) {					// ƒeƒLƒXƒgŒnƒRƒ}ƒ“ƒh‚ª‚»‚Ì‚Ü‚Ü’Ê‚é‚Ì‚©‚ÈH
+dprintf("RFT:c=$%02xÂ¥n", (int)c);
+		switch (c) {					// ãƒ†ã‚­ã‚¹ãƒˆç³»ã‚³ãƒãƒ³ãƒ‰ãŒãã®ã¾ã¾é€šã‚‹ã®ã‹ãªï¼Ÿ
 			case 0xfe:
 			case 0xff:
 				strcpy(buf, (char*)&databuf[curpos]);
 				len = strlen(buf);
-dprintf("RFT:%s (%dchar)\n", (int)buf, len);
+dprintf("RFT:%s (%dchar)Â¥n", (int)buf, len);
 				buf += len;
 				curpos += len+1;
 				break;
@@ -3817,7 +3817,7 @@ dprintf("RFT:%s (%dchar)\n", (int)buf, len);
 			case 0x28:
 				curpos--;
 				ret = DecodeConditions();
-				if ( (ret!=0)&&(ret!=1) ) {				// 0/1ˆÈŠO‚Ì”’l‚¾‚Á‚½‚çƒAƒgƒŠƒrƒ…[ƒg
+				if ( (ret!=0)&&(ret!=1) ) {				// 0/1ä»¥å¤–ã®æ•°å€¤ã ã£ãŸã‚‰ã‚¢ãƒˆãƒªãƒ“ãƒ¥ãƒ¼ãƒˆ
 					*attr = ret;
 					ret = 1;
 				}
@@ -3841,7 +3841,7 @@ dprintf("RFT:%s (%dchar)\n", (int)buf, len);
 
 
 /* -------------------------------------------------------------------
-  ƒVƒiƒŠƒI‚ÌŒ»İˆÊ’u‚©‚çA‰Â•Ï’·”’l‚ğ“Ç‚Ş
+  ã‚·ãƒŠãƒªã‚ªã®ç¾åœ¨ä½ç½®ã‹ã‚‰ã€å¯å¤‰é•·æ•°å€¤ã‚’èª­ã‚€
 ------------------------------------------------------------------- */
 int SCENARIO::ReadValue(void)
 {
@@ -3868,7 +3868,7 @@ int SCENARIO::ReadValue(void)
 
 
 /* -------------------------------------------------------------------
-  ƒVƒiƒŠƒI‚ÌŒ»İˆÊ’u‚©‚çAIntŒ^‚Ì”’liƒŠƒgƒ‹ƒGƒ“ƒfƒBƒAƒ“j‚ğ“Ç‚Ş
+  ã‚·ãƒŠãƒªã‚ªã®ç¾åœ¨ä½ç½®ã‹ã‚‰ã€Intå‹ã®æ•°å€¤ï¼ˆãƒªãƒˆãƒ«ã‚¨ãƒ³ãƒ‡ã‚£ã‚¢ãƒ³ï¼‰ã‚’èª­ã‚€
 ------------------------------------------------------------------- */
 int SCENARIO::ReadInt(void)
 {
@@ -3882,7 +3882,7 @@ int SCENARIO::ReadInt(void)
 
 
 /* -------------------------------------------------------------------
-  ƒVƒiƒŠƒIƒtƒ@ƒCƒ‹‚ÌƒIƒtƒZƒbƒgpos‚©‚çAIntŒ^‚Ì”’liƒŠƒgƒ‹ƒGƒ“ƒfƒBƒAƒ“j‚ğ“Ç‚Ş
+  ã‚·ãƒŠãƒªã‚ªãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚ªãƒ•ã‚»ãƒƒãƒˆposã‹ã‚‰ã€Intå‹ã®æ•°å€¤ï¼ˆãƒªãƒˆãƒ«ã‚¨ãƒ³ãƒ‡ã‚£ã‚¢ãƒ³ï¼‰ã‚’èª­ã‚€
 ------------------------------------------------------------------- */
 int SCENARIO::ReadInt(int pos)
 {
@@ -3897,7 +3897,7 @@ int SCENARIO::ReadInt(int pos)
 	
 
 /* -------------------------------------------------------------------
-  ğŒ\•¶‚ÌƒfƒR[ƒh
+  æ¡ä»¶æ§‹æ–‡ã®ãƒ‡ã‚³ãƒ¼ãƒ‰
 ------------------------------------------------------------------- */
 int SCENARIO::DecodeConditions(void)
 {
@@ -3928,23 +3928,23 @@ int SCENARIO::DecodeConditions(void)
 			if ( chr==0x26 ) dprintf("&& ");
 			else dprintf("|| ");
 			*ptr++ = chr;
-		} else if ( chr==0x58 ) {				// ‘I‘ğˆ‚Ì‘®«H
-			// ( (ğŒA)$58‘®«A (ğŒB)$58‘®«B ) ‚È‚ñ‚Ä‹Lq‚à‚ ‚é–Í—l
+		} else if ( chr==0x58 ) {				// é¸æŠè‚¢ã®å±æ€§ï¼Ÿ
+			// ( (æ¡ä»¶A)$58å±æ€§A (æ¡ä»¶B)$58å±æ€§B ) ãªã‚“ã¦è¨˜è¿°ã‚‚ã‚ã‚‹æ¨¡æ§˜
 			attrarray[attrptr] = databuf[curpos++];
 			dprintf(" ??? SetRetValue?($%02X) ", attrarray[attrptr]);
 			switch (attrarray[attrptr]) {
-				case 0x20:						// F‚ğ‚Â‚¯‚éiArg=Colorj
+				case 0x20:						// è‰²ã‚’ã¤ã‘ã‚‹ï¼ˆArg=Colorï¼‰
 					attrarray[attrptr] += (ReadValue()<<8);
 					break;
-				case 0x21:						// ‘I‘ğˆ‚ğ’Ç‰Á‚µ‚È‚¢iArg‚È‚µj
+				case 0x21:						// é¸æŠè‚¢ã‚’è¿½åŠ ã—ãªã„ï¼ˆArgãªã—ï¼‰
 					break;
-				case 0x22:						// F‚ğ•t‚¯‚Ä‘I‘ğ•s‰Â‚É‚·‚éiArg=Colorj
+				case 0x22:						// è‰²ã‚’ä»˜ã‘ã¦é¸æŠä¸å¯ã«ã™ã‚‹ï¼ˆArg=Colorï¼‰
 					attrarray[attrptr] += (ReadValue()<<8);
 					break;
 			}
 			attrptr++;
 			*ptr++ = chr;
-		} else if ( chr>=0x36 && chr<=0x55) {	// ğŒ”»’è
+		} else if ( chr>=0x36 && chr<=0x55) {	// æ¡ä»¶åˆ¤å®š
 			val1 = ReadValue();
 			val2 = ReadValue();
 
@@ -4052,14 +4052,14 @@ int SCENARIO::DecodeConditions(void)
 					ptr++;
 					len -= 2;
 					for (i=ptr-buf; i<len; i++) buf[i] = buf[i+2];
-					// 0x58 ‚Ìˆ—
+					// 0x58 ã®å‡¦ç†
 					if ( *ptr==0x58 ) {
 						if ( *(ptr-1)==1 ) {
 							attr = attrarray[attrptr];
 						}
 						attrptr++;
 						if ( len>2 ) {
-							// Œã‚ë‚ªğŒ®‚È‚çor‚ğ’Ç‰Á
+							// å¾Œã‚ãŒæ¡ä»¶å¼ãªã‚‰orã‚’è¿½åŠ 
 							if ( (*(ptr+1)==0)||(*(ptr+1)==1)||(*(ptr+1)=='(') ) {
 								*ptr = 0x27;
 							} else {
@@ -4101,7 +4101,7 @@ int SCENARIO::DecodeConditions(void)
 
 
 /* -------------------------------------------------------------------
-  ƒWƒƒƒ“ƒvEƒR[ƒ‹Œn‚ÌƒTƒuƒ‹[ƒ`ƒ“
+  ã‚¸ãƒ£ãƒ³ãƒ—ãƒ»ã‚³ãƒ¼ãƒ«ç³»ã®ã‚µãƒ–ãƒ«ãƒ¼ãƒãƒ³
 ------------------------------------------------------------------- */
 void SCENARIO::SavePoint(void)
 {
@@ -4113,7 +4113,7 @@ void SCENARIO::SavePoint(void)
 //	flags->savedstackindex = flags->stackindex;
 //	memcpy(flags->savedstackseen, flags->stackseen, sizeof(flags->stackseen));
 //	memcpy(flags->savedstackpos, flags->stackpos, sizeof(flags->stackpos));
-//	dprintf(" SavePoint. StackIndex=%d\n", flags->GetStackNum());
+//	dprintf(" SavePoint. StackIndex=%dÂ¥n", flags->GetStackNum());
 };
 
 
@@ -4126,24 +4126,24 @@ void SCENARIO::ReadHeader(void)
 	memset(&smenu, 0, sizeof(smenu));
 	index = ReadInt(0x18);
 	pad = index*4+0x50;
-	pad2 = ((ReadInt(pad)==5)?4:0);		// ”’‘÷•Pi–³—–î—‚Â‚¶‚Â‚Ü‡‚í‚¹‚½EEEj
+	pad2 = ((ReadInt(pad)==5)?4:0);		// ç™½æ¿å§«ï¼ˆç„¡ç†çŸ¢ç†ã¤ã˜ã¤ã¾åˆã‚ã›ãŸãƒ»ãƒ»ãƒ»ï¼‰
 	smenu.num = ReadInt(pad-0x24);
 	str = 0;
 	count = ReadInt(pad-0x28)-1;
-	dprintf("\n\nHeader RootMenu Num = %d\n", smenu.num);
-	dprintf("\n\nCounter Start = %d\n", count);
+	dprintf("Â¥nÂ¥nHeader RootMenu Num = %dÂ¥n", smenu.num);
+	dprintf("Â¥nÂ¥nCounter Start = %dÂ¥n", count);
 	for (i=0; i<smenu.num; i++) {
-		dprintf("Header $%02x\n", databuf[pad]);
+		dprintf("Header $%02xÂ¥n", databuf[pad]);
 		smenu.id[i] = databuf[pad];
 		smenu.subnum[i] = databuf[pad+1];
 		smenu.strid[i] = str;
 		pad += 2;
 		str++;
 		for (j=0; j<smenu.subnum[i]; j++) {
-			dprintf("  %d : $%02x\n", j, (int)databuf[pad]);
+			dprintf("  %d : $%02xÂ¥n", j, (int)databuf[pad]);
 			smenu.subid[i][j] = databuf[pad];
 			smenu.subcountmax[i][j] = databuf[pad+1];
-			smenu.substrid[i][j] = str;			// ‰½”Ô–Ú‚Ì•¶š—ñ‚ª‘Î‰‚·‚é‚©
+			smenu.substrid[i][j] = str;			// ä½•ç•ªç›®ã®æ–‡å­—åˆ—ãŒå¯¾å¿œã™ã‚‹ã‹
 			pad += 2;
 			str++;
 			for (k=0; k<smenu.subcountmax[i][j]; k++) {
@@ -4155,7 +4155,7 @@ void SCENARIO::ReadHeader(void)
 					dprintf("(%d,%d,%d), ", databuf[pad], databuf[pad+1], databuf[pad+2]);
 					pad += 3;
 				}
-				dprintf("\n");
+				dprintf("Â¥n");
 			}
 		}
 //		smenu.subbit[i] = 1;
@@ -4164,7 +4164,7 @@ void SCENARIO::ReadHeader(void)
 	for (i=0; i<str; i++) {
 		dprintf("head string[%2d] = ", i);
 		dprintf((char*)(databuf+pad+1));
-		dprintf("\n");
+		dprintf("Â¥n");
 		smenu.str[i] = databuf+pad+1;
 		pad += databuf[pad] + 1;
 	}
@@ -4177,22 +4177,22 @@ void SCENARIO::ReadHeader(void)
 			dummy += ReadInt(dummy)+4;
 		}
 	}
-	dprintf("BaseStartPoint = $%08X\n", smenu.start);
+	dprintf("BaseStartPoint = $%08XÂ¥n", smenu.start);
 	for (i=0; i<smenu.num; i++) {
 		for (j=0; j<smenu.subnum[i]; j++ ) {
 			for (k=0; k<smenu.subcountmax[i][j]; k++ ) {
 				smenu.substart[i][j][k] = dummy+4;
 				dummy += ReadInt(dummy)+4;
-				dprintf("StartPoint[%d][%d][%d] = $%08X\n", i, j, k, smenu.substart[i][j][k]);
+				dprintf("StartPoint[%d][%d][%d] = $%08XÂ¥n", i, j, k, smenu.substart[i][j][k]);
 			}
 		}
 	}
-	smenu.cur = -1;		// ‚Ç‚Ì‘I‘ğ‚É‚à“ü‚Á‚Ä‚¢‚È‚¢
+	smenu.cur = -1;		// ã©ã®é¸æŠã«ã‚‚å…¥ã£ã¦ã„ãªã„
 	smenu.bit = 1;
 	smenu.bitcount = 0;
 	smenu.subbit = 1;
 	smenu.subbitcount = 0;
-	jumpbase = 0;		// ƒVƒiƒŠƒIƒƒjƒ…[‚ª‚ ‚é‚Ìƒ[ƒJƒ‹ƒIƒtƒZƒbƒg
+	jumpbase = 0;		// ã‚·ãƒŠãƒªã‚ªãƒ¡ãƒ‹ãƒ¥ãƒ¼ãŒã‚ã‚‹æ™‚ã®ãƒ­ãƒ¼ã‚«ãƒ«ã‚ªãƒ•ã‚»ãƒƒãƒˆ
 }
 
 
@@ -4216,7 +4216,7 @@ mouse->DisablePopup();
    		return 1;
 	}
 
-	sprintf(buf, "SEEN%03d.TXT\0", s);
+	sprintf(buf, "SEEN%03d.TXTÂ¥0", s);
 	newbuf = sys->ReadFile(buf, "TXT", &newsize);
 
 	if ( newbuf ) {
@@ -4229,14 +4229,14 @@ mouse->DisablePopup();
 //		index = ReadInt(0x18);
 //		pad = ReadInt(index*4+0x50);
 //		databuf += index*4+0x63;
-//		if ( pad==5 ) databuf += 4;	// ”’‘÷•P
+//		if ( pad==5 ) databuf += 4;	// ç™½æ¿å§«
 		curpos = 0;
-		dprintf("****** Change Seen to #%d\n", seennum);
+		dprintf("****** Change Seen to #%dÂ¥n", seennum);
 mouse->DisablePopup();
 		return 1;
 	}
 
-	dprintf("****** Fail to change seen to #%d\n", seennum);
+	dprintf("****** Fail to change seen to #%dÂ¥n", seennum);
 	return 0;
 };
 
@@ -4276,17 +4276,17 @@ void SCENARIO::Han2Zen(char *s)
 
 
 /* -------------------------------------------------------------------
-  ƒ}ƒ‹ƒ`PDTƒRƒ}ƒ“ƒh‚Ìˆ—
+  ãƒãƒ«ãƒPDTã‚³ãƒãƒ³ãƒ‰ã®å‡¦ç†
 ------------------------------------------------------------------- */
 void SCENARIO::DecodeEndingHandling(void)
 {
 	int data, i, line, x, y;
 	PDTFILE* pdt;
 
-	if ( !ending.flag ) {		// ‰Šú‰»
+	if ( !ending.flag ) {		// åˆæœŸåŒ–
 		ending.cmd = databuf[curpos++];			// 0x10:Cannot cancel 0x30:w/ mouse cancel
 		switch ( ending.cmd ) {
-			case 0x10:				//  ƒGƒ“ƒfƒBƒ“ƒOŒni•¡”–‡PDT‚ÌƒXƒNƒ[ƒ‹j
+			case 0x10:				//  ã‚¨ãƒ³ãƒ‡ã‚£ãƒ³ã‚°ç³»ï¼ˆè¤‡æ•°æšPDTã®ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ï¼‰
 			case 0x20:
 			case 0x30:
 				ending.poscmd = databuf[curpos++];		// To base pos, 1:centering / 3:right align / Others:left align
@@ -4298,7 +4298,7 @@ void SCENARIO::DecodeEndingHandling(void)
 					waitcancelindex = ReadValue();		// Set 1 to this Val, if Canceled
 				}
 				dprintf("MultiPDT (for Ending?)  Cmd:$%02X PosCmd:$%02X Num:%d ", ending.cmd, ending.poscmd, ending.num);
-				dprintf("PosBase:%d Wait:%d Pixel:%d\n", ending.pos, ending.wait, ending.pixel);
+				dprintf("PosBase:%d Wait:%d Pixel:%dÂ¥n", ending.pos, ending.wait, ending.pixel);
 				ending.totalline = 0;
 				for (i=0; i<ending.num; i++) {
 					ReadText(ending.file[i]);	// CG Name
@@ -4312,7 +4312,7 @@ void SCENARIO::DecodeEndingHandling(void)
 						ending.pdty[i] = pdt->GetSizeY();
 						ending.pdtpos[i] = ending.totalline;
 						ending.totalline += ending.pdty[i]+data;
-						dprintf(" SizeX:%d SizeY:%d Pos:%d  Total:%d\n", ending.pdtx[i], ending.pdty[i], ending.totalline);
+						dprintf(" SizeX:%d SizeY:%d Pos:%d  Total:%dÂ¥n", ending.pdtx[i], ending.pdty[i], ending.totalline);
 						delete pdt;
 						pdt = 0;
 					}
@@ -4325,66 +4325,66 @@ void SCENARIO::DecodeEndingHandling(void)
 				ending.curtime = sys->GetCurrentTimer();
 				break;
 
-			case 0x03:					// •¡”–‡‚ÌPDT‚ğ‡”Ô‚É•\¦‚µ‚Ä‚¢‚­iflowersj
+			case 0x03:					// è¤‡æ•°æšã®PDTã‚’é †ç•ªã«è¡¨ç¤ºã—ã¦ã„ãï¼ˆflowersï¼‰
 				ending.num = databuf[curpos++];			// Picture nums
 				ending.pos = ReadValue();				// ?????
 				ending.wait = ReadValue();				// ?????
 				dprintf("MultiPDT (flowers OP)  Cmd:$%02X Num:%d ", ending.cmd, ending.num);
-				dprintf("Arg1:%d Arg2:%d\n", ending.pos, ending.wait);
+				dprintf("Arg1:%d Arg2:%dÂ¥n", ending.pos, ending.wait);
 				for (i=0; i<ending.num; i++) {
 					ReadText(ending.file[i]);			// CG Name
 					data = ReadValue();					// Wait to next picture ???
 					ending.pdtpos[i] = data;
 					dprintf(ending.file[i]);
-					dprintf(" - Wait?:%d\n", data);
+					dprintf(" - Wait?:%dÂ¥n", data);
 				}
 				curpos++;								// ???
-				effect.cmd = 2;							// ‚Ü‚¸1–‡–Ú‚ğ•\¦‚µ‚Ä‚¨‚­
-				effect.steptime = 0;					// ‘¦•\¦‚ÌƒGƒtƒFƒNƒg‚ğg‚¨‚¤
+				effect.cmd = 2;							// ã¾ãš1æšç›®ã‚’è¡¨ç¤ºã—ã¦ãŠã
+				effect.steptime = 0;					// å³æ™‚è¡¨ç¤ºã®ã‚¨ãƒ•ã‚§ã‚¯ãƒˆã‚’ä½¿ãŠã†
 				sys->SnrPDT_LoadEffect(ending.file[0], &effect);
 				ending.curtime = sys->GetCurrentTimer();
-				ending.line = 0;						// ‚¢‚­‚Â–Ú‚ÌPDT‚©‚ğw‚·‚Ì‚Ég‚¨‚¤
+				ending.line = 0;						// ã„ãã¤ç›®ã®PDTã‹ã‚’æŒ‡ã™ã®ã«ä½¿ãŠã†
 				ending.flag = 1;
 				ending.wait = ending.pdtpos[0];
 				break;
 
-			case 0x04:					// •¡”–‡‚ÌPDT‚ğ‡”Ô‚É•\¦Aƒ‹[ƒv‚·‚éiBabyFacej
+			case 0x04:					// è¤‡æ•°æšã®PDTã‚’é †ç•ªã«è¡¨ç¤ºã€ãƒ«ãƒ¼ãƒ—ã™ã‚‹ï¼ˆBabyFaceï¼‰
 				ending.num = databuf[curpos++];			// Picture nums
 				ending.pos = ReadValue();				// ?????
 				ending.wait = ReadValue();				// ?????
 				dprintf("MultiPDT (BabyFace ED)  Cmd:$%02X Num:%d ", ending.cmd, ending.num);
-				dprintf("Arg1:%d Arg2:%d\n", ending.pos, ending.wait);
+				dprintf("Arg1:%d Arg2:%dÂ¥n", ending.pos, ending.wait);
 				for (i=0; i<ending.num; i++) {
 					ReadText(ending.file[i]);			// CG Name
 					data = ReadValue();					// Wait to next picture ???
 					ending.pdtpos[i] = data;
 					dprintf(ending.file[i]);
-					dprintf(" - Wait?:%d\n", data);
+					dprintf(" - Wait?:%dÂ¥n", data);
 				}
-				curpos++;								// ??? I—¹ƒ}[ƒNH
-				effect.cmd = 2;							// ‚Ü‚¸1–‡–Ú‚ğ•\¦‚µ‚Ä‚¨‚­
-				effect.steptime = 0;					// ‘¦•\¦‚ÌƒGƒtƒFƒNƒg‚ğg‚¨‚¤
+				curpos++;								// ??? çµ‚äº†ãƒãƒ¼ã‚¯ï¼Ÿ
+				effect.cmd = 2;							// ã¾ãš1æšç›®ã‚’è¡¨ç¤ºã—ã¦ãŠã
+				effect.steptime = 0;					// å³æ™‚è¡¨ç¤ºã®ã‚¨ãƒ•ã‚§ã‚¯ãƒˆã‚’ä½¿ãŠã†
 				sys->SnrPDT_LoadEffect(ending.file[0], &effect);
 				ending.curtime = sys->GetCurrentTimer();
-				ending.line = 0;						// ‚¢‚­‚Â–Ú‚ÌPDT‚©‚ğw‚·‚Ì‚Ég‚¨‚¤
+				ending.line = 0;						// ã„ãã¤ç›®ã®PDTã‹ã‚’æŒ‡ã™ã®ã«ä½¿ãŠã†
 				ending.flag = 1;
 				ending.wait = ending.pdtpos[0];
 				break;
 
-			case 0x05:					// $04‚Ì“®ì‚ğ~‚ß‚éHiBabyFacej
-				dprintf("MultiPDT Stop? (BabyFace ED)\n");
+			case 0x05:					// $04ã®å‹•ä½œã‚’æ­¢ã‚ã‚‹ï¼Ÿï¼ˆBabyFaceï¼‰
+				dprintf("MultiPDT Stop? (BabyFace ED)Â¥n");
 				cmd = 0;
 				ending.cmd = 0;
 				ending.flag = 0;
 				break;
 
 			default:
-				dprintf("MultiPDT  Unknown Style  Cmd:$%02X\n", ending.cmd);
+				dprintf("MultiPDT  Unknown Style  Cmd:$%02XÂ¥n", ending.cmd);
 				break;
 		}
-	} else {					// Às’†
+	} else {					// å®Ÿè¡Œä¸­
 		switch ( ending.cmd ) {
-			case 0x10:				//  ƒGƒ“ƒfƒBƒ“ƒOŒni•¡”–‡PDT‚ÌƒXƒNƒ[ƒ‹j
+			case 0x10:				//  ã‚¨ãƒ³ãƒ‡ã‚£ãƒ³ã‚°ç³»ï¼ˆè¤‡æ•°æšPDTã®ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ï¼‰
 			case 0x20:
 			case 0x30:
 				if ( ending.cmd==0x30 ) {
@@ -4393,7 +4393,7 @@ void SCENARIO::DecodeEndingHandling(void)
 						cmd = 0;
 						ending.cmd = 0;
 						ending.flag = 0;
-						dprintf("   ... Canceled.\n");
+						dprintf("   ... Canceled.Â¥n");
 						for (i=0; i<ending.num; i++) {
 							if ( ending.pdt[i] ) delete ending.pdt[i];
 							ending.pdt[i] = 0;
@@ -4402,7 +4402,7 @@ void SCENARIO::DecodeEndingHandling(void)
 				}
 				if ( (sys->GetCurrentTimer()-ending.curtime)<ending.wait ) return;
 				ending.curtime = sys->GetCurrentTimer();
-				dprintf("   ... Line:%d\n", ending.line);
+				dprintf("   ... Line:%dÂ¥n", ending.line);
 				for (i=0; i<ending.num; i++) {
 					line = ending.line-ending.pdtpos[i];
 					if ( (line>=0)&&((line-ending.pdty[i])<480) ) {
@@ -4416,7 +4416,7 @@ void SCENARIO::DecodeEndingHandling(void)
 						if ( !ending.pdt[i] ) {
 							dprintf("   Make PDT Buffer #%d for ", i);
 							dprintf(ending.file[i]);
-							dprintf("\n");
+							dprintf("Â¥n");
 							ending.pdt[i] = sys->MakePDT(ending.file[i]);
 						}
 						if ( ending.pdt[i] ) {
@@ -4426,7 +4426,7 @@ void SCENARIO::DecodeEndingHandling(void)
 						}
 					} else {
 						if ( ending.pdt[i] ) {
-							dprintf("   Delete ending PDT #%d\n", i);
+							dprintf("   Delete ending PDT #%dÂ¥n", i);
 							delete ending.pdt[i];
 							ending.pdt[i] = 0;
 						}
@@ -4438,7 +4438,7 @@ void SCENARIO::DecodeEndingHandling(void)
 					cmd = 0;
 					ending.cmd = 0;
 					ending.flag = 0;
-					dprintf("   ... Finished.\n");
+					dprintf("   ... Finished.Â¥n");
 					for (i=0; i<ending.num; i++) {
 						if ( ending.pdt[i] ) delete ending.pdt[i];
 						ending.pdt[i] = 0;
@@ -4446,15 +4446,15 @@ void SCENARIO::DecodeEndingHandling(void)
 				}
 				break;
 
-			case 0x03:					// •¡”–‡‚ÌPDT‚ğ‡”Ô‚É•\¦‚µ‚Ä‚¢‚­iflowersj
+			case 0x03:					// è¤‡æ•°æšã®PDTã‚’é †ç•ªã«è¡¨ç¤ºã—ã¦ã„ãï¼ˆflowersï¼‰
 				if ( (sys->GetCurrentTimer()-ending.curtime)<ending.wait ) return;
 				ending.curtime = sys->GetCurrentTimer();
 				ending.line++;
-				if ( ending.line==ending.num ) {	// ‘S•”•\¦‚µ‚½‚çI‚í‚è
+				if ( ending.line==ending.num ) {	// å…¨éƒ¨è¡¨ç¤ºã—ãŸã‚‰çµ‚ã‚ã‚Š
 					cmd = 0;
 					ending.cmd = 0;
 					ending.flag = 0;
-					dprintf("   ... Finished.\n");
+					dprintf("   ... Finished.Â¥n");
 				} else {
 					effect.cmd = 2;
 					effect.steptime = 0;
@@ -4463,15 +4463,15 @@ void SCENARIO::DecodeEndingHandling(void)
 				}
 				break;
 
-			case 0x04:					// •¡”–‡‚ÌPDT‚ğ‡”Ô‚É•\¦Aƒ‹[ƒv‚·‚éiBabyFacej
+			case 0x04:					// è¤‡æ•°æšã®PDTã‚’é †ç•ªã«è¡¨ç¤ºã€ãƒ«ãƒ¼ãƒ—ã™ã‚‹ï¼ˆBabyFaceï¼‰
 				if ( (sys->GetCurrentTimer()-ending.curtime)<ending.wait ) return;
 				ending.curtime = sys->GetCurrentTimer();
 				ending.line++;
-				if ( ending.line==ending.num ) {	// ‘S•”•\¦‚µ‚½‚çƒ‹[ƒvEEE‚È‚ñ‚¾‚¯‚Ç
+				if ( ending.line==ending.num ) {	// å…¨éƒ¨è¡¨ç¤ºã—ãŸã‚‰ãƒ«ãƒ¼ãƒ—ãƒ»ãƒ»ãƒ»ãªã‚“ã ã‘ã©
 					cmd = 0;
 					ending.cmd = 0;
 					ending.flag = 0;
-					dprintf("   ... Finished.\n");
+					dprintf("   ... Finished.Â¥n");
 				} else {
 					effect.cmd = 2;
 					effect.steptime = 0;
@@ -4485,7 +4485,7 @@ void SCENARIO::DecodeEndingHandling(void)
 
 
 /* -------------------------------------------------------------------
-  ƒGƒŠƒAî•ñŒŸõ—pƒ‹[ƒ`ƒ“
+  ã‚¨ãƒªã‚¢æƒ…å ±æ¤œç´¢ç”¨ãƒ«ãƒ¼ãƒãƒ³
 ------------------------------------------------------------------- */
 void SCENARIO::Area_Read(char* f)
 {
@@ -4516,7 +4516,7 @@ int SCENARIO::Area_Find(int x, int y)
 			ret = areabuf[y*areax+x+0x120];
 		}
 		if ( !areaflag[ret] ) ret = 0;
-		dprintf("=%d\n", ret);
+		dprintf("=%dÂ¥n", ret);
 	}
 	return ret;
 };
@@ -4568,7 +4568,7 @@ int SCENARIO::DecodeAutoCGMode(void)
 
 
 /* -------------------------------------------------------------------
-  1ƒ^ƒCƒ}ƒXƒeƒbƒv•ª‚ÌƒVƒiƒŠƒI‚ğƒfƒR[ƒh‚µ‚ÄÀs‚·‚é
+  1ã‚¿ã‚¤ãƒã‚¹ãƒ†ãƒƒãƒ—åˆ†ã®ã‚·ãƒŠãƒªã‚ªã‚’ãƒ‡ã‚³ãƒ¼ãƒ‰ã—ã¦å®Ÿè¡Œã™ã‚‹
 ------------------------------------------------------------------- */
 void SCENARIO::Run()
 {

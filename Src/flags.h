@@ -3,7 +3,7 @@
   Copyright 2000, K.Takagi(Kenjo)
 
   flags.h
-    フラグ管理クラス
+    繝輔Λ繧ｰ邂｡逅�繧ｯ繝ｩ繧ｹ
 =======================================================================*/
 
 #ifndef _flags_h
@@ -26,7 +26,7 @@ private:
         int savedstackpos[MAX_STACK];
 public:
         FLAGS(void);
-        ~FLAGS(void);
+        窶ｾFLAGS(void);
 
         int GetBit(int i);
         int GetVal(int i);

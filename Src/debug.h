@@ -3,20 +3,20 @@
   Copyright 2000, K.Takagi(Kenjo)
 
   debug.h
-    ƒfƒoƒbƒO—pƒ‹[ƒ`ƒ“
+    ãƒ‡ãƒãƒƒã‚°ç”¨ãƒ«ãƒ¼ãƒãƒ³
 =======================================================================*/
 
 #ifndef _debug_h
 #define _debug_h
 
-//#define DEBUGLOG		// ‚Å‚Î‚Á‚®ƒƒO‚ð‚Æ‚éH
-#define LOGFILE			// ƒtƒ@ƒCƒ‹‚É‚Æ‚éH
-//#define EVERYCLOSE		// –ˆ‰ñƒtƒ@ƒCƒ‹ƒNƒ[ƒY‚·‚éHiƒnƒ“ƒO‚·‚éŽž‚ÌƒfƒoƒbƒO—pj
+//#define DEBUGLOG		// ã§ã°ã£ããƒ­ã‚°ã‚’ã¨ã‚‹ï¼Ÿ
+#define LOGFILE			// ãƒ•ã‚¡ã‚¤ãƒ«ã«ã¨ã‚‹ï¼Ÿ
+//#define EVERYCLOSE		// æ¯Žå›žãƒ•ã‚¡ã‚¤ãƒ«ã‚¯ãƒ­ãƒ¼ã‚ºã™ã‚‹ï¼Ÿï¼ˆãƒãƒ³ã‚°ã™ã‚‹æ™‚ã®ãƒ‡ãƒãƒƒã‚°ç”¨ï¼‰
 
 //#define WAITMOUSE while(!Button()){}while(Button()){}
 #define WAITMOUSE
 
-//#define FLAG_ERROR	// ƒtƒ‰ƒO‚ÌƒŒƒ“ƒWƒGƒ‰[‚ðŒx‚·‚é (->flags.cpp)
+//#define FLAG_ERROR	// ãƒ•ãƒ©ã‚°ã®ãƒ¬ãƒ³ã‚¸ã‚¨ãƒ©ãƒ¼ã‚’è­¦å‘Šã™ã‚‹ (->flags.cpp)
 
 extern bool IsLogging;
 

@@ -3,7 +3,7 @@
   Copyright 2000, K.Takagi(Kenjo)
 
   pdtmacro.cpp
-    PDT‘€ìƒZ[ƒu—pƒ}ƒNƒ‚ÌƒNƒ‰ƒX
+    PDTæ“ä½œã‚»ãƒ¼ãƒ–ç”¨ãƒã‚¯ãƒ­ã®ã‚¯ãƒ©ã‚¹
 =======================================================================*/
 
 #include <stdio.h>
@@ -18,11 +18,11 @@
 
 /************************************************************************
   class PDTMACRO
-    ‰æ‘œ•`‰æƒ}ƒNƒƒoƒbƒtƒ@
-    ƒ}ƒNƒƒoƒbƒtƒ@‚ÍƒŠƒ“ƒO\‘¢‚É‚·‚éiƒƒ‚ƒŠƒAƒNƒZƒX—Ê‚ğŒ¸‚ç‚·‚½‚ßj
+    ç”»åƒæç”»ãƒã‚¯ãƒ­ãƒãƒƒãƒ•ã‚¡
+    ãƒã‚¯ãƒ­ãƒãƒƒãƒ•ã‚¡ã¯ãƒªãƒ³ã‚°æ§‹é€ ã«ã™ã‚‹ï¼ˆãƒ¡ãƒ¢ãƒªã‚¢ã‚¯ã‚»ã‚¹é‡ã‚’æ¸›ã‚‰ã™ãŸã‚ï¼‰
 ************************************************************************/
 
-// ‚±‚ñ‚·‚Æ‚ç‚­‚½
+// ã“ã‚“ã™ã¨ã‚‰ããŸ
 PDTMACRO::PDTMACRO(PDTMGR* m)
 {
 	mgr = m;
@@ -30,13 +30,13 @@ PDTMACRO::PDTMACRO(PDTMGR* m)
 };
 
 
-// ‚Å‚·‚Æ‚ç‚­‚½
-PDTMACRO::~PDTMACRO(void)
+// ã§ã™ã¨ã‚‰ããŸ
+PDTMACRO::â€¾PDTMACRO(void)
 {
 };
 
 
-// ƒŠƒZƒbƒg
+// ãƒªã‚»ãƒƒãƒˆ
 void PDTMACRO::Reset(void)
 {
 	memset(&m, 0, 32*sizeof(MACROITEM));
@@ -45,7 +45,7 @@ void PDTMACRO::Reset(void)
 }
 
 
-// ƒoƒbƒtƒ@‚ÉÏ‚Ü‚ê‚½ƒ}ƒNƒ‚É]‚Á‚ÄA‰æ–Ê‚ğÄ\¬‚·‚é
+// ãƒãƒƒãƒ•ã‚¡ã«ç©ã¾ã‚ŒãŸãƒã‚¯ãƒ­ã«å¾“ã£ã¦ã€ç”»é¢ã‚’å†æ§‹æˆã™ã‚‹
 void PDTMACRO::RedrawPDT(void)
 {
 	int i, j;
@@ -54,27 +54,27 @@ void PDTMACRO::RedrawPDT(void)
 /*{
 FILE* fp;
 fp = fopen("_macro.log","a");
-fprintf(fp, "Start:%d End:%d\n", start, num);
+fprintf(fp, "Start:%d End:%dÂ¥n", start, num);
 fclose(fp);
 }*/
 	for (i=start; i!=num; ) {
 /*{
 FILE* fp;
 fp = fopen("_macro.log","a");
-fprintf(fp, "Cmd:$%02X FileNum:%d\n", m[i].cmd, m[i].filenum);
+fprintf(fp, "Cmd:$%02X FileNum:%dÂ¥n", m[i].cmd, m[i].filenum);
 if ( (m[i].cmd<0x30)||(m[i].cmd>0x90) ) {
 buf = m[i].file;
 for (j=0; j<m[i].filenum; j++) {
-fprintf(fp, "  File:%s\n", buf);
+fprintf(fp, "  File:%sÂ¥n", buf);
 buf += (strlen(buf)+1);
 }
 }
-fprintf(fp, "  Arg:\n    ");
+fprintf(fp, "  Arg:Â¥n    ");
 for (j=0; j<90; j++) {
 fprintf(fp, "$%08X ", m[i].arg[j]);
-if ( (j%20)==19 ) fprintf(fp, "\n    ");
+if ( (j%20)==19 ) fprintf(fp, "Â¥n    ");
 }
-fprintf(fp, "\n");
+fprintf(fp, "Â¥n");
 fclose(fp);
 }*/
 		switch(m[i].cmd) {
@@ -170,15 +170,15 @@ fclose(fp);
 };
 
 
-// ƒ}ƒNƒ‚ğ1ŒÂƒoƒbƒtƒ@‚ÉÏ‚Ş
+// ãƒã‚¯ãƒ­ã‚’1å€‹ãƒãƒƒãƒ•ã‚¡ã«ç©ã‚€
 void PDTMACRO::StackMacro(MACROITEM* item)
 {
 /*{
 FILE* fp;
 fp = fopen("_macro.log","a");
-fprintf(fp, "Macro Stacked to #%d. Cmd:$%02X\n", num, item->cmd);
+fprintf(fp, "Macro Stacked to #%d. Cmd:$%02XÂ¥n", num, item->cmd);
 if ( (item->cmd==0)||(item->cmd==2) )
-fprintf(fp, "    File:%s\n", item->file);
+fprintf(fp, "    File:%sÂ¥n", item->file);
 fclose(fp);
 }*/
 	memcpy(&m[num], item, sizeof(MACROITEM));
@@ -187,7 +187,7 @@ fclose(fp);
 };
 
 
-// ƒ}ƒNƒ‚ğiŒã‚ë‚©‚çjnŒÂÁ‚µAƒoƒbƒtƒ@‚ğ‹ó‚¯‚é
+// ãƒã‚¯ãƒ­ã‚’ï¼ˆå¾Œã‚ã‹ã‚‰ï¼‰nå€‹æ¶ˆã—ã€ãƒãƒƒãƒ•ã‚¡ã‚’ç©ºã‘ã‚‹
 void PDTMACRO::DeleteMacro(int /*n*/)
 {
 //	int i;
@@ -197,13 +197,13 @@ void PDTMACRO::DeleteMacro(int /*n*/)
 /*{
 FILE* fp;
 fp = fopen("_macro.log","a");
-fprintf(fp, "%d Macros Deleted.\n", n);
+fprintf(fp, "%d Macros Deleted.Â¥n", n);
 fclose(fp);
 }*/
 };
 
 
-// ‘‚Ä‚Ìƒ}ƒNƒ‚ğÁ‹
+// ç·ã¦ã®ãƒã‚¯ãƒ­ã‚’æ¶ˆå»
 void PDTMACRO::ClearMacro(void)
 {
 //	memset(m, 0, num*sizeof(MACROITEM));
@@ -211,13 +211,13 @@ void PDTMACRO::ClearMacro(void)
 /*{
 FILE* fp;
 fp = fopen("_macro.log","a");
-fprintf(fp, "All Macro Deleted.\n");
+fprintf(fp, "All Macro Deleted.Â¥n");
 fclose(fp);
 }*/
 };
 
 
-// Œ»İƒXƒgƒbƒN‚µ‚Ä‚¢‚éƒ}ƒNƒ‚Ì‘”‚ğ‚©‚¦‚·
+// ç¾åœ¨ã‚¹ãƒˆãƒƒã‚¯ã—ã¦ã„ã‚‹ãƒã‚¯ãƒ­ã®ç·æ•°ã‚’ã‹ãˆã™
 int PDTMACRO::GetMacroNum(void)
 {
 	int ret;
@@ -226,7 +226,7 @@ int PDTMACRO::GetMacroNum(void)
 };
 
 
-// n”Ô‚Ìƒ}ƒNƒ‚Ö‚Ìƒ|ƒCƒ“ƒ^‚ğ‚©‚¦‚·
+// nç•ªã®ãƒã‚¯ãƒ­ã¸ã®ãƒã‚¤ãƒ³ã‚¿ã‚’ã‹ãˆã™
 MACROITEM* PDTMACRO::GetMacro(int n)
 {
 	int ret;

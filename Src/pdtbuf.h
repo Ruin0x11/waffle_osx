@@ -3,7 +3,7 @@
   Copyright 2000, K.Takagi(Kenjo)
 
   pdtbuf.h
-    PDTバッファのクラス
+    PDT繝舌ャ繝輔ぃ縺ｮ繧ｯ繝ｩ繧ｹ
 =======================================================================*/
 
 #ifndef _pdtbuf_h
@@ -19,7 +19,7 @@ private:
 
 public:
 	PDTBUFFER(int x, int y, int p, int l, bool flag);
-	~PDTBUFFER(void);
+	窶ｾPDTBUFFER(void);
 	int GetSizeX(void) {return xsize;}
 	int GetSizeY(void) {return ysize;}
 	int GetBPP(void) {return bpp;}

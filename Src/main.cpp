@@ -3,7 +3,7 @@
   Copyright 2000, K.Takagi(Kenjo)
 
   main.cpp
-    ƒƒCƒ“ŠÖ”EƒCƒxƒ“ƒgˆ—‚È‚Ç
+    ãƒ¡ã‚¤ãƒ³é–¢æ•°ãƒ»ã‚¤ãƒ™ãƒ³ãƒˆå‡¦ç†ãªã©
 =======================================================================*/
 
 #include "system.h"
@@ -15,7 +15,7 @@ static SYSTEM* sys;
 
 //--------------------------------------------------------------------
 // Initialize()
-//   —ÑŒç‚¨–ñ‘©‚Ì‰Šú‰»
+//   æ—æªãŠç´„æŸã®åˆæœŸåŒ–
 //--------------------------------------------------------------------
 
 static void Initialize(void)
@@ -24,7 +24,7 @@ static void Initialize(void)
 
 	MaxApplZone();	
 
-	for (i=0; i<16; i++) {		// ‚±‚ñ‚­‚ç‚¢‚â‚ê‚Î‚¢‚¢‚Á‚µ‚åiÎj
+	for (i=0; i<16; i++) {		// ã“ã‚“ãã‚‰ã„ã‚„ã‚Œã°ã„ã„ã£ã—ã‚‡ï¼ˆç¬‘ï¼‰
 		MoreMasters();
 	}
 
@@ -41,7 +41,7 @@ static void Initialize(void)
 
 //--------------------------------------------------------------------
 // main()
-//   ‚ÜA‚¨–ñ‘©‚Á‚·
+//   ã¾ã€ãŠç´„æŸã£ã™
 //--------------------------------------------------------------------
 
 void main()
@@ -51,10 +51,10 @@ void main()
 
 	DebugStart();
 
-	// Windowì¬
+	// Windowä½œæˆ
 	hWnd = GetNewCWindow(128, NULL, (WindowPtr)-1);
 
-	// ƒVƒXƒeƒ€ƒIƒuƒWƒFƒNƒgì¬‚ÆÀs
+	// ã‚·ã‚¹ãƒ†ãƒ ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆä½œæˆã¨å®Ÿè¡Œ
 	if (hWnd) {
 		SizeWindow(hWnd, 640, 480, true);
 		ShowWindow(hWnd);
@@ -67,7 +67,7 @@ void main()
 		} else {
 			Error("Could not make SYSTEM object.");
 		}
-		// ƒEƒBƒ“ƒhƒE‚ÆƒIƒuƒWƒFƒNƒg‚ğíœ‚µ‚ÄI—¹
+		// ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã¨ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å‰Šé™¤ã—ã¦çµ‚äº†
 		DisposeWindow(hWnd);
 	} else {
 		Error("Could not make the window.");
